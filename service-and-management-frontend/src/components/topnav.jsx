@@ -4,7 +4,7 @@ import { BiLogOut } from "react-icons/bi";
 
 const TopNav = () => {
   return (
-    <div className="fixed w-full h-16 text-white bg-topNavColor topnav">
+    <div className="fixed h-16 text-white bg-topNavColor topnav">
       <nav className="h-full">
         <ui className="flex items-center justify-between h-full mx-4">
           <li>

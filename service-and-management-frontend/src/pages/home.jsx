@@ -4,10 +4,10 @@ import TopNav from "../components/topnav";
 
 const Home = () => {
   return (
-    <div className="flex">
+    <div>
       <TopNav />
       <SideNav />
-      <div className="container">
+      <div className="container-box">
         <div>
           <p>Test</p>
         </div>

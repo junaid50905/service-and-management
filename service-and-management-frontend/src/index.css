@@ -11,8 +11,13 @@
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
+
 ui {
   list-style-type: none;
+}
+
+.topnav {
+  width: 100vw;
 }
 
 .sidenav nav ui li {
@@ -32,12 +37,12 @@ ui {
   color: #fff;
   transform: scale(1.07);
 }
-.container,
+.container-box,
 .sidenav {
   margin-top: 64px;
 }
 
-.container {
+.container-box {
   padding: 16px;
   position: fixed;
   left: 16vw;
@@ -46,7 +51,7 @@ ui {
   height: 100vh;
   padding-bottom: 80px;
 }
-.container::-webkit-scrollbar {
+.container-box::-webkit-scrollbar {
   display: none;
 }
 .sam-logo {
