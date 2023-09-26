@@ -8,7 +8,7 @@ import { MdSpatialTracking } from "react-icons/md";
 
 const SideNav = () => {
   return (
-    <div className="w-1/5 h-screen text-center sidenav bg-navBody text-navColor">
+    <div className="fixed h-screen text-center sidenav bg-navBody text-navColor">
       <nav>
         <ui>
           <li>

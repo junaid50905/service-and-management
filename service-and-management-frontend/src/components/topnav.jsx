@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { AiFillDashboard } from "react-icons/ai";
 import { BiLogOut } from "react-icons/bi";
 
 const TopNav = () => {
@@ -9,7 +8,7 @@ const TopNav = () => {
       <nav className="h-full">
         <ui className="flex items-center justify-between h-full mx-4">
           <li>
-            <Link to="/dashboard">
+            <Link to="/">
               <h2 className="sam-logo">Service And Repair Management</h2>
             </Link>
           </li>

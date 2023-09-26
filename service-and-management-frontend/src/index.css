@@ -19,13 +19,18 @@ ui {
   font-size: 16px;
   font-weight: bold;
   border-bottom: 1px solid rgba(2, 5, 83, 0.8);
+  transition: all 0.3s ease;
 }
 .sidenav {
   border-right: 1px solid rgba(2, 5, 83, 0.8);
+  overflow: hidden;
+  width: 16vw;
 }
 
 .sidenav nav ui li:hover {
-  background-color: #fff;
+  background-color: #020553;
+  color: #fff;
+  transform: scale(1.07);
 }
 .container,
 .sidenav {
@@ -33,7 +38,16 @@ ui {
 }
 
 .container {
-  padding: 8px;
+  padding: 16px;
+  position: fixed;
+  left: 16vw;
+  width: 84vw;
+  overflow-y: auto;
+  height: 100vh;
+  padding-bottom: 80px;
+}
+.container::-webkit-scrollbar {
+  display: none;
 }
 .sam-logo {
   font-style: italic;
