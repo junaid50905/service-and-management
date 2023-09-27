@@ -45,7 +45,7 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'unique:categories,name'
+            'name' => 'required|unique:categories,name'
         ]);
         $updated_category = $request->except('_token');
         Category::where('id', $id)->update($updated_category);

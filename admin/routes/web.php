@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,5 +34,15 @@ Route::prefix('admin')->group(function () {
         Route::get('/{id}/delete', [CategoryController::class, 'delete'])->name('category.delete');
         Route::get('/{id}/edit', [CategoryController::class, 'edit'])->name('category.edit');
         Route::post('/{id}/update', [CategoryController::class, 'update'])->name('category.update');
+    });
+
+    // products
+    Route::prefix('/product')->group(function () {
+        Route::get('/create', [ProductController::class, 'create'])->name('product.create');
+        Route::post('/store', [ProductController::class, 'store'])->name('product.store');
+        Route::get('/all-products', [ProductController::class, 'index'])->name('product.index');
+        Route::get('/{id}/delete', [ProductController::class, 'delete'])->name('product.delete');
+        Route::get('/{id}/edit', [ProductController::class, 'edit'])->name('product.edit');
+        Route::post('/{id}/update', [ProductController::class, 'update'])->name('product.update');
     });
 });
