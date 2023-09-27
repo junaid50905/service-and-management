@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 27, 2023 at 03:50 AM
+-- Generation Time: Sep 27, 2023 at 09:03 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -33,6 +33,15 @@ CREATE TABLE `categories` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(25, 'printer', '2023-09-27 08:02:32', '2023-09-27 08:02:32'),
+(26, 'television', '2023-09-27 08:02:45', '2023-09-27 08:02:45'),
+(27, 'mobile', '2023-09-27 08:02:57', '2023-09-27 08:02:57');
 
 -- --------------------------------------------------------
 
@@ -315,7 +324,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `checklists`
