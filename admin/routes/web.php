@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,4 +24,14 @@ Route::get('/', function () {
 Route::prefix('admin')->group(function () {
     // dashboard
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+
+    // category
+    Route::prefix('/category')->group(function () {
+        Route::get('/create', [CategoryController::class, 'create'])->name('category.create');
+        Route::post('/store', [CategoryController::class, 'store'])->name('category.store');
+        Route::get('/all-categories', [CategoryController::class, 'index'])->name('category.index');
+        Route::get('/{id}/delete', [CategoryController::class, 'delete'])->name('category.delete');
+        Route::get('/{id}/edit', [CategoryController::class, 'edit'])->name('category.edit');
+        Route::post('/{id}/update', [CategoryController::class, 'update'])->name('category.update');
+    });
 });
