@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\EngineerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,5 +34,16 @@ Route::prefix('admin')->group(function () {
         Route::get('/{id}/delete', [CategoryController::class, 'delete'])->name('category.delete');
         Route::get('/{id}/edit', [CategoryController::class, 'edit'])->name('category.edit');
         Route::post('/{id}/update', [CategoryController::class, 'update'])->name('category.update');
-    });
+    });    
+
+
+    Route::prefix('/engineer')->group(function () {
+
+        Route::get('/create', [EngineerController::class, 'create'])->name('engineer.create');
+        Route::post('/store', [EngineerController::class, 'store'])->name('engineer.store');
+        Route::get('/all-categories', [EngineerController::class, 'index'])->name('engineer.index');
+        Route::get('/{id}/edit', [EngineerController::class, 'edit'])->name('engineer.edit');
+        Route::get('/{id}/delete', [EngineerController::class, 'delete'])->name('engineer.delete');
+        Route::post('/{id}/update', [EngineerController::class, 'update'])->name('engineer.update');
+    });    
 });
