@@ -71,17 +71,18 @@
                 <span class="menu-title">Dashboard</span>
             </a>
         </li>
+        
         <!-- category -->
         <li class="nav-item menu-items mt-2">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
-                aria-controls="ui-basic">
+            <a class="nav-link" data-bs-toggle="collapse" href="#category" aria-expanded="false"
+                aria-controls="category">
                 <span class="menu-icon">
                     <i class="mdi mdi-laptop"></i>
                 </span>
                 <span class="menu-title">Category</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="ui-basic">
+            <div class="collapse" id="category">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{{ route('category.create') }}">Create</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('category.index') }}">Index</a></li>
@@ -89,6 +90,7 @@
                 </ul>
             </div>
         </li>
+<<<<<<< HEAD
         <!-- product -->
         <li class="nav-item menu-items mt-2">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
@@ -103,6 +105,23 @@
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{{ route('product.create') }}">Create</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('product.index') }}">Index</a></li>
+=======
+
+        <!-- engineer -->
+        <li class="nav-item menu-items mt-2">
+            <a class="nav-link" data-bs-toggle="collapse" href="#engineer" aria-expanded="false"
+                aria-controls="engineer">
+                <span class="menu-icon">
+                    <i class="mdi mdi-laptop"></i>
+                </span>
+                <span class="menu-title">Engineer</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="engineer">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('engineer.create') }}">Create</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('engineer.index') }}">Index</a></li>
+>>>>>>> 33be8f67ec816d79d1c7792ef7eabf387a9db677
                     </li>
                 </ul>
             </div>
