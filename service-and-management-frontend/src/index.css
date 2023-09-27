@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem;
+  line-height: 1.4;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+ui {
+  list-style-type: none;
+}
+
+.topnav {
+  width: 100vw;
+}
+
+.sidenav nav ui li {
+  font-size: 16px;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(2, 5, 83, 0.8);
+  transition: all 0.3s ease;
+}
+.sidenav {
+  border-right: 1px solid rgba(2, 5, 83, 0.8);
+  overflow: hidden;
+  width: 16vw;
+}
+
+.sidenav nav ui li:hover {
+  background-color: #020553;
+  color: #fff;
+  transform: scale(1.07);
+}
+.container-box,
+.sidenav {
+  margin-top: 64px;
+}
+
+.container-box {
+  padding: 16px;
+  position: fixed;
+  left: 16vw;
+  width: 84vw;
+  overflow-y: auto;
+  height: 100vh;
+  padding-bottom: 80px;
+}
+.container-box::-webkit-scrollbar {
+  display: none;
+}
+.sam-logo {
+  font-style: italic;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
