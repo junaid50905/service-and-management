@@ -1,13 +1,13 @@
 import React from "react";
-import SideNav from "../components/sidenav";
-import TopNav from "../components/topnav";
+import AdminSideNav from "../../components/SideNavs/Admin/sidenav";
+import TopNav from "../../components/TopNavs/Customer/topnav";
 
-const Home = () => {
+const AdminLandingPage = () => {
   return (
     <div>
       <TopNav />
-      <SideNav />
-      <div className="container-box">
+      <AdminSideNav />
+      <div className="text-justify container-box">
         <div>
           <p>Test</p>
         </div>
@@ -162,4 +162,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default AdminLandingPage;
