@@ -6,18 +6,21 @@ const TopNav = () => {
   return (
     <div className="fixed h-16 text-white bg-topNavColor topnav">
       <nav className="h-full">
-        <ui className="flex items-center justify-between h-full mx-4">
+        <ul className="flex items-center justify-between h-full mx-4">
           <li>
             <Link to="/">
               <h2 className="sam-logo">Service And Repair Management</h2>
             </Link>
           </li>
           <li>
-            <Link to="/dashboard">
-              <BiLogOut className="w-6 h-6" />
-            </Link>
+            <div className="flex gap-8 text-xl">
+              <Link to="/customer/dashboard">Emon Singha</Link>
+              <Link to="/customer/dashboard">
+                <BiLogOut className="w-6 h-6" />
+              </Link>
+            </div>
           </li>
-        </ui>
+        </ul>
       </nav>
     </div>
   );

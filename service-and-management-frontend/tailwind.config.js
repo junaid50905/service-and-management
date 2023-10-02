@@ -4,13 +4,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        navColor: "#020553",
+        navColor: "#F65522", //#020553
         navBody: "#F4F4FE",
-        topNavColor: "#000559",
+        topNavColor: "#F65522", //000559
       },
       boxShadow: {
         customShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
       },
+      scale: {
+        '103': '1.01',
+      }
     },
   },
   plugins: [],
