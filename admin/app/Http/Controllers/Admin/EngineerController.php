@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Category;
 use App\Models\Admin\Engineer;
+use App\Models\Admin\Subcategory;
 use Illuminate\Http\Request;
 
 class EngineerController extends Controller
@@ -11,13 +13,17 @@ class EngineerController extends Controller
     // create
     public function create()
     {
-        return view('admin.engineer.create');
+        $categories = Category::all();
+        $subcategories = Subcategory::all();
+        return view('admin.engineer.create', compact('categories', 'subcategories'));
     }
 
     // store
     public function store(Request $request)
     {
         $request->validate([
+            'category_id' => 'required',
+            'subcategory_id' => 'required',
             'name' => 'required',
             'phone' => 'required|unique:engineers,phone',
             'address' => 'required',
@@ -38,14 +44,20 @@ class EngineerController extends Controller
     public function edit($id)
     {
         $engineer = Engineer::find($id);
-        return view('admin.engineer.edit', compact('engineer'));
+        $categories = Category::all();
+        $subcategories = Subcategory::all();
+        return view('admin.engineer.edit', compact('engineer', 'categories', 'subcategories'));
     }
 
     // update
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required'
+            'category_id' => 'required',
+            'subcategory_id' => 'required',
+            'name' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
         ]);
         $updated_engineer = $request->except('_token');
         Engineer::where('id', $id)->update($updated_engineer);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Category;
 use App\Models\Admin\Product;
+use App\Models\Admin\Subcategory;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -13,7 +14,8 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('admin.product.create', compact('categories'));
+        $subcategories = Subcategory::all();
+        return view('admin.product.create', compact('categories', 'subcategories'));
     }
     // store
     public function store(Request $request)
@@ -21,6 +23,7 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required',
             'category_id' => 'required',
+            'subcategory_id' => 'required',
             'model' => 'required|unique:products,model',
             'price' => 'required',
         ]);
@@ -43,15 +46,19 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::find($id);
-        return view('admin.product.edit', compact('product'));
+        $categories = Category::all();
+        $subcategories = Subcategory::all();
+        return view('admin.product.edit', compact('product', 'categories', 'subcategories'));
     }
     // update
     public function update(Request $request, $id)
     {
         $request->validate([
             'name' => 'required',
-            'model' => 'required|unique:products,model',
+            'model' => 'required',
             'price' => 'required',
+            'category_id' => 'required',
+            'subcategory_id' => 'required',
         ]);
         $updated_product = $request->except('_token');
         Product::where('id', $id)->update($updated_product);

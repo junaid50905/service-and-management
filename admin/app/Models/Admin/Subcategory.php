@@ -5,9 +5,9 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Engineer extends Model
+class Subcategory extends Model
 {
     use HasFactory;
-    protected $table = "engineers";
-    protected $fillable = ["category_id", "subcategory_id", "name", "phone", "address"];
+    protected $table = 'subcategories';
+    protected $fillable = ['category_id','name'];
 }

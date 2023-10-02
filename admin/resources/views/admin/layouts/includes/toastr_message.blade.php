@@ -16,7 +16,7 @@
             "progressBar": true,
             "closeButton": true
         }
-        toastr.error("{{ session('category_delete') }}")
+        toastr.success("{{ session('category_delete') }}")
     </script>
 @endif
 
@@ -31,64 +31,177 @@
     </script>
 @endif
 
-<<<<<<< HEAD
-{{-- product --}}
 
-@if (Session::has('product_create'))
-=======
-
-{{-- engineer --}}
-
-@if (Session::has('engineer_create'))
->>>>>>> 33be8f67ec816d79d1c7792ef7eabf387a9db677
+{{-- subcategory --}}
+@if (Session::has('subcategory_create'))
     <script>
         toastr.options = {
             "progressBar": true,
             "closeButton": true
         }
-<<<<<<< HEAD
+        toastr.success("{{ session('subcategory_create') }}")
+    </script>
+@endif
+
+@if (Session::has('subcategory_delete'))
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true
+        }
+        toastr.success("{{ session('subcategory_delete') }}")
+    </script>
+@endif
+
+
+@if (Session::has('subcategory_update'))
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true
+        }
+        toastr.success("{{ session('subcategory_update') }}")
+    </script>
+@endif
+
+{{-- product --}}
+@if (Session::has('product_create'))
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true
+        }
         toastr.success("{{ session('product_create') }}")
     </script>
 @endif
 
 @if (Session::has('product_delete'))
-=======
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true
+        }
+        toastr.success("{{ session('product_delete') }}")
+    </script>
+@endif
+
+
+@if (Session::has('product_update'))
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true
+        }
+        toastr.success("{{ session('product_update') }}")
+    </script>
+@endif
+
+{{-- engineer --}}
+@if (Session::has('engineer_create'))
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true,
+        }
         toastr.success("{{ session('engineer_create') }}")
     </script>
 @endif
 
 @if (Session::has('engineer_delete'))
->>>>>>> 33be8f67ec816d79d1c7792ef7eabf387a9db677
     <script>
         toastr.options = {
             "progressBar": true,
             "closeButton": true
         }
-<<<<<<< HEAD
-        toastr.error("{{ session('product_delete') }}")
-=======
-        toastr.error("{{ session('engineer_delete') }}")
->>>>>>> 33be8f67ec816d79d1c7792ef7eabf387a9db677
+        toastr.success("{{ session('engineer_delete') }}")
     </script>
 @endif
 
 
-<<<<<<< HEAD
-@if (Session::has('product_update'))
-=======
 @if (Session::has('engineer_update'))
->>>>>>> 33be8f67ec816d79d1c7792ef7eabf387a9db677
     <script>
         toastr.options = {
             "progressBar": true,
             "closeButton": true
         }
-<<<<<<< HEAD
-        toastr.success("{{ session('product_update') }}")
-    </script>
-@endif
-=======
         toastr.success("{{ session('engineer_update') }}")
     </script>
 @endif
->>>>>>> 33be8f67ec816d79d1c7792ef7eabf387a9db677
+
+
+{{-- checklist --}}
+@if (Session::has('unavailable_user'))
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true
+        }
+        toastr.error("{{ session('unavailable_user') }}")
+    </script>
+@endif
+
+@if (Session::has('checklist_create'))
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true,
+        }
+        toastr.success("{{ session('checklist_create') }}")
+    </script>
+@endif
+
+@if (Session::has('checklist_update'))
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true
+        }
+        toastr.success("{{ session('checklist_update') }}")
+    </script>
+@endif
+
+
+@if (Session::has('checklist_delete'))
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true
+        }
+        toastr.success("{{ session('checklist_delete') }}")
+    </script>
+@endif
+
+
+{{-- appiontment --}}
+
+@if (Session::has('user_or_product_unavailable'))
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true
+        }
+        toastr.error("{{ session('user_or_product_unavailable') }}")
+    </script>
+@endif
+
+
+@if (Session::has('appiontment_taken'))
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true
+        }
+        toastr.success("{{ session('appiontment_taken') }}")
+    </script>
+@endif
+
+
+@if (Session::has('appiontment_assigned'))
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true
+        }
+        toastr.success("{{ session('appiontment_assigned') }}")
+    </script>
+@endif

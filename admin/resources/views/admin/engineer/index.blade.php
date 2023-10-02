@@ -6,7 +6,7 @@
 
 @section('main-panel')
     <div class="row">
-        <div class="col-md-6 grid-margin">
+        <div class="col-md-12 grid-margin">
             @if (count($engineers) < 1)
             <h4 class="text-danger">No Engineer found</h4>
             @else
@@ -21,6 +21,8 @@
                                     <th> Name</th>
                                     <th> Phone</th>
                                     <th> Address</th>
+                                    <th> Category</th>
+                                    <th> Subcategory</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -31,6 +33,8 @@
                                         <td>{{ $engineer->name }}</td>
                                         <td>{{ $engineer->phone }}</td>
                                         <td>{{ $engineer->address }}</td>
+                                        <td>{{ DB::table('categories')->where('id', $engineer->category_id)->first()->name }}</td>
+                                        <td>{{ DB::table('subcategories')->where('id', $engineer->subcategory_id)->first()->name }}</td>
                                         <td>
                                             <a href="{{ route('engineer.edit', $engineer->id) }}" class="btn btn-warning me-2">Edit</a>
                                             <a href="{{ route('engineer.delete', $engineer->id) }}" onclick="return confirm('are you sure?')" class="btn btn-danger">Delete</a>

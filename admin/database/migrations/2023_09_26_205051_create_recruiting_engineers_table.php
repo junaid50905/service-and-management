@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('recruiting_engineers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('checklist_id');
+            $table->unsignedBigInteger('appiontment_id');
             $table->unsignedBigInteger('engineer_id');
-            $table->enum('status', ['not_set_yet', 'assign', 'due'])->default('not_set_yet');
+            $table->foreign('appiontment_id')->references('id')->on('appiontments')->onDelete('cascade');
+            $table->foreign('engineer_id')->references('id')->on('engineers')->onDelete('cascade');
             $table->timestamps();
         });
     }

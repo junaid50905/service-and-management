@@ -1,13 +1,15 @@
 <?php
 
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\DashboardController;
-<<<<<<< HEAD
-use App\Http\Controllers\Admin\ProductController;
-=======
-use App\Http\Controllers\Admin\EngineerController;
->>>>>>> 33be8f67ec816d79d1c7792ef7eabf387a9db677
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\EngineerController;
+use App\Http\Controllers\Admin\ChecklistController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\AppiontmentController;
+use App\Http\Controllers\Admin\SubcategoryController;
+use App\Http\Controllers\Admin\SellingProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +40,16 @@ Route::prefix('admin')->group(function () {
         Route::get('/{id}/delete', [CategoryController::class, 'delete'])->name('category.delete');
         Route::get('/{id}/edit', [CategoryController::class, 'edit'])->name('category.edit');
         Route::post('/{id}/update', [CategoryController::class, 'update'])->name('category.update');
-<<<<<<< HEAD
+    });
+
+    // subcategory
+    Route::prefix('/subcategory')->group(function () {
+        Route::get('/create', [SubcategoryController::class, 'create'])->name('subcategory.create');
+        Route::post('/store', [SubcategoryController::class, 'store'])->name('subcategory.store');
+        Route::get('/all-subcategories', [SubcategoryController::class, 'index'])->name('subcategory.index');
+        Route::get('/{id}/delete', [SubcategoryController::class, 'delete'])->name('subcategory.delete');
+        Route::get('/{id}/edit', [SubcategoryController::class, 'edit'])->name('subcategory.edit');
+        Route::post('/{id}/update', [SubcategoryController::class, 'update'])->name('subcategory.update');
     });
 
     // products
@@ -50,18 +61,59 @@ Route::prefix('admin')->group(function () {
         Route::get('/{id}/edit', [ProductController::class, 'edit'])->name('product.edit');
         Route::post('/{id}/update', [ProductController::class, 'update'])->name('product.update');
     });
-=======
-    });    
 
-
+    // engineer
     Route::prefix('/engineer')->group(function () {
-
         Route::get('/create', [EngineerController::class, 'create'])->name('engineer.create');
         Route::post('/store', [EngineerController::class, 'store'])->name('engineer.store');
-        Route::get('/all-categories', [EngineerController::class, 'index'])->name('engineer.index');
+        Route::get('/all-engineers', [EngineerController::class, 'index'])->name('engineer.index');
         Route::get('/{id}/edit', [EngineerController::class, 'edit'])->name('engineer.edit');
         Route::get('/{id}/delete', [EngineerController::class, 'delete'])->name('engineer.delete');
         Route::post('/{id}/update', [EngineerController::class, 'update'])->name('engineer.update');
-    });    
->>>>>>> 33be8f67ec816d79d1c7792ef7eabf387a9db677
+    });
+
+    // checklist
+    Route::prefix('/checklist')->group(function () {
+        Route::get('/create', [ChecklistController::class, 'create'])->name('checklist.create');
+        Route::post('/store', [ChecklistController::class, 'store'])->name('checklist.store');
+        Route::get('/all-checklists', [ChecklistController::class, 'index'])->name('checklist.index');
+        Route::get('/{id}/edit', [ChecklistController::class, 'edit'])->name('checklist.edit');
+        Route::get('/{id}/delete', [ChecklistController::class, 'delete'])->name('checklist.delete');
+        Route::post('/{id}/update', [ChecklistController::class, 'update'])->name('checklist.update');
+    });
+
+    // selling product
+    Route::prefix('/selling-product')->group(function () {
+        Route::get('/all-products', [SellingProductController::class, 'index'])->name('selling_product.index');
+    });
+
+
+
+    //////////////////////// service management ////////////////////
+
+    // appiontment
+    Route::prefix('/appiontment')->group(function () {
+        Route::get('/make-an-appiontment', [AppiontmentController::class, 'checkUserProductForm'])->name('appiontment.check_user_product_form');
+        Route::post('/make-an-appiontment', [AppiontmentController::class, 'checkUserProductStore'])->name('appiontment.check_user_product_store');
+
+        Route::post('/appiontment/store', [AppiontmentController::class, 'appiontmentStore'])->name('appiontment.appiontment_store');
+
+
+        Route::get('/all-appiontments', [AppiontmentController::class, 'index'])->name('appiontment.index');
+        Route::get('/assign-engineer/{id}', [AppiontmentController::class, 'assignEngineer'])->name('appiontment.assign_engineer');
+        Route::post('/assign-engineer/store', [AppiontmentController::class, 'assignEngineerStore'])->name('appiontment.assign_engineer_store');
+
+
+        Route::get('/assigned-engineer-details/user/{id}', [AppiontmentController::class, 'assignedEngineerDetailed'])->name('appiontment.assigned_engineer_detailed');
+
+    });
+
+
+
+
+
+
 });
+
+
+

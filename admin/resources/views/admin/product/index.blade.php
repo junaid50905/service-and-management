@@ -18,11 +18,15 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Product name</th>
-                                    <th>Product model</th>
-                                    <th>Product price</th>
-                                    <th>Time of warranty</th>
-                                    <th>Product category</th>
+                                    <th>Name</th>
+                                    <th>Model</th>
+                                    <th>Price</th>
+                                    <th class="d-flex flex-column">
+                                        <span>Warranty</span>
+                                        <span>(months)</span>
+                                    </th>
+                                    <th>Category</th>
+                                    <th>Subcategory</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -35,6 +39,7 @@
                                         <td>{{ $product->price }}</td>
                                         <td>{{ $product->time_of_warranty }}</td>
                                         <td>{{ $product->category_id }}</td>
+                                        <td>{{ $product->subcategory_id }}</td>
                                         <td>
                                             <a href="{{ route('product.edit', $product->id) }}" class="btn btn-warning me-2">Edit</a>
                                             <a href="{{ route('product.delete', $product->id) }}" onclick="return confirm('are you sure?')" class="btn btn-danger">Delete</a>
