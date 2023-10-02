@@ -8,7 +8,7 @@ const TopNav = () => {
       <nav className="h-full">
         <ul className="flex items-center justify-between h-full mx-4">
           <li>
-            <Link to="/">
+            <Link to="/customer/dashboard">
               <h2 className="sam-logo">Service And Repair Management</h2>
             </Link>
           </li>

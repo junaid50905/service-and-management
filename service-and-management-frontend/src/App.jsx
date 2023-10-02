@@ -11,6 +11,10 @@ import PurchasedProducts from "./pages/Customer/purchasedProducts";
 import RequestService from "./pages/Customer/requestService";
 import ServiceStatus from "./pages/Customer/serviceStatus";
 import Login from "./pages/Login/login";
+import ContactSupport from "./pages/Customer/contactSupport";
+import TermsAndCondition from "./pages/Customer/termsAndCondition";
+import FAQ from "./pages/Customer/faq";
+import AboutUs from "./pages/Customer/aboutUs";
 
 function App() {
   return (
@@ -24,10 +28,7 @@ function App() {
         <Route path="/newEngineer" element={<AddEngineer />}></Route>
         <Route path="/showEngineers" element={<ShowAllEngineer />}></Route>
         <Route path="/TrackManage" element={<TrackingManage />}></Route>
-        <Route
-          path="/customer/dashboard"
-          element={<CustomerLandingPage />}
-        ></Route>
+        <Route path="/customer/fd" element={<CustomerLandingPage />}></Route>
         <Route
           path="/customer/PurchasedProducts"
           element={<PurchasedProducts />}
@@ -36,10 +37,17 @@ function App() {
           path="/customer/reqservice/:productId"
           element={<RequestService />}
         ></Route>
+        <Route path="/customer/dashboard" element={<ServiceStatus />}></Route>
         <Route
-          path="/customer/servicestatus"
-          element={<ServiceStatus />}
+          path="/customer/contsupport"
+          element={<ContactSupport />}
         ></Route>
+        <Route
+          path="/customer/termsandcondition"
+          element={<TermsAndCondition />}
+        ></Route>
+        <Route path="/customer/faq" element={<FAQ />}></Route>
+        <Route path="/customer/aboutus" element={<AboutUs />}></Route>
         <Route path="/login" element={<Login />}></Route>
       </Routes>
     </>
