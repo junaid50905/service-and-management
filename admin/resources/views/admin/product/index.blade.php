@@ -34,12 +34,17 @@
                                 @foreach ($products as $product)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $product->name }}</td>
+                                        <td>
+                                            @php
+                                                $wrapped_name = wordwrap($product->name, 40, "\n", true);
+                                            @endphp
+                                            {!! nl2br(e($wrapped_name)) !!}
+                                        </td>
                                         <td>{{ $product->model }}</td>
                                         <td>{{ $product->price }}</td>
                                         <td>{{ $product->time_of_warranty }}</td>
-                                        <td>{{ $product->category_id }}</td>
-                                        <td>{{ $product->subcategory_id }}</td>
+                                        <td>{{ DB::table('categories')->where('id', $product->category_id)->first()->name }}</td>
+                                        <td>{{ DB::table('subcategories')->where('id', $product->subcategory_id)->first()->name }}</td>
                                         <td>
                                             <a href="{{ route('product.edit', $product->id) }}" class="btn btn-warning me-2">Edit</a>
                                             <a href="{{ route('product.delete', $product->id) }}" onclick="return confirm('are you sure?')" class="btn btn-danger">Delete</a>
