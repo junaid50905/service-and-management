@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\Frontend\Api\ProductController as ApiProductController;
+use App\Http\Controllers\Api\FrontendController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,16 +16,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+// private routes
+Route::middleware(['auth:sanctum'])->group(function () {
+
+    Route::prefix('/v1')->group(function (){
+        Route::post('/u/logout', [UserController::class, 'logout']);
+        Route::get('/u/logged-user-data', [UserController::class, 'logged_user_data']);
+    });
+
 });
 
-
+// public routes
 Route::prefix('/v1')->group(function () {
-    Route::get('/products', [ApiProductController::class, 'index']);
-    // Route::get('/students/{id}', [ApiProductController::class, 'show']);
-    // Route::post('/students', [ApiProductController::class, 'store']);
-    // Route::put('/student/update/{id}', [ApiProductController::class, 'update']);
-    // Route::delete('/students/{id}', [ApiProductController::class, 'destroy']);
-    // Route::get('/students/search/{email}', [ApiProductController::class, 'search']);
+
+    Route::get('/products', [FrontendController::class, 'allProducts']);
+
+    // user authentication
+    Route::post('/u/register', [UserController::class, 'register']);
+    Route::post('/u/login', [UserController::class, 'login']);
+
+
 });
