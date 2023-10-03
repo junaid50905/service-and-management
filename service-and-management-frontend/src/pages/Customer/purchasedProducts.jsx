@@ -73,7 +73,7 @@ const PurchasedProducts = () => {
     },
     {
       id: 7,
-      productName: "Washing Machine fght bdfg dfggh",
+      productName: "Washing Machine",
       model: "PQR-404",
       regNo: "15242",
       purchaseDate: "2023-02-12",

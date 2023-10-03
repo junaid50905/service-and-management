@@ -15,6 +15,7 @@ import ContactSupport from "./pages/Customer/contactSupport";
 import TermsAndCondition from "./pages/Customer/termsAndCondition";
 import FAQ from "./pages/Customer/faq";
 import AboutUs from "./pages/Customer/aboutUs";
+import EngineerLandingPage from "./pages/Engineer/engineerLandingPage";
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function App() {
         <Route path="/TrackManage" element={<TrackingManage />}></Route>
         <Route path="/customer/fd" element={<CustomerLandingPage />}></Route>
         <Route
-          path="/customer/PurchasedProducts"
+          path="/customer/pursproducts"
           element={<PurchasedProducts />}
         ></Route>
         <Route
@@ -49,6 +50,10 @@ function App() {
         <Route path="/customer/faq" element={<FAQ />}></Route>
         <Route path="/customer/aboutus" element={<AboutUs />}></Route>
         <Route path="/login" element={<Login />}></Route>
+        <Route
+          path="/engineer/dashboard"
+          element={<EngineerLandingPage />}
+        ></Route>
       </Routes>
     </>
   );

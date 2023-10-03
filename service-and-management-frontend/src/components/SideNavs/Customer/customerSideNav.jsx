@@ -4,6 +4,9 @@ import { AiFillDashboard } from "react-icons/ai";
 import { GiAutoRepair } from "react-icons/gi";
 import { MdSpatialTracking } from "react-icons/md";
 import { FaBarsProgress } from "react-icons/fa6";
+import { FcFaq } from "react-icons/fc";
+import { FcFinePrint } from "react-icons/fc";
+import { FcAbout } from "react-icons/fc";
 
 const CustomerSideNav = () => {
   return (
@@ -31,7 +34,7 @@ const CustomerSideNav = () => {
             <li>
               <div className="nav-items">
                 <NavLink
-                  to="/customer/PurchasedProducts"
+                  to="/customer/pursproducts"
                   style={({ isActive }) => ({
                     color: isActive ? "#020553" : "#f65522",
                   })}
@@ -140,7 +143,7 @@ const CustomerSideNav = () => {
                   })}
                 >
                   <div className="flex justify-center pt-4">
-                    <MdSpatialTracking className="w-8 h-8" />
+                    <FcFaq className="w-8 h-8" />
                   </div>
                   <div className="flex justify-center pb-4 mt-1">FAQs</div>
                 </NavLink>
@@ -156,7 +159,7 @@ const CustomerSideNav = () => {
                   })}
                 >
                   <div className="flex justify-center pt-4">
-                    <MdSpatialTracking className="w-8 h-8" />
+                    <FcFinePrint className="w-8 h-8" />
                   </div>
                   <div className="flex justify-center pb-4 mt-1">
                     Terms and Conditions
@@ -174,7 +177,7 @@ const CustomerSideNav = () => {
                   })}
                 >
                   <div className="flex justify-center pt-4">
-                    <MdSpatialTracking className="w-8 h-8" />
+                    <FcAbout className="w-8 h-8" />
                   </div>
                   <div className="flex justify-center pb-4 mt-1">About Us</div>
                 </NavLink>
