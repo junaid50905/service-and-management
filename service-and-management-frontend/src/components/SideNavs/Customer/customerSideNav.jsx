@@ -3,11 +3,12 @@ import { NavLink } from "react-router-dom";
 import { AiFillDashboard } from "react-icons/ai";
 import { GiAutoRepair } from "react-icons/gi";
 import { MdSpatialTracking } from "react-icons/md";
+import { FaBarsProgress } from "react-icons/fa6";
 
 const CustomerSideNav = () => {
   return (
     <div>
-      <div className="fixed h-screen text-center sidenav bg-navBody text-navColor">
+      <div className="fixed h-screen text-center bg-white sidenav text-navColor">
         <nav>
           <ul>
             <li>
@@ -19,9 +20,11 @@ const CustomerSideNav = () => {
                   })}
                 >
                   <div className="flex justify-center pt-4">
-                    <AiFillDashboard className="w-8 h-8" />
+                    <FaBarsProgress className="w-8 h-8" />
                   </div>
-                  <div className="flex justify-center pb-4 mt-1">Dashboard</div>
+                  <div className="flex justify-center pb-4 mt-1">
+                    Servicing Progress
+                  </div>
                 </NavLink>
               </div>
             </li>
@@ -59,10 +62,11 @@ const CustomerSideNav = () => {
                 </NavLink>
               </div>
             </li>
+
             <li>
               <div className="nav-items">
                 <NavLink
-                  to="/customer/servicestatus"
+                  to="/customer/contsupport"
                   style={({ isActive }) => ({
                     color: isActive ? "#020553" : "#f65522",
                   })}
@@ -71,12 +75,12 @@ const CustomerSideNav = () => {
                     <MdSpatialTracking className="w-8 h-8" />
                   </div>
                   <div className="flex justify-center pb-4 mt-1">
-                    Servicing Progress
+                    Contact Support
                   </div>
                 </NavLink>
               </div>
             </li>
-            <li>
+            {/* <li>
               <div className="nav-items">
                 <NavLink
                   to="/TrackManage"
@@ -92,11 +96,11 @@ const CustomerSideNav = () => {
                   </div>
                 </NavLink>
               </div>
-            </li>
-            <li>
+            </li> */}
+            {/* <li>
               <div className="nav-items">
                 <NavLink
-                  to="/TrackManage"
+                  to="/customer/dashboard"
                   style={({ isActive }) => ({
                     color: isActive ? "#020553" : "#f65522",
                   })}
@@ -109,11 +113,11 @@ const CustomerSideNav = () => {
                   </div>
                 </NavLink>
               </div>
-            </li>
-            <li>
+            </li> */}
+            {/* <li>
               <div className="nav-items">
                 <NavLink
-                  to="/TrackManage"
+                  to="/customer/tbstguides"
                   style={({ isActive }) => ({
                     color: isActive ? "#020553" : "#f65522",
                   })}
@@ -126,11 +130,11 @@ const CustomerSideNav = () => {
                   </div>
                 </NavLink>
               </div>
-            </li>
+            </li> */}
             <li>
               <div className="nav-items">
                 <NavLink
-                  to="/TrackManage"
+                  to="/customer/faq"
                   style={({ isActive }) => ({
                     color: isActive ? "#020553" : "#f65522",
                   })}
@@ -142,27 +146,11 @@ const CustomerSideNav = () => {
                 </NavLink>
               </div>
             </li>
+
             <li>
               <div className="nav-items">
                 <NavLink
-                  to="/TrackManage"
-                  style={({ isActive }) => ({
-                    color: isActive ? "#020553" : "#f65522",
-                  })}
-                >
-                  <div className="flex justify-center pt-4">
-                    <MdSpatialTracking className="w-8 h-8" />
-                  </div>
-                  <div className="flex justify-center pb-4 mt-1">
-                    Contact Support
-                  </div>
-                </NavLink>
-              </div>
-            </li>
-            <li>
-              <div className="nav-items">
-                <NavLink
-                  to="/TrackManage"
+                  to="/customer/termsandcondition"
                   style={({ isActive }) => ({
                     color: isActive ? "#020553" : "#f65522",
                   })}
@@ -176,27 +164,11 @@ const CustomerSideNav = () => {
                 </NavLink>
               </div>
             </li>
+
             <li>
               <div className="nav-items">
                 <NavLink
-                  to="/TrackManage"
-                  style={({ isActive }) => ({
-                    color: isActive ? "#020553" : "#f65522",
-                  })}
-                >
-                  <div className="flex justify-center pt-4">
-                    <MdSpatialTracking className="w-8 h-8" />
-                  </div>
-                  <div className="flex justify-center pb-4 mt-1">
-                    Legal and Compliance
-                  </div>
-                </NavLink>
-              </div>
-            </li>
-            <li>
-              <div className="nav-items">
-                <NavLink
-                  to="/TrackManage"
+                  to="/customer/aboutus"
                   style={({ isActive }) => ({
                     color: isActive ? "#020553" : "#f65522",
                   })}

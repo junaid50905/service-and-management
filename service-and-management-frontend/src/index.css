@@ -40,7 +40,7 @@ ul {
 }
 
 .sidenav nav ul li .nav-items:hover {
-  background-color: #ffffff;
+  background-color: #f4f4fe;
   transform: scale(1.05);
   cursor: pointer;
 }
@@ -59,6 +59,7 @@ ul {
   overflow-y: auto;
   height: 100vh;
   padding-bottom: 80px;
+  background-color: #EFEFEF;
 }
 
 .container-box-mobile {

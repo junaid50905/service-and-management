@@ -121,11 +121,11 @@ const PurchasedProducts = () => {
     <div>
       <TopNav />
       <CustomerSideNav />
-      <div className="mx-auto container-box">
-        <div class="bg-white shadow-md rounded my-6 ">
+      <div className="mx-auto container-box ">
+        <div className="my-6 bg-white rounded shadow-md ">
           <table className="w-full border border-collapse table-fixed border-slate-500">
             <thead>
-              <tr className="text-sm leading-normal text-gray-600 uppercase bg-gray-200">
+              <tr className="text-sm leading-normal text-white uppercase bg-tableHeading">
                 <th
                   className="px-1 py-3 text-center border border-slate-600"
                   style={{ width: "5%" }}

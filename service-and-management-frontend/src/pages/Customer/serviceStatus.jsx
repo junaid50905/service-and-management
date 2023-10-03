@@ -5,6 +5,7 @@ import TopNav from "../../components/TopNavs/Customer/topnav";
 const ServiceStatus = () => {
   const products = [
     {
+      id: 1,
       name: "Product 1",
       model: "Model A",
       status: "Pending",
@@ -12,6 +13,7 @@ const ServiceStatus = () => {
       delayReason: "",
     },
     {
+      id: 2,
       name: "Product 2",
       model: "Model B",
       status: "Finished",
@@ -19,6 +21,7 @@ const ServiceStatus = () => {
       delayReason: "",
     },
     {
+      id: 3,
       name: "Product 3",
       model: "Model C",
       status: "Late",
@@ -26,6 +29,7 @@ const ServiceStatus = () => {
       delayReason: "Supplier delay",
     },
     {
+      id: 4,
       name: "Product 4",
       model: "Model D",
       status: "Pending",
@@ -33,6 +37,7 @@ const ServiceStatus = () => {
       delayReason: "",
     },
     {
+      id: 5,
       name: "Product 5",
       model: "Model E",
       status: "Finished",
@@ -40,6 +45,7 @@ const ServiceStatus = () => {
       delayReason: "",
     },
     {
+      id: 6,
       name: "Product 6",
       model: "Model F",
       status: "Late",
@@ -47,9 +53,34 @@ const ServiceStatus = () => {
       delayReason: "Supplier delay",
     },
     {
+      id: 7,
       name: "Product 7",
       model: "Model G",
       status: "Late",
+      partsUsed: "Part 789",
+      delayReason: "Supplier delay",
+    },
+    {
+      id: 8,
+      name: "Product 8",
+      model: "Model H",
+      status: "Late",
+      partsUsed: "Part 789",
+      delayReason: "Supplier delay",
+    },
+    {
+      id: 9,
+      name: "Product 9",
+      model: "Model I",
+      status: "Pending",
+      partsUsed: "Part 789",
+      delayReason: "Supplier delay",
+    },
+    {
+      id: 10,
+      name: "Product 10",
+      model: "Model J",
+      status: "Finished",
       partsUsed: "Part 789",
       delayReason: "Supplier delay",
     },
@@ -78,7 +109,10 @@ const ServiceStatus = () => {
           Service Maintenance Status
         </h1>
         {products.map((product) => (
-          <div className="p-4 mb-4 transition duration-300 ease-in-out bg-gray-200 border-2 border-gray-300 rounded-md shadow-md hover:bg-gray-100 hover:scale-103">
+          <div
+            key={product.id}
+            className="p-4 mb-4 transition duration-300 ease-in-out bg-white border-2 border-gray-300 rounded-md shadow-md hover:border-gray-400 hover:scale-103"
+          >
             <h2 className="text-lg font-semibold">
               {product.name} - {product.model}
             </h2>
