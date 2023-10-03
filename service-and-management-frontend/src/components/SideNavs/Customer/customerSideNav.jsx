@@ -17,6 +17,21 @@ const CustomerSideNav = () => {
             <li>
               <div className="nav-items">
                 <NavLink
+                  to="/customer/products"
+                  style={({ isActive }) => ({
+                    color: isActive ? "#020553" : "#f65522",
+                  })}
+                >
+                  <div className="flex justify-center pt-4">
+                    <FaBarsProgress className="w-8 h-8" />
+                  </div>
+                  <div className="flex justify-center pb-4 mt-1">Products</div>
+                </NavLink>
+              </div>
+            </li>
+            <li>
+              <div className="nav-items">
+                <NavLink
                   to="/customer/dashboard"
                   style={({ isActive }) => ({
                     color: isActive ? "#020553" : "#f65522",

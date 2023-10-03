@@ -16,6 +16,7 @@ import TermsAndCondition from "./pages/Customer/termsAndCondition";
 import FAQ from "./pages/Customer/faq";
 import AboutUs from "./pages/Customer/aboutUs";
 import EngineerLandingPage from "./pages/Engineer/engineerLandingPage";
+import ProductsCustomer from "./pages/Customer/products";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
           path="/customer/termsandcondition"
           element={<TermsAndCondition />}
         ></Route>
+        <Route path="/customer/products" element={<ProductsCustomer />}></Route>
         <Route path="/customer/faq" element={<FAQ />}></Route>
         <Route path="/customer/aboutus" element={<AboutUs />}></Route>
         <Route path="/login" element={<Login />}></Route>
