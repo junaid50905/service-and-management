@@ -9,5 +9,5 @@ class Engineer extends Model
 {
     use HasFactory;
     protected $table = "engineers";
-    protected $fillable = ["category_id", "subcategory_id", "name", "phone", "address"];
+    protected $fillable = ["category_id", "subcategory_id", "name", "email", "password", "phone", "address"];
 }

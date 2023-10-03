@@ -23,6 +23,22 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="engineerEmail">Email</label>
+                            <input type="email" name="email" class="form-control text-white" id="engineerEmail">
+                            @error('email')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="engineerPassword">Password</label>
+                            <input type="text" name="password" class="form-control text-white" id="engineerPassword">
+                            @error('password')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
                             <label for="engineerPhone"> Phone</label>
                             <input type="text" name="phone" class="form-control text-white" id="engineerPhone">
                             @error('phone')
