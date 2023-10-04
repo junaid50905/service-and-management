@@ -39,7 +39,7 @@ function App() {
           path="/customer/reqservice/:productId"
           element={<RequestService />}
         ></Route>
-        <Route path="/customer/dashboard" element={<ServiceStatus />}></Route>
+        <Route path="/customer/servprogress" element={<ServiceStatus />}></Route>
         <Route
           path="/customer/contsupport"
           element={<ContactSupport />}
@@ -48,7 +48,7 @@ function App() {
           path="/customer/termsandcondition"
           element={<TermsAndCondition />}
         ></Route>
-        <Route path="/customer/products" element={<ProductsCustomer />}></Route>
+        <Route path="/customer/dashboard" element={<ProductsCustomer />}></Route>
         <Route path="/customer/faq" element={<FAQ />}></Route>
         <Route path="/customer/aboutus" element={<AboutUs />}></Route>
         <Route path="/login" element={<Login />}></Route>
