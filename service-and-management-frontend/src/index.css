@@ -99,3 +99,62 @@ ul {
 .card .font-semibold {
   font-weight: bold;
 }
+
+.warning {
+  background-color: #ffffcc;
+  border-left: 6px solid #f44336;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+td {
+  transition: all 100ms ease-in-out;
+}
+
+tr:hover td {
+  border: 1px solid #fff;
+}
+
+/* Custom CSS for Logo */
+.logo {
+  font-size: 1.5rem; /* Adjust font size as needed */
+  font-weight: bold; /* Adjust font weight as needed */
+  text-decoration: none; /* Remove underlines for links */
+  color: #333; /* Customize the text color */
+}
+
+/* Custom CSS for Navigation */
+.navigation ul {
+  list-style: none; /* Remove list bullets */
+  padding: 0;
+  margin: 0;
+}
+
+.navigation li {
+  display: inline-block; /* Display navigation items horizontally */
+  margin-right: 20px; /* Adjust spacing between navigation items */
+}
+
+.navigation a {
+  text-decoration: none; /* Remove underlines for links */
+  color: #333; /* Customize the link color */
+  transition: color 0.3s ease; /* Add a smooth color transition on hover */
+}
+
+.navigation a:hover {
+  color: #007bff; /* Customize the link color on hover */
+}
+/* Custom CSS for Social Icons */
+.social-icons a {
+  text-decoration: none; /* Remove underlines for links */
+  color: #fff; /* Customize the icon color */
+  font-size: 1.5rem; /* Adjust the icon size as needed */
+  margin-right: 10px; /* Adjust spacing between social icons */
+  transition: color 0.3s ease; /* Add a smooth color transition on hover */
+}
+
+.social-icons a:hover {
+  color: #007bff; /* Customize the icon color on hover */
+}
