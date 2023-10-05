@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useLoginUserMutation } from "../../services/userAuthApi";
+import { storeToken } from "../../services/localStorageService";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -21,24 +22,43 @@ const Login = () => {
 
   const navigate = useNavigate();
 
+  const [loginUser] = useLoginUserMutation();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(
-        "http://127.0.0.1:8000/api/v1/u/login",
-        formData
-      );
-      if (response.data.status === "success") {
-        setMessage("Login successful");
-        navigate("/customer/dashboard");
-        // You can redirect the user to a dashboard or other page here
+    if (formData.email && formData.password) {
+      const response = await loginUser(formData);
+      if (response.data) {
+        if (response.data.status === "success") {
+          storeToken(response.data.token);
+          setMessage(response.data.message);
+          navigate("/");
+        } else {
+          setMessage(response.data.message);
+        }
       } else {
-        setMessage("Login failed. Please check your email and password again.");
+        setMessage(response.error.data.message);
       }
-    } catch (error) {
-      setMessage("An error occurred while trying to log in.");
+    } else {
+      setMessage("All Field Must Be Fill Up");
     }
   };
+
+  // try {
+  //   const response = await axios.post(
+  //     "http://127.0.0.1:8000/api/v1/u/login",
+  //     formData
+  //   );
+  //   if (response.data.status === "success") {
+  //     setMessage("Login successful");
+  //     navigate("/customer/dashboard");
+  //     // You can redirect the user to a dashboard or other page here
+  //   } else {
+  //     setMessage("Login failed. Please check your email and password again.");
+  //   }
+  // } catch (error) {
+  //   setMessage("An error occurred while trying to log in.");
+  // }
 
   return (
     <div className="flex items-center justify-center min-h-screen px-4 py-12 bg-gray-50 sm:px-6 lg:px-8">

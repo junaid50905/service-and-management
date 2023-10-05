@@ -1,65 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom"; // Import Link from React Router
-import {
-  FaFacebook,
-  FaTwitter,
-  FaInstagram,
-  FaShoppingCart,
-} from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import AllProducts from "../../components/Products/allProducts";
-import logo from "../../assets/images/aamra-companies.png";
+import Header from "../../components/TopNavs/Customer/header";
 
 function HomePage() {
   return (
     <div className="bg-gray-100">
-      {/* Header */}
-      <header className="p-4 bg-white shadow-lg">
-        <div className="container mx-auto">
-          <div className="flex items-center justify-between">
-            <div className="p-2 bg-gray-900 rounded logo">
-              <Link to="/">
-                <img
-                  src={logo}
-                  alt="k"
-                />
-              </Link>
-            </div>
-            <div className="navigation">
-              <ul className="flex ">
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li>
-                  <Link to="/shop">Shop</Link>
-                </li>
-                <li>
-                  <Link to="/about">About</Link>
-                </li>
-                <li>
-                  <Link to="/contact">Contact</Link>
-                </li>
-              </ul>
-            </div>
-            <div className="flex gap-4">
-              <Link
-                to="/login"
-                className="px-4 py-2 text-white bg-indigo-600 rounded-md"
-              >
-                Sign In
-              </Link>
-              <Link
-                to="/register"
-                className="px-4 py-2 text-white bg-green-600 rounded-md"
-              >
-                Sign Up
-              </Link>
-              <Link to="/cart" className="py-2 ml-4 text-gray-800">
-                <FaShoppingCart className="w-6 h-6" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <section className="py-16 text-white bg-gray-900">

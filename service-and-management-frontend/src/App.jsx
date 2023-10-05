@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import AdminLandingPage from "./pages/Admin/adminLandingPage";
 import OrderManage from "./pages/Admin/orderManage";
 import TrackingManage from "./pages/Admin/trackingManage";
@@ -16,9 +16,10 @@ import TermsAndCondition from "./pages/Customer/termsAndCondition";
 import FAQ from "./pages/Customer/faq";
 import AboutUs from "./pages/Customer/aboutUs";
 import EngineerLandingPage from "./pages/Engineer/engineerLandingPage";
-import ProductsCustomer from "./pages/Customer/products";
+// import ProductsCustomer from "./pages/Customer/products";
 import HomePage from "./pages/HomePage/homePage";
 import Signup from "./pages/Auth/register";
+import { getToken } from "./services/localStorageService";
 
 function App() {
   return (
@@ -53,10 +54,10 @@ function App() {
           path="/customer/termsandcondition"
           element={<TermsAndCondition />}
         ></Route>
-        <Route
+        {/* <Route
           path="/customer/dashboard"
           element={<ProductsCustomer />}
-        ></Route>
+        ></Route> */}
         <Route path="/customer/faq" element={<FAQ />}></Route>
         <Route path="/customer/aboutus" element={<AboutUs />}></Route>
         <Route path="/login" element={<Login />}></Route>

@@ -63,13 +63,7 @@ ul {
 }
 
 .container-box-full {
-  position: fixed;
   width: 100vw;
-  padding: 16px;
-  overflow-y: auto;
-  height: 100vh;
-  padding-bottom: 80px;
-  background-color: #efefef;
 }
 
 .sam-logo {

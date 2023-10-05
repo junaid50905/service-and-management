@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import { useRegisterUserMutation } from "../../services/userAuthApi";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
     email: "",
     name: "",
     password: "",
+    confirm_password: "",
     address: "",
     phone: "",
   });
@@ -21,21 +23,39 @@ const Signup = () => {
     });
   };
 
+  const [registerUser] = useRegisterUserMutation();
+
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(
-        "http://127.0.0.1:8000/api/v1/u/register",
-        formData
-      );
-      if (response.data.status === "success") {
-        setMessage("Signup successful");
-        // You can redirect the user to a login page or dashboard here
+    if (
+      formData.name &&
+      formData.email &&
+      formData.password &&
+      formData.confirm_password &&
+      formData.address &&
+      formData.phone
+    ) {
+      if (formData.password === formData.confirm_password) {
+        const response = await registerUser(formData);
+        if (response.data) {
+          if (response.data.status === "success") {
+            setMessage(response.data.message);
+            setTimeout(() => {
+              navigate("/login");
+            }, 2000);
+          } else {
+            setMessage(response.data.message);
+          }
+        } else {
+          setMessage(response.error.data.message);
+        }
       } else {
-        setMessage(response.data.message);
+        setMessage("Password and Confirm Password Does not Match");
       }
-    } catch (error) {
-      setMessage("An error occurred while trying to register.");
+    } else {
+      setMessage("All Field Must Be Fill Up");
     }
   };
 
@@ -78,6 +98,7 @@ const Signup = () => {
                 id="name"
                 name="name"
                 type="text"
+                autoComplete="name"
                 required
                 value={formData.name}
                 onChange={handleChange}
@@ -102,6 +123,22 @@ const Signup = () => {
               />
             </div>
             <div>
+              <label htmlFor="confirm_password" className="sr-only">
+                Password
+              </label>
+              <input
+                id="confirm_password"
+                name="confirm_password"
+                type="password"
+                autoComplete="new-password"
+                required
+                value={formData.confirm_password}
+                onChange={handleChange}
+                className="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                placeholder="Confirm Password"
+              />
+            </div>
+            <div>
               <label htmlFor="address" className="sr-only">
                 Address
               </label>
@@ -109,6 +146,7 @@ const Signup = () => {
                 id="address"
                 name="address"
                 type="text"
+                autoComplete="address"
                 required
                 value={formData.address}
                 onChange={handleChange}
@@ -124,6 +162,7 @@ const Signup = () => {
                 id="phone"
                 name="phone"
                 type="tel"
+                autoComplete="phone"
                 required
                 value={formData.phone}
                 onChange={handleChange}
