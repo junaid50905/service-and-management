@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { AiFillDashboard } from "react-icons/ai";
+import { MdMiscellaneousServices } from "react-icons/md";
 import { GiAutoRepair } from "react-icons/gi";
 import { MdSpatialTracking } from "react-icons/md";
 import { FaBarsProgress } from "react-icons/fa6";
@@ -57,7 +57,7 @@ const CustomerSideNav = () => {
                   })}
                 >
                   <div className="flex justify-center pt-4">
-                    <GiAutoRepair className="w-8 h-8" />
+                    <MdMiscellaneousServices className="w-8 h-8" />
                   </div>
                   <div className="flex justify-center pb-4 mt-1">
                     Request Service
