@@ -146,23 +146,6 @@
             </div>
         </li>
 
-        <!-- checklist -->
-        <li class="nav-item menu-items mt-2">
-            <a class="nav-link" data-bs-toggle="collapse" href="#checklist" aria-expanded="false"
-                aria-controls="checklist">
-                <span class="menu-icon">
-                    <i class="mdi mdi-laptop"></i>
-                </span>
-                <span class="menu-title">Checklist</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="checklist">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('checklist.create') }}">Create</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('checklist.index') }}">Index</a></li>
-                </ul>
-            </div>
-        </li>
 
         {{-- selling product --}}
         <li class="nav-item menu-items mt-2">
@@ -193,6 +176,24 @@
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{{ route('appiontment.check_user_product_form') }}">Make an appiontment</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('appiontment.index') }}">All appiontments</a></li>
+                </ul>
+            </div>
+        </li>
+
+        <!-- checklist -->
+        <li class="nav-item menu-items mt-2">
+            <a class="nav-link" data-bs-toggle="collapse" href="#checklist" aria-expanded="false"
+                aria-controls="checklist">
+                <span class="menu-icon">
+                    <i class="mdi mdi-laptop"></i>
+                </span>
+                <span class="menu-title">Checklist</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="checklist">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('checklist.create') }}">Create</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('checklist.index') }}">Index</a></li>
                 </ul>
             </div>
         </li>

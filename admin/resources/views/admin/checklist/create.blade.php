@@ -16,17 +16,17 @@
                         @csrf
 
                         <div class="form-group">
-                            <label for="userId">User id</label>
-                            <input type="text" name="user_id" class="form-control text-white" id="userId">
-                            @error('user_id')
+                            <label for="appiontmentId">Appiontment id</label>
+                            <input type="text" name="appiontment_id" class="form-control text-white" id="appiontmentId">
+                            @error('appiontment_id')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>
 
                         <div class="form-group">
-                            <label for="complainInput">Complain</label>
-                            <input type="text" name="complain" class="form-control text-white" id="complainInput">
-                            @error('complain')
+                            <label>Parts</label>
+                            <input type="text" name="parts[]" class="form-control text-white" multiple>
+                            @error('parts')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>

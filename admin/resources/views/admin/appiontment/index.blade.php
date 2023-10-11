@@ -23,6 +23,7 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
+                                        <th>ID</th>
                                         <th>selling <br> product id</th>
                                         <th>user id</th>
                                         <th>User <br> Name</th>
@@ -61,6 +62,7 @@
                                         @endphp
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $appiontment->id }}</td>
                                             <td>{{ $sellingProductId }}</td>
                                             <td>{{ $userId }}</td>
                                             <td>{{ DB::table('users')->where('id', $userId)->first()->name }}</td>

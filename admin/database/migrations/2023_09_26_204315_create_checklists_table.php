@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('checklists', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->text('complain');
+            $table->unsignedBigInteger('appiontment_id');
+            $table->text('parts');
             $table->enum('status', ['pending', 'working', 'done'])->default('pending');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('appiontment_id')->references('id')->on('appiontments')->onDelete('cascade');
             $table->timestamps();
         });
     }
