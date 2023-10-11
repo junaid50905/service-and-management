@@ -13,7 +13,7 @@ class UserController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'email' => 'required|unique:users,email',
+            'email' => 'required',
             'name' => 'required',
             'password' => 'required',
             'address' => 'required',
@@ -23,6 +23,13 @@ class UserController extends Controller
         if (User::where('email', $request->email)->first()) {
             return response([
                 'message' => 'This email already exists',
+                'status' => 'failed'
+            ], 422);
+        }
+
+        if (User::where('phone', $request->phone)->first()) {
+            return response([
+                'message' => 'This phone number already exists',
                 'status' => 'failed'
             ], 422);
         }
@@ -53,8 +60,7 @@ class UserController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
-        if ($user && Hash::check($request->password, $user->password))
-        {
+        if ($user && Hash::check($request->password, $user->password)) {
 
             $token = $user->createToken('login_' . $request->email)->plainTextToken;
 
@@ -71,15 +77,36 @@ class UserController extends Controller
         ], 401);
     }
     // logout
-    public function logout()
+    // public function logout()
+    // {
+    //     auth()->user()->tokens()->delete();
+
+    //     return response([
+    //         'message' => 'Successfully logged out',
+    //         'status' => 'success'
+    //     ], 200);
+    // }
+
+    // logout
+    public function logout(Request $request)
     {
-        auth()->user()->tokens()->delete();
+        $user = $request->user();
+
+        if ($user) {
+            $user->tokens()->delete();
+
+            return response([
+                'message' => 'Successfully logged out',
+                'status' => 'success'
+            ], 200);
+        }
 
         return response([
-            'message' => 'Successfully logged out',
-            'status' => 'success'
-        ], 200);
+            'message' => 'Unauthorized',
+            'status' => 'failed'
+        ], 401);
     }
+
     // logged user data
     public function logged_user_data()
     {
@@ -90,5 +117,4 @@ class UserController extends Controller
             'status' => 'success'
         ], 200);
     }
-
 }

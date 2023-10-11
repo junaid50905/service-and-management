@@ -165,7 +165,7 @@ const PurchasedProducts = () => {
               {products.map((product, index) => (
                 <tr
                   key={product.id}
-                  className="border-b border-gray-200 hover:bg-gray-100"
+                  className="transition duration-300 ease-in-out hover:bg-gray-800 hover:text-white"
                 >
                   <td
                     className="px-1 py-3 text-center break-words border border-slate-700"

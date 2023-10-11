@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { AiFillDashboard } from "react-icons/ai";
+import { MdMiscellaneousServices } from "react-icons/md";
 import { GiAutoRepair } from "react-icons/gi";
 import { MdSpatialTracking } from "react-icons/md";
 import { FaBarsProgress } from "react-icons/fa6";
@@ -17,22 +17,7 @@ const CustomerSideNav = () => {
             <li>
               <div className="nav-items">
                 <NavLink
-                  to="/customer/products"
-                  style={({ isActive }) => ({
-                    color: isActive ? "#020553" : "#f65522",
-                  })}
-                >
-                  <div className="flex justify-center pt-4">
-                    <FaBarsProgress className="w-8 h-8" />
-                  </div>
-                  <div className="flex justify-center pb-4 mt-1">Products</div>
-                </NavLink>
-              </div>
-            </li>
-            <li>
-              <div className="nav-items">
-                <NavLink
-                  to="/customer/dashboard"
+                  to="/customer/servprogress"
                   style={({ isActive }) => ({
                     color: isActive ? "#020553" : "#f65522",
                   })}
@@ -72,7 +57,7 @@ const CustomerSideNav = () => {
                   })}
                 >
                   <div className="flex justify-center pt-4">
-                    <GiAutoRepair className="w-8 h-8" />
+                    <MdMiscellaneousServices className="w-8 h-8" />
                   </div>
                   <div className="flex justify-center pb-4 mt-1">
                     Request Service
@@ -128,23 +113,6 @@ const CustomerSideNav = () => {
                   </div>
                   <div className="flex justify-center pb-4 mt-1">
                     Service History
-                  </div>
-                </NavLink>
-              </div>
-            </li> */}
-            {/* <li>
-              <div className="nav-items">
-                <NavLink
-                  to="/customer/tbstguides"
-                  style={({ isActive }) => ({
-                    color: isActive ? "#020553" : "#f65522",
-                  })}
-                >
-                  <div className="flex justify-center pt-4">
-                    <MdSpatialTracking className="w-8 h-8" />
-                  </div>
-                  <div className="flex justify-center pb-4 mt-1">
-                    Troubleshooting Guides
                   </div>
                 </NavLink>
               </div>

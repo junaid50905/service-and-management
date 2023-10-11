@@ -8,17 +8,17 @@ const TopNav = () => {
       <nav className="h-full">
         <ul className="flex items-center justify-between h-full mx-4">
           <li>
-            <Link to="/customer/dashboard">
+            <Link to="/customer/servprogress">
               <h2 className="sam-logo">Service And Repair Management</h2>
             </Link>
           </li>
           <li>
-            <div className="flex gap-8 text-xl">
-              <Link to="/customer/dashboard">Emon Singha</Link>
-              <Link to="/customer/dashboard">
-                <BiLogOut className="w-6 h-6" />
-              </Link>
-            </div>
+            <Link
+              to="/"
+              className="mr-2 bg-blue-600 py-2 px-4 border-2 rounded-md text-lg hover:bg-blue-700"
+            >
+              Back
+            </Link>
           </li>
         </ul>
       </nav>
