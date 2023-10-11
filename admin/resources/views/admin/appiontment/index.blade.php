@@ -31,6 +31,8 @@
                                         <th>Warranty <br> end Date</th>
                                         <th>Warranty <br>left</th>
                                         <th>Status</th>
+                                        <th>Last Date for <br> inspection</th>
+                                        <th>Time</th>
                                         <th>S&M</th>
                                         <th>Action</th>
                                     </tr>
@@ -63,8 +65,8 @@
                                             <td>{{ $userId }}</td>
                                             <td>{{ DB::table('users')->where('id', $userId)->first()->name }}</td>
                                             <td>{{ DB::table('products')->where('id', $productId)->first()->name }}</td>
-                                            <td>{{ $sellingDate }}</td>
-                                            <td>{{ $warrantyEndDate }}</td>
+                                            <td>{{ Carbon::parse($sellingDate)->format('Y-M-d') }}</td>
+                                            <td>{{ Carbon::parse($warrantyEndDate)->format('Y-M-d')  }}</td>
                                             <td>{{ $diffInDays }} days</td>
                                             <td>
                                                 @php
@@ -91,6 +93,9 @@
                                                 <button
                                                     class="btn {{ $colorClass }} btn-sm">{{ $appiontment->status }}</button>
                                             </td>
+                                            {{-- <td>{{ Carbon::parse($appiontment->date)->format('Y-M-d') ?? '' }}</td> --}}
+                                            <td>{{ $appiontment->date }}</td>
+                                            <td>{{ $appiontment->time }}</td>
                                             <td>{{ $sam }}</td>
                                             <td>
                                                 @if ($appiontment->status === 'pending')

@@ -33,7 +33,12 @@ class AppiontmentController extends Controller
     public function assignEngineerStore(Request $request)
     {
         RecruitingEngineer::create($request->all());
-        Appiontment::where('id', $request->appiontment_id)->update(['status' => 'assigned']);;
+        Appiontment::where('id', $request->appiontment_id)->update(
+            [
+                'status' => 'assigned',
+                'date' => $request->date,
+                'time' => $request->time,
+            ]);
         return redirect()->route('appiontment.index')->with('appiontment_assigned', "Appiontment assigned successfully");
 
     }
