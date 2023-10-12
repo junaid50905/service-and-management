@@ -5,7 +5,7 @@ import { BiLogOut } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
 import { getToken, removeToken } from "../../../services/localStorageService";
 
-// import { useLogoutUserMutation } from "../../../services/userAuthApi";
+import { useLogoutUserMutation } from "../../../services/userAuthApi";
 import { useGetLoggedUserQuery } from "../../../services/userAuthApi";
 
 const Header = () => {
@@ -15,20 +15,17 @@ const Header = () => {
 
   const navigate = useNavigate();
   const token = getToken();
-  //   const [logoutUser] = useLogoutUserMutation();
+  const [logoutUser] = useLogoutUserMutation();
   const handleLogout = async () => {
-    // const response = await logoutUser({ token });
-    // console.log(response)
-    // if (response.data) {
-    //   if (response.data.status === "success") {
-    //     //   dispatch(unsetUserToken({ token: null }));
-    //     //   dispatch(unsetUserInfo({ email: "", name: "" }));
-    //     removeToken("token");
-    //     navigate("/login");
-    //   }
-    // }
-    removeToken("token");
-    navigate("/login");
+    const response = await logoutUser({ token });
+    console.log(response);
+    if (response.data) {
+      if (response.data.status === "success") {
+        removeToken("token");
+        navigate("/login");
+        console.log("success");
+      }
+    }
   };
 
   const { data, isSuccess } = useGetLoggedUserQuery(token);

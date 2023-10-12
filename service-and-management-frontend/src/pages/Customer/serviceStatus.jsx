@@ -105,45 +105,54 @@ const ServiceStatus = () => {
       <TopNav />
       <CustomerSideNav />
       <div className="mx-auto text-gray-800 container-box">
-        <h1 className="mb-4 text-2xl font-semibold">
+        <h1 className="mb-4 text-2xl font-semibold text-center">
           Service Maintenance Status
         </h1>
-        {products.map((product) => (
-          <div
-            key={product.id}
-            className="p-4 mb-4 transition duration-300 ease-in-out bg-white border-2 border-gray-300 rounded-md shadow-md hover:border-gray-400 hover:scale-103"
-          >
-            <h2 className="text-lg font-semibold">
-              {product.name} - {product.model}
-            </h2>
-            <div className="mt-2">
-              <p className="py-2">
-                Status:
-                <span
-                  className={`px-3 py-1 rounded-sm ml-2 text-white ${
-                    product.status === "Pending"
-                      ? "bg-blue-600 "
-                      : product.status === "Late"
-                      ? "bg-red-500"
-                      : product.status === "Finished"
-                      ? "bg-green-600"
-                      : ""
-                  }`}
-                >
-                  {product.status}
-                </span>
-              </p>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {products.map((product) => (
+            <div
+              key={product.id}
+              className="p-4 transition duration-300 ease-in-out rounded-md shadow-md hover:scale-103 border border-gray-800 font-sans"
+            >
+              <h2 className="text-lg font-semibold">
+                {product.name} - {product.model}
+              </h2>
+              <div className="mt-2">
+                <p className="py-2 text-lg">
+                  Status:
+                  <span
+                    className={`px-3 py-0.5 rounded ml-2 border-2 ${getStatusColorClass(
+                      product.status
+                    )} `}
+                  >
+                    {product.status}
+                  </span>
+                </p>
 
-              <p>Parts Used: {product.partsUsed}</p>
-              {product.status === "Late" && (
-                <p>Reason for Delay: {product.delayReason}</p>
-              )}
+                <p>Parts Used: {product.partsUsed}</p>
+                {product.status === "Late" && (
+                  <p>Reason for Delay: {product.delayReason}</p>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
 };
+
+function getStatusColorClass(status) {
+  switch (status) {
+    case "Pending":
+      return "text-blue-500 border-blue-500";
+    case "Late":
+      return "text-red-500 border-red-500";
+    case "Finished":
+      return "text-green-500 border-green-500";
+    default:
+      return "text-gray-500 border-gray-500";
+  }
+}
 
 export default ServiceStatus;

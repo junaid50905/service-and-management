@@ -28,52 +28,116 @@ const RequestService = () => {
       <CustomerSideNav />
       <div className="max-w-screen-xl mx-auto container-box">
         This Product Number {productId}
-        <div className="flex justify-center w-full max-w-md mx-auto mb-4 text-3xl font-bold text-navColor">
-          <h2>Request Service</h2>
-        </div>
-        <div className="w-full max-w-md p-4 mx-auto bg-white border border-gray-300 rounded-md">
-          <form onSubmit={handleSubmit} className="w-full max-w-md">
-            <div className="mb-4">
-              <label
-                htmlFor="pName"
-                className="block mb-2 font-bold text-gray-700"
-              >
-                Name
-              </label>
-              <input
-                type="text"
-                id="pName"
-                name="pName"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                placeholder="Enter your product name"
-              />
-            </div>
-            <div className="mb-4">
-              <label
-                htmlFor="mName"
-                className="block mb-2 font-bold text-gray-700"
-              >
-                Name
-              </label>
-              <input
-                type="text"
-                id="mName"
-                name="mName"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                placeholder="Enter your model name"
-              />
+        <div className="w-full max-w-md p-6 mx-auto bg-white rounded-md shadow-lg">
+          <div className="flex justify-center w-full max-w-md mx-auto mb-4 text-3xl font-bold text-navColor">
+            <h2>Request Service</h2>
+          </div>
+          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+            <div className="-space-y-px rounded-md shadow-sm">
+              <div>
+                <label htmlFor="email" className="sr-only">
+                  Email address
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  placeholder="Email address"
+                />
+              </div>
+              <div>
+                <label htmlFor="name" className="sr-only">
+                  Name
+                </label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  autoComplete="name"
+                  required
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  placeholder="Name"
+                />
+              </div>
+              <div>
+                <label htmlFor="password" className="sr-only">
+                  Password
+                </label>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autoComplete="new-password"
+                  required
+                  value={formData.password}
+                  onChange={handleChange}
+                  className="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  placeholder="Password"
+                />
+              </div>
+              <div>
+                <label htmlFor="confirm_password" className="sr-only">
+                  Password
+                </label>
+                <input
+                  id="confirm_password"
+                  name="confirm_password"
+                  type="password"
+                  autoComplete="new-password"
+                  required
+                  value={formData.confirm_password}
+                  onChange={handleChange}
+                  className="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  placeholder="Confirm Password"
+                />
+              </div>
+              <div>
+                <label htmlFor="address" className="sr-only">
+                  Address
+                </label>
+                <input
+                  id="address"
+                  name="address"
+                  type="text"
+                  autoComplete="address"
+                  required
+                  value={formData.address}
+                  onChange={handleChange}
+                  className="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  placeholder="Address"
+                />
+              </div>
+              <div>
+                <label htmlFor="phone" className="sr-only">
+                  Phone
+                </label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  autoComplete="phone"
+                  required
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  placeholder="Phone"
+                />
+              </div>
             </div>
 
-            <div className="flex items-center justify-center">
+            <div>
               <button
                 type="submit"
-                className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+                className="relative flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md group hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-                Submit
+                Send Request
               </button>
             </div>
           </form>

@@ -161,7 +161,7 @@ const PurchasedProducts = () => {
                 </th>
               </tr>
             </thead>
-            <tbody className="text-sm font-light text-gray-600">
+            <tbody className="text-sm font-light text-gray-900">
               {products.map((product, index) => (
                 <tr
                   key={product.id}

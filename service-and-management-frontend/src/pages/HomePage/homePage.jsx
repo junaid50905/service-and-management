@@ -1,8 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom"; // Import Link from React Router
-import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import AllProducts from "../../components/Products/allProducts";
 import Header from "../../components/TopNavs/Customer/header";
+import Footer from "../../components/Footer/footer";
 
 function HomePage() {
   return (
@@ -40,27 +39,7 @@ function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="p-3 text-white bg-gray-900">
-        <div className="container flex items-center justify-between">
-          <div className="flex gap-4 py-3 social-icons">
-            <Link to="#" className="mr-2 text-white">
-              <FaFacebook /> {/* Use React Icons */}
-            </Link>
-            <Link to="#" className="mr-2 text-white">
-              <FaTwitter /> {/* Use React Icons */}
-            </Link>
-            <Link to="#" className="mr-2 text-white">
-              <FaInstagram /> {/* Use React Icons */}
-            </Link>
-          </div>
-          <div>
-            <p>
-              &copy; {new Date().getFullYear()} Aamra Power Of WE. All rights
-              reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
