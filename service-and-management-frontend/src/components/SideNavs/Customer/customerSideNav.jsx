@@ -19,7 +19,7 @@ const CustomerSideNav = () => {
                 <NavLink
                   to="/customer/servprogress"
                   style={({ isActive }) => ({
-                    color: isActive ? "#020553" : "#f65522",
+                    color: isActive ? "#f65522" : "#020553",
                   })}
                 >
                   <div className="flex justify-center pt-4">
@@ -36,7 +36,7 @@ const CustomerSideNav = () => {
                 <NavLink
                   to="/customer/pursproducts"
                   style={({ isActive }) => ({
-                    color: isActive ? "#020553" : "#f65522",
+                    color: isActive ? "#f65522" : "#020553",
                   })}
                 >
                   <div className="flex justify-center pt-4">
@@ -53,7 +53,7 @@ const CustomerSideNav = () => {
                 <NavLink
                   to="/customer/reqservice/0"
                   style={({ isActive }) => ({
-                    color: isActive ? "#020553" : "#f65522",
+                    color: isActive ? "#f65522" : "#020553",
                   })}
                 >
                   <div className="flex justify-center pt-4">
@@ -71,7 +71,7 @@ const CustomerSideNav = () => {
                 <NavLink
                   to="/customer/contsupport"
                   style={({ isActive }) => ({
-                    color: isActive ? "#020553" : "#f65522",
+                    color: isActive ? "#f65522" : "#020553",
                   })}
                 >
                   <div className="flex justify-center pt-4">
@@ -122,7 +122,7 @@ const CustomerSideNav = () => {
                 <NavLink
                   to="/customer/faq"
                   style={({ isActive }) => ({
-                    color: isActive ? "#020553" : "#f65522",
+                    color: isActive ? "#f65522" : "#020553",
                   })}
                 >
                   <div className="flex justify-center pt-4">
@@ -138,7 +138,7 @@ const CustomerSideNav = () => {
                 <NavLink
                   to="/customer/termsandcondition"
                   style={({ isActive }) => ({
-                    color: isActive ? "#020553" : "#f65522",
+                    color: isActive ? "#f65522" : "#020553",
                   })}
                 >
                   <div className="flex justify-center pt-4">
@@ -156,7 +156,7 @@ const CustomerSideNav = () => {
                 <NavLink
                   to="/customer/aboutus"
                   style={({ isActive }) => ({
-                    color: isActive ? "#020553" : "#f65522",
+                    color: isActive ? "#f65522" : "#020553",
                   })}
                 >
                   <div className="flex justify-center pt-4">

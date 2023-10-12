@@ -18,7 +18,7 @@ function HomePage() {
             Discover amazing products at great prices.
           </p>
           <a
-            href="/shop"
+            href="/"
             className="px-6 py-2 text-lg text-white bg-blue-500 rounded-full hover:bg-blue-600"
           >
             Shop Now
