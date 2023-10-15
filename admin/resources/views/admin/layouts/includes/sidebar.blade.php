@@ -128,6 +128,24 @@
             </div>
         </li>
 
+        <!-- appliance -->
+        <li class="nav-item menu-items mt-2">
+            <a class="nav-link" data-bs-toggle="collapse" href="#appliance" aria-expanded="false"
+                aria-controls="appliance">
+                <span class="menu-icon">
+                    <i class="mdi mdi-laptop"></i>
+                </span>
+                <span class="menu-title">Appliance</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="appliance">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('appliance.create') }}">Create</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('appliance.index') }}">Index</a></li>
+                </ul>
+            </div>
+        </li>
+
         <!-- engineer -->
         <li class="nav-item menu-items mt-2">
             <a class="nav-link" data-bs-toggle="collapse" href="#engineer" aria-expanded="false"

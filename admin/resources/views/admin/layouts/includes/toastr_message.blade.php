@@ -96,6 +96,38 @@
     </script>
 @endif
 
+{{-- product --}}
+@if (Session::has('appliance_create'))
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true
+        }
+        toastr.success("{{ session('appliance_create') }}")
+    </script>
+@endif
+
+@if (Session::has('appliance_delete'))
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true
+        }
+        toastr.success("{{ session('appliance_delete') }}")
+    </script>
+@endif
+
+
+@if (Session::has('appliance_update'))
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true
+        }
+        toastr.success("{{ session('appliance_update') }}")
+    </script>
+@endif
+
 {{-- engineer --}}
 @if (Session::has('engineer_create'))
     <script>
@@ -130,13 +162,13 @@
 
 
 {{-- checklist --}}
-@if (Session::has('unavailable_user'))
+@if (Session::has('unavailable_appiontment'))
     <script>
         toastr.options = {
             "progressBar": true,
             "closeButton": true
         }
-        toastr.error("{{ session('unavailable_user') }}")
+        toastr.error("{{ session('unavailable_appiontment') }}")
     </script>
 @endif
 

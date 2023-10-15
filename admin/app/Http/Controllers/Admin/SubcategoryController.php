@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\Admin\Category;
 use App\Models\Admin\Subcategory;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Models\Admin\CatagorySubcategory;
 
 class SubcategoryController extends Controller
 {
@@ -23,6 +25,7 @@ class SubcategoryController extends Controller
             'name' => 'required|unique:subcategories,name'
         ]);
         Subcategory::create($request->all());
+        
         return redirect()->route('subcategory.index')->with('subcategory_create', 'Subcategory added successfully');
     }
     // index

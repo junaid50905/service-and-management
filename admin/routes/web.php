@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\EngineerController;
 use App\Http\Controllers\Admin\ChecklistController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AppiontmentController;
+use App\Http\Controllers\Admin\ApplianceController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\SellingProductController;
 
@@ -62,6 +63,16 @@ Route::prefix('admin')->group(function () {
         Route::post('/{id}/update', [ProductController::class, 'update'])->name('product.update');
     });
 
+    // appliances
+    Route::prefix('/appliance')->group(function () {
+        Route::get('/create', [ApplianceController::class, 'create'])->name('appliance.create');
+        Route::post('/store', [ApplianceController::class, 'store'])->name('appliance.store');
+        Route::get('/all-appliances', [ApplianceController::class, 'index'])->name('appliance.index');
+        Route::get('/{id}/delete', [ApplianceController::class, 'delete'])->name('appliance.delete');
+        Route::get('/{id}/edit', [ApplianceController::class, 'edit'])->name('appliance.edit');
+        Route::post('/{id}/update', [ApplianceController::class, 'update'])->name('appliance.update');
+    });
+
     // engineer
     Route::prefix('/engineer')->group(function () {
         Route::get('/create', [EngineerController::class, 'create'])->name('engineer.create');
@@ -72,15 +83,7 @@ Route::prefix('admin')->group(function () {
         Route::post('/{id}/update', [EngineerController::class, 'update'])->name('engineer.update');
     });
 
-    // checklist
-    Route::prefix('/checklist')->group(function () {
-        Route::get('/create', [ChecklistController::class, 'create'])->name('checklist.create');
-        Route::post('/store', [ChecklistController::class, 'store'])->name('checklist.store');
-        Route::get('/all-checklists', [ChecklistController::class, 'index'])->name('checklist.index');
-        Route::get('/{id}/edit', [ChecklistController::class, 'edit'])->name('checklist.edit');
-        Route::get('/{id}/delete', [ChecklistController::class, 'delete'])->name('checklist.delete');
-        Route::post('/{id}/update', [ChecklistController::class, 'update'])->name('checklist.update');
-    });
+
 
     // selling product
     Route::prefix('/selling-product')->group(function () {
@@ -106,6 +109,17 @@ Route::prefix('admin')->group(function () {
 
         Route::get('/assigned-engineer-details/user/{id}', [AppiontmentController::class, 'assignedEngineerDetailed'])->name('appiontment.assigned_engineer_detailed');
 
+    });
+
+    // checklist
+    Route::prefix('/checklist')->group(function () {
+        Route::get('/create', [ChecklistController::class, 'create'])->name('checklist.create');
+        Route::post('/store', [ChecklistController::class, 'store'])->name('checklist.store');
+        Route::get('/all-checklists', [ChecklistController::class, 'index'])->name('checklist.index');
+        Route::get('/{id}/edit', [ChecklistController::class, 'edit'])->name('checklist.edit');
+        Route::get('/{id}/delete', [ChecklistController::class, 'delete'])->name('checklist.delete');
+        Route::post('/{id}/update', [ChecklistController::class, 'update'])->name('checklist.update');
+        Route::get('/{id}/view', [ChecklistController::class, 'view'])->name('checklist.view');
     });
 
 
