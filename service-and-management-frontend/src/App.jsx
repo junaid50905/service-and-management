@@ -22,6 +22,7 @@ import Signup from "./pages/Auth/register";
 import { getToken } from "./services/localStorageService";
 
 function App() {
+  const token = getToken();
   return (
     <>
       <Routes>

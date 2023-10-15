@@ -108,7 +108,7 @@ td {
 }
 
 tr:hover td {
-  border: 1px solid #fff;
+  background-color: #f3f3f3;
 }
 
 /* Custom CSS for Logo */

@@ -122,7 +122,11 @@ const PurchasedProducts = () => {
       <TopNav />
       <CustomerSideNav />
       <div className="mx-auto container-box ">
+      <h1 className="mb-4 text-2xl font-semibold text-center">
+          Purchased Products
+        </h1>
         <div className="my-6 bg-white rounded shadow-md ">
+          
           <table className="w-full border border-collapse table-fixed border-slate-500">
             <thead>
               <tr className="text-sm leading-normal text-white uppercase bg-tableHeading">
@@ -165,7 +169,7 @@ const PurchasedProducts = () => {
               {products.map((product, index) => (
                 <tr
                   key={product.id}
-                  className="transition duration-300 ease-in-out hover:bg-gray-800 hover:text-white"
+                  className="transition duration-300 ease-in-out"
                 >
                   <td
                     className="px-1 py-3 text-center break-words border border-slate-700"

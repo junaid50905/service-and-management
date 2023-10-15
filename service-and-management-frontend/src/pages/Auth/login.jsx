@@ -32,7 +32,7 @@ const Login = () => {
         if (response.data.status === "success") {
           storeToken(response.data.token);
           setMessage(response.data.message);
-          navigate("/");
+          navigate("/customer/servprogress");
         } else {
           setMessage(response.data.message);
         }
@@ -43,22 +43,6 @@ const Login = () => {
       setMessage("All Field Must Be Fill Up");
     }
   };
-
-  // try {
-  //   const response = await axios.post(
-  //     "http://127.0.0.1:8000/api/v1/u/login",
-  //     formData
-  //   );
-  //   if (response.data.status === "success") {
-  //     setMessage("Login successful");
-  //     navigate("/customer/dashboard");
-  //     // You can redirect the user to a dashboard or other page here
-  //   } else {
-  //     setMessage("Login failed. Please check your email and password again.");
-  //   }
-  // } catch (error) {
-  //   setMessage("An error occurred while trying to log in.");
-  // }
 
   return (
     <div className="flex items-center justify-center min-h-screen px-4 py-12 bg-gray-50 sm:px-6 lg:px-8">

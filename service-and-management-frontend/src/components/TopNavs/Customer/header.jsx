@@ -22,6 +22,9 @@ const Header = () => {
     if (response.data) {
       if (response.data.status === "success") {
         removeToken("token");
+        setUserData({
+          email: "",
+        });
         navigate("/login");
         console.log("success");
       }
@@ -56,13 +59,13 @@ const Header = () => {
                   <Link to="/">Home</Link>
                 </li>
                 <li>
-                  <Link to="/shop">Shop</Link>
+                  <Link to="/">Shop</Link>
                 </li>
                 <li>
-                  <Link to="/about">About</Link>
+                  <Link to="/">About</Link>
                 </li>
                 <li>
-                  <Link to="/contact">Contact</Link>
+                  <Link to="/">Contact</Link>
                 </li>
               </ul>
             </div>

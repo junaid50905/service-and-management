@@ -23,7 +23,9 @@ const ContactSupport = () => {
       <CustomerSideNav />
       <div className="mx-auto text-gray-800 container-box">
         <div className="p-4">
-          <h1 className="mb-4 text-2xl font-semibold">Contact and Support</h1>
+          <h1 className="mb-4 text-2xl font-semibold text-center">
+            Contact and Support
+          </h1>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             {contactsData.map((contact) => (
               <div
