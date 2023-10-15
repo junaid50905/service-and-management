@@ -16,6 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('subcategory_id');
             $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password');
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');

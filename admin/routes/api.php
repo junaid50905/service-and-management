@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\FrontendController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+// private routes
+Route::middleware(['auth:sanctum'])->group(function () {
+
+    Route::prefix('/v1')->group(function (){
+        Route::post('/u/logout', [UserController::class, 'logout']);
+        Route::get('/u/logged-user-data', [UserController::class, 'logged_user_data']);
+    });
+
+});
+
+// public routes
+Route::prefix('/v1')->group(function () {
+
+    Route::get('/products', [FrontendController::class, 'allProducts']);
+
+    // user authentication
+    Route::post('/u/register', [UserController::class, 'register']);
+    Route::post('/u/login', [UserController::class, 'login']);
+
+
 });

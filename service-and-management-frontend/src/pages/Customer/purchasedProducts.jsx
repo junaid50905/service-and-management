@@ -73,7 +73,7 @@ const PurchasedProducts = () => {
     },
     {
       id: 7,
-      productName: "Washing Machine fght bdfg dfggh",
+      productName: "Washing Machine",
       model: "PQR-404",
       regNo: "15242",
       purchaseDate: "2023-02-12",
@@ -122,7 +122,11 @@ const PurchasedProducts = () => {
       <TopNav />
       <CustomerSideNav />
       <div className="mx-auto container-box ">
+      <h1 className="mb-4 text-2xl font-semibold text-center">
+          Purchased Products
+        </h1>
         <div className="my-6 bg-white rounded shadow-md ">
+          
           <table className="w-full border border-collapse table-fixed border-slate-500">
             <thead>
               <tr className="text-sm leading-normal text-white uppercase bg-tableHeading">
@@ -161,11 +165,11 @@ const PurchasedProducts = () => {
                 </th>
               </tr>
             </thead>
-            <tbody className="text-sm font-light text-gray-600">
+            <tbody className="text-sm font-light text-gray-900">
               {products.map((product, index) => (
                 <tr
                   key={product.id}
-                  className="border-b border-gray-200 hover:bg-gray-100"
+                  className="transition duration-300 ease-in-out"
                 >
                   <td
                     className="px-1 py-3 text-center break-words border border-slate-700"

@@ -25,6 +25,8 @@ class EngineerController extends Controller
             'category_id' => 'required',
             'subcategory_id' => 'required',
             'name' => 'required',
+            'email' => 'required|unique:engineers,email',
+            'password' => 'required',
             'phone' => 'required|unique:engineers,phone',
             'address' => 'required',
         ]);
@@ -56,6 +58,8 @@ class EngineerController extends Controller
             'category_id' => 'required',
             'subcategory_id' => 'required',
             'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
             'phone' => 'required',
             'address' => 'required',
         ]);

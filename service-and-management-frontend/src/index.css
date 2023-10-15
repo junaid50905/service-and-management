@@ -4,7 +4,6 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Segoe ul", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.4;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -46,7 +45,7 @@ ul {
 }
 
 .container-box,
-.container-box-mobile,
+.container-box-full,
 .sidenav {
   margin-top: 64px;
 }
@@ -59,20 +58,97 @@ ul {
   overflow-y: auto;
   height: 100vh;
   padding-bottom: 80px;
-  background-color: #EFEFEF;
+  background-color: #fff;
+  color: #323334;
 }
 
-.container-box-mobile {
-  position: fixed;
+.container-box-full {
   width: 100vw;
-  padding: 16px;
-  overflow-y: auto;
-  height: 100vh;
-  padding-bottom: 80px;
 }
 
 .sam-logo {
   font-style: italic;
   font-weight: bold;
   font-size: 1.2rem;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card .font-semibold {
+  font-weight: bold;
+}
+
+.warning {
+  background-color: #ffffcc;
+  border-left: 6px solid #f44336;
+}
+
+tr:nth-child(even) {
+  background-color: #fdfdfd;
+}
+
+td {
+  transition: all 100ms ease-in-out;
+}
+
+tr:hover td {
+  background-color: #f3f3f3;
+}
+
+/* Custom CSS for Logo */
+.logo {
+  font-size: 1.5rem; /* Adjust font size as needed */
+  font-weight: bold; /* Adjust font weight as needed */
+  text-decoration: none; /* Remove underlines for links */
+  color: #333; /* Customize the text color */
+}
+
+/* Custom CSS for Navigation */
+.navigation ul {
+  list-style: none; /* Remove list bullets */
+  padding: 0;
+  margin: 0;
+}
+
+.navigation li {
+  display: inline-block; /* Display navigation items horizontally */
+  margin-right: 20px; /* Adjust spacing between navigation items */
+}
+
+.navigation a {
+  text-decoration: none; /* Remove underlines for links */
+  color: #333; /* Customize the link color */
+  transition: color 0.3s ease; /* Add a smooth color transition on hover */
+}
+
+.navigation a:hover {
+  color: #007bff; /* Customize the link color on hover */
+}
+/* Custom CSS for Social Icons */
+.social-icons a {
+  text-decoration: none; /* Remove underlines for links */
+  color: #fff; /* Customize the icon color */
+  font-size: 1.5rem; /* Adjust the icon size as needed */
+  margin-right: 10px; /* Adjust spacing between social icons */
+  transition: color 0.3s ease; /* Add a smooth color transition on hover */
+}
+
+.social-icons a:hover {
+  color: #007bff; /* Customize the icon color on hover */
 }

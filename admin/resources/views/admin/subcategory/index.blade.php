@@ -27,7 +27,7 @@
                                 @foreach ($subcategories as $subcategory)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $subcategory->category_id }}</td>
+                                        <td>{{ DB::table('categories')->where('id', $subcategory->category_id)->first()->name }}</td>
                                         <td>{{ $subcategory->name }}</td>
                                         <td>
                                             <a href="{{ route('subcategory.edit', $subcategory->id) }}" class="btn btn-warning me-2">Edit</a>

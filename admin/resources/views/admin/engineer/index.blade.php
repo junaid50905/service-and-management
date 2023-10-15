@@ -19,6 +19,8 @@
                                 <tr>
                                     <th>#</th>
                                     <th> Name</th>
+                                    <th> Email</th>
+                                    <th> Password</th>
                                     <th> Phone</th>
                                     <th> Address</th>
                                     <th> Category</th>
@@ -31,13 +33,15 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $engineer->name }}</td>
+                                        <td>{{ $engineer->email }}</td>
+                                        <td>{{ $engineer->password }}</td>
                                         <td>{{ $engineer->phone }}</td>
                                         <td>{{ $engineer->address }}</td>
                                         <td>{{ DB::table('categories')->where('id', $engineer->category_id)->first()->name }}</td>
                                         <td>{{ DB::table('subcategories')->where('id', $engineer->subcategory_id)->first()->name }}</td>
                                         <td>
-                                            <a href="{{ route('engineer.edit', $engineer->id) }}" class="btn btn-warning me-2">Edit</a>
-                                            <a href="{{ route('engineer.delete', $engineer->id) }}" onclick="return confirm('are you sure?')" class="btn btn-danger">Delete</a>
+                                            <a href="{{ route('engineer.edit', $engineer->id) }}" class="btn btn-warning btn-sm me-2">Edit</a>
+                                            <a href="{{ route('engineer.delete', $engineer->id) }}" onclick="return confirm('are you sure?')" class="btn btn-danger btn-sm">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach

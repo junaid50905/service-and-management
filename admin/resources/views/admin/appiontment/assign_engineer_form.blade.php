@@ -25,6 +25,16 @@
                             </select>
                         </div>
 
+                        <div class="form-group">
+                            <label>Date</label>
+                            <input type="date" name="date" required class="form-control" min="{{ date('Y-m-d') }}">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Time</label>
+                            <input type="time" name="time" required class="form-control">
+                        </div>
+
                         <button type="submit" class="btn btn-behance">save</button>
                     </form>
                 </div>
