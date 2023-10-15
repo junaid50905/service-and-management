@@ -11,8 +11,7 @@ class CustomerController extends Controller
     // create
     public function create()
     {
-        $customer = User::all();
-        return view('admin.customer.create', compact('customer'));
+        return view('admin.customer.create');
     }
 
     // store

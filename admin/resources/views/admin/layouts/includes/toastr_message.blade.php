@@ -161,6 +161,38 @@
 @endif
 
 
+{{-- customer --}}
+@if (Session::has('customer_create'))
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true,
+        }
+        toastr.success("{{ session('customer_create') }}")
+    </script>
+@endif
+
+@if (Session::has('customer_delete'))
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true
+        }
+        toastr.success("{{ session('customer_delete') }}")
+    </script>
+@endif
+
+
+@if (Session::has('customer_update'))
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true
+        }
+        toastr.success("{{ session('customer_update') }}")
+    </script>
+@endif
+
 {{-- checklist --}}
 @if (Session::has('unavailable_appiontment'))
     <script>

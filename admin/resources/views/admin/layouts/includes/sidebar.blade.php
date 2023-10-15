@@ -142,20 +142,6 @@
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{{ route('appliance.create') }}">Create</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('appliance.index') }}">Index</a></li>
-        <!-- customer -->
-        <li class="nav-item menu-items mt-2">
-            <a class="nav-link" data-bs-toggle="collapse" href="#customer" aria-expanded="false"
-                aria-controls="customer">
-                <span class="menu-icon">
-                    <i class="mdi mdi-laptop"></i>
-                </span>
-                <span class="menu-title">Customer</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="customer">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('customer.create') }}">Create</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('customer.index') }}">Index</a></li>
                 </ul>
             </div>
         </li>
@@ -178,24 +164,33 @@
             </div>
         </li>
 
-
-
-        <!-- sell -->
+        <!-- customer -->
         <li class="nav-item menu-items mt-2">
-            <a class="nav-link" data-bs-toggle="collapse" href="#sell" aria-expanded="false"
-                aria-controls="sell">
+            <a class="nav-link" data-bs-toggle="collapse" href="#customer" aria-expanded="false"
+                aria-controls="customer">
                 <span class="menu-icon">
                     <i class="mdi mdi-laptop"></i>
                 </span>
-                <span class="menu-title">Sell</span>
+                <span class="menu-title">Customer</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="sell">
+            <div class="collapse" id="customer">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="">Create</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('selling_product.index') }}">Index</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('customer.create') }}">Create</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('customer.index') }}">Index</a></li>
                 </ul>
             </div>
+        </li>
+
+
+        {{-- selling product --}}
+        <li class="nav-item menu-items mt-2">
+            <a class="nav-link" href="{{ route('selling_product.index') }}">
+                <span class="menu-icon">
+                    <i class="mdi mdi-playlist-play"></i>
+                </span>
+                <span class="menu-title">Selling Products</span>
+            </a>
         </li>
 
         {{-------------------------------serviceandmanagement-----------------------------}}
