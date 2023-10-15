@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\EngineerController;
 use App\Http\Controllers\Admin\ChecklistController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AppiontmentController;
+use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\SellingProductController;
 
@@ -70,6 +71,16 @@ Route::prefix('admin')->group(function () {
         Route::get('/{id}/edit', [EngineerController::class, 'edit'])->name('engineer.edit');
         Route::get('/{id}/delete', [EngineerController::class, 'delete'])->name('engineer.delete');
         Route::post('/{id}/update', [EngineerController::class, 'update'])->name('engineer.update');
+    });
+
+    // customer
+    Route::prefix('/customer')->group(function () {
+        Route::get('/create', [CustomerController::class, 'create'])->name('customer.create');
+        Route::post('/store', [CustomerController::class, 'store'])->name('customer.store');
+        Route::get('/all-customers', [CustomerController::class, 'index'])->name('customer.index');
+        Route::get('/{id}/edit', [CustomerController::class, 'edit'])->name('customer.edit');
+        Route::get('/{id}/delete', [CustomerController::class, 'delete'])->name('customer.delete');
+        Route::post('/{id}/update', [CustomerController::class, 'update'])->name('customer.update');
     });
 
     // checklist
