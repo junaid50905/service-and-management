@@ -108,6 +108,11 @@ Route::prefix('admin')->group(function () {
     // selling product
     Route::prefix('/selling-product')->group(function () {
         Route::get('/all-products', [SellingProductController::class, 'index'])->name('selling_product.index');
+        Route::get('/create', [SellingProductController::class, 'create'])->name('selling_product.create');
+        Route::post('/store', [SellingProductController::class, 'store'])->name('selling_product.store');
+        Route::get('/{id}/edit', [SellingProductController::class, 'edit'])->name('selling_product.edit');
+        Route::get('/{id}/delete', [SellingProductController::class, 'delete'])->name('selling_product.delete');
+        Route::post('/{id}/update', [SellingProductController::class, 'update'])->name('selling_product.update');
     });
 
 

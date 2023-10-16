@@ -25,6 +25,7 @@
                                     <th>User <br>name</th>
                                     <th>Selling <br> date</th>
                                     <th>Warranty <br> end date</th>
+                                    <th>Quantity</th>
                                     <th>S&M</th>
                                     <th>Actions</th>
                                 </tr>
@@ -39,10 +40,11 @@
                                         <td>{{ DB::table('users')->where('id', $sellingProduct->user_id)->first()->name }}</td>
                                         <td>{{ $sellingProduct->selling_date }}</td>
                                         <td>{{ $sellingProduct->warranty_end_date }}</td>
+                                        <td>{{ $sellingProduct->quantity }}</td>
                                         <td>{{ $sellingProduct->sam }}</td>
                                         <td>
-                                            <a href="#" class="btn btn-warning btn-sm me-2">Edit</a>
-                                            <a href="#" onclick="return confirm('are you sure?')" class="btn btn-danger btn-sm">Delete</a>
+                                            <a href="{{route('selling_product.edit', $sellingProduct->id)}}" class="btn btn-warning btn-sm me-2">Edit</a>
+                                            <a href="{{route('selling_product.delete', $sellingProduct->id)}}" onclick="return confirm('are you sure?')" class="btn btn-danger btn-sm">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach

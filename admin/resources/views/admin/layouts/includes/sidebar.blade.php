@@ -181,16 +181,25 @@
                 </ul>
             </div>
         </li>
+        
 
 
         {{-- selling product --}}
         <li class="nav-item menu-items mt-2">
-            <a class="nav-link" href="{{ route('selling_product.index') }}">
+            <a class="nav-link" data-bs-toggle="collapse" href="#sellingProduct" aria-expanded="false"
+                aria-controls="sellingProduct">
                 <span class="menu-icon">
-                    <i class="mdi mdi-playlist-play"></i>
+                    <i class="mdi mdi-laptop"></i>
                 </span>
-                <span class="menu-title">Selling Products</span>
+                <span class="menu-title">Sell Products</span>
+                <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="sellingProduct">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('selling_product.create') }}">Create</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('selling_product.index') }}">Index</a></li>
+                </ul>
+            </div>
         </li>
 
         {{-------------------------------serviceandmanagement-----------------------------}}

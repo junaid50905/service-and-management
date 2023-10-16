@@ -128,6 +128,38 @@
     </script>
 @endif
 
+{{-- selling product --}}
+@if (Session::has('selling_product_create'))
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true
+        }
+        toastr.success("{{ session('selling_product_create') }}")
+    </script>
+@endif
+
+@if (Session::has('selling_product_delete'))
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true
+        }
+        toastr.success("{{ session('selling_product_delete') }}")
+    </script>
+@endif
+
+
+@if (Session::has('selling_product_update'))
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true
+        }
+        toastr.success("{{ session('selling_product_update') }}")
+    </script>
+@endif
+
 {{-- engineer --}}
 @if (Session::has('engineer_create'))
     <script>
