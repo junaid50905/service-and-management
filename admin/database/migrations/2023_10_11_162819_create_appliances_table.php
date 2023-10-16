@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('checklists', function (Blueprint $table) {
+        Schema::create('appliances', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('appiontment_id');
-            $table->text('appliance_name');
-            $table->integer('appliance_price');
-            $table->foreign('appiontment_id')->references('id')->on('appiontments')->onDelete('cascade');
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('subcategory_id');
+            $table->string('name');
+            $table->integer('purchase_price')->nullable();
+            $table->integer('market_price')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('checklists');
+        Schema::dropIfExists('appliances');
     }
 };

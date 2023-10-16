@@ -23,7 +23,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="engineerPhone"> Phone</label>
+                            <label for="engineerPhone">Phone</label>
                             <input type="text" value="{{ $engineer->phone }}" name="phone" class="form-control text-white" id="engineerPhone">
                             @error('phone')
                                 <p class="text-danger">{{ $message }}</p>
@@ -31,7 +31,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="engineerAddress"> Address</label>
+                            <label for="engineerAddress">Address</label>
                             <input type="text" value="{{ $engineer->address }}" name="address" class="form-control text-white" id="engineerAddress">
                             @error('address')
                                 <p class="text-danger">{{ $message }}</p>

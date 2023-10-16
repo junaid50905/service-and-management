@@ -9,5 +9,5 @@ class Checklist extends Model
 {
     use HasFactory;
     protected $table = 'checklists';
-    protected $fillable = ['user_id', 'complain'];
+    protected $fillable = ['appiontment_id', 'appliance_name', 'appliance_price'];
 }

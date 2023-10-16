@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('checklists', function (Blueprint $table) {
+        Schema::create('servicing_orders', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('appiontment_id');
-            $table->text('appliance_name');
-            $table->integer('appliance_price');
+            $table->enum('status', ['pending', 'working', 'done'])->default('pending');
             $table->foreign('appiontment_id')->references('id')->on('appiontments')->onDelete('cascade');
             $table->timestamps();
         });
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('checklists');
+        Schema::dropIfExists('servicing_orders');
     }
 };

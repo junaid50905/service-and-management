@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('selling_date');
             $table->date('warranty_end_date');
             $table->boolean('sam');
+            $table->integer('quantity');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();
