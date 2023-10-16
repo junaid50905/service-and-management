@@ -11,7 +11,10 @@ import { FcAbout } from "react-icons/fc";
 const CustomerSideNav = () => {
   return (
     <div>
-      <div className="fixed h-screen text-center bg-white sidenav text-navColor">
+      <div
+        className="fixed h-screen text-center bg-white sidenav text-navColor"
+        id="scrollbar"
+      >
         <nav>
           <ul>
             <li>
@@ -48,7 +51,7 @@ const CustomerSideNav = () => {
                 </NavLink>
               </div>
             </li>
-            <li>
+            {/* <li>
               <div className="nav-items">
                 <NavLink
                   to="/customer/reqservice/0"
@@ -64,7 +67,7 @@ const CustomerSideNav = () => {
                   </div>
                 </NavLink>
               </div>
-            </li>
+            </li> */}
 
             <li>
               <div className="nav-items">
@@ -100,12 +103,12 @@ const CustomerSideNav = () => {
                 </NavLink>
               </div>
             </li> */}
-            {/* <li>
+            <li>
               <div className="nav-items">
                 <NavLink
-                  to="/customer/dashboard"
+                  to="/customer/servhistory"
                   style={({ isActive }) => ({
-                    color: isActive ? "#020553" : "#f65522",
+                    color: isActive ? "#f65522" : "#020553",
                   })}
                 >
                   <div className="flex justify-center pt-4">
@@ -116,7 +119,7 @@ const CustomerSideNav = () => {
                   </div>
                 </NavLink>
               </div>
-            </li> */}
+            </li>
             <li>
               <div className="nav-items">
                 <NavLink

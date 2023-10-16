@@ -6,7 +6,7 @@ export default {
       colors: {
         navColor: "#F65522", //#020553
         navBody: "#F4F4FE",
-        topNavColor: "#F65522", //000559
+        topNavColor: "#3366ff", //000559
         tableHeading: "#000559",
       },
       boxShadow: {
