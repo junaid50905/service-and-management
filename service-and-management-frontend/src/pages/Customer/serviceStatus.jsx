@@ -18,6 +18,7 @@ const ServiceStatus = () => {
       maintenancePersonnel: "Alice Johnson",
       maintenancePersonnelPhoto: "alice.jpg",
       maintenancePersonnelCont: "01743217209",
+      branchName: "DHAKA Branch",
     },
     {
       id: 2,
@@ -33,6 +34,7 @@ const ServiceStatus = () => {
       maintenancePersonnel: "Bob Smith",
       maintenancePersonnelPhoto: "bob.jpg",
       maintenancePersonnelCont: "01743217209",
+      branchName: "SYLHET Branch",
     },
     {
       id: 3,
@@ -48,6 +50,7 @@ const ServiceStatus = () => {
       maintenancePersonnel: "Elena Rodriguez",
       maintenancePersonnelPhoto: "elena.jpg",
       maintenancePersonnelCont: "01743217209",
+      branchName: "DHAKA Branch",
     },
     {
       id: 4,
@@ -63,6 +66,7 @@ const ServiceStatus = () => {
       maintenancePersonnel: "David Brown",
       maintenancePersonnelPhoto: "david.jpg",
       maintenancePersonnelCont: "01743217209",
+      branchName: "DHAKA Branch",
     },
     {
       id: 5,
@@ -78,6 +82,7 @@ const ServiceStatus = () => {
       maintenancePersonnel: "Grace Taylor",
       maintenancePersonnelPhoto: "grace.jpg",
       maintenancePersonnelCont: "01743217209",
+      branchName: "SYLHET Branch",
     },
     {
       id: 6,
@@ -93,6 +98,7 @@ const ServiceStatus = () => {
       maintenancePersonnel: "James Wilson",
       maintenancePersonnelPhoto: "james.jpg",
       maintenancePersonnelCont: "01743217209",
+      branchName: "DHAKA Branch",
     },
     {
       id: 7,
@@ -108,6 +114,7 @@ const ServiceStatus = () => {
       maintenancePersonnel: "Olivia Martinez",
       maintenancePersonnelPhoto: "olivia.jpg",
       maintenancePersonnelCont: "01743217209",
+      branchName: "DHAKA Branch",
     },
     {
       id: 8,
@@ -123,6 +130,7 @@ const ServiceStatus = () => {
       maintenancePersonnel: "William Lee",
       maintenancePersonnelPhoto: "william.jpg",
       maintenancePersonnelCont: "01743217209",
+      branchName: "DHAKA Branch",
     },
     {
       id: 9,
@@ -138,6 +146,7 @@ const ServiceStatus = () => {
       maintenancePersonnel: "Sophia Chen",
       maintenancePersonnelPhoto: "sophia.jpg",
       maintenancePersonnelCont: "01743217209",
+      branchName: "DHAKA Branch",
     },
     {
       id: 10,
@@ -153,6 +162,7 @@ const ServiceStatus = () => {
       maintenancePersonnel: "Michael Adams",
       maintenancePersonnelPhoto: "michael.jpg",
       maintenancePersonnelCont: "01743217209",
+      branchName: "DHAKA Branch",
     },
   ];
 
@@ -175,7 +185,7 @@ const ServiceStatus = () => {
     <div>
       <TopNav />
       <CustomerSideNav />
-      <div className="mx-auto container-box">
+      <div className="mx-auto container-box font-roboto">
         <h1 className="mb-4 text-3xl font-bold text-center text-gray-800">
           Service Maintenance Status
         </h1>
@@ -183,7 +193,7 @@ const ServiceStatus = () => {
           {products.map((product) => (
             <div
               key={product.id}
-              className="relative p-4 transition duration-300 ease-in-out bg-white shadow-md shadow-gray-400 rounded-xl hover:scale-103"
+              className="relative p-4 transition duration-300 ease-in-out bg-white border shadow-md shadow-gray-400 rounded-xl hover:scale-103 hover:shadow-lg hover:shadow-gray-500"
             >
               <div
                 className={`px-4 py-2 text-xl leading-snug rounded-se-xl rounded-es-xl text-white absolute right-0 top-0 w-28 text-center ${getStatusColorClass(
@@ -194,10 +204,10 @@ const ServiceStatus = () => {
                   <span>{product.status}</span>
                 </p>
               </div>
-              <div className="font-sans ">
+              <div className="">
                 <div className="pr-28">
                   <div>
-                    <h2 className="mb-2 font-serif text-2xl font-extrabold text-red-500">
+                    <h2 className="mb-2 text-2xl font-extrabold text-red-500">
                       {product.maintenanceType}
                     </h2>
                     <h2 className="text-xl font-bold">
@@ -209,9 +219,12 @@ const ServiceStatus = () => {
                     <h4 className="text-xl font-semibold">
                       Serial Number: {product.serialNumber}
                     </h4>
+                    <h4 className="text-xl font-semibold">
+                      Branch Name: {product.branchName}
+                    </h4>
                   </div>
 
-                  <div className="mt-2 font-serif text-lg">
+                  <div className="mt-2 text-lg">
                     <p>
                       <span className="font-semibold">Parts Used:</span>{" "}
                       {product.partsUsed}
@@ -230,16 +243,18 @@ const ServiceStatus = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center w-full gap-3 mt-4 flex-nowrap">
+                <div className="flex items-center w-full gap-3 p-4 mt-4 border shadow-md">
                   <div className="flex justify-center xl:w-1/2">
                     <img
                       src="https://i.postimg.cc/Jz4r8xz5/User-Avatar-Profile-PNG.png"
                       alt={product.maintenancePersonnel}
-                      className="w-48 h-48 bg-gray-800 rounded-full"
+                      className="w-48 h-48 bg-gray-800 rounded-md shadow-md shadow-gray-500"
                     />
                   </div>
-                  <div className="font-serif text-lg xl:w-1/2">
-                    <p className="mb-1 font-semibold text-green-800">Maintenance Personnel</p>
+                  <div className="text-lg xl:w-1/2">
+                    <p className="mb-1 font-semibold text-green-800">
+                      Maintenance Personnel
+                    </p>
                     <p>
                       <span className="font-semibold">Name: </span>
                       {product.maintenancePersonnel}

@@ -27,43 +27,27 @@ const RequestService = () => {
       <TopNav />
       <CustomerSideNav />
       <div className="max-w-screen-xl mx-auto container-box">
-        This Product Number {productId}
         <div className="w-full max-w-md p-6 mx-auto bg-white rounded-md shadow-lg">
           <div className="flex justify-center w-full max-w-md mx-auto mb-4 text-3xl font-bold text-navColor">
             <h2>Request Service</h2>
           </div>
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             <div className="-space-y-px rounded-md shadow-sm">
+             
               <div>
-                <label htmlFor="email" className="sr-only">
-                  Email address
+                <label htmlFor="sNum" className="sr-only">
+                  Product Serial Number
                 </label>
                 <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Email address"
-                />
-              </div>
-              <div>
-                <label htmlFor="name" className="sr-only">
-                  Name
-                </label>
-                <input
-                  id="name"
-                  name="name"
+                  id="sNum"
+                  name="sNum"
                   type="text"
-                  autoComplete="name"
+                  autoComplete="sNum"
                   required
-                  value={formData.name}
+    
                   onChange={handleChange}
                   className="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Name"
+                  placeholder="Serial Number"
                 />
               </div>
               <div>

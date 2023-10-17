@@ -7,24 +7,21 @@ import { FaBarsProgress } from "react-icons/fa6";
 import { FcFaq } from "react-icons/fc";
 import { FcFinePrint } from "react-icons/fc";
 import { FcAbout } from "react-icons/fc";
+import { FaHistory } from "react-icons/fa";
 
 const CustomerSideNav = () => {
+
   return (
     <div>
       <div
-        className="fixed h-screen text-center bg-white sidenav text-navColor"
+        className="fixed h-screen text-center text-gray-800 bg-white sidenav"
         id="scrollbar"
       >
         <nav>
           <ul>
             <li>
               <div className="nav-items">
-                <NavLink
-                  to="/customer/servprogress"
-                  style={({ isActive }) => ({
-                    color: isActive ? "#f65522" : "#020553",
-                  })}
-                >
+                <NavLink to="/customer/servprogress">
                   <div className="flex justify-center pt-4">
                     <FaBarsProgress className="w-8 h-8" />
                   </div>
@@ -36,12 +33,7 @@ const CustomerSideNav = () => {
             </li>
             <li>
               <div className="nav-items">
-                <NavLink
-                  to="/customer/pursproducts"
-                  style={({ isActive }) => ({
-                    color: isActive ? "#f65522" : "#020553",
-                  })}
-                >
+                <NavLink to="/customer/pursproducts">
                   <div className="flex justify-center pt-4">
                     <GiAutoRepair className="w-8 h-8" />
                   </div>
@@ -51,14 +43,9 @@ const CustomerSideNav = () => {
                 </NavLink>
               </div>
             </li>
-            {/* <li>
+            <li>
               <div className="nav-items">
-                <NavLink
-                  to="/customer/reqservice/0"
-                  style={({ isActive }) => ({
-                    color: isActive ? "#f65522" : "#020553",
-                  })}
-                >
+                <NavLink to="/customer/reqservice/0">
                   <div className="flex justify-center pt-4">
                     <MdMiscellaneousServices className="w-8 h-8" />
                   </div>
@@ -67,52 +54,13 @@ const CustomerSideNav = () => {
                   </div>
                 </NavLink>
               </div>
-            </li> */}
+            </li>
 
             <li>
               <div className="nav-items">
-                <NavLink
-                  to="/customer/contsupport"
-                  style={({ isActive }) => ({
-                    color: isActive ? "#f65522" : "#020553",
-                  })}
-                >
+                <NavLink to="/customer/servhistory">
                   <div className="flex justify-center pt-4">
-                    <MdSpatialTracking className="w-8 h-8" />
-                  </div>
-                  <div className="flex justify-center pb-4 mt-1">
-                    Contact Support
-                  </div>
-                </NavLink>
-              </div>
-            </li>
-            {/* <li>
-              <div className="nav-items">
-                <NavLink
-                  to="/TrackManage"
-                  style={({ isActive }) => ({
-                    color: isActive ? "#020553" : "#f65522",
-                  })}
-                >
-                  <div className="flex justify-center pt-4">
-                    <MdSpatialTracking className="w-8 h-8" />
-                  </div>
-                  <div className="flex justify-center pb-4 mt-1">
-                    Complain Box
-                  </div>
-                </NavLink>
-              </div>
-            </li> */}
-            <li>
-              <div className="nav-items">
-                <NavLink
-                  to="/customer/servhistory"
-                  style={({ isActive }) => ({
-                    color: isActive ? "#f65522" : "#020553",
-                  })}
-                >
-                  <div className="flex justify-center pt-4">
-                    <MdSpatialTracking className="w-8 h-8" />
+                    <FaHistory className="w-8 h-8" />
                   </div>
                   <div className="flex justify-center pb-4 mt-1">
                     Service History
@@ -122,12 +70,19 @@ const CustomerSideNav = () => {
             </li>
             <li>
               <div className="nav-items">
-                <NavLink
-                  to="/customer/faq"
-                  style={({ isActive }) => ({
-                    color: isActive ? "#f65522" : "#020553",
-                  })}
-                >
+                <NavLink to="/customer/contsupport">
+                  <div className="flex justify-center pt-4">
+                    <MdSpatialTracking className="w-8 h-8" />
+                  </div>
+                  <div className="flex justify-center pb-4 mt-1">
+                    Contact Support
+                  </div>
+                </NavLink>
+              </div>
+            </li>
+            <li>
+              <div className="nav-items">
+                <NavLink to="/customer/faq">
                   <div className="flex justify-center pt-4">
                     <FcFaq className="w-8 h-8" />
                   </div>
@@ -138,12 +93,7 @@ const CustomerSideNav = () => {
 
             <li>
               <div className="nav-items">
-                <NavLink
-                  to="/customer/termsandcondition"
-                  style={({ isActive }) => ({
-                    color: isActive ? "#f65522" : "#020553",
-                  })}
-                >
+                <NavLink to="/customer/termsandcondition">
                   <div className="flex justify-center pt-4">
                     <FcFinePrint className="w-8 h-8" />
                   </div>
@@ -156,12 +106,7 @@ const CustomerSideNav = () => {
 
             <li>
               <div className="nav-items">
-                <NavLink
-                  to="/customer/aboutus"
-                  style={({ isActive }) => ({
-                    color: isActive ? "#f65522" : "#020553",
-                  })}
-                >
+                <NavLink to="/customer/aboutus">
                   <div className="flex justify-center pt-4">
                     <FcAbout className="w-8 h-8" />
                   </div>

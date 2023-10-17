@@ -172,3 +172,8 @@ tr:hover td {
 .social-icons a:hover {
   color: #007bff; /* Customize the icon color on hover */
 }
+
+.active {
+  color: #ff0000;
+  font-size: 1.2rem;
+}
