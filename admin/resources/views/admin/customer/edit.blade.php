@@ -22,6 +22,15 @@
                                 <option value="company" {{ $customer->usertype == 'company' ? 'selected' : '' }}>Company</option>
                             </select>
                         </div>
+
+                        <div class="form-group">
+                            <label for="userType"> Type of Customer </label>
+                            <select name="usertype" class="form-control text-white" id="userType">
+                                <option selected>Select Type </option>
+                                <option value="solo" {{ $customer->usertype == 'solo' ? 'selected' : '' }}>Solo</option>
+                                <option value="company" {{ $customer->usertype == 'company' ? 'selected' : '' }}>Company</option>
+                            </select>
+                        </div>
                         
                         <div class="form-group">
                             <label for="customerName">Name</label>

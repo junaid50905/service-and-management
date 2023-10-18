@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-    Categories
+    Products
 @endsection
 
 @section('main-panel')
@@ -21,10 +21,6 @@
                                     <th>Name</th>
                                     <th>Model</th>
                                     <th>Price</th>
-                                    <th class="d-flex flex-column">
-                                        <span>Warranty</span>
-                                        <span>(months)</span>
-                                    </th>
                                     <th>Category</th>
                                     <th>Subcategory</th>
                                     <th>Actions</th>
@@ -42,7 +38,6 @@
                                         </td>
                                         <td>{{ $product->model }}</td>
                                         <td>{{ $product->price }}</td>
-                                        <td>{{ $product->time_of_warranty }}</td>
                                         <td>{{ DB::table('categories')->where('id', $product->category_id)->first()->name }}</td>
                                         <td>{{ DB::table('subcategories')->where('id', $product->subcategory_id)->first()->name }}</td>
                                         <td>

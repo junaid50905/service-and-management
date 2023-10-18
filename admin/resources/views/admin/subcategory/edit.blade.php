@@ -26,7 +26,7 @@
                             <label>Select category</label>
                             <select name="category_id" class="form-select form-select-sm bg-secondary text-light mb-3">
                                 @foreach ($categories as $category)
-                                <option value={{ $category->id }} {{ $category->id == $subcategory->category_id ? 'selected' : '' }}>{{ $category->name }}</option>
+                                <option value="{{ $category->id }} {{ $category->id == $subcategory->category_id ? 'selected' : '' }}">{{ $category->name }}</option>
                                 @endforeach
                             </select>
                             @error('category_id')

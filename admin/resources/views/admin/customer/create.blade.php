@@ -15,8 +15,6 @@
                     <form action="{{ route('customer.store') }}" method="POST">
                         @csrf
 
-                        
-
                         <div class="form-group">
                             <label for="userType"> Type of Customer </label>
                             <select name="usertype" class="form-control text-white" id="userType">

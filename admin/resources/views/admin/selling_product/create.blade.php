@@ -38,7 +38,7 @@
 
                         <div class="form-group">
                             <label for="sellingdate"> Selling Date</label>
-                            <input type="date" name="selling_date" class="form-control text-white" id="sellingdate" min="{{ now()->toDateString() }}">
+                            <input type="date" name="selling_date" class="form-control text-white" id="sellingdate">
                             @error('selling_date')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror

@@ -29,6 +29,17 @@ Route::get('/', function () {
 });
 
 
+/////////////////////// Dependancy Dropdown start ////////////////////////
+
+Route::get('getSubcategory/{category_id}', [ProductController::class, 'getSubcategory']);
+
+Route::get('getSubcategory/{category_id}', [ApplianceController::class, 'getSubcategory']);
+
+Route::get('getSubcategory/{category_id}', [EngineerController::class, 'getSubcategory']);
+
+/////////////////////// Dependancy Dropdown end ////////////////////////
+
+
 
 Route::prefix('admin')->group(function () {
     // dashboard

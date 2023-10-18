@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('model');
             $table->integer('price');
-            $table->string('time_of_warranty');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('subcategory_id')->references('id')->on('subcategories')->onDelete('cascade');
             $table->timestamps();
