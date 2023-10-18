@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 16, 2023 at 10:18 AM
+-- Generation Time: Oct 18, 2023 at 09:17 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -196,7 +196,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (8, '2023_09_26_174533_create_expertises_table', 5),
 (9, '2023_09_26_175124_create_customers_table', 6),
-(13, '2014_10_12_000000_create_users_table', 10),
 (16, '2023_09_26_204315_create_checklists_table', 12),
 (17, '2023_09_26_174216_create_categories_table', 13),
 (22, '2023_09_28_171645_create_subcategories_table', 15),
@@ -208,7 +207,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (30, '2023_09_26_175220_create_selling_products_table', 22),
 (31, '2023_10_11_151910_create_category_subcategory_table', 22),
 (32, '2023_10_11_162819_create_appliances_table', 22),
-(33, '2023_10_12_100628_create_servicing_orders_table', 22);
+(33, '2023_10_12_100628_create_servicing_orders_table', 22),
+(34, '2014_10_12_000000_create_users_table', 23);
 
 -- --------------------------------------------------------
 
@@ -364,6 +364,7 @@ INSERT INTO `subcategories` (`id`, `category_id`, `name`, `created_at`, `updated
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `usertype` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
@@ -379,9 +380,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `address`, `phone`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'junaid', 'junaid@gmail.com', 'gazipur', '013', '2023-10-18 05:27:45', '123', NULL, NULL, NULL),
-(2, 'arman', 'arman@gmail.com', 'chandpur', '019', NULL, '123', NULL, '2023-09-04 06:53:50', '2023-09-04 06:53:50');
+INSERT INTO `users` (`id`, `usertype`, `name`, `email`, `address`, `phone`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'solo', 'MD. Tajimul Islam', 'tazim@gmail.com', 'Dhaka Bangladesh', '123456', NULL, '$2y$10$4NBshPasg4XFTPm3V7rs6eKCmu8kUzMtf9AbaifAbQTC7OfoVcoEW', NULL, '2023-10-18 07:02:55', '2023-10-18 07:02:55');
 
 --
 -- Indexes for dumped tables
@@ -565,7 +565,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -607,7 +607,7 @@ ALTER TABLE `subcategories`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

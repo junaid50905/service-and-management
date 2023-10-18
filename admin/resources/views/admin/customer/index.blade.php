@@ -21,6 +21,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th> User ID</th>
+                                    <th> Customer Type</th>
                                     <th> Name</th>
                                     <th> Email</th>
                                     <th> Phone</th>
@@ -34,6 +35,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $customer->id }}</td>
+                                        <td>{{ $customer->usertype }}</td>
                                         <td>{{ $customer->name }}</td>
                                         <td>{{ $customer->email }}</td>
                                         <td>{{ $customer->phone }}</td>

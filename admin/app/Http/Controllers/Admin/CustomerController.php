@@ -18,6 +18,7 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'usertype' => 'required',
             'name' => 'required',
             'email' => 'required|unique:users,email',
             'phone' => 'required|unique:users,phone',
@@ -47,6 +48,7 @@ class CustomerController extends Controller
      public function update(Request $request, $id)
      {
          $request->validate([
+            'usertype' => 'required',
              'name' => 'required',
              'email' => 'required',
              'phone' => 'required',

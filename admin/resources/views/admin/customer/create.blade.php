@@ -9,14 +9,26 @@
     <div class="row">
         <div class="col-md-4">
             <div class="card">
-                <h4 class="card-title mt-3 ms-3">Add New Customer</h4><hr>
+                <h4 class="card-title mt-3 ms-3">Add New Customer</h4>
+                <hr>
                 <div class="card-body">
                     <form action="{{ route('customer.store') }}" method="POST">
                         @csrf
 
+                        
+
+                        <div class="form-group">
+                            <label for="userType"> Type of Customer </label>
+                            <select name="usertype" class="form-control text-white" id="userType">
+                                <option selected>Select Type </option>
+                                <option value="solo">Solo</option>
+                                <option value="company">Company</option>
+                            </select>
+                        </div>
+
                         <div class="form-group">
                             <label for="customerName"> Name</label>
-                            <input type="text" name="name" class="form-control text-white" id="customerName">
+                            <input type="text" name="name" class="form-control text-white" id="customerName" placeholder="Name/Company Name">
                             @error('name')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
