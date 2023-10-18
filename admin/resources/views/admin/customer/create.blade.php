@@ -24,12 +24,15 @@
                                 <option value="solo">Solo</option>
                                 <option value="company">Company</option>
                             </select>
+                            @error('usertype') 
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                         </div>
 
                         <div class="form-group">
                             <label for="customerName"> Name</label>
                             <input type="text" name="name" class="form-control text-white" id="customerName" placeholder="Name/Company Name">
-                            @error('name')
+                            @error('name') 
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>
