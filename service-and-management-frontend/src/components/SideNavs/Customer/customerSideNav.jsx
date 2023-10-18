@@ -14,7 +14,7 @@ const CustomerSideNav = () => {
   return (
     <div>
       <div
-        className="fixed h-screen text-center text-gray-800 bg-white sidenav"
+        className="fixed h-screen text-center text-gray-800 bg-white sidenav font-roboto"
         id="scrollbar"
       >
         <nav>

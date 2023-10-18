@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import CustomerSideNav from "../../components/SideNavs/Customer/customerSideNav";
 import TopNav from "../../components/TopNavs/Customer/topnav";
+import ReactModal from "react-modal";
+import Late from "../../assets/images/late.png";
+import Pending from "../../assets/images/pending.png";
+import Finished from "../../assets/images/finished.png";
+import { AiFillCloseCircle } from "react-icons/ai";
 
 const ServiceStatus = () => {
   const products = [
@@ -8,7 +13,7 @@ const ServiceStatus = () => {
       id: 1,
       serialNumber: "SN12345",
       name: "Laptop",
-      model: "Model X1",
+      model: "X1",
       manufacturer: "TechCorp",
       status: "Pending",
       partsUsed: "None",
@@ -24,7 +29,7 @@ const ServiceStatus = () => {
       id: 2,
       serialNumber: "SN67890",
       name: "Smartphone",
-      model: "Model S2",
+      model: "S2",
       manufacturer: "MobileTech",
       status: "Finished",
       partsUsed: "Screen replacement, battery upgrade",
@@ -40,7 +45,7 @@ const ServiceStatus = () => {
       id: 3,
       serialNumber: "SN54321",
       name: "Refrigerator",
-      model: "Model FridgeMaster",
+      model: "FridgeMaster",
       manufacturer: "CoolTech",
       status: "Late",
       partsUsed: "Compressor replacement",
@@ -56,7 +61,7 @@ const ServiceStatus = () => {
       id: 4,
       serialNumber: "SN98765",
       name: "Digital Camera",
-      model: "Model SnapShot",
+      model: "SnapShot",
       manufacturer: "PhotoGear",
       status: "Finished",
       partsUsed: "Lens cleaning, firmware update",
@@ -72,7 +77,7 @@ const ServiceStatus = () => {
       id: 5,
       serialNumber: "SN24680",
       name: "Coffee Maker",
-      model: "Model BrewMaster",
+      model: "BrewMaster",
       manufacturer: "CafeTech",
       status: "Late",
       partsUsed: "Heating element replacement",
@@ -88,7 +93,7 @@ const ServiceStatus = () => {
       id: 6,
       serialNumber: "SN13579",
       name: "Television",
-      model: "Model UltraView",
+      model: "UltraView",
       manufacturer: "VisionTech",
       status: "Pending",
       partsUsed: "None",
@@ -104,7 +109,7 @@ const ServiceStatus = () => {
       id: 7,
       serialNumber: "SN11223",
       name: "Washing Machine",
-      model: "Model CleanWash",
+      model: "CleanWash",
       manufacturer: "LaundryTech",
       status: "Late",
       partsUsed: "Pump replacement",
@@ -120,7 +125,7 @@ const ServiceStatus = () => {
       id: 8,
       serialNumber: "SN87654",
       name: "Microwave Oven",
-      model: "Model HeatWave",
+      model: "HeatWave",
       manufacturer: "KitchenTech",
       status: "Finished",
       partsUsed: "Magnetron replacement, door latch repair",
@@ -136,7 +141,7 @@ const ServiceStatus = () => {
       id: 9,
       serialNumber: "SN45678",
       name: "Air Conditioner",
-      model: "Model CoolBreeze",
+      model: "CoolBreeze",
       manufacturer: "ClimateTech",
       status: "Pending",
       partsUsed: "None",
@@ -152,7 +157,183 @@ const ServiceStatus = () => {
       id: 10,
       serialNumber: "SN10101",
       name: "Tablet",
-      model: "Model TabPro",
+      model: "TabPro",
+      manufacturer: "TechGadget",
+      status: "Finished",
+      partsUsed: "Battery replacement, screen repair",
+      delayReason: "",
+      maintenanceType: "Repair",
+      maintenanceNotes: "Replaced the battery and repaired the screen.",
+      maintenancePersonnel: "Michael Adams",
+      maintenancePersonnelPhoto: "michael.jpg",
+      maintenancePersonnelCont: "01743217209",
+      branchName: "DHAKA Branch",
+    },
+    {
+      id: 10,
+      serialNumber: "SN10101",
+      name: "Tablet",
+      model: "TabPro",
+      manufacturer: "TechGadget",
+      status: "Finished",
+      partsUsed: "Battery replacement, screen repair",
+      delayReason: "",
+      maintenanceType: "Repair",
+      maintenanceNotes: "Replaced the battery and repaired the screen.",
+      maintenancePersonnel: "Michael Adams",
+      maintenancePersonnelPhoto: "michael.jpg",
+      maintenancePersonnelCont: "01743217209",
+      branchName: "DHAKA Branch",
+    },
+    {
+      id: 10,
+      serialNumber: "SN10101",
+      name: "Tablet",
+      model: "TabPro",
+      manufacturer: "TechGadget",
+      status: "Finished",
+      partsUsed: "Battery replacement, screen repair",
+      delayReason: "",
+      maintenanceType: "Repair",
+      maintenanceNotes: "Replaced the battery and repaired the screen.",
+      maintenancePersonnel: "Michael Adams",
+      maintenancePersonnelPhoto: "michael.jpg",
+      maintenancePersonnelCont: "01743217209",
+      branchName: "DHAKA Branch",
+    },
+    {
+      id: 10,
+      serialNumber: "SN10101",
+      name: "Tablet",
+      model: "TabPro",
+      manufacturer: "TechGadget",
+      status: "Finished",
+      partsUsed: "Battery replacement, screen repair",
+      delayReason: "",
+      maintenanceType: "Repair",
+      maintenanceNotes: "Replaced the battery and repaired the screen.",
+      maintenancePersonnel: "Michael Adams",
+      maintenancePersonnelPhoto: "michael.jpg",
+      maintenancePersonnelCont: "01743217209",
+      branchName: "DHAKA Branch",
+    },
+    {
+      id: 10,
+      serialNumber: "SN10101",
+      name: "Tablet",
+      model: "TabPro",
+      manufacturer: "TechGadget",
+      status: "Finished",
+      partsUsed: "Battery replacement, screen repair",
+      delayReason: "",
+      maintenanceType: "Repair",
+      maintenanceNotes: "Replaced the battery and repaired the screen.",
+      maintenancePersonnel: "Michael Adams",
+      maintenancePersonnelPhoto: "michael.jpg",
+      maintenancePersonnelCont: "01743217209",
+      branchName: "DHAKA Branch",
+    },
+    {
+      id: 10,
+      serialNumber: "SN10101",
+      name: "Tablet",
+      model: "TabPro",
+      manufacturer: "TechGadget",
+      status: "Finished",
+      partsUsed: "Battery replacement, screen repair",
+      delayReason: "",
+      maintenanceType: "Repair",
+      maintenanceNotes: "Replaced the battery and repaired the screen.",
+      maintenancePersonnel: "Michael Adams",
+      maintenancePersonnelPhoto: "michael.jpg",
+      maintenancePersonnelCont: "01743217209",
+      branchName: "DHAKA Branch",
+    },
+    {
+      id: 10,
+      serialNumber: "SN10101",
+      name: "Tablet",
+      model: "TabPro",
+      manufacturer: "TechGadget",
+      status: "Finished",
+      partsUsed: "Battery replacement, screen repair",
+      delayReason: "",
+      maintenanceType: "Repair",
+      maintenanceNotes: "Replaced the battery and repaired the screen.",
+      maintenancePersonnel: "Michael Adams",
+      maintenancePersonnelPhoto: "michael.jpg",
+      maintenancePersonnelCont: "01743217209",
+      branchName: "DHAKA Branch",
+    },
+    {
+      id: 10,
+      serialNumber: "SN10101",
+      name: "Tablet",
+      model: "TabPro",
+      manufacturer: "TechGadget",
+      status: "Finished",
+      partsUsed: "Battery replacement, screen repair",
+      delayReason: "",
+      maintenanceType: "Repair",
+      maintenanceNotes: "Replaced the battery and repaired the screen.",
+      maintenancePersonnel: "Michael Adams",
+      maintenancePersonnelPhoto: "michael.jpg",
+      maintenancePersonnelCont: "01743217209",
+      branchName: "DHAKA Branch",
+    },
+    {
+      id: 10,
+      serialNumber: "SN10101",
+      name: "Tablet",
+      model: "TabPro",
+      manufacturer: "TechGadget",
+      status: "Finished",
+      partsUsed: "Battery replacement, screen repair",
+      delayReason: "",
+      maintenanceType: "Repair",
+      maintenanceNotes: "Replaced the battery and repaired the screen.",
+      maintenancePersonnel: "Michael Adams",
+      maintenancePersonnelPhoto: "michael.jpg",
+      maintenancePersonnelCont: "01743217209",
+      branchName: "DHAKA Branch",
+    },
+    {
+      id: 10,
+      serialNumber: "SN10101",
+      name: "Tablet",
+      model: "TabPro",
+      manufacturer: "TechGadget",
+      status: "Finished",
+      partsUsed: "Battery replacement, screen repair",
+      delayReason: "",
+      maintenanceType: "Repair",
+      maintenanceNotes: "Replaced the battery and repaired the screen.",
+      maintenancePersonnel: "Michael Adams",
+      maintenancePersonnelPhoto: "michael.jpg",
+      maintenancePersonnelCont: "01743217209",
+      branchName: "DHAKA Branch",
+    },
+    {
+      id: 10,
+      serialNumber: "SN10101",
+      name: "Tablet",
+      model: "TabPro",
+      manufacturer: "TechGadget",
+      status: "Finished",
+      partsUsed: "Battery replacement, screen repair",
+      delayReason: "",
+      maintenanceType: "Repair",
+      maintenanceNotes: "Replaced the battery and repaired the screen.",
+      maintenancePersonnel: "Michael Adams",
+      maintenancePersonnelPhoto: "michael.jpg",
+      maintenancePersonnelCont: "01743217209",
+      branchName: "DHAKA Branch",
+    },
+    {
+      id: 10,
+      serialNumber: "SN10101",
+      name: "Tablet",
+      model: "TabPro",
       manufacturer: "TechGadget",
       status: "Finished",
       partsUsed: "Battery replacement, screen repair",
@@ -181,94 +362,208 @@ const ServiceStatus = () => {
     }
     return 0;
   });
+
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = (product) => {
+    setSelectedProduct(product);
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedProduct(null);
+    setModalIsOpen(false);
+  };
+
+  const lateProducts = products.filter((product) => product.status === "Late");
+  const pendingProducts = products.filter(
+    (product) => product.status === "Pending"
+  );
+  const finishedProducts = products.filter(
+    (product) => product.status === "Finished"
+  );
+
+  const lateCount = lateProducts.length;
+  const pendingCount = pendingProducts.length;
+  const finishedCount = finishedProducts.length;
+
   return (
     <div>
       <TopNav />
       <CustomerSideNav />
       <div className="mx-auto container-box font-roboto">
-        <h1 className="mb-4 text-3xl font-bold text-center text-gray-800">
+        <h1 className="mt-2 text-3xl font-bold text-center text-gray-800">
           Service Maintenance Status
         </h1>
-        <div className="grid grid-cols-1 gap-4 p-4 text-gray-800 rounded-md md:grid-cols-1 xl:grid-cols-2">
+        <div className="fixed bottom-0 z-30 flex gap-4 px-4 py-2 text-lg bg-white right-2">
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 bg-red-500"></div>
+            <div>
+              <p>Late - {lateCount}</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 bg-blue-500"></div>
+            <div>
+              <p>Pending - {pendingCount}</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 bg-green-500"></div>
+            <div>
+              <p>Finished - {finishedCount}</p>
+            </div>
+          </div>
+        </div>
+        <div className="relative grid grid-cols-1 gap-4 z-20 p-4 mt-4 text-[#212529] rounded-md md:grid-cols-1 xl:grid-cols-4 ">
           {products.map((product) => (
             <div
               key={product.id}
-              className="relative p-4 transition duration-300 ease-in-out bg-white border shadow-md shadow-gray-400 rounded-xl hover:scale-103 hover:shadow-lg hover:shadow-gray-500"
+              className="transition duration-300 ease-in-out border rounded-lg shadow-md popup hover:scale-105"
+              onClick={() => openModal(product)}
             >
-              <div
-                className={`px-4 py-2 text-xl leading-snug rounded-se-xl rounded-es-xl text-white absolute right-0 top-0 w-28 text-center ${getStatusColorClass(
-                  product.status
-                )} `}
-              >
-                <p>
-                  <span>{product.status}</span>
-                </p>
+              <div className="z-40">
+                <span className=" popuptext">{product.maintenanceNotes}</span>
               </div>
-              <div className="">
-                <div className="pr-28">
-                  <div>
-                    <h2 className="mb-2 text-2xl font-extrabold text-red-500">
-                      {product.maintenanceType}
-                    </h2>
-                    <h2 className="text-xl font-bold">
-                      {product.name} - {product.model}
-                    </h2>
-                    <h4 className="text-xl font-semibold">
-                      Manufacturer: {product.manufacturer}
-                    </h4>
-                    <h4 className="text-xl font-semibold">
-                      Serial Number: {product.serialNumber}
-                    </h4>
-                    <h4 className="text-xl font-semibold">
-                      Branch Name: {product.branchName}
-                    </h4>
-                  </div>
-
-                  <div className="mt-2 text-lg">
-                    <p>
-                      <span className="font-semibold">Parts Used:</span>{" "}
-                      {product.partsUsed}
-                    </p>
-                    {product.status === "Late" && (
-                      <p>
-                        <span className="font-semibold">Reason for Delay:</span>{" "}
-                        {product.delayReason}
-                      </p>
-                    )}
-
-                    <p>
-                      <span className="font-semibold">Maintenance Notes:</span>{" "}
-                      {product.maintenanceNotes}
-                    </p>
+              <div className="flex h-full">
+                <div
+                  className={`w-1/3 rounded-l-lg text-white ${getStatusColorClass(
+                    product.status
+                  )}`}
+                >
+                  <div className="flex flex-col items-center justify-center h-full gap-2 p-4 ">
+                    <div>
+                      {product.status === "Late" && (
+                        <img src={Late} alt="Late" className="w-16" />
+                      )}
+                      {product.status === "Pending" && (
+                        <img src={Pending} alt="Pending" className="w-16" />
+                      )}
+                      {product.status === "Finished" && (
+                        <img src={Finished} alt="Finished" className="w-16" />
+                      )}
+                    </div>
+                    <div className="font-bold font-poppins">
+                      {product.status}
+                    </div>
                   </div>
                 </div>
-
-                <div className="flex items-center w-full gap-3 p-4 mt-4 border shadow-md">
-                  <div className="flex justify-center xl:w-1/2">
-                    <img
-                      src="https://i.postimg.cc/Jz4r8xz5/User-Avatar-Profile-PNG.png"
-                      alt={product.maintenancePersonnel}
-                      className="w-48 h-48 bg-gray-800 rounded-md shadow-md shadow-gray-500"
-                    />
-                  </div>
-                  <div className="text-lg xl:w-1/2">
-                    <p className="mb-1 font-semibold text-green-800">
-                      Maintenance Personnel
-                    </p>
-                    <p>
-                      <span className="font-semibold">Name: </span>
-                      {product.maintenancePersonnel}
-                    </p>
-                    <p>
-                      <span className="font-semibold">Contact No:</span>{" "}
-                      {product.maintenancePersonnelCont}
-                    </p>
-                  </div>
+                <div className="flex flex-col items-center justify-center w-2/3 gap-0.5 p-4 text-center">
+                  <div className="font-bold ">{product.name}</div>
+                  <div className="font-semibold ">{product.model}</div>
+                  <div>{product.branchName}</div>
                 </div>
               </div>
             </div>
           ))}
         </div>
+      </div>
+      <div>
+        <ReactModal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          contentLabel="Product Details Modal"
+          overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center px-4"
+          className="absolute w-2/5 bg-white outline-none rounded-xl"
+        >
+          <button
+            className="absolute text-2xl text-white cursor-pointer top-2 right-2"
+            onClick={closeModal}
+          >
+            <AiFillCloseCircle />
+          </button>
+          {selectedProduct && (
+            <div className="rounded-md font-roboto">
+              <div>
+                <div
+                  className={`w-full rounded-t-md text-white ${getStatusColorClass(
+                    selectedProduct.status
+                  )}`}
+                >
+                  <div className="flex flex-col items-center justify-center h-full gap-2 p-4 ">
+                    <div className="flex items-center gap-4">
+                      <div>
+                        {selectedProduct.status === "Late" && (
+                          <img src={Late} alt="Late" className="w-16" />
+                        )}
+                        {selectedProduct.status === "Pending" && (
+                          <img src={Pending} alt="Pending" className="w-16" />
+                        )}
+                        {selectedProduct.status === "Finished" && (
+                          <img src={Finished} alt="Finished" className="w-16" />
+                        )}
+                      </div>
+                      <div className="text-2xl font-semibold">
+                        {selectedProduct.status}
+                      </div>
+                    </div>
+                    <div>
+                      {selectedProduct.status === "Late" && (
+                        <p className="text-lg">
+                          Reason for Delay: {selectedProduct.delayReason}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+                <div className="p-4 px-8 text-lg rounded-b-md">
+                  <h2 className="mb-2 text-2xl font-extrabold text-center text-red-500">
+                    {selectedProduct.maintenanceType}
+                  </h2>
+                  <h2 className="text-xl font-bold">
+                    {selectedProduct.name} - {selectedProduct.model}
+                  </h2>
+                  <h4>
+                    <span>Manufacturer: </span>
+                    {selectedProduct.manufacturer}
+                  </h4>
+                  <h4>
+                    <span>Serial Number: </span>
+                    {selectedProduct.serialNumber}
+                  </h4>
+                  <h4>
+                    <span>Branch Name: </span>
+                    {selectedProduct.branchName}
+                  </h4>
+                  <div>
+                    <p>
+                      <span className="font-semibold">Parts Used: </span>
+                      {selectedProduct.partsUsed}
+                    </p>
+                    <p>
+                      <span className="font-semibold">Maintenance Notes: </span>
+                      {selectedProduct.maintenanceNotes}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex w-full px-8 mb-4">
+                  <div>
+                    <img
+                      src="https://i.postimg.cc/Jz4r8xz5/User-Avatar-Profile-PNG.png"
+                      alt={selectedProduct.maintenancePersonnel}
+                      className="w-24 h-24 bg-gray-800 rounded-md shadow-md shadow-gray-500"
+                    />
+                  </div>
+                  <div className="flex flex-col justify-center ml-4">
+                    <p className="mb-1 font-semibold text-green-800">
+                      Maintenance Personnel
+                    </p>
+                    <p>
+                      <span className="font-semibold">Name: </span>
+                      {selectedProduct.maintenancePersonnel}
+                    </p>
+                    <p>
+                      <span className="font-semibold">Contact No: </span>
+                      {selectedProduct.maintenancePersonnelCont}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </ReactModal>
       </div>
     </div>
   );

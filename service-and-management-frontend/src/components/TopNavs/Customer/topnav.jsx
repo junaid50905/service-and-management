@@ -23,7 +23,7 @@ const TopNav = () => {
     }
   };
   return (
-    <div className="fixed h-16 text-white bg-[#333333] topnav">
+    <div className="fixed h-16 text-white bg-[#333333] topnav z-10">
       <nav className="h-full">
         <ul className="flex items-center justify-between h-full mx-4">
           <li className="ml-8">
@@ -33,7 +33,7 @@ const TopNav = () => {
           </li>
           <li>
             <div className="flex gap-8">
-              <div className="text-xl">
+              <div className="text-2xl font-semibold font-roboto">
                 <Link to="/customer/servprogress">Eastern Bank PLC</Link>
               </div>
               <div className="w-6">

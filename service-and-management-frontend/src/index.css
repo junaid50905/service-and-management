@@ -66,11 +66,6 @@ ul {
   cursor: pointer;
 }
 
-.container-box,
-.sidenav {
-  margin-top: 64px;
-}
-
 .container-box {
   position: fixed;
   left: 18vw;
@@ -80,6 +75,11 @@ ul {
   height: 100vh;
   padding-bottom: 80px;
   background-color: #fff;
+}
+
+.container-box,
+.sidenav {
+  margin-top: 70px;
 }
 
 .container-box-full {
@@ -175,5 +175,67 @@ tr:hover td {
 
 .active {
   color: #ff0000;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+}
+span {
+  font-weight: bold;
+}
+
+/* Popup container */
+.popup {
+  cursor: pointer;
+}
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+  visibility: hidden;
+  width: 300px;
+  background-color: #e6e6fa;
+  color: #000080;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  margin-left: -150px;
+  padding: 16px;
+  font-weight: 300;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #e6e6fa transparent transparent transparent;
+}
+
+.popup:hover .popuptext {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
