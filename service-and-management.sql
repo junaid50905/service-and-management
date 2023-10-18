@@ -1,18 +1,16 @@
 -- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
---
-<<<<<<< HEAD
 -- Host: 127.0.0.1
 -- Generation Time: Oct 18, 2023 at 09:17 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
-=======
+
 -- Host: localhost:3306
 -- Generation Time: Oct 16, 2023 at 10:22 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
->>>>>>> 3b5a7f1e3ee24f67a854429495eebf0e3268048e
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -215,11 +213,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (8, '2023_09_26_174533_create_expertises_table', 5),
 (9, '2023_09_26_175124_create_customers_table', 6),
-<<<<<<< HEAD
 (16, '2023_09_26_204315_create_checklists_table', 12),
-=======
 (13, '2014_10_12_000000_create_users_table', 10),
->>>>>>> 3b5a7f1e3ee24f67a854429495eebf0e3268048e
 (17, '2023_09_26_174216_create_categories_table', 13),
 (22, '2023_09_28_171645_create_subcategories_table', 15),
 (23, '2023_09_26_173820_create_products_table', 16),
@@ -229,13 +224,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (31, '2023_10_11_151910_create_category_subcategory_table', 22),
 (32, '2023_10_11_162819_create_appliances_table', 22),
 (33, '2023_10_12_100628_create_servicing_orders_table', 22),
-<<<<<<< HEAD
 (34, '2014_10_12_000000_create_users_table', 23);
-=======
 (34, '2023_10_01_150345_create_appiontments_table', 23),
 (35, '2023_09_26_174336_create_engineers_table', 24),
 (36, '2023_09_26_204315_create_checklists_table', 25);
->>>>>>> 3b5a7f1e3ee24f67a854429495eebf0e3268048e
 
 -- --------------------------------------------------------
 
@@ -403,20 +395,17 @@ INSERT INTO `subcategories` (`id`, `category_id`, `name`, `created_at`, `updated
 --
 
 CREATE TABLE `users` (
-<<<<<<< HEAD
   `id` bigint(20) UNSIGNED NOT NULL,
   `usertype` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
-=======
   `id` bigint UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
->>>>>>> 3b5a7f1e3ee24f67a854429495eebf0e3268048e
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -428,16 +417,15 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-<<<<<<< HEAD
+
 INSERT INTO `users` (`id`, `usertype`, `name`, `email`, `address`, `phone`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'solo', 'MD. Tajimul Islam', 'tazim@gmail.com', 'Dhaka Bangladesh', '123456', NULL, '$2y$10$4NBshPasg4XFTPm3V7rs6eKCmu8kUzMtf9AbaifAbQTC7OfoVcoEW', NULL, '2023-10-18 07:02:55', '2023-10-18 07:02:55');
-=======
 INSERT INTO `users` (`id`, `name`, `email`, `address`, `phone`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'junaid', 'junaid@gmail.com', 'gazipur', '013', '2023-10-18 05:27:45', '123', NULL, NULL, NULL),
 (2, 'arman', 'arman@gmail.com', 'chandpur', '019', NULL, '123', NULL, '2023-09-04 06:53:50', '2023-09-04 06:53:50'),
 (5, 'emon hasan', 'emonhasan@gmail.com', 'Rabbi towar, Board Bazar, Gazipur', '01459032208', NULL, '$2y$10$mEY/G8OWkXXchmAK19o.FOph3ybKFHGzrpTZs6t5K550BJQVGwr1.', NULL, '2023-10-16 08:57:47', '2023-10-16 08:57:47'),
 (6, 'abc', 'abc@gmail.com', 'Rabbi towar, Board Bazar, Gazipur', '+1 (842) 401-3921434', NULL, '$2y$10$TUypkIMFxSlE6TArTJDGMurHyZll2NF3U3rlENUQcLS6kK.kzWuYu', NULL, '2023-10-16 10:08:20', '2023-10-16 10:08:20');
->>>>>>> 3b5a7f1e3ee24f67a854429495eebf0e3268048e
+
 
 --
 -- Indexes for dumped tables
@@ -622,11 +610,9 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-<<<<<<< HEAD
+
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
-=======
   MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
->>>>>>> 3b5a7f1e3ee24f67a854429495eebf0e3268048e
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -668,11 +654,9 @@ ALTER TABLE `subcategories`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-<<<<<<< HEAD
+
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-=======
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
->>>>>>> 3b5a7f1e3ee24f67a854429495eebf0e3268048e
 
 --
 -- Constraints for dumped tables

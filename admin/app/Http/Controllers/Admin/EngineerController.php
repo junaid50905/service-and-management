@@ -47,7 +47,8 @@ class EngineerController extends Controller
     {
         $engineer = Engineer::find($id);
         $categories = Category::all();
-        $subcategories = Subcategory::all();
+        $category_id = Engineer::where('id', $id)->first()->category_id;
+        $subcategories = Subcategory::where('category_id', $category_id)->get();
         return view('admin.engineer.edit', compact('engineer', 'categories', 'subcategories'));
     }
 
@@ -73,5 +74,20 @@ class EngineerController extends Controller
     {
         Engineer::destroy($id);
         return redirect()->route('engineer.index')->with('engineer_delete', 'Engineer has been deleted');
+    }
+
+
+
+    ////////// dependancy dropdown /////////////
+    public function getSubcategory($category_id)
+    {
+        $html = '';
+        $subcategories = Subcategory::where('category_id', $category_id)->get();
+
+        $html .= '<option selected>Select subcategory</option>';
+        foreach ($subcategories as $subcategory) {
+            $html .= '<option value="' . $subcategory->id . '">' . $subcategory->name . '</option>';
+        }
+        return response()->json($html);
     }
 }

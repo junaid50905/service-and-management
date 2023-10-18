@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Category;
+use App\Models\Admin\Product;
 use App\Models\Admin\Subcategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -14,8 +15,7 @@ class ApplianceController extends Controller
     public function create()
     {
         $categories = Category::all();
-        $subcategories = Subcategory::all();
-        return view('admin.appliance.create', compact('categories', 'subcategories'));
+        return view('admin.appliance.create', compact('categories'));
     }
     // store
     public function store(Request $request)
@@ -46,7 +46,8 @@ class ApplianceController extends Controller
     {
         $appliance = DB::table('appliances')->where('id', $id)->first();
         $categories = Category::all();
-        $subcategories = Subcategory::all();
+        $category_id = DB::table('appliances')->where('id', $id)->first()->category_id;
+        $subcategories = Subcategory::where('category_id', $category_id)->get();
         return view('admin.appliance.edit', compact('appliance', 'categories', 'subcategories'));
     }
     // update
@@ -61,4 +62,20 @@ class ApplianceController extends Controller
         ]);
         return redirect()->route('appliance.index')->with('appliance_update', "Appliance information has been updated");
     }
+
+
+    ////////// dependancy dropdown /////////////
+    public function getSubcategory($category_id)
+    {
+        $html = '';
+        $subcategories = Subcategory::where('category_id', $category_id)->get();
+
+        $html .= '<option selected>Select subcategory</option>';
+        foreach ($subcategories as $subcategory) {
+            $html .= '<option value="' . $subcategory->id . '">' . $subcategory->name . '</option>';
+        }
+        return response()->json($html);
+    }
+
+
 }

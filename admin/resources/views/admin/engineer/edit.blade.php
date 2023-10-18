@@ -39,8 +39,8 @@
                         </div>
 
                         <div lass="form-group">
-                            <label for="category">Select category</label>
-                            <select name="category_id" class="form-select form-select-sm bg-secondary text-light mb-3">
+                            <label for="category">Category</label>
+                            <select name="category_id" id="category_id" class="form-select form-select-sm bg-secondary text-light mb-3">
                                 @foreach ($categories as $category)
                                 <option value={{ $category->id }} {{ $category->id == $engineer->category_id ? 'selected' : '' }}>{{ $category->name }}</option>
                                 @endforeach
@@ -51,10 +51,10 @@
                         </div>
 
                         <div lass="form-group">
-                            <label for="subcategory">Select subcategory</label>
-                            <select name="subcategory_id" class="form-select form-select-sm bg-secondary text-light mb-3">
+                            <label for="subcategory">Subcategory</label>
+                            <select name="subcategory_id" id="subcategory_id" class="form-select form-select-sm bg-secondary text-light mb-3">
                                 @foreach ($subcategories as $subcategory)
-                                <option value={{ $subcategory->id }} {{ $subcategory->id == $engineer->subcategory_id ? 'selected' : '' }}>{{ $subcategory->name }}</option>
+                                <option value="{{ $subcategory->id }}" {{ $subcategory->id == $engineer->subcategory_id ? 'selected' : '' }}>{{ $subcategory->name }}</option>
                                 @endforeach
                             </select>
                             @error('subcategory_id')
@@ -69,4 +69,39 @@
             </div>
         </div>
     </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(document).on('change', '#category_id', function() {
+                // ajax setup
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                // get the subcategory id from the form
+                var category_id = $(this).val()
+
+                $('#subcategory_id').html('');
+
+                $.ajax({
+                    type: "GET",
+                    url: "{{ url('getSubcategory') }}"+ "/"+ category_id,
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data);
+                        $('#subcategory_id').html(data);
+                    },
+                    error: function(error)
+                    {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
 @endsection
