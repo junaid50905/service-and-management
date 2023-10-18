@@ -51,6 +51,7 @@ function App() {
           path="/customer/contsupport"
           element={<ContactSupport />}
         ></Route>
+        {/* servhistory */}
         <Route
           path="/customer/termsandcondition"
           element={<TermsAndCondition />}

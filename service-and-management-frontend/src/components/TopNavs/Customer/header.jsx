@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import logo from "../../../assets/images/aamra-companies.png";
 import { FaShoppingCart } from "react-icons/fa";
-import { BiLogOut } from "react-icons/bi";
-import { Link, useNavigate } from "react-router-dom";
-import { getToken, removeToken } from "../../../services/localStorageService";
-
-import { useLogoutUserMutation } from "../../../services/userAuthApi";
+import { Link } from "react-router-dom";
+import { getToken } from "../../../services/localStorageService";
 import { useGetLoggedUserQuery } from "../../../services/userAuthApi";
 
 const Header = () => {
@@ -13,23 +10,7 @@ const Header = () => {
     email: "",
   });
 
-  const navigate = useNavigate();
   const token = getToken();
-  const [logoutUser] = useLogoutUserMutation();
-  const handleLogout = async () => {
-    const response = await logoutUser({ token });
-    console.log(response);
-    if (response.data) {
-      if (response.data.status === "success") {
-        removeToken("token");
-        setUserData({
-          email: "",
-        });
-        navigate("/login");
-        console.log("success");
-      }
-    }
-  };
 
   const { data, isSuccess } = useGetLoggedUserQuery(token);
 
@@ -74,19 +55,16 @@ const Header = () => {
               <div className="flex gap-6">
                 <Link
                   to="/customer/servprogress"
-                  className="font-bold text-gray-700 text-lg"
+                  className="text-lg font-bold text-gray-700"
                 >
                   {userData.email}
                 </Link>
                 <Link
                   to="/customer/servprogress"
-                  className="font-bold text-indigo-500 text-lg"
+                  className="text-lg font-bold text-indigo-500"
                 >
                   Service & Management
                 </Link>
-                <button onClick={handleLogout}>
-                  <BiLogOut className="w-6 h-6" />
-                </button>
               </div>
             ) : (
               // Render the "no token" part

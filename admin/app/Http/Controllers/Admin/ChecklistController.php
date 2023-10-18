@@ -26,7 +26,7 @@ class ChecklistController extends Controller
         $appiontment_id = $request->appiontment_id;
         $hasAppiontment = Appiontment::where('id', $appiontment_id)->first();
 
-        if($hasAppiontment){
+        if ($hasAppiontment) {
             $appliance_names = $request->appliance_name;
             $appliance_prices = $request->appliance_price;
 
@@ -51,7 +51,7 @@ class ChecklistController extends Controller
             ]);
 
             return redirect()->route('checklist.index')->with('checklist_create', 'Checklist added successfully');
-        }else{
+        } else {
             return redirect()->route('checklist.create')->with('unavailable_appiontment', "Unavailable appiontment");
         }
     }

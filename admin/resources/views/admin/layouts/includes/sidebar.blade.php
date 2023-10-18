@@ -66,7 +66,7 @@
         <li class="nav-item menu-items mt-2">
             <a class="nav-link" href="{{ route('dashboard') }}">
                 <span class="menu-icon">
-                    <i class="mdi mdi-speedometer"></i>
+                    <i class="mdi mdi-view-dashboard"></i>
                 </span>
                 <span class="menu-title">Dashboard</span>
             </a>
@@ -77,7 +77,7 @@
             <a class="nav-link" data-bs-toggle="collapse" href="#category" aria-expanded="false"
                 aria-controls="category">
                 <span class="menu-icon">
-                    <i class="mdi mdi-laptop"></i>
+                    <i class="mdi mdi-access-point"></i>
                 </span>
                 <span class="menu-title">Category</span>
                 <i class="menu-arrow"></i>
@@ -96,7 +96,7 @@
             <a class="nav-link" data-bs-toggle="collapse" href="#subcategory" aria-expanded="false"
                 aria-controls="subcategory">
                 <span class="menu-icon">
-                    <i class="mdi mdi-laptop"></i>
+                    <i class="mdi mdi-airplane"></i>
                 </span>
                 <span class="menu-title">Subcategory</span>
                 <i class="menu-arrow"></i>
@@ -115,7 +115,7 @@
             <a class="nav-link" data-bs-toggle="collapse" href="#product" aria-expanded="false"
                 aria-controls="product">
                 <span class="menu-icon">
-                    <i class="mdi mdi-laptop"></i>
+                    <i class="mdi mdi-alarm-plus"></i>
                 </span>
                 <span class="menu-title">Product</span>
                 <i class="menu-arrow"></i>
@@ -133,7 +133,7 @@
             <a class="nav-link" data-bs-toggle="collapse" href="#appliance" aria-expanded="false"
                 aria-controls="appliance">
                 <span class="menu-icon">
-                    <i class="mdi mdi-laptop"></i>
+                    <i class="mdi mdi-anchor"></i>
                 </span>
                 <span class="menu-title">Appliance</span>
                 <i class="menu-arrow"></i>
@@ -151,7 +151,7 @@
             <a class="nav-link" data-bs-toggle="collapse" href="#engineer" aria-expanded="false"
                 aria-controls="engineer">
                 <span class="menu-icon">
-                    <i class="mdi mdi-laptop"></i>
+                    <i class="mdi mdi-arrange-send-backward"></i>
                 </span>
                 <span class="menu-title">Engineer</span>
                 <i class="menu-arrow"></i>
@@ -169,7 +169,7 @@
             <a class="nav-link" data-bs-toggle="collapse" href="#customer" aria-expanded="false"
                 aria-controls="customer">
                 <span class="menu-icon">
-                    <i class="mdi mdi-laptop"></i>
+                    <i class="mdi mdi-arrow-down-bold-hexagon-outline"></i>
                 </span>
                 <span class="menu-title">Customer</span>
                 <i class="menu-arrow"></i>
@@ -181,7 +181,7 @@
                 </ul>
             </div>
         </li>
-        
+
 
 
         {{-- selling product --}}
@@ -189,7 +189,7 @@
             <a class="nav-link" data-bs-toggle="collapse" href="#sellingProduct" aria-expanded="false"
                 aria-controls="sellingProduct">
                 <span class="menu-icon">
-                    <i class="mdi mdi-laptop"></i>
+                    <i class="mdi mdi-assistant"></i>
                 </span>
                 <span class="menu-title">Sell Products</span>
                 <i class="menu-arrow"></i>
@@ -212,7 +212,7 @@
             <a class="nav-link" data-bs-toggle="collapse" href="#appiontment" aria-expanded="false"
                 aria-controls="appiontment">
                 <span class="menu-icon">
-                    <i class="mdi mdi-laptop"></i>
+                    <i class="mdi mdi-basket-unfill"></i>
                 </span>
                 <span class="menu-title">Appiontment</span>
                 <i class="menu-arrow"></i>
@@ -230,7 +230,7 @@
             <a class="nav-link" data-bs-toggle="collapse" href="#checklist" aria-expanded="false"
                 aria-controls="checklist">
                 <span class="menu-icon">
-                    <i class="mdi mdi-laptop"></i>
+                    <i class="mdi mdi-battery-charging-40"></i>
                 </span>
                 <span class="menu-title">Checklist</span>
                 <i class="menu-arrow"></i>
@@ -246,7 +246,7 @@
         <li class="nav-item menu-items mt-2">
             <a class="nav-link" href="pages/forms/basic_elements.html">
                 <span class="menu-icon">
-                    <i class="mdi mdi-playlist-play"></i>
+                    <i class="mdi mdi-beer"></i>
                 </span>
                 <span class="menu-title">Form Elements</span>
             </a>

@@ -6,85 +6,166 @@ const ServiceStatus = () => {
   const products = [
     {
       id: 1,
-      name: "Product 1",
-      model: "Model A",
+      serialNumber: "SN12345",
+      name: "Laptop",
+      model: "Model X1",
+      manufacturer: "TechCorp",
       status: "Pending",
       partsUsed: "None",
       delayReason: "",
+      maintenanceType: "Scheduled Maintenance",
+      maintenanceNotes: "Routine cleaning and software update.",
+      maintenancePersonnel: "Alice Johnson",
+      maintenancePersonnelPhoto: "alice.jpg",
+      maintenancePersonnelCont: "01743217209",
+      branchName: "DHAKA Branch",
     },
     {
       id: 2,
-      name: "Product 2",
-      model: "Model B",
+      serialNumber: "SN67890",
+      name: "Smartphone",
+      model: "Model S2",
+      manufacturer: "MobileTech",
       status: "Finished",
-      partsUsed: "Part 123, Part 456",
+      partsUsed: "Screen replacement, battery upgrade",
       delayReason: "",
+      maintenanceType: "Repair",
+      maintenanceNotes: "Repaired screen and upgraded battery.",
+      maintenancePersonnel: "Bob Smith",
+      maintenancePersonnelPhoto: "bob.jpg",
+      maintenancePersonnelCont: "01743217209",
+      branchName: "SYLHET Branch",
     },
     {
       id: 3,
-      name: "Product 3",
-      model: "Model C",
+      serialNumber: "SN54321",
+      name: "Refrigerator",
+      model: "Model FridgeMaster",
+      manufacturer: "CoolTech",
       status: "Late",
-      partsUsed: "Part 789",
+      partsUsed: "Compressor replacement",
       delayReason: "Supplier delay",
+      maintenanceType: "Emergency Repair",
+      maintenanceNotes: "Replaced compressor due to failure.",
+      maintenancePersonnel: "Elena Rodriguez",
+      maintenancePersonnelPhoto: "elena.jpg",
+      maintenancePersonnelCont: "01743217209",
+      branchName: "DHAKA Branch",
     },
     {
       id: 4,
-      name: "Product 4",
-      model: "Model D",
-      status: "Pending",
-      partsUsed: "None",
+      serialNumber: "SN98765",
+      name: "Digital Camera",
+      model: "Model SnapShot",
+      manufacturer: "PhotoGear",
+      status: "Finished",
+      partsUsed: "Lens cleaning, firmware update",
       delayReason: "",
+      maintenanceType: "Routine Maintenance",
+      maintenanceNotes: "Cleaned the lens and updated firmware.",
+      maintenancePersonnel: "David Brown",
+      maintenancePersonnelPhoto: "david.jpg",
+      maintenancePersonnelCont: "01743217209",
+      branchName: "DHAKA Branch",
     },
     {
       id: 5,
-      name: "Product 5",
-      model: "Model E",
-      status: "Finished",
-      partsUsed: "Part 123, Part 456",
-      delayReason: "",
+      serialNumber: "SN24680",
+      name: "Coffee Maker",
+      model: "Model BrewMaster",
+      manufacturer: "CafeTech",
+      status: "Late",
+      partsUsed: "Heating element replacement",
+      delayReason: "Supplier delay",
+      maintenanceType: "Emergency Repair",
+      maintenanceNotes: "Replaced heating element due to malfunction.",
+      maintenancePersonnel: "Grace Taylor",
+      maintenancePersonnelPhoto: "grace.jpg",
+      maintenancePersonnelCont: "01743217209",
+      branchName: "SYLHET Branch",
     },
     {
       id: 6,
-      name: "Product 6",
-      model: "Model F",
-      status: "Late",
-      partsUsed: "Part 789",
-      delayReason: "Supplier delay",
+      serialNumber: "SN13579",
+      name: "Television",
+      model: "Model UltraView",
+      manufacturer: "VisionTech",
+      status: "Pending",
+      partsUsed: "None",
+      delayReason: "",
+      maintenanceType: "Installation",
+      maintenanceNotes: "Installed and configured the TV set.",
+      maintenancePersonnel: "James Wilson",
+      maintenancePersonnelPhoto: "james.jpg",
+      maintenancePersonnelCont: "01743217209",
+      branchName: "DHAKA Branch",
     },
     {
       id: 7,
-      name: "Product 7",
-      model: "Model G",
+      serialNumber: "SN11223",
+      name: "Washing Machine",
+      model: "Model CleanWash",
+      manufacturer: "LaundryTech",
       status: "Late",
-      partsUsed: "Part 789",
+      partsUsed: "Pump replacement",
       delayReason: "Supplier delay",
+      maintenanceType: "Emergency Repair",
+      maintenanceNotes: "Replaced the pump due to a malfunction.",
+      maintenancePersonnel: "Olivia Martinez",
+      maintenancePersonnelPhoto: "olivia.jpg",
+      maintenancePersonnelCont: "01743217209",
+      branchName: "DHAKA Branch",
     },
     {
       id: 8,
-      name: "Product 8",
-      model: "Model H",
-      status: "Late",
-      partsUsed: "Part 789",
-      delayReason: "Supplier delay",
+      serialNumber: "SN87654",
+      name: "Microwave Oven",
+      model: "Model HeatWave",
+      manufacturer: "KitchenTech",
+      status: "Finished",
+      partsUsed: "Magnetron replacement, door latch repair",
+      delayReason: "",
+      maintenanceType: "Repair",
+      maintenanceNotes: "Replaced magnetron and repaired the door latch.",
+      maintenancePersonnel: "William Lee",
+      maintenancePersonnelPhoto: "william.jpg",
+      maintenancePersonnelCont: "01743217209",
+      branchName: "DHAKA Branch",
     },
     {
       id: 9,
-      name: "Product 9",
-      model: "Model I",
+      serialNumber: "SN45678",
+      name: "Air Conditioner",
+      model: "Model CoolBreeze",
+      manufacturer: "ClimateTech",
       status: "Pending",
-      partsUsed: "Part 789",
-      delayReason: "Supplier delay",
+      partsUsed: "None",
+      delayReason: "",
+      maintenanceType: "Scheduled Maintenance",
+      maintenanceNotes: "Cleaned filters and checked refrigerant levels.",
+      maintenancePersonnel: "Sophia Chen",
+      maintenancePersonnelPhoto: "sophia.jpg",
+      maintenancePersonnelCont: "01743217209",
+      branchName: "DHAKA Branch",
     },
     {
       id: 10,
-      name: "Product 10",
-      model: "Model J",
+      serialNumber: "SN10101",
+      name: "Tablet",
+      model: "Model TabPro",
+      manufacturer: "TechGadget",
       status: "Finished",
-      partsUsed: "Part 789",
-      delayReason: "Supplier delay",
+      partsUsed: "Battery replacement, screen repair",
+      delayReason: "",
+      maintenanceType: "Repair",
+      maintenanceNotes: "Replaced the battery and repaired the screen.",
+      maintenancePersonnel: "Michael Adams",
+      maintenancePersonnelPhoto: "michael.jpg",
+      maintenancePersonnelCont: "01743217209",
+      branchName: "DHAKA Branch",
     },
   ];
+
   products.sort((a, b) => {
     if (a.status === "Late" && b.status !== "Late") {
       return -1;
@@ -104,35 +185,86 @@ const ServiceStatus = () => {
     <div>
       <TopNav />
       <CustomerSideNav />
-      <div className="mx-auto text-gray-800 container-box">
-        <h1 className="mb-4 text-2xl font-semibold text-center">
+      <div className="mx-auto container-box font-roboto">
+        <h1 className="mb-4 text-3xl font-bold text-center text-gray-800">
           Service Maintenance Status
         </h1>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 p-4 text-gray-800 rounded-md md:grid-cols-1 xl:grid-cols-2">
           {products.map((product) => (
             <div
               key={product.id}
-              className="p-4 transition duration-300 ease-in-out rounded-md shadow-md hover:scale-103 border border-gray-800 font-sans"
+              className="relative p-4 transition duration-300 ease-in-out bg-white border shadow-md shadow-gray-400 rounded-xl hover:scale-103 hover:shadow-lg hover:shadow-gray-500"
             >
-              <h2 className="text-lg font-semibold">
-                {product.name} - {product.model}
-              </h2>
-              <div className="mt-2">
-                <p className="py-2 text-lg">
-                  Status:
-                  <span
-                    className={`px-3 py-0.5 rounded ml-2 border-2 ${getStatusColorClass(
-                      product.status
-                    )} `}
-                  >
-                    {product.status}
-                  </span>
+              <div
+                className={`px-4 py-2 text-xl leading-snug rounded-se-xl rounded-es-xl text-white absolute right-0 top-0 w-28 text-center ${getStatusColorClass(
+                  product.status
+                )} `}
+              >
+                <p>
+                  <span>{product.status}</span>
                 </p>
+              </div>
+              <div className="">
+                <div className="pr-28">
+                  <div>
+                    <h2 className="mb-2 text-2xl font-extrabold text-red-500">
+                      {product.maintenanceType}
+                    </h2>
+                    <h2 className="text-xl font-bold">
+                      {product.name} - {product.model}
+                    </h2>
+                    <h4 className="text-xl font-semibold">
+                      Manufacturer: {product.manufacturer}
+                    </h4>
+                    <h4 className="text-xl font-semibold">
+                      Serial Number: {product.serialNumber}
+                    </h4>
+                    <h4 className="text-xl font-semibold">
+                      Branch Name: {product.branchName}
+                    </h4>
+                  </div>
 
-                <p>Parts Used: {product.partsUsed}</p>
-                {product.status === "Late" && (
-                  <p>Reason for Delay: {product.delayReason}</p>
-                )}
+                  <div className="mt-2 text-lg">
+                    <p>
+                      <span className="font-semibold">Parts Used:</span>{" "}
+                      {product.partsUsed}
+                    </p>
+                    {product.status === "Late" && (
+                      <p>
+                        <span className="font-semibold">Reason for Delay:</span>{" "}
+                        {product.delayReason}
+                      </p>
+                    )}
+
+                    <p>
+                      <span className="font-semibold">Maintenance Notes:</span>{" "}
+                      {product.maintenanceNotes}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center w-full gap-3 p-4 mt-4 border shadow-md">
+                  <div className="flex justify-center xl:w-1/2">
+                    <img
+                      src="https://i.postimg.cc/Jz4r8xz5/User-Avatar-Profile-PNG.png"
+                      alt={product.maintenancePersonnel}
+                      className="w-48 h-48 bg-gray-800 rounded-md shadow-md shadow-gray-500"
+                    />
+                  </div>
+                  <div className="text-lg xl:w-1/2">
+                    <p className="mb-1 font-semibold text-green-800">
+                      Maintenance Personnel
+                    </p>
+                    <p>
+                      <span className="font-semibold">Name: </span>
+                      {product.maintenancePersonnel}
+                    </p>
+                    <p>
+                      <span className="font-semibold">Contact No:</span>{" "}
+                      {product.maintenancePersonnelCont}
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           ))}
@@ -145,13 +277,13 @@ const ServiceStatus = () => {
 function getStatusColorClass(status) {
   switch (status) {
     case "Pending":
-      return "text-blue-500 border-blue-500";
+      return "bg-blue-500";
     case "Late":
-      return "text-red-500 border-red-500";
+      return "bg-red-500";
     case "Finished":
-      return "text-green-500 border-green-500";
+      return "bg-green-500";
     default:
-      return "text-gray-500 border-gray-500";
+      return "bg-gray-500";
   }
 }
 

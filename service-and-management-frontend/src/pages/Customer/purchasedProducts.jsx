@@ -9,7 +9,7 @@ const PurchasedProducts = () => {
       id: 1,
       productName: "Smartphone",
       model: "XYZ-123",
-      regNo: "15242",
+      serialNumber: "SN45678",
       purchaseDate: "2022-05-20",
       warrantyDuration: "2 years",
       warrantyTimeLeft: "365 days",
@@ -20,7 +20,7 @@ const PurchasedProducts = () => {
       id: 2,
       productName: "Laptop",
       model: "ABC-456",
-      regNo: "11342",
+      serialNumber: "SN35628",
       purchaseDate: "2023-01-15",
       warrantyDuration: "3 years",
       warrantyTimeLeft: "900 days",
@@ -31,7 +31,7 @@ const PurchasedProducts = () => {
       id: 3,
       productName: "Refrigerator",
       model: "DEF-789",
-      regNo: "15242",
+      serialNumber: "SN172633",
       purchaseDate: "2022-10-10",
       warrantyDuration: "5 years",
       warrantyTimeLeft: "500 days",
@@ -42,7 +42,7 @@ const PurchasedProducts = () => {
       id: 4,
       productName: "Smart TV",
       model: "GHI-101",
-      regNo: "15242",
+      serialNumber: "SN111241",
       purchaseDate: "2023-03-30",
       warrantyDuration: "2 years",
       warrantyTimeLeft: "600 days",
@@ -53,7 +53,7 @@ const PurchasedProducts = () => {
       id: 5,
       productName: "Tablet",
       model: "JKL-202",
-      regNo: "15242",
+      serialNumber: "SN312202",
       purchaseDate: "2023-07-08",
       warrantyDuration: "1 year",
       warrantyTimeLeft: "300 days",
@@ -64,7 +64,7 @@ const PurchasedProducts = () => {
       id: 6,
       productName: "Digital Camera",
       model: "MNO-303",
-      regNo: "15242",
+      serialNumber: "SN115042",
       purchaseDate: "2022-11-25",
       warrantyDuration: "4 years",
       warrantyTimeLeft: "1000 days",
@@ -75,7 +75,7 @@ const PurchasedProducts = () => {
       id: 7,
       productName: "Washing Machine",
       model: "PQR-404",
-      regNo: "15242",
+      serialNumber: "SN317242",
       purchaseDate: "2023-02-12",
       warrantyDuration: "3 years",
       warrantyTimeLeft: "800 days",
@@ -86,7 +86,7 @@ const PurchasedProducts = () => {
       id: 8,
       productName: "Microwave Oven",
       model: "STU-505",
-      regNo: "15242",
+      serialNumber: "SN815249",
       purchaseDate: "2023-04-05",
       warrantyDuration: "2 years",
       warrantyTimeLeft: "600 days",
@@ -97,7 +97,7 @@ const PurchasedProducts = () => {
       id: 9,
       productName: "Headphones",
       model: "VWX-606",
-      regNo: "15242",
+      serialNumber: "SN819242",
       purchaseDate: "2022-08-15",
       warrantyDuration: "1 year",
       warrantyTimeLeft: "45 days",
@@ -108,7 +108,7 @@ const PurchasedProducts = () => {
       id: 10,
       productName: "Gaming Console",
       model: "YZA-707",
-      regNo: "15242",
+      serialNumber: "SN915142",
       purchaseDate: "2023-06-30",
       warrantyDuration: "2 years",
       warrantyTimeLeft: "650 days",
@@ -122,11 +122,10 @@ const PurchasedProducts = () => {
       <TopNav />
       <CustomerSideNav />
       <div className="mx-auto container-box ">
-      <h1 className="mb-4 text-2xl font-semibold text-center">
+        <h1 className="mb-4 text-2xl font-semibold text-center">
           Purchased Products
         </h1>
         <div className="my-6 bg-white rounded shadow-md ">
-          
           <table className="w-full border border-collapse table-fixed border-slate-500">
             <thead>
               <tr className="text-sm leading-normal text-white uppercase bg-tableHeading">
@@ -143,16 +142,16 @@ const PurchasedProducts = () => {
                   Model
                 </th>
                 <th className="px-2 py-3 text-center break-words border border-slate-600">
-                  Reg No
+                  Serial Number
                 </th>
                 <th className="px-2 py-3 text-center break-words border border-slate-600">
-                  Date
+                  Purchase Date
                 </th>
                 <th className="px-2 py-3 text-center break-words border border-slate-600">
                   Warranty
                 </th>
                 <th className="px-2 py-3 text-center break-words border border-slate-600">
-                  Time Left
+                  Warranty Time Left
                 </th>
                 <th className="px-2 py-3 text-center break-words border border-slate-600">
                   Picture
@@ -184,7 +183,7 @@ const PurchasedProducts = () => {
                     {product.model}
                   </td>
                   <td className="px-2 py-3 text-center break-words border border-slate-700">
-                    {product.regNo}
+                    {product.serialNumber}
                   </td>
                   <td className="px-2 py-3 text-center break-words border border-slate-700">
                     {product.purchaseDate}
@@ -206,7 +205,7 @@ const PurchasedProducts = () => {
                   </td>
                   <td className="text-center break-words border border-slate-700">
                     <Link
-                      to={`/customer/reqservice/${product.regNo}`}
+                      to={`/customer/reqservice/${product.serialNumber}`}
                       className="p-2 text-white bg-orange-500 rounded hover:bg-orange-600"
                     >
                       Request Service
