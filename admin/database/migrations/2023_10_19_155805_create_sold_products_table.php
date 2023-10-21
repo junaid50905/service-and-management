@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('selling_products', function (Blueprint $table) {
+        Schema::create('sold_products', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('product_id');
-            $table->date('selling_date');
-            $table->date('warranty_end_date');
-            $table->boolean('sam');
+            $table->unsignedBigInteger('branch_id')->nullable();
             $table->integer('quantity');
+            $table->date('selling_date');
+            $table->integer('time_of_warranty');
+            $table->boolean('sam');
+            $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('selling_products');
+        Schema::dropIfExists('sold_products');
     }
 };

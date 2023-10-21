@@ -26,7 +26,7 @@
         {{-- total sales producs --}}
         <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
             <div class="card">
-                <a href="{{ route('selling_product.index') }}" class="text-decoration-none text-white">
+                <a href="{{ route('sold_product.index') }}" class="text-decoration-none text-white">
                     <div class="card-body">
                     <div class="row">
                         <div class="col-12">

@@ -191,13 +191,13 @@
                 <span class="menu-icon">
                     <i class="mdi mdi-assistant"></i>
                 </span>
-                <span class="menu-title">Sell Products</span>
+                <span class="menu-title">Sold Products</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="sellingProduct">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('selling_product.create') }}">Create</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('selling_product.index') }}">Index</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('solo_sold_product.index') }}">Solo sold products</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('group_sold_product.index') }}">Group sold products</a></li>
                 </ul>
             </div>
         </li>

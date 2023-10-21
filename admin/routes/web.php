@@ -37,6 +37,12 @@ Route::get('getSubcategory/{category_id}', [ApplianceController::class, 'getSubc
 
 Route::get('getSubcategory/{category_id}', [EngineerController::class, 'getSubcategory']);
 
+Route::get('getSubcategory/{category_id}', [CustomerController::class, 'getSubcategory']);
+Route::get('getProduct/{subcategory_id}', [CustomerController::class, 'getProduct']);
+
+
+Route::get('getBranches/{user_id}', [CustomerController::class, 'getBranches'])->name('getBranches');
+
 /////////////////////// Dependancy Dropdown end ////////////////////////
 
 
@@ -104,6 +110,13 @@ Route::prefix('admin')->group(function () {
         Route::get('/{id}/edit', [CustomerController::class, 'edit'])->name('customer.edit');
         Route::get('/{id}/delete', [CustomerController::class, 'delete'])->name('customer.delete');
         Route::post('/{id}/update', [CustomerController::class, 'update'])->name('customer.update');
+
+
+        Route::get('/{id}/sale-to-solo-customer', [CustomerController::class, 'saleToSoloCustomerForm'])->name('customer.saleToSoloCustomerForm');
+        Route::post('/sale-to-solo-customer/store', [CustomerController::class, 'saleToSoloCustomerStore'])->name('customer.saleToSoloCustomerStore');
+        Route::get('/{id}/sale-to-group-customer', [CustomerController::class, 'saleToGroupCustomerForm'])->name('customer.saleToGroupCustomerForm');
+        Route::post('/sale-to-group-customer/store', [CustomerController::class, 'saleToGroupCustomerStore'])->name('customer.saleToGroupCustomerStore');
+
     });
 
     // checklist
@@ -116,14 +129,24 @@ Route::prefix('admin')->group(function () {
         Route::post('/{id}/update', [ChecklistController::class, 'update'])->name('checklist.update');
     });
 
-    // selling product
-    Route::prefix('/selling-product')->group(function () {
-        Route::get('/all-products', [SellingProductController::class, 'index'])->name('selling_product.index');
-        Route::get('/create', [SellingProductController::class, 'create'])->name('selling_product.create');
-        Route::post('/store', [SellingProductController::class, 'store'])->name('selling_product.store');
-        Route::get('/{id}/edit', [SellingProductController::class, 'edit'])->name('selling_product.edit');
-        Route::get('/{id}/delete', [SellingProductController::class, 'delete'])->name('selling_product.delete');
-        Route::post('/{id}/update', [SellingProductController::class, 'update'])->name('selling_product.update');
+    // sold product
+    Route::prefix('/sold-product')->group(function () {
+        Route::get('/all-products', [SellingProductController::class, 'index'])->name('sold_product.index');
+        Route::get('/create', [SellingProductController::class, 'create'])->name('sold_product.create');
+        Route::post('/store', [SellingProductController::class, 'store'])->name('sold_product.store');
+        Route::get('/{id}/edit', [SellingProductController::class, 'edit'])->name('sold_product.edit');
+        Route::get('/{id}/delete', [SellingProductController::class, 'delete'])->name('sold_product.delete');
+        Route::post('/{id}/update', [SellingProductController::class, 'update'])->name('sold_product.update');
+
+
+        Route::get('/solo', [SellingProductController::class, 'soloIndex'])->name('solo_sold_product.index');
+        Route::get('/solo/{id}/view-products', [SellingProductController::class, 'viewSoloProduct'])->name('sold_product.viewSoloProduct');
+
+        Route::get('/group', [SellingProductController::class, 'groupIndex'])->name('group_sold_product.index');
+        Route::get('/group/{id}/view-products', [SellingProductController::class, 'viewGroupProduct'])->name('sold_product.viewGroupProduct');
+        Route::get('/group/{id}/branches', [SellingProductController::class, 'viewBranchGroup'])->name('sold_product.viewBranchGroup');
+        Route::get('/group/{customer_id}/branch/{branch_d}/products', [SellingProductController::class, 'viewGroupBranchProducts'])->name('sold_product.viewGroupBranchProducts');
+
     });
 
 

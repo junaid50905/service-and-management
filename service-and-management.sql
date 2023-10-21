@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 18, 2023 at 09:58 AM
+-- Generation Time: Oct 21, 2023 at 10:31 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -62,6 +62,34 @@ INSERT INTO `appliances` (`id`, `category_id`, `subcategory_id`, `name`, `purcha
 (1, 34, 8, 'ssd 128 gb', 2100, 2690, NULL, NULL),
 (2, 34, 9, 'Wheel Loader', 780, 1100, NULL, NULL),
 (3, 34, 8, 'nvme 256 GB', 2140, 3400, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `branches`
+--
+
+CREATE TABLE `branches` (
+  `id` bigint UNSIGNED NOT NULL,
+  `user_id` bigint UNSIGNED NOT NULL,
+  `branch_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `branch_address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `admin_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `admin_email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `admin_phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `branches`
+--
+
+INSERT INTO `branches` (`id`, `user_id`, `branch_name`, `branch_address`, `admin_name`, `admin_email`, `admin_phone`, `created_at`, `updated_at`) VALUES
+(1, 8, 'Motijheel Branch', 'Shadinota Bhaban, 88 Motijheel C/A, Dhaka', 'habibullah', 'habibullah@gmail.com', '095274241', NULL, NULL),
+(2, 8, 'Dhanmondi Branch', 'House-21, Road-08, Dhanmondi R/A, Dhaka-1205', 'kamal', 'kamal@gmail.com', '095261188', NULL, NULL),
+(3, 8, 'Moghbazar Branch', 'Shafi Complex, Holding No-1/A, West Moghbazar, New Circular Road, Ramna, Dhaka', 'iqbal hossain', 'iqbal@ebl.com', '095274188', NULL, NULL),
+(4, 8, 'Shantinagar Branch', 'Iris Noorjehan (1st Floor), Plot no. 104, Kakrail Road, Ramna, Dhaka', 'ali', 'ali@shantinagar.ebl.com', '02-8300218', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -197,7 +225,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (22, '2023_09_28_171645_create_subcategories_table', 15),
 (28, '2023_10_02_112950_add_columns_to_appiontments_table', 20),
 (29, '2023_09_26_205051_create_recruiting_engineers_table', 21),
-(30, '2023_09_26_175220_create_selling_products_table', 22),
 (31, '2023_10_11_151910_create_category_subcategory_table', 22),
 (32, '2023_10_11_162819_create_appliances_table', 22),
 (33, '2023_10_12_100628_create_servicing_orders_table', 22),
@@ -205,7 +232,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (35, '2023_09_26_174336_create_engineers_table', 24),
 (36, '2023_09_26_204315_create_checklists_table', 25),
 (37, '2023_09_26_173820_create_products_table', 26),
-(38, '2014_10_12_000000_create_users_table', 27);
+(38, '2014_10_12_000000_create_users_table', 27),
+(46, '2023_10_19_155805_create_sold_products_table', 29),
+(48, '2023_10_19_155619_create_branches_table', 30);
 
 -- --------------------------------------------------------
 
@@ -269,7 +298,20 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `category_id`, `subcategory_id`, `name`, `model`, `price`, `created_at`, `updated_at`) VALUES
 (2, 34, 5, 'HP DeskJet 2320 All-in-One Printer', 'hp-d-230', 12000, '2023-10-18 07:01:46', '2023-10-18 09:03:36'),
-(3, 35, 7, 'erp system', 'erp-qw', 10000, '2023-10-18 07:13:17', '2023-10-18 08:34:40');
+(4, 34, 5, 'Epson EcoTank L1250 A4 Wi-Fi Ink Tank Printer', 'epsonl1250', 18500, '2023-10-18 15:58:40', '2023-10-18 15:58:40'),
+(5, 34, 5, 'Brother DCP-T520W Multifunction Color Inktank Printer with Wireless and Mobile Printing', 'brothert520', 24900, '2023-10-18 15:59:29', '2023-10-18 15:59:29'),
+(6, 34, 9, 'SPRT SP-POS890W Thermal POS Printer', 'sprtpos890', 10500, '2023-10-18 16:00:53', '2023-10-18 16:00:53'),
+(7, 34, 9, 'Epson TM-T81III POS Printer with Ethernet Port', 'epsont81', 14000, '2023-10-18 16:01:34', '2023-10-18 16:01:34'),
+(8, 34, 6, 'OPPO A17k Smartphone (3/64GB)', 'oppoa17', 13990, '2023-10-18 16:02:55', '2023-10-18 16:02:55'),
+(9, 34, 6, 'Samsung Galaxy A13 Smartphone (6/128GB)', 'samsung_g_a13', 22999, '2023-10-18 16:03:51', '2023-10-18 16:03:51'),
+(10, 34, 8, 'DOEL Freedom A9 AMD A9-9425 14.1\" HD Laptop', 'doel_freedom_a9', 26700, '2023-10-18 16:04:57', '2023-10-18 16:04:57'),
+(11, 34, 8, 'Lenovo IdeaPad Slim 3i Intel Celeron N4020 256GB SSD 15.6\" HD Laptop', 'lenovo3i', 35500, '2023-10-18 16:06:07', '2023-10-18 16:06:07'),
+(12, 35, 10, 'erp management system', 'erp_m_s', 12000, '2023-10-18 16:09:12', '2023-10-18 16:09:12'),
+(13, 35, 7, 'inventory management system', 'inv_ms', 34000, '2023-10-18 16:09:46', '2023-10-18 16:09:46'),
+(14, 35, 11, 'service management system', 'ser_ms', 45000, '2023-10-18 16:10:37', '2023-10-18 16:10:37'),
+(15, 35, 7, 'school management system', 'schoool_ms', 34000, '2023-10-18 16:11:07', '2023-10-18 16:11:07'),
+(16, 35, 11, 'hospital management system', 'hospital_ms', 54000, '2023-10-18 16:11:42', '2023-10-18 16:11:42'),
+(17, 35, 11, 'shop management system', 'shop_ms', 52900, '2023-10-18 16:12:14', '2023-10-18 16:12:14');
 
 -- --------------------------------------------------------
 
@@ -288,24 +330,6 @@ CREATE TABLE `recruiting_engineers` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `selling_products`
---
-
-CREATE TABLE `selling_products` (
-  `id` bigint UNSIGNED NOT NULL,
-  `user_id` bigint UNSIGNED NOT NULL,
-  `product_id` bigint UNSIGNED NOT NULL,
-  `selling_date` date NOT NULL,
-  `warranty_end_date` date NOT NULL,
-  `sam` tinyint(1) NOT NULL,
-  `quantity` int NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `servicing_orders`
 --
 
@@ -316,6 +340,39 @@ CREATE TABLE `servicing_orders` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sold_products`
+--
+
+CREATE TABLE `sold_products` (
+  `id` bigint UNSIGNED NOT NULL,
+  `user_id` bigint UNSIGNED NOT NULL,
+  `product_id` bigint UNSIGNED NOT NULL,
+  `branch_id` bigint UNSIGNED DEFAULT NULL,
+  `quantity` int NOT NULL,
+  `selling_date` date NOT NULL,
+  `time_of_warranty` int NOT NULL,
+  `sam` tinyint(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `sold_products`
+--
+
+INSERT INTO `sold_products` (`id`, `user_id`, `product_id`, `branch_id`, `quantity`, `selling_date`, `time_of_warranty`, `sam`, `created_at`, `updated_at`) VALUES
+(8, 7, 4, NULL, 2, '2023-10-02', 6, 1, '2023-10-19 15:28:58', '2023-10-19 15:28:58'),
+(9, 7, 11, NULL, 1, '2023-10-18', 12, 0, '2023-10-19 15:30:11', '2023-10-19 15:30:11'),
+(10, 8, 6, 1, 20, '2023-10-10', 18, 1, '2023-10-19 15:40:25', '2023-10-19 15:40:25'),
+(11, 8, 10, 2, 4, '2023-10-10', 12, 1, '2023-10-19 16:22:29', '2023-10-19 16:22:29'),
+(12, 8, 7, 3, 35, '2023-10-10', 3, 0, '2023-10-19 16:23:49', '2023-10-19 16:23:49'),
+(13, 8, 2, 1, 2, '2023-10-09', 3, 0, '2023-10-19 15:40:25', '2023-10-19 15:40:25'),
+(14, 8, 7, 4, 10, '2023-10-02', 3, 0, '2023-10-21 07:19:37', '2023-10-21 07:19:37'),
+(17, 8, 2, 3, 4, '2023-10-11', 6, 0, '2023-10-21 10:27:58', '2023-10-21 10:27:58');
 
 -- --------------------------------------------------------
 
@@ -340,7 +397,9 @@ INSERT INTO `subcategories` (`id`, `category_id`, `name`, `created_at`, `updated
 (6, 34, 'mobile', '2023-10-01 08:48:16', '2023-10-01 08:48:16'),
 (7, 35, 'flatter, java, python', '2023-10-01 08:49:23', '2023-10-01 08:49:23'),
 (8, 34, 'laptop', '2023-10-16 06:37:36', '2023-10-16 06:37:36'),
-(9, 34, 'pos machine', '2023-10-16 09:37:31', '2023-10-16 09:37:31');
+(9, 34, 'pos machine', '2023-10-16 09:37:31', '2023-10-16 09:37:31'),
+(10, 35, 'laravel, react, bootstrap, api', '2023-10-18 16:07:09', '2023-10-18 16:07:09'),
+(11, 35, 'express js, mongodb, angular, nood js', '2023-10-18 16:08:14', '2023-10-18 16:08:14');
 
 -- --------------------------------------------------------
 
@@ -367,7 +426,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `usertype`, `name`, `email`, `address`, `phone`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'company', 'Katelyn Giles', 'govejegew@mailinator.com', 'Deleniti est recusan', '0134444', NULL, '$2y$10$URpGyLP6EUnGV1geCOb8Mu43gsUJFfcesSEo1smTo818ND72mNlP.', NULL, '2023-10-18 09:52:04', '2023-10-18 09:55:14');
+(7, 'solo', 'Abc company', 'abc@gmail.com', 'Sapla meniton, Gazipur chowrasta, Gazipur', '0120998923', NULL, '$2y$10$Tf8tLb92UjVD7uZtFlVIOO/AB7XStMe3oL.3cfHjs4oywwSSEcGjq', NULL, '2023-10-19 15:28:19', '2023-10-19 15:28:19'),
+(8, 'group', 'EBL bank', 'saddam@headoffice.admin.ebl.com', '100 Gulshan Ave, Dhaka 1212', '09666-777325', NULL, '$2y$10$p1cVckJtklYSD6IZ1luunu/B0vrhW3DBKgJcGpVXkLZHQn09wVYki', NULL, '2023-10-19 15:35:28', '2023-10-19 15:35:28'),
+(9, 'group', 'brac bank', 'enquiry@bracbank.com', 'Anik Tower, 220/B Bir Uttam Mir Shawkat Sarak, Dhaka 1208', '02-55668056', NULL, '$2y$10$seAt9QXQha0OddqaaKWec.6ak9mrAxcTzJfOhNRau9XNNSLQANQTm', NULL, '2023-10-19 16:26:17', '2023-10-19 16:26:17');
 
 --
 -- Indexes for dumped tables
@@ -385,6 +446,13 @@ ALTER TABLE `appiontments`
 --
 ALTER TABLE `appliances`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `branches`
+--
+ALTER TABLE `branches`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `branches_user_id_foreign` (`user_id`);
 
 --
 -- Indexes for table `categories`
@@ -467,19 +535,20 @@ ALTER TABLE `recruiting_engineers`
   ADD KEY `recruiting_engineers_engineer_id_foreign` (`engineer_id`);
 
 --
--- Indexes for table `selling_products`
---
-ALTER TABLE `selling_products`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `selling_products_user_id_foreign` (`user_id`),
-  ADD KEY `selling_products_product_id_foreign` (`product_id`);
-
---
 -- Indexes for table `servicing_orders`
 --
 ALTER TABLE `servicing_orders`
   ADD PRIMARY KEY (`id`),
   ADD KEY `servicing_orders_appiontment_id_foreign` (`appiontment_id`);
+
+--
+-- Indexes for table `sold_products`
+--
+ALTER TABLE `sold_products`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sold_products_branch_id_foreign` (`branch_id`),
+  ADD KEY `sold_products_user_id_foreign` (`user_id`),
+  ADD KEY `sold_products_product_id_foreign` (`product_id`);
 
 --
 -- Indexes for table `subcategories`
@@ -511,6 +580,12 @@ ALTER TABLE `appiontments`
 --
 ALTER TABLE `appliances`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `branches`
+--
+ALTER TABLE `branches`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -552,7 +627,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -564,7 +639,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `recruiting_engineers`
@@ -573,28 +648,28 @@ ALTER TABLE `recruiting_engineers`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `selling_products`
---
-ALTER TABLE `selling_products`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
 -- AUTO_INCREMENT for table `servicing_orders`
 --
 ALTER TABLE `servicing_orders`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `sold_products`
+--
+ALTER TABLE `sold_products`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
 -- AUTO_INCREMENT for table `subcategories`
 --
 ALTER TABLE `subcategories`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
@@ -605,6 +680,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `appiontments`
   ADD CONSTRAINT `appiontments_selling_product_id_foreign` FOREIGN KEY (`selling_product_id`) REFERENCES `selling_products` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `branches`
+--
+ALTER TABLE `branches`
+  ADD CONSTRAINT `branches_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `category_subcategory`
@@ -647,17 +728,18 @@ ALTER TABLE `recruiting_engineers`
   ADD CONSTRAINT `recruiting_engineers_engineer_id_foreign` FOREIGN KEY (`engineer_id`) REFERENCES `engineers` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `selling_products`
---
-ALTER TABLE `selling_products`
-  ADD CONSTRAINT `selling_products_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `selling_products_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
-
---
 -- Constraints for table `servicing_orders`
 --
 ALTER TABLE `servicing_orders`
   ADD CONSTRAINT `servicing_orders_appiontment_id_foreign` FOREIGN KEY (`appiontment_id`) REFERENCES `appiontments` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `sold_products`
+--
+ALTER TABLE `sold_products`
+  ADD CONSTRAINT `sold_products_branch_id_foreign` FOREIGN KEY (`branch_id`) REFERENCES `branches` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `sold_products_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `sold_products_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `subcategories`

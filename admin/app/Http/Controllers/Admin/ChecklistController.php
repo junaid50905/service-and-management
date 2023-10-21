@@ -6,11 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\Appiontment;
 use App\Models\Admin\Checklist;
 use App\Models\Admin\Product;
-use App\Models\Admin\SellingProduct;
 use App\Models\Admin\ServicingOrder;
+use App\Models\Admin\SoldProduct;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class ChecklistController extends Controller
 {
@@ -96,9 +95,9 @@ class ChecklistController extends Controller
         $servicing_order_id = $id;
         $appiontment_id = ServicingOrder::where('id', $id)->first()->appiontment_id;
         $selling_product_id = Appiontment::where('id', $appiontment_id)->first()->selling_product_id;
-        $product_id = SellingProduct::where('id', $selling_product_id)->first()->product_id;
+        $product_id = SoldProduct::where('id', $selling_product_id)->first()->product_id;
         $product_name = Product::where('id', $product_id)->first()->name;
-        $user_id = SellingProduct::where('id', $selling_product_id)->first()->user_id;
+        $user_id = SoldProduct::where('id', $selling_product_id)->first()->user_id;
         $user_name = User::where('id', $user_id)->first()->name;
         $user_email = User::where('id', $user_id)->first()->email;
         $user_phone = User::where('id', $user_id)->first()->phone;

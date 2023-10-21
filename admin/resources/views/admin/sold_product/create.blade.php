@@ -12,7 +12,7 @@
                 <h4 class="card-title mt-3 ms-3"> New Selling Product</h4>
                 <hr>
                 <div class="card-body">
-                    <form action="{{ route('selling_product.store') }}" method="POST">
+                    <form action="{{ route('sold_product.store') }}" method="POST">
                         @csrf
 
                         <div class="form-group">
@@ -63,7 +63,7 @@
 
 
                         <button type="submit" class="btn btn-outline-primary me-2">Submit</button>
-                        <a href="{{ route('selling_product.index') }}" class="btn btn-outline-danger me-2">Cancel</a>
+                        <a href="{{ route('sold_product.index') }}" class="btn btn-outline-danger me-2">Cancel</a>
                     </form>
                 </div>
             </div>

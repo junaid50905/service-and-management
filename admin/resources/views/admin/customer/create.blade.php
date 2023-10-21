@@ -20,7 +20,7 @@
                             <select name="usertype" class="form-control text-white" id="userType">
                                 <option selected>Select Type </option>
                                 <option value="solo">Solo</option>
-                                <option value="company">Company</option>
+                                <option value="group">Group</option>
                             </select>
                         </div>
 
