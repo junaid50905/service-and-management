@@ -972,7 +972,6 @@
         },
         {
             "name": "laravel/framework",
-<<<<<<< HEAD
             "version": "v10.28.0",
             "source": {
                 "type": "git",
@@ -983,18 +982,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/framework/zipball/09137f50f715c1efc649788a26092dcb1ec4ab6e",
                 "reference": "09137f50f715c1efc649788a26092dcb1ec4ab6e",
-=======
-            "version": "v10.25.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel/framework.git",
-                "reference": "6014dd456b414b305fb0b408404efdcec18e64bc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/6014dd456b414b305fb0b408404efdcec18e64bc",
-                "reference": "6014dd456b414b305fb0b408404efdcec18e64bc",
->>>>>>> 57a2e6df41d61fd753afc6a0c70d1261f437d251
                 "shasum": ""
             },
             "require": {
@@ -1181,7 +1168,6 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-<<<<<<< HEAD
             "time": "2023-10-10T13:01:37+00:00"
         },
         {
@@ -1196,22 +1182,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/prompts/zipball/cce65a90e64712909ea1adc033e1d88de8455ffd",
                 "reference": "cce65a90e64712909ea1adc033e1d88de8455ffd",
-=======
-            "time": "2023-09-28T14:08:59+00:00"
-        },
-        {
-            "name": "laravel/prompts",
-            "version": "v0.1.10",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel/prompts.git",
-                "reference": "37ed55f6950d921a87d5beeab16d03f8de26b060"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel/prompts/zipball/37ed55f6950d921a87d5beeab16d03f8de26b060",
-                "reference": "37ed55f6950d921a87d5beeab16d03f8de26b060",
->>>>>>> 57a2e6df41d61fd753afc6a0c70d1261f437d251
                 "shasum": ""
             },
             "require": {
@@ -1253,15 +1223,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/prompts/issues",
-<<<<<<< HEAD
                 "source": "https://github.com/laravel/prompts/tree/v0.1.11"
             },
             "time": "2023-10-03T01:07:35+00:00"
-=======
-                "source": "https://github.com/laravel/prompts/tree/v0.1.10"
-            },
-            "time": "2023-09-29T07:26:07+00:00"
->>>>>>> 57a2e6df41d61fd753afc6a0c70d1261f437d251
         },
         {
             "name": "laravel/sanctum",
@@ -1798,16 +1762,16 @@
         },
         {
             "name": "league/mime-type-detection",
-            "version": "1.13.0",
+            "version": "1.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/mime-type-detection.git",
-                "reference": "a6dfb1194a2946fcdc1f38219445234f65b35c96"
+                "reference": "b6a5854368533df0295c5761a0253656a2e52d9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/mime-type-detection/zipball/a6dfb1194a2946fcdc1f38219445234f65b35c96",
-                "reference": "a6dfb1194a2946fcdc1f38219445234f65b35c96",
+                "url": "https://api.github.com/repos/thephpleague/mime-type-detection/zipball/b6a5854368533df0295c5761a0253656a2e52d9e",
+                "reference": "b6a5854368533df0295c5761a0253656a2e52d9e",
                 "shasum": ""
             },
             "require": {
@@ -1838,7 +1802,7 @@
             "description": "Mime-type detection for Flysystem",
             "support": {
                 "issues": "https://github.com/thephpleague/mime-type-detection/issues",
-                "source": "https://github.com/thephpleague/mime-type-detection/tree/1.13.0"
+                "source": "https://github.com/thephpleague/mime-type-detection/tree/1.14.0"
             },
             "funding": [
                 {
@@ -1850,7 +1814,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-08-05T12:09:49+00:00"
+            "time": "2023-10-17T14:13:20+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -7736,35 +7700,35 @@
         },
         {
             "name": "spatie/flare-client-php",
-            "version": "1.4.2",
+            "version": "1.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/flare-client-php.git",
-                "reference": "5f2c6a7a0d2c1d90c12559dc7828fd942911a544"
+                "reference": "5db2fdd743c3ede33f2a5367d89ec1a7c9c1d1ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/flare-client-php/zipball/5f2c6a7a0d2c1d90c12559dc7828fd942911a544",
-                "reference": "5f2c6a7a0d2c1d90c12559dc7828fd942911a544",
+                "url": "https://api.github.com/repos/spatie/flare-client-php/zipball/5db2fdd743c3ede33f2a5367d89ec1a7c9c1d1ec",
+                "reference": "5db2fdd743c3ede33f2a5367d89ec1a7c9c1d1ec",
                 "shasum": ""
             },
             "require": {
-                "illuminate/pipeline": "^8.0|^9.0|^10.0",
+                "illuminate/pipeline": "^8.0|^9.0|^10.0|^11.0",
                 "nesbot/carbon": "^2.62.1",
                 "php": "^8.0",
                 "spatie/backtrace": "^1.5.2",
-                "symfony/http-foundation": "^5.0|^6.0",
-                "symfony/mime": "^5.2|^6.0",
-                "symfony/process": "^5.2|^6.0",
-                "symfony/var-dumper": "^5.2|^6.0"
+                "symfony/http-foundation": "^5.2|^6.0|^7.0",
+                "symfony/mime": "^5.2|^6.0|^7.0",
+                "symfony/process": "^5.2|^6.0|^7.0",
+                "symfony/var-dumper": "^5.2|^6.0|^7.0"
             },
             "require-dev": {
-                "dms/phpunit-arraysubset-asserts": "^0.3.0",
-                "pestphp/pest": "^1.20",
+                "dms/phpunit-arraysubset-asserts": "^0.5.0",
+                "pestphp/pest": "^1.20|^2.0",
                 "phpstan/extension-installer": "^1.1",
                 "phpstan/phpstan-deprecation-rules": "^1.0",
                 "phpstan/phpstan-phpunit": "^1.0",
-                "spatie/phpunit-snapshot-assertions": "^4.0"
+                "spatie/phpunit-snapshot-assertions": "^4.0|^5.0"
             },
             "type": "library",
             "extra": {
@@ -7794,7 +7758,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/flare-client-php/issues",
-                "source": "https://github.com/spatie/flare-client-php/tree/1.4.2"
+                "source": "https://github.com/spatie/flare-client-php/tree/1.4.3"
             },
             "funding": [
                 {
@@ -7802,7 +7766,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-07-28T08:07:24+00:00"
+            "time": "2023-10-17T15:54:07+00:00"
         },
         {
             "name": "spatie/ignition",
