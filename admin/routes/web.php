@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\ApplianceController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\SellingProductController;
+use App\Models\Admin\Appiontment;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,7 @@ Route::get('getProduct/{subcategory_id}', [CustomerController::class, 'getProduc
 
 
 Route::get('getBranches/{user_id}', [CustomerController::class, 'getBranches'])->name('getBranches');
+
 
 /////////////////////// Dependancy Dropdown end ////////////////////////
 
@@ -155,18 +157,20 @@ Route::prefix('admin')->group(function () {
 
     // appiontment
     Route::prefix('/appiontment')->group(function () {
-        Route::get('/make-an-appiontment', [AppiontmentController::class, 'checkUserProductForm'])->name('appiontment.check_user_product_form');
-        Route::post('/make-an-appiontment', [AppiontmentController::class, 'checkUserProductStore'])->name('appiontment.check_user_product_store');
+        Route::get('/make-an-appiontment-solo-customer/{soloProductId}', [AppiontmentController::class, 'appiontmentFormSoloCustomer'])->name('appiontment.appiontment_for_solo_customer');
+        Route::get('/make-an-appiontment/{soldProductId}', [AppiontmentController::class, 'checkUserProductForm'])->name('appiontment.check_user_product_form');
+        //Route::post('/make-an-appiontment', [AppiontmentController::class, 'checkUserProductStore'])->name('appiontment.check_user_product_store');
 
         Route::post('/appiontment/store', [AppiontmentController::class, 'appiontmentStore'])->name('appiontment.appiontment_store');
 
 
-        Route::get('/all-appiontments', [AppiontmentController::class, 'index'])->name('appiontment.index');
+        Route::get('/all-appiontments-of-group-customer', [AppiontmentController::class, 'groupIndex'])->name('appiontment.group_index');
+        Route::get('/all-appiontments-of-solo-customer', [AppiontmentController::class, 'soloIndex'])->name('appiontment.solo_index');
         Route::get('/assign-engineer/{id}', [AppiontmentController::class, 'assignEngineer'])->name('appiontment.assign_engineer');
         Route::post('/assign-engineer/store', [AppiontmentController::class, 'assignEngineerStore'])->name('appiontment.assign_engineer_store');
 
 
-        Route::get('/assigned-engineer-details/user/{id}', [AppiontmentController::class, 'assignedEngineerDetailed'])->name('appiontment.assigned_engineer_detailed');
+        Route::get('/assigned-engineer-details/{id}', [AppiontmentController::class, 'assignedEngineerDetailed'])->name('appiontment.assigned_engineer_detailed');
 
     });
 

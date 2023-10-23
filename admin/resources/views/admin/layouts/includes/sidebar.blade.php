@@ -16,8 +16,8 @@
                         <span class="count bg-success"></span>
                     </div>
                     <div class="profile-name">
-                        <h5 class="mb-0 font-weight-normal">Henry Klein</h5>
-                        <span>Gold Member</span>
+                        <h5 class="mb-0 font-weight-normal">Arman Hossain</h5>
+                        <span>Admin</span>
                     </div>
                 </div>
                 <a href="#" id="profile-dropdown" data-bs-toggle="dropdown"><i
@@ -219,8 +219,8 @@
             </a>
             <div class="collapse" id="appiontment">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('appiontment.check_user_product_form') }}">Make an appiontment</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('appiontment.index') }}">All appiontments</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('appiontment.solo_index') }}">All solo appiontments</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('appiontment.group_index') }}">All group appiontments</a></li>
                 </ul>
             </div>
         </li>

@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('appiontments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('selling_product_id');
+            $table->unsignedBigInteger('sold_product_id');
             $table->enum('status', ['pending', 'assigned', 'late', 'complete'])->default('pending');
-            $table->string('date')->default('null');
-            $table->string('time')->default('null');
-            $table->foreign('selling_product_id')->references('id')->on('selling_products')->onDelete('cascade');
+            $table->string('usertype');
+            $table->date('appiontment_taken_date')->nullable();
+            $table->time('appiontment_taken_time')->nullable();
+            $table->date('inspection_date')->nullable();
+            $table->time('inspection_time')->nullable();
+            $table->foreign('sold_product_id')->references('id')->on('sold_products')->onDelete('cascade');
             $table->timestamps();
         });
     }

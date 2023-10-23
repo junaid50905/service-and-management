@@ -6,7 +6,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-    All appiontments
+    All solo appiontments
 @endsection
 
 @section('main-panel')
@@ -17,59 +17,46 @@
             @else
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">List of All Appiontments</h4>
+                        <h4 class="card-title">List of All Solo Customer Appiontments</h4>
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <th>#</th>
                                         <th>Appiontment <br> ID</th>
-                                        <th>selling <br> product id</th>
-                                        <th>user id</th>
-                                        <th>User <br> Name</th>
+                                        <th>Customer <br> Name</th>
                                         <th>Product <br> Name</th>
                                         <th>Selling <br> Date</th>
-                                        <th>Warranty <br> end Date</th>
-                                        <th>Warranty <br>left</th>
                                         <th>Status</th>
-                                        <th>Last Date for <br> inspection</th>
-                                        <th>Time</th>
-                                        <th>S&M</th>
+                                        <th>Appiontment Taken <br> Date and Time</th>
+                                        <th>Inspection Last <br> Date and Time</th>
                                         <th>Action</th>
                                     </tr>
                                     @foreach ($allAppiontments as $appiontment)
                                         @php
-                                            $sellingProductId = $appiontment->selling_product_id;
-                                            $userId = DB::table('selling_products')
-                                                ->where('id', $appiontment->selling_product_id)
+                                            $soldProductId = $appiontment->sold_product_id;
+                                            $customerId = DB::table('sold_products')
+                                                ->where('id', $soldProductId)
                                                 ->first()->user_id;
-                                            $productId = DB::table('selling_products')
-                                                ->where('id', $appiontment->selling_product_id)
-                                                ->first()->product_id;
-                                            $sellingDate = DB::table('selling_products')
-                                                ->where('id', $appiontment->selling_product_id)
-                                                ->first()->selling_date;
-                                            $warrantyEndDate = DB::table('selling_products')
-                                                ->where('id', $appiontment->selling_product_id)
-                                                ->first()->warranty_end_date;
-                                            $sam = DB::table('selling_products')
-                                                ->where('id', $appiontment->selling_product_id)
-                                                ->first()->sam;
 
-                                            $date1 = Carbon::parse($warrantyEndDate);
-                                            $date2 = Carbon::now();
-                                            $diffInDays = $date1->diffInDays($date2);
+                                            $customerName = DB::table('users')
+                                                ->where('id', $customerId)->first()->name;
+                                            $productId = DB::table('sold_products')
+                                                ->where('id', $soldProductId)
+                                                ->first()->product_id;
+                                            $productName = DB::table('products')
+                                                ->where('id', $productId)
+                                                ->first()->name;
+                                            $sellingDate = DB::table('sold_products')
+                                                ->where('id', $soldProductId)
+                                                ->first()->selling_date;
                                         @endphp
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $appiontment->id }}</td>
-                                            <td>{{ $sellingProductId }}</td>
-                                            <td>{{ $userId }}</td>
-                                            <td>{{ DB::table('users')->where('id', $userId)->first()->name }}</td>
-                                            <td>{{ DB::table('products')->where('id', $productId)->first()->name }}</td>
-                                            <td>{{ Carbon::parse($sellingDate)->format('Y-M-d') }}</td>
-                                            <td>{{ Carbon::parse($warrantyEndDate)->format('Y-M-d')  }}</td>
-                                            <td>{{ $diffInDays }} days</td>
+                                            <td>{{ $customerName }}</td>
+                                            <td>{{ $productName }}</td>
+                                            <td>{{ $sellingDate }}</td>
                                             <td>
                                                 @php
                                                     $status = strtolower($appiontment->status); // Convert status to lowercase for consistency
@@ -78,16 +65,16 @@
                                                     // Determine the color class based on the status
                                                     switch ($status) {
                                                         case 'pending':
-                                                            $colorClass = 'btn-warning';
+                                                            $colorClass = 'text-warning';
                                                             break;
                                                         case 'assigned':
-                                                            $colorClass = 'btn-primary';
+                                                            $colorClass = 'text-primary';
                                                             break;
                                                         case 'late':
-                                                            $colorClass = 'btn-danger';
+                                                            $colorClass = 'text-danger';
                                                             break;
                                                         case 'complete':
-                                                            $colorClass = 'btn-success';
+                                                            $colorClass = 'text-success';
                                                             break;
                                                         // Add more cases for other statuses if needed
                                                     }
@@ -95,10 +82,20 @@
                                                 <button
                                                     class="btn {{ $colorClass }} btn-sm">{{ $appiontment->status }}</button>
                                             </td>
-                                            {{-- <td>{{ Carbon::parse($appiontment->date)->format('Y-M-d') ?? '' }}</td> --}}
-                                            <td>{{ $appiontment->date }}</td>
-                                            <td>{{ $appiontment->time }}</td>
-                                            <td>{{ $sam }}</td>
+                                            <td>
+                                                {{ Carbon::parse($appiontment->appiontment_taken_date)->format('Y-M-d') ?? '' }} <br>
+                                                {{ $appiontment->appiontment_taken_time > 12.00 ? $appiontment->appiontment_taken_time."PM" : $appiontment->appiontment_taken_time."AM" }}
+                                            </td>
+                                            <td>
+                                                {{ $appiontment->inspection_date }} <br>
+                                                @if ($appiontment->inspection_time)
+                                                {{ $appiontment->inspection_time > 12.00 ? $appiontment->inspection_time."PM" : $appiontment->inspection_time."AM" ?? '' }}
+                                                @else
+                                                    {{ 'Assign first' }}
+
+                                                @endif
+
+                                            </td>
                                             <td>
                                                 @if ($appiontment->status === 'pending')
                                                     <a href="{{ route('appiontment.assign_engineer', $appiontment->id) }}"

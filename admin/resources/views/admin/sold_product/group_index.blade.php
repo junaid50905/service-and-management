@@ -40,9 +40,9 @@
                                                 </td>
                                                 <td>
                                                     <a href="{{ route('sold_product.viewGroupProduct', $group_user->id) }}"
-                                                        class="btn btn-sm btn-success">View products</a>
+                                                        class="btn btn-sm btn-info">Buying history</a>
                                                     <a href="{{ route('sold_product.viewBranchGroup', $group_user->id) }}"
-                                                        class="btn btn-sm btn-success">View branches</a>
+                                                        class="btn btn-sm btn-primary">View branches</a>
                                                 </td>
                                             </tr>
                                         @endif

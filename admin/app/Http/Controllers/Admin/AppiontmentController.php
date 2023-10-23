@@ -9,37 +9,78 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\Appiontment;
 use App\Models\Admin\Engineer;
 use App\Models\Admin\RecruitingEngineer;
-use App\Models\Admin\SellingProduct;
-
+use App\Models\Admin\SoldProduct;
+use App\Models\User;
 
 class AppiontmentController extends Controller
 {
-    // index
-    public function index()
+    // groupIndex
+    public function groupIndex()
     {
-        $allAppiontments = Appiontment::latest()->get();
-        return view('admin.appiontment.index', compact('allAppiontments'));
+        $allAppiontments = Appiontment::where('usertype', 'group')->latest()->get();
+        return view('admin.appiontment.group_index', compact('allAppiontments'));
+    }
+    // soloIndex
+    public function soloIndex()
+    {
+        $allAppiontments = Appiontment::where('usertype', 'solo')->latest()->get();
+        return view('admin.appiontment.solo_index', compact('allAppiontments'));
+    }
+    // appiontmentStore
+    public function appiontmentStore(Request $request)
+    {
+        $soldProductId = $request->sold_product_id;
+        $userId = SoldProduct::where('id', $soldProductId)->first()->user_id;
+        $userType = User::where('id', $userId)->first()->usertype;
+        $currentDateTime = Carbon::now();
 
+        Appiontment::create([
+            'sold_product_id' => $soldProductId,
+            'usertype' => $userType,
+            'appiontment_taken_date' => $currentDateTime->toDateString(),
+            'appiontment_taken_time' => $currentDateTime->toTimeString(),
+        ]);
+        return redirect()->route('appiontment.group_index')->with('appiontment_taken', "One appiontment has been taken");
     }
     // assignEngineer
     public function assignEngineer($id)
     {
         $appiontmentId = $id;
-        $engineers = Engineer::all();
+        $sold_product_id = Appiontment::where('id', $appiontmentId)->first()->sold_product_id;
+        $product_id = SoldProduct::where('id', $sold_product_id)->first()->product_id;
+        $category_id = Product::where('id', $product_id)->first()->category_id;
+        $subcategory_id = Product::where('id', $product_id)->first()->subcategory_id;
+        $engineers = Engineer::where('category_id', $category_id)->where('subcategory_id', $subcategory_id)->get();
 
-        return view('admin.appiontment.assign_engineer_form', compact('engineers', 'appiontmentId'));
+
+        return view('admin.appiontment.assign_engineer_form', compact('engineers', 'appiontmentId', 'engineers'));
     }
     // assignEngineerStore
     public function assignEngineerStore(Request $request)
     {
-        RecruitingEngineer::create($request->all());
-        Appiontment::where('id', $request->appiontment_id)->update(
-            [
-                'status' => 'assigned',
-                'date' => $request->date,
-                'time' => $request->time,
-            ]);
-        return redirect()->route('appiontment.index')->with('appiontment_assigned', "Appiontment assigned successfully");
+        $userType = Appiontment::where('id', $request->appiontment_id)->first()->usertype;
+        if($userType == 'group'){
+            RecruitingEngineer::create($request->all());
+            Appiontment::where('id', $request->appiontment_id)->update(
+                [
+                    'status' => 'assigned',
+                    'inspection_date' => $request->date,
+                    'inspection_time' => $request->time,
+                ]
+            );
+            return redirect()->route('appiontment.group_index')->with('appiontment_assigned', "Appiontment assigned successfully");
+        }else{
+            RecruitingEngineer::create($request->all());
+            Appiontment::where('id', $request->appiontment_id)->update(
+                [
+                    'status' => 'assigned',
+                    'inspection_date' => $request->date,
+                    'inspection_time' => $request->time,
+                ]
+            );
+            return redirect()->route('appiontment.solo_index')->with('appiontment_assigned', "Appiontment assigned successfully");
+        }
+
 
     }
     // assignedEngineerDetailed
@@ -50,16 +91,41 @@ class AppiontmentController extends Controller
         $engineerDetails = Engineer::where('id', $engineerID)->first();
         return view('admin.appiontment.assigned_engineer_detailed', compact('engineerDetails'));
     }
-    // checkUserProductForm
-    public function checkUserProductForm()
+
+    // appiontmentFormSoloCustomer
+    public function appiontmentFormSoloCustomer($soldProductId)
     {
-        return view('admin.appiontment.check_user_product');
+        $userId = SoldProduct::where('id', $soldProductId)->first()->user_id;
+        $userType = User::where('id', $userId)->first()->usertype;
+        $currentDateTime = Carbon::now();
+
+        Appiontment::create([
+            'sold_product_id' => $soldProductId,
+            'usertype' => $userType,
+            'appiontment_taken_date' => $currentDateTime->toDateString(),
+            'appiontment_taken_time' => $currentDateTime->toTimeString(),
+        ]);
+        return redirect()->route('appiontment.solo_index')->with('appiontment_taken', "One appiontment has been taken");
+    }
+    // checkUserProductForm
+    public function checkUserProductForm($id)
+    {
+        $sold_product_id = $id;
+        $user_id = SoldProduct::where('id', $sold_product_id)->first()->user_id;
+        $usertype = User::where('id', $user_id)->first()->usertype;
+
+        if($usertype === 'group'){
+            $product_id = SoldProduct::where('id', $sold_product_id)->first()->product_id;
+            $branch_id = SoldProduct::where('id', $sold_product_id)->first()->branch_id;
+            return view('admin.appiontment.check_user_product', compact('sold_product_id', 'user_id', 'product_id', 'branch_id'));
+        }
+
     }
 
     // checkUserProductStore
     public function checkUserProductStore(Request $request)
     {
-        $sellingProduct = SellingProduct::where('user_id', $request->user_id)->where('product_id', $request->product_id)->first();
+        $sellingProduct = SoldProduct::where('user_id', $request->user_id)->where('branch_id', $request->branch_id)->where('product_id', $request->product_id)->first();
 
         if ($sellingProduct) {
 
@@ -81,12 +147,8 @@ class AppiontmentController extends Controller
     }
 
 
-    // appiontmentStore
-    public function appiontmentStore(Request $request)
-    {
-        Appiontment::create($request->all());
-        return redirect()->route('appiontment.index')->with('appiontment_taken', "One appiontment has been taken");
-    }
+
+
 
 
 }

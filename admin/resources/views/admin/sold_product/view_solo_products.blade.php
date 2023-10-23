@@ -30,6 +30,7 @@
                                     <p><b>Price and Quantity:</b>{{ $price = DB::table('products')->where('id', $product->product_id)->first()->price }}
                                         X {{ $product->quantity }} = {{ $product->quantity * $price }}
                                     </p>
+                                    <a href="{{ route('appiontment.appiontment_for_solo_customer', $product->id) }}" onclick="return confirm('Are you sure, you want to take an appiontment for this product?')" class="btn btn-sm btn-info">Make an appiontment</a>
                                 </div>
                             </div>
                         @endforeach

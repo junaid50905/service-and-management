@@ -165,7 +165,7 @@
                                 <div class="navbar-profile">
                                     <img class="img-xs rounded-circle"
                                         src="{{ asset('ui/admin') }}/assets/images/faces/face15.jpg" alt="">
-                                    <p class="mb-0 d-none d-sm-block navbar-profile-name">Henry Klein</p>
+                                    <p class="mb-0 d-none d-sm-block navbar-profile-name">arman@admin.aamra.com</p>
                                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                                 </div>
                             </a>
