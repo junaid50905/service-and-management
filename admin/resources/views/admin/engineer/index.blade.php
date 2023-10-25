@@ -40,6 +40,7 @@
                                         <td>{{ DB::table('categories')->where('id', $engineer->category_id)->first()->name }}</td>
                                         <td>{{ DB::table('subcategories')->where('id', $engineer->subcategory_id)->first()->name }}</td>
                                         <td>
+                                            <a href="{{ route('engineer.delete', $engineer->id) }}" class="btn btn-success btn-sm me-2">View Location</a>
                                             <a href="{{ route('engineer.edit', $engineer->id) }}" class="btn btn-warning btn-sm me-2">Edit</a>
                                             <a href="{{ route('engineer.delete', $engineer->id) }}" onclick="return confirm('are you sure?')" class="btn btn-danger btn-sm">Delete</a>
                                         </td>

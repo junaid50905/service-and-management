@@ -17,7 +17,7 @@
             @else
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">List of All Appiontments</h4>
+                        <h4 class="card-title">List of All Group Appiontments</h4>
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
@@ -32,17 +32,6 @@
                                         <th>Appiontment Taken <br> Date and Time</th>
                                         <th>Inspection Last <br> Date and Time</th>
                                         <th>Action</th>
-                                        {{-- <th>user id</th>
-                                        <th>User <br> Name</th>
-                                        <th>Product <br> Name</th>
-                                        <th>Selling <br> Date</th>
-                                        <th>Warranty <br> end Date</th>
-                                        <th>Warranty <br>left</th>
-                                        <th>Status</th>
-                                        <th>Last Date for <br> inspection</th>
-                                        <th>Time</th>
-                                        <th>S&M</th>
-                                        <th>Action</th> --}}
                                     </tr>
                                     @foreach ($allAppiontments as $appiontment)
                                         @php
@@ -68,22 +57,6 @@
                                             $sellingDate = DB::table('sold_products')
                                                 ->where('id', $soldProductId)
                                                 ->first()->selling_date;
-                                            // $productId = DB::table('selling_products')
-                                            //     ->where('id', $appiontment->selling_product_id)
-                                            //     ->first()->product_id;
-                                            // $sellingDate = DB::table('sold_products')
-                                            //     ->where('id', $soldProductId)
-                                            //     ->first()->selling_date;
-                                            // $warrantyEndDate = DB::table('selling_products')
-                                            //     ->where('id', $appiontment->selling_product_id)
-                                            //     ->first()->warranty_end_date;
-                                            // $sam = DB::table('selling_products')
-                                            //     ->where('id', $appiontment->selling_product_id)
-                                            //     ->first()->sam;
-
-                                            // $date1 = Carbon::parse($warrantyEndDate);
-                                            // $date2 = Carbon::now();
-                                            // $diffInDays = $date1->diffInDays($date2);
                                         @endphp
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>

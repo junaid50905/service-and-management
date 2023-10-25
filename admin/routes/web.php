@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\ApplianceController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\SellingProductController;
+use App\Http\Controllers\Engineer\EngineerDashboardController;
 use App\Models\Admin\Appiontment;
 
 /*
@@ -30,7 +31,7 @@ Route::get('/', function () {
 });
 
 
-/////////////////////// Dependancy Dropdown start ////////////////////////
+/////////////////////// Dependancy Dropdown for admin panel start ////////////////////////
 
 Route::get('getSubcategory/{category_id}', [ProductController::class, 'getSubcategory']);
 
@@ -48,7 +49,7 @@ Route::get('getBranches/{user_id}', [CustomerController::class, 'getBranches'])-
 /////////////////////// Dependancy Dropdown end ////////////////////////
 
 
-
+// admin
 Route::prefix('admin')->group(function () {
     // dashboard
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
@@ -193,4 +194,9 @@ Route::prefix('admin')->group(function () {
 });
 
 
+// engineer
+Route::prefix('engineer')->group(function (){
+    // dashboard
+    Route::get('/dashboard', [EngineerDashboardController::class, 'dashboard'])->name('engineer.dashboard');
+});
 
