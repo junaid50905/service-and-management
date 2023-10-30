@@ -5,9 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Appiontment;
 use App\Models\Admin\Product;
-use App\Models\Admin\SellingProduct;
 use App\Models\Admin\SoldProduct;
-use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {

@@ -1,6 +1,9 @@
+@php
+    use App\Models\Admin\Admin;
+@endphp
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-        <a class="sidebar-brand brand-logo text-decoration-none text-white" href="{{ route('dashboard') }}">
+        <a class="sidebar-brand brand-logo text-decoration-none text-white" href="{{ route('admin.dashboard') }}">
             <h3>Aamra S&M</h3>
         </a>
         <a class="sidebar-brand brand-logo-mini" href="index.html"><img
@@ -16,8 +19,15 @@
                         <span class="count bg-success"></span>
                     </div>
                     <div class="profile-name">
-                        <h5 class="mb-0 font-weight-normal">Arman Hossain</h5>
-                        <span>Admin</span>
+                        <h5 class="mb-0 font-weight-normal">
+                            @if (Session::has('loginId'))
+                                @php
+                                    $user = Admin::where('id', Session::get('loginId'))->first();
+                                @endphp
+                                {{ $user->name ?? '' }}
+                            @endif
+                        </h5>
+                        <span>{{ $user->type ?? '' }}</span>
                     </div>
                 </div>
                 <a href="#" id="profile-dropdown" data-bs-toggle="dropdown"><i
@@ -64,7 +74,7 @@
         </li>
         <!-- Dashboard -->
         <li class="nav-item menu-items mt-2">
-            <a class="nav-link" href="{{ route('dashboard') }}">
+            <a class="nav-link" href="{{ route('admin.dashboard') }}">
                 <span class="menu-icon">
                     <i class="mdi mdi-view-dashboard"></i>
                 </span>

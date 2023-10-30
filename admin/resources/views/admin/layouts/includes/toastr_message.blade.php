@@ -301,3 +301,40 @@
         toastr.success("{{ session('appiontment_assigned') }}")
     </script>
 @endif
+
+
+
+{{-- login_success --}}
+@if (Session::has('login_success'))
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true
+        }
+        toastr.success("{{ session('login_success') }}")
+    </script>
+@endif
+
+
+{{-- logout_success --}}
+@if (Session::has('logout_success'))
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true
+        }
+        toastr.success("{{ session('logout_success') }}")
+    </script>
+@endif
+
+
+{{-- login_first --}}
+@if (Session::has('login_first'))
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true
+        }
+        toastr.success("{{ session('login_first') }}")
+    </script>
+@endif
