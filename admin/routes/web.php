@@ -202,6 +202,7 @@ Route::middleware(['customAuthCheck'])->group(function () {
         // start inspection (ajax)
         Route::post('/total-tasks/start-inspection', [EngineerEngineerController::class, 'startInspection'])->name('engineer.start_inspection');
         Route::post('/total-tasks/details/{id}/stop-inspection', [EngineerEngineerController::class, 'stopInspection'])->name('engineer.stop_inspection');
+        Route::post('/total-tasks/details/{id}/complete-inspection', [EngineerEngineerController::class, 'completeTask'])->name('engineer.complete_task');
 
     });
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 05, 2023 at 03:57 AM
+-- Generation Time: Nov 05, 2023 at 12:09 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -54,7 +54,7 @@ INSERT INTO `admins` (`id`, `name`, `email`, `password`, `type`, `created_at`, `
 CREATE TABLE `appiontments` (
   `id` bigint UNSIGNED NOT NULL,
   `sold_product_id` bigint UNSIGNED NOT NULL,
-  `status` enum('pending','assigned','late','complete') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
+  `status` enum('pending','assigned','late','working','complete') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
   `usertype` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `appiontment_taken_date` date DEFAULT NULL,
   `appiontment_taken_time` time DEFAULT NULL,
@@ -69,15 +69,20 @@ CREATE TABLE `appiontments` (
 --
 
 INSERT INTO `appiontments` (`id`, `sold_product_id`, `status`, `usertype`, `appiontment_taken_date`, `appiontment_taken_time`, `inspection_date`, `inspection_time`, `created_at`, `updated_at`) VALUES
-(1, 10, 'late', 'group', '2023-10-23', '11:36:21', '2023-11-01', '16:00:00', '2023-10-23 05:36:21', '2023-11-02 17:38:16'),
-(2, 9, 'late', 'solo', '2023-10-23', '12:47:25', '2023-10-25', '16:22:00', '2023-10-23 06:47:25', '2023-10-30 08:19:17'),
-(3, 14, 'pending', 'group', '2023-10-23', '13:22:07', NULL, NULL, '2023-10-23 07:22:07', '2023-10-30 05:54:38'),
-(4, 9, 'pending', 'solo', '2023-10-23', '15:05:28', NULL, NULL, '2023-10-23 09:05:28', '2023-10-23 09:05:28'),
-(5, 8, 'late', 'solo', '2023-10-23', '17:36:32', '2023-10-24', '20:42:00', '2023-10-23 11:36:32', '2023-10-30 08:19:17'),
-(6, 19, 'pending', 'solo', '2023-10-26', '13:01:13', NULL, NULL, '2023-10-26 07:01:13', '2023-10-26 07:01:13'),
-(7, 22, 'assigned', 'solo', '2023-10-26', '13:05:18', '2023-10-31', '17:05:00', '2023-10-26 07:05:18', '2023-10-30 06:56:22'),
-(8, 23, 'late', 'group', '2023-10-26', '13:40:44', '2023-10-31', '16:40:00', '2023-10-26 07:40:44', '2023-11-02 17:38:16'),
-(9, 24, 'late', 'group', '2023-10-30', '10:39:01', '2023-10-30', '11:00:00', '2023-10-30 04:39:01', '2023-10-30 08:17:28');
+(1, 23, 'complete', 'group', '2023-11-05', '11:33:45', '2023-11-08', '02:34:00', '2023-11-05 05:33:45', '2023-11-05 11:22:32'),
+(2, 22, 'working', 'solo', '2023-11-05', '11:34:43', '2023-11-05', '11:37:00', '2023-11-05 05:34:43', '2023-11-05 10:18:26'),
+(3, 24, 'pending', 'group', '2023-11-05', '11:36:08', NULL, NULL, '2023-11-05 05:36:08', '2023-11-05 05:36:08'),
+(4, 25, 'complete', 'group', '2023-11-05', '13:17:01', '2023-11-05', '13:40:00', '2023-11-05 07:17:01', '2023-11-05 11:20:06'),
+(5, 26, 'complete', 'solo', '2023-11-05', '14:07:36', '2023-11-05', '14:09:00', '2023-11-05 08:07:36', '2023-11-05 11:20:01'),
+(6, 27, 'complete', 'group', '2023-11-05', '14:31:04', '2023-11-05', '14:33:00', '2023-11-05 08:31:04', '2023-11-05 11:19:18'),
+(7, 23, 'complete', 'group', '2023-11-05', '14:38:23', '2023-11-05', '14:39:00', '2023-11-05 08:38:23', '2023-11-05 11:22:40'),
+(8, 26, 'working', 'solo', '2023-11-05', '14:45:37', '2023-11-05', '14:45:00', '2023-11-05 08:45:37', '2023-11-05 08:59:19'),
+(9, 8, 'late', 'solo', '2023-11-05', '14:56:28', '2023-11-05', '14:58:00', '2023-11-05 08:56:28', '2023-11-05 08:58:05'),
+(10, 26, 'complete', 'solo', '2023-11-05', '16:29:44', '2023-11-10', '16:32:00', '2023-11-05 10:29:44', '2023-11-05 11:22:26'),
+(11, 26, 'complete', 'solo', '2023-11-05', '17:50:10', '2023-11-05', '17:50:00', '2023-11-05 11:50:10', '2023-11-05 11:51:31'),
+(12, 22, 'assigned', 'solo', '2023-11-05', '18:01:34', '2023-11-05', '22:01:00', '2023-11-05 12:01:34', '2023-11-05 12:01:56'),
+(13, 27, 'late', 'group', '2023-11-05', '18:02:28', '2023-11-05', '18:02:00', '2023-11-05 12:02:28', '2023-11-05 12:03:46'),
+(14, 22, 'late', 'solo', '2023-11-05', '18:03:58', '2023-11-05', '18:06:00', '2023-11-05 12:03:58', '2023-11-05 12:07:01');
 
 -- --------------------------------------------------------
 
@@ -134,7 +139,9 @@ INSERT INTO `branches` (`id`, `user_id`, `branch_name`, `branch_address`, `admin
 (4, 8, 'Shantinagar Branch', 'Iris Noorjehan (1st Floor), Plot no. 104, Kakrail Road, Ramna, Dhaka', 'ali', 'ali@shantinagar.ebl.com', '02-8300218', NULL, NULL),
 (6, 10, 'Motijheel Branch', 'sector 6, uttara, Dhaka', 'habibullah', 'habibullah@gmail.com.bd', '0199039093', NULL, NULL),
 (7, 9, 'Gazipur Branch', 'Chowrasta, Gazipur', 'shirajul', 'shirajul@brac.com', '01234567895', NULL, NULL),
-(8, 8, 'Gazipur Branch', 'Chowrasta, Gazipur', 'shirajul', 'shirajul@brac.com', '01234567895', NULL, NULL);
+(8, 8, 'Gazipur Branch', 'Chowrasta, Gazipur', 'shirajul', 'shirajul@brac.com', '01234567895', NULL, NULL),
+(9, 9, 'Motijil Branch', 'Motijil', 'Saif', 'saif@mitijil.bracbank.com', '0232320323', NULL, NULL),
+(10, 10, 'Gazipur Branch', 'Chowrasta, Gazipur', 'shirajul', 'shirajul@wasternbank.com', '012345632323', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -270,14 +277,20 @@ CREATE TABLE `inspections` (
 --
 
 INSERT INTO `inspections` (`id`, `appiontment_id`, `start_date`, `start_time`, `end_time`, `longitude`, `latitude`, `created_at`, `updated_at`) VALUES
-(9, 9, '2023-11-02', '17:48:31', '17:57:03', 90.403992, 23.794011, NULL, '2023-11-02 11:57:03'),
-(10, 9, '2023-11-02', '17:49:30', '17:57:03', 90.403992, 23.794011, NULL, '2023-11-02 11:57:03'),
-(11, 9, '2023-11-02', '17:53:48', '17:57:03', 90.403980, 23.794013, NULL, '2023-11-02 11:57:03'),
-(12, 9, '2023-11-02', '17:58:06', NULL, NULL, NULL, NULL, NULL),
-(13, 9, '2023-11-02', '17:58:31', NULL, 90.403968, 23.794014, NULL, NULL),
-(14, 9, '2023-11-02', '17:59:36', NULL, 90.403980, 23.794016, NULL, NULL),
-(15, 9, '2023-11-02', '18:00:33', NULL, 90.403987, 23.793982, NULL, NULL),
-(16, 7, '2023-11-05', '09:52:21', '09:52:38', 90.403983, 23.794010, NULL, '2023-11-05 03:52:38');
+(1, 8, '2023-11-05', '14:59:19', '15:00:26', 90.403979, 23.793986, NULL, '2023-11-05 09:00:26'),
+(2, 7, '2023-11-05', '15:01:45', '15:04:24', 90.403983, 23.794023, NULL, '2023-11-05 09:04:24'),
+(3, 7, '2023-11-05', '15:04:03', '15:04:24', 90.403987, 23.794019, NULL, '2023-11-05 09:04:24'),
+(4, 6, '2023-11-05', '15:36:20', '15:36:43', 90.403982, 23.794015, NULL, '2023-11-05 09:36:43'),
+(5, 5, '2023-11-05', '15:51:08', '15:51:58', 90.403991, 23.794009, NULL, '2023-11-05 09:51:58'),
+(6, 4, '2023-11-05', '15:52:33', '15:55:18', 90.403986, 23.794028, NULL, '2023-11-05 09:55:18'),
+(7, 2, '2023-11-05', '16:18:26', '16:18:47', 90.403988, 23.794020, NULL, '2023-11-05 10:18:47'),
+(8, 10, '2023-11-05', '16:49:48', '16:49:52', 90.403980, 23.794022, NULL, '2023-11-05 10:49:52'),
+(9, 1, '2023-11-05', '17:03:52', '17:09:12', 90.403992, 23.794013, NULL, '2023-11-05 11:09:12'),
+(10, 1, '2023-11-05', '17:05:14', '17:09:12', 90.403993, 23.794015, NULL, '2023-11-05 11:09:12'),
+(11, 1, '2023-11-05', '17:06:03', '17:09:12', 90.403990, 23.794028, NULL, '2023-11-05 11:09:12'),
+(12, 1, '2023-11-05', '17:08:23', '17:09:12', 90.403991, 23.794023, NULL, '2023-11-05 11:09:12'),
+(13, 1, '2023-11-05', '17:09:02', '17:09:12', 90.403991, 23.794023, NULL, '2023-11-05 11:09:12'),
+(14, 11, '2023-11-05', '17:51:20', '17:51:28', 90.403981, 23.793999, NULL, '2023-11-05 11:51:28');
 
 -- --------------------------------------------------------
 
@@ -313,10 +326,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (38, '2014_10_12_000000_create_users_table', 27),
 (46, '2023_10_19_155805_create_sold_products_table', 29),
 (48, '2023_10_19_155619_create_branches_table', 30),
-(51, '2023_09_26_205051_create_recruiting_engineers_table', 32),
-(53, '2023_10_01_150345_create_appiontments_table', 33),
 (54, '2023_10_25_130656_create_admins_table', 34),
-(59, '2023_10_31_112727_create_inspections_table', 35);
+(64, '2023_10_01_150345_create_appiontments_table', 35),
+(65, '2023_11_05_113128_create_recruiting_engineers_table', 36),
+(66, '2023_11_05_113222_create_inspections_table', 37);
 
 -- --------------------------------------------------------
 
@@ -414,15 +427,19 @@ CREATE TABLE `recruiting_engineers` (
 --
 
 INSERT INTO `recruiting_engineers` (`id`, `appiontment_id`, `engineer_id`, `created_at`, `updated_at`) VALUES
-(1, 2, 5, '2023-10-22 10:57:21', '2023-10-22 10:57:21'),
-(2, 6, 6, '2023-10-23 04:51:48', '2023-10-23 04:51:48'),
-(3, 6, 6, '2023-10-23 04:52:24', '2023-10-23 04:52:24'),
-(4, 1, 5, '2023-10-23 06:06:03', '2023-10-23 06:06:03'),
-(5, 2, 6, '2023-10-23 07:22:49', '2023-10-23 07:22:49'),
-(6, 5, 4, '2023-10-23 11:42:37', '2023-10-23 11:42:37'),
-(7, 7, 3, '2023-10-26 07:05:36', '2023-10-26 07:05:36'),
-(8, 8, 3, '2023-10-26 07:41:01', '2023-10-26 07:41:01'),
-(9, 9, 3, '2023-10-30 04:40:11', '2023-10-30 04:40:11');
+(1, 1, 3, '2023-11-05 05:34:23', '2023-11-05 05:34:23'),
+(2, 2, 3, '2023-11-05 05:34:58', '2023-11-05 05:34:58'),
+(3, 4, 3, '2023-11-05 07:38:23', '2023-11-05 07:38:23'),
+(4, 5, 3, '2023-11-05 08:07:56', '2023-11-05 08:07:56'),
+(5, 6, 3, '2023-11-05 08:31:21', '2023-11-05 08:31:21'),
+(6, 7, 3, '2023-11-05 08:38:43', '2023-11-05 08:38:43'),
+(7, 8, 3, '2023-11-05 08:45:56', '2023-11-05 08:45:56'),
+(8, 9, 2, '2023-11-05 08:56:43', '2023-11-05 08:56:43'),
+(9, 10, 3, '2023-11-05 10:30:06', '2023-11-05 10:30:06'),
+(10, 11, 3, '2023-11-05 11:50:27', '2023-11-05 11:50:27'),
+(11, 12, 3, '2023-11-05 12:01:56', '2023-11-05 12:01:56'),
+(12, 13, 3, '2023-11-05 12:02:44', '2023-11-05 12:02:44'),
+(13, 14, 3, '2023-11-05 12:04:18', '2023-11-05 12:04:18');
 
 -- --------------------------------------------------------
 
@@ -476,7 +493,11 @@ INSERT INTO `sold_products` (`id`, `user_id`, `product_id`, `branch_id`, `quanti
 (21, 8, 8, 1, 1, '2023-10-18', 1, 0, '2023-10-23 11:41:56', '2023-10-23 11:41:56'),
 (22, 7, 9, NULL, 4, '2023-10-27', 12, 1, '2023-10-26 07:04:48', '2023-10-26 07:04:48'),
 (23, 9, 8, 7, 2, '2023-11-03', 14, 0, '2023-10-26 07:12:08', '2023-10-26 07:12:08'),
-(24, 8, 8, 8, 3, '2023-10-01', 12, 0, '2023-10-30 04:37:35', '2023-10-30 04:37:35');
+(24, 8, 8, 8, 3, '2023-10-01', 12, 0, '2023-10-30 04:37:35', '2023-10-30 04:37:35'),
+(25, 9, 8, 9, 12, '2023-10-29', 12, 0, '2023-11-05 07:16:48', '2023-11-05 07:16:48'),
+(26, 7, 8, NULL, 7, '2023-10-29', 21, 0, '2023-11-05 08:07:23', '2023-11-05 08:07:23'),
+(27, 10, 8, 10, 2, '2023-10-03', 23, 1, '2023-11-05 08:30:48', '2023-11-05 08:30:48'),
+(28, 8, 8, 8, 4, '2023-10-29', 12, 1, '2023-11-05 08:38:10', '2023-11-05 08:38:10');
 
 -- --------------------------------------------------------
 
@@ -697,7 +718,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `appiontments`
 --
 ALTER TABLE `appiontments`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `appliances`
@@ -709,7 +730,7 @@ ALTER TABLE `appliances`
 -- AUTO_INCREMENT for table `branches`
 --
 ALTER TABLE `branches`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -751,13 +772,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `inspections`
 --
 ALTER TABLE `inspections`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -775,7 +796,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `recruiting_engineers`
 --
 ALTER TABLE `recruiting_engineers`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `servicing_orders`
@@ -787,7 +808,7 @@ ALTER TABLE `servicing_orders`
 -- AUTO_INCREMENT for table `sold_products`
 --
 ALTER TABLE `sold_products`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `subcategories`

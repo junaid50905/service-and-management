@@ -87,7 +87,7 @@
                             <div class="numbers">
                                 <p class="text-sm mb-0 text-uppercase font-weight-bold">due <br> tasks</p>
                                 <h4 class="font-weight-bolder text-danger">
-                                    3
+                                    4
                                 </h4>
                             </div>
                         </div>

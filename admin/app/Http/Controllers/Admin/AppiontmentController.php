@@ -18,40 +18,40 @@ class AppiontmentController extends Controller
     public function groupIndex()
     {
         $allAppiontments = Appiontment::where('usertype', 'group')->latest()->get();
-        foreach ($allAppiontments as $appiontment) {
-            $status = $appiontment->status;
-            $inspection_date = $appiontment->inspection_date;
-            $inspection_time = $appiontment->inspection_time;
-            $inspection_datetime = Carbon::parse($inspection_date . ' ' . $inspection_time);
+        // foreach ($allAppiontments as $appiontment) {
+        //     $status = $appiontment->status;
+        //     $inspection_date = $appiontment->inspection_date;
+        //     $inspection_time = $appiontment->inspection_time;
+        //     $inspection_datetime = Carbon::parse($inspection_date . ' ' . $inspection_time);
 
-            if($status == 'assigned'){
-                if ($inspection_datetime < Carbon::now()) {
-                    $appiontment->update([
-                        'status' => 'late',
-                    ]);
-                }
-            }
-        }
+        //     if($status == 'assigned'){
+        //         if ($inspection_datetime < Carbon::now()) {
+        //             $appiontment->update([
+        //                 'status' => 'late',
+        //             ]);
+        //         }
+        //     }
+        // }
         return view('admin.appiontment.group_index', compact('allAppiontments'));
     }
     // soloIndex
     public function soloIndex()
     {
         $allAppiontments = Appiontment::where('usertype', 'solo')->latest()->get();
-        foreach ($allAppiontments as $appiontment) {
-            $status = $appiontment->status;
-            $inspection_date = $appiontment->inspection_date;
-            $inspection_time = $appiontment->inspection_time;
-            $inspection_datetime = Carbon::parse($inspection_date . ' ' . $inspection_time);
+        // foreach ($allAppiontments as $appiontment) {
+        //     $status = $appiontment->status;
+        //     $inspection_date = $appiontment->inspection_date;
+        //     $inspection_time = $appiontment->inspection_time;
+        //     $inspection_datetime = Carbon::parse($inspection_date . ' ' . $inspection_time);
 
-            if ($status == 'assigned') {
-                if ($inspection_datetime < Carbon::now()) {
-                    $appiontment->update([
-                        'status' => 'late',
-                    ]);
-                }
-            }
-        }
+        //     if ($status == 'assigned') {
+        //         if ($inspection_datetime < Carbon::now()) {
+        //             $appiontment->update([
+        //                 'status' => 'late',
+        //             ]);
+        //         }
+        //     }
+        // }
         return view('admin.appiontment.solo_index', compact('allAppiontments'));
     }
     // appiontmentStore

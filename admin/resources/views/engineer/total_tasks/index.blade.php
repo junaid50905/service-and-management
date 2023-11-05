@@ -93,15 +93,14 @@
                                                 {{ $customerType }}</p>
                                         </td>
                                         <td class="align-middle text-sm">
-                                            <span
-                                                class="badge badge-sm {{ $appiontmentStatus == 'assigned' ? 'bg-gradient-primary' : '' }} {{ $appiontmentStatus == 'late' ? 'bg-gradient-danger' : '' }} {{ $appiontmentStatus == 'complete' ? 'bg-gradient-success' : '' }}">{{ $appiontmentStatus }}</span>
+                                            <span class="badge badge-sm {{ $appiontmentStatus == 'assigned' ? 'bg-gradient-primary' : '' }} {{ $appiontmentStatus == 'late' ? 'bg-gradient-danger' : '' }} {{ $appiontmentStatus == 'working' ? 'bg-gradient-info' : '' }} {{ $appiontmentStatus == 'complete' ? 'bg-gradient-success' : '' }}">{{ $appiontmentStatus }}</span>
                                             <p class="text-xs text-secondary mb-0">Inspection Last Date: <br>
                                                 {{ $appiontmentInspectionDate }} |
                                                 {{ $appiontmentInspectionTime > 12.0 ? $appiontmentInspectionTime . 'PM' : $appiontmentInspectionTime . 'AM' }}
                                             </p>
                                         </td>
                                         <td>
-                                            <a href="{{ route('engineer.task_view', $task->id) }}"
+                                            <a href="{{ route('engineer.task_view', $task->appiontment_id) }}"
                                                 class="text-dark font-weight-bold text-xs">
                                                 View
                                             </a>

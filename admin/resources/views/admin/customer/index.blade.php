@@ -36,13 +36,13 @@
                                 @foreach ($customers as $customer)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $customer->id }}</td>
+                                        <td class="text-xs">{{ $customer->id }}</td>
                                         <td>{{ $customer->usertype }}</td>
                                         <td>{{ $customer->name }}</td>
                                         <td>{{ $customer->phone }}</td>
                                         <td>{{ Str::words($customer->address, 7, '...') }}</td>
                                         <td>
-                                            <a href="{{ $customer->usertype == 'solo' ? route('customer.saleToSoloCustomerForm', $customer->id) : route('customer.saleToGroupCustomerForm', $customer->id) }}" class="btn btn-sm btn-info me-2">Sale product</a>
+                                            <a href="{{ $customer->usertype == 'solo' ? route('customer.saleToSoloCustomerForm', $customer->id) : route('customer.saleToGroupCustomerForm', $customer->id) }}" class="btn btn-sm btn-info me-2">Add Product</a>
                                             <a href="{{ route('customer.edit', $customer->id) }}" class="btn btn-sm btn-warning me-2">Edit</a>
                                             <a href="{{ route('customer.delete', $customer->id) }}" onclick="return confirm('are you sure?')" class="btn btn-sm btn-danger">Delete</a>
                                         </td>

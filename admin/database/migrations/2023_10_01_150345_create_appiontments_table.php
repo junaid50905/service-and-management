@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('appiontments', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('sold_product_id');
-            $table->enum('status', ['pending', 'assigned', 'late', 'complete'])->default('pending');
+            $table->enum('status', ['pending', 'assigned', 'late', 'working', 'complete'])->default('pending');
             $table->string('usertype');
             $table->date('appiontment_taken_date')->nullable();
             $table->time('appiontment_taken_time')->nullable();

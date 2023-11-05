@@ -17,13 +17,14 @@ use Carbon\Carbon;
 
 class EngineerController extends Controller
 {
-    // recentlyAssignedTasks
+    // total number of task
     public function totalTasks()
     {
         if (session()->has('loginId')) {
             $loggedInEngineer = session()->get('loginId');
         }
         $totalTasks = RecruitingEngineer::where('engineer_id', $loggedInEngineer)->orderBy('id', 'desc')->get();
+
         return view('engineer.total_tasks.index', compact('totalTasks'));
     }
 
@@ -79,6 +80,9 @@ class EngineerController extends Controller
             'start_time' => $start_time,
         ]);
 
+        Appiontment::where('id', $request->appiontment_id)->update([
+            'status' => 'working',
+        ]);
 
         return response()->json($data);
     }
@@ -93,6 +97,16 @@ class EngineerController extends Controller
         ]);
 
         return redirect()->back();
+    }
+
+    // completeInspection
+    public function completeTask(Request $request, $id)
+    {
+        Appiontment::where('id', $id)->update([
+            'status' => 'complete'
+        ]);
+
+        return redirect()->route('engineer.total_tasks')->with('complete_task', "Thank you. You have completed a task successfully.");
     }
 
     // taskInspection

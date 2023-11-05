@@ -1,3 +1,8 @@
+@php
+    use App\Models\Admin\Appiontment;
+
+@endphp
+
 @extends('engineer.layouts.master')
 @section('title')
     Task details
@@ -7,72 +12,54 @@
     <div class="row">
         <div class="col-12">
             <div class="card mb-4 shadow p-3 mb-5 bg-body rounded">
+
+                <div>
+                    @php
+                        $appiontmentStatus = Appiontment::where('id', $appiontment_id)->first()->status;
+                    @endphp
+                    <span class="badge badge-sm {{ $appiontmentStatus == 'assigned' ? 'bg-gradient-primary' : '' }} {{ $appiontmentStatus == 'late' ? 'bg-gradient-danger' : '' }} {{ $appiontmentStatus == 'working' ? 'bg-gradient-info' : '' }} {{ $appiontmentStatus == 'complete' ? 'bg-gradient-success' : '' }}">{{ $appiontmentStatus }}</span>
+                </div>
+
                 <div class="card-header pb-0">
-                    <h6>Task details</h6>
+                    <h4>Task Details</h4>
                 </div>
 
                 <!-- ========== Start Section ========== -->
 
                 <div class="row">
-                    <div class="col-md-6 my-2">
+                    <div class="col-md-4 my-2">
 
+                        <!-- ==========  start inspection ========== -->
                         <div id="locationForm">
                             <input type="hidden" name="appiontment_id" value="{{ $appiontment_id }}" id="appiontment_id">
                             <input type="hidden" name="latitude" id="latitudeInput">
                             <input type="hidden" name="longitude" id="longitudeInput">
-                            <button type="submit" class="btn btn-primary" id="startInspectionBtn">Start inspection</button>
+                            <button type="submit" class="btn btn-primary" id="startInspectionBtn"><i class="fa-solid fa-hourglass-start"></i> Start inspection</button>
                         </div>
+                        <!-- ========= start inspection ================================== -->
 
+                        <!-- ========== stop inspection ========== -->
                         <form action="{{ route('engineer.stop_inspection', $appiontment_id) }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-primary" id="stopInspectionBtn">Stop inspection</button>
+                            <button type="submit" class="btn btn-primary" id="stopInspectionBtn"><i class="fa-solid fa-stopwatch"></i> Stop inspection</button>
                         </form>
 
-                        {{-- <div id="page_name">
-                            <div class="stopwatch">
-                                <div class="item">
-                                    <div class="countup" id="countup1">
-                                        <span id="hour" class="timeel hours">00</span>
-                                        <span class="timeel timeRefHours">hours</span>
-                                        <span id="min" class="timeel minutes">00</span>
-                                        <span class="timeel timeRefMinutes">minutes</span>
-                                        <span id="sec" class="timeel seconds">00</span>
-                                        <span class="timeel timeRefSeconds">seconds</span>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 d-flex justify-content-end">
-                                            <button class="btn btn-sm btn-info btn-lg timer_button"
-                                                id="start_button">Start</button>
-                                        </div>
-                                        <div class="col-6">
-                                            <button class="stopTimerBtn btn btn-sm btn-info btn-lg timer_button"
-                                                id="timer_submit">Stop</button>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-auto mx-auto pt-4">
+                        <!-- ========== stop inspection ==================================== -->
 
-                                            <div>
-                                                <input type="text" name="appiontment_id" value="{{ $appiontment_id }}"
-                                                    id="appiont_id">
-                                                <input type="text" name="working_time" id="workingTime">
-                                                <button type="submit" class="btn btn-sm btn-success"
-                                                    id="inspectionComplete">Done</button>
-                                            </div>
+                        <!-- ==========  complete the task ========== -->
 
-                                            <h1>
-                                                <div id="total_time">
+                        @if ($appiontmentStatus == 'working')
+                        <form action="{{ route('engineer.complete_task', $appiontment_id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-success">Complete Task</button>
+                        </form>
+                        @endif
+                        <!-- ========= complete the task ========== -->
 
-                                                </div>
-                                            </h1>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
+                        
                     </div>
 
-                    <div class="col-md-6 my-2">
+                    <div class="col-md-8 my-2">
                         <button type="button" id="shareLocation" class="btn btn-primary"><i
                                 class="fa-solid fa-location-dot"></i> Show Location</button>
                         <div id="map">
@@ -83,9 +70,6 @@
 
 
                 <!-- ========== End Section ========== -->
-
-
-
 
 
 
@@ -161,6 +145,8 @@
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </div>
     </div>
@@ -387,6 +373,13 @@
                         } else {
                             alert('Invalid latitude and longitude values.');
                         }
+
+                        // showing the start inspection button
+                        if(lat && lng){
+                            $('#startInspectionBtn').css('display', 'block')
+                        }else{
+                            console.log('map does not found');
+                        }
                     }, (error) => {
                         alert('Geolocation error: ' + error.message);
                     });
@@ -395,6 +388,7 @@
                 }
                 $(this).hide();
                 $('#mapShowingStatus').html('Showing your current location......')
+
             });
 
             $(document).on('click', '#startInspectionBtn', function() {
@@ -419,8 +413,9 @@
                         longitude: longitude
                     },
                     success: function(data) {
-                        $('#startInspectionBtn').html("Working");
+                        $('#startInspectionBtn').html("You have started inspection");
                         $("#startInspectionBtn").prop("disabled", true);
+                        $('#stopInspectionBtn').css('display', 'block')
                     },
                     error: function(error) {
                         console.log(error);
