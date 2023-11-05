@@ -198,6 +198,11 @@ Route::middleware(['customAuthCheck'])->group(function () {
         Route::get('/dashboard', [EngineerDashboardController::class, 'dashboard'])->name('engineer.dashboard');
 
         Route::get('/total-tasks', [EngineerEngineerController::class, 'totalTasks'])->name('engineer.total_tasks');
+        Route::get('/total-tasks/details/{id}', [EngineerEngineerController::class, 'taskView'])->name('engineer.task_view');
+        // start inspection (ajax)
+        Route::post('/total-tasks/start-inspection', [EngineerEngineerController::class, 'startInspection'])->name('engineer.start_inspection');
+        Route::post('/total-tasks/details/{id}/stop-inspection', [EngineerEngineerController::class, 'stopInspection'])->name('engineer.stop_inspection');
+
     });
 
 });

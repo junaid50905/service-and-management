@@ -112,54 +112,12 @@
                                                     <button class="btn btn-secondary btn-sm disabled" role="button"
                                                         aria-disabled="true">Has been assigned</button><br>
                                                     <a href="{{ route('appiontment.assigned_engineer_detailed', $appiontment->id) }}" class="btn btn-info btn-sm my-2 d-flex align-items-center"><i class="mdi mdi-eye"></i><span>view engineer details</span></a>
-                                                @endif
-                                            </td>
-                                            {{-- <td>{{ $sellingProductId }}</td>
-                                            <td>{{ $userId }}</td>
-                                            <td>{{ DB::table('users')->where('id', $userId)->first()->name }}</td>
-                                            <td>{{ DB::table('products')->where('id', $productId)->first()->name }}</td>
-                                            <td>{{ Carbon::parse($sellingDate)->format('Y-M-d') }}</td>
-                                            <td>{{ Carbon::parse($warrantyEndDate)->format('Y-M-d')  }}</td>
-                                            <td>{{ $diffInDays }} days</td>
-                                            <td>
-                                                @php
-                                                    $status = strtolower($appiontment->status); // Convert status to lowercase for consistency
-                                                    $colorClass = '';
-
-                                                    // Determine the color class based on the status
-                                                    switch ($status) {
-                                                        case 'pending':
-                                                            $colorClass = 'btn-warning';
-                                                            break;
-                                                        case 'assigned':
-                                                            $colorClass = 'btn-primary';
-                                                            break;
-                                                        case 'late':
-                                                            $colorClass = 'btn-danger';
-                                                            break;
-                                                        case 'complete':
-                                                            $colorClass = 'btn-success';
-                                                            break;
-                                                        // Add more cases for other statuses if needed
-                                                    }
-                                                @endphp
-                                                <button
-                                                    class="btn {{ $colorClass }} btn-sm">{{ $appiontment->status }}</button>
-                                            </td>
-                                            {{-- <td>{{ Carbon::parse($appiontment->date)->format('Y-M-d') ?? '' }}</td> --}}
-                                            {{-- <td>{{ $appiontment->date }}</td>
-                                            <td>{{ $appiontment->time }}</td>
-                                            <td>{{ $sam }}</td>
-                                            <td>
-                                                @if ($appiontment->status === 'pending')
-                                                    <a href="{{ route('appiontment.assign_engineer', $appiontment->id) }}"
-                                                        class="btn btn-outline-behance btn-sm">Assign Engineer</a>
-                                                @elseif($appiontment->status === 'assigned')
+                                                @elseif($appiontment->status === 'late')
                                                     <button class="btn btn-secondary btn-sm disabled" role="button"
                                                         aria-disabled="true">Has been assigned</button><br>
                                                     <a href="{{ route('appiontment.assigned_engineer_detailed', $appiontment->id) }}" class="btn btn-info btn-sm my-2 d-flex align-items-center"><i class="mdi mdi-eye"></i><span>view engineer details</span></a>
                                                 @endif
-                                            </td> --}}
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </thead>

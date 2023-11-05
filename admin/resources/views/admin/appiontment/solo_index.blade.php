@@ -104,6 +104,10 @@
                                                     <button class="btn btn-secondary btn-sm disabled" role="button"
                                                         aria-disabled="true">Has been assigned</button><br>
                                                     <a href="{{ route('appiontment.assigned_engineer_detailed', $appiontment->id) }}" class="btn btn-info btn-sm my-2 d-flex align-items-center"><i class="mdi mdi-eye"></i><span>view engineer details</span></a>
+                                                @elseif($appiontment->status === 'late')
+                                                    <button class="btn btn-secondary btn-sm disabled" role="button"
+                                                        aria-disabled="true">Has been assigned</button><br>
+                                                    <a href="{{ route('appiontment.assigned_engineer_detailed', $appiontment->id) }}" class="btn btn-info btn-sm my-2 d-flex align-items-center"><i class="mdi mdi-eye"></i><span>view engineer details</span></a>
                                                 @endif
                                             </td>
                                         </tr>

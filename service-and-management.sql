@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 23, 2023 at 07:24 AM
+-- Generation Time: Nov 05, 2023 at 03:57 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -20,6 +20,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `service-and-management`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admins`
+--
+
+CREATE TABLE `admins` (
+  `id` bigint UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` enum('admin','superadmin') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`, `name`, `email`, `password`, `type`, `created_at`, `updated_at`) VALUES
+(1, 'ajhar', 'ahjar@superadmin.aamra-solution.com', '12345678', 'superadmin', '2023-10-25 07:11:15', '2023-10-25 07:11:15'),
+(2, 'abdullah', 'abdullah@admin.aamra-solution.com', '12345678', 'admin', '2023-10-25 07:11:15', '2023-10-25 07:11:15');
 
 -- --------------------------------------------------------
 
@@ -45,9 +69,15 @@ CREATE TABLE `appiontments` (
 --
 
 INSERT INTO `appiontments` (`id`, `sold_product_id`, `status`, `usertype`, `appiontment_taken_date`, `appiontment_taken_time`, `inspection_date`, `inspection_time`, `created_at`, `updated_at`) VALUES
-(1, 10, 'assigned', 'group', '2023-10-23', '11:36:21', '2023-11-01', '16:00:00', '2023-10-23 05:36:21', '2023-10-23 06:06:03'),
-(2, 9, 'assigned', 'solo', '2023-10-23', '12:47:25', '2023-10-25', '16:22:00', '2023-10-23 06:47:25', '2023-10-23 07:22:49'),
-(3, 14, 'pending', 'group', '2023-10-23', '13:22:07', NULL, NULL, '2023-10-23 07:22:07', '2023-10-23 07:22:07');
+(1, 10, 'late', 'group', '2023-10-23', '11:36:21', '2023-11-01', '16:00:00', '2023-10-23 05:36:21', '2023-11-02 17:38:16'),
+(2, 9, 'late', 'solo', '2023-10-23', '12:47:25', '2023-10-25', '16:22:00', '2023-10-23 06:47:25', '2023-10-30 08:19:17'),
+(3, 14, 'pending', 'group', '2023-10-23', '13:22:07', NULL, NULL, '2023-10-23 07:22:07', '2023-10-30 05:54:38'),
+(4, 9, 'pending', 'solo', '2023-10-23', '15:05:28', NULL, NULL, '2023-10-23 09:05:28', '2023-10-23 09:05:28'),
+(5, 8, 'late', 'solo', '2023-10-23', '17:36:32', '2023-10-24', '20:42:00', '2023-10-23 11:36:32', '2023-10-30 08:19:17'),
+(6, 19, 'pending', 'solo', '2023-10-26', '13:01:13', NULL, NULL, '2023-10-26 07:01:13', '2023-10-26 07:01:13'),
+(7, 22, 'assigned', 'solo', '2023-10-26', '13:05:18', '2023-10-31', '17:05:00', '2023-10-26 07:05:18', '2023-10-30 06:56:22'),
+(8, 23, 'late', 'group', '2023-10-26', '13:40:44', '2023-10-31', '16:40:00', '2023-10-26 07:40:44', '2023-11-02 17:38:16'),
+(9, 24, 'late', 'group', '2023-10-30', '10:39:01', '2023-10-30', '11:00:00', '2023-10-30 04:39:01', '2023-10-30 08:17:28');
 
 -- --------------------------------------------------------
 
@@ -101,7 +131,10 @@ INSERT INTO `branches` (`id`, `user_id`, `branch_name`, `branch_address`, `admin
 (1, 8, 'Motijheel Branch', 'Shadinota Bhaban, 88 Motijheel C/A, Dhaka', 'habibullah', 'habibullah@gmail.com', '095274241', NULL, NULL),
 (2, 8, 'Dhanmondi Branch', 'House-21, Road-08, Dhanmondi R/A, Dhaka-1205', 'kamal', 'kamal@gmail.com', '095261188', NULL, NULL),
 (3, 8, 'Moghbazar Branch', 'Shafi Complex, Holding No-1/A, West Moghbazar, New Circular Road, Ramna, Dhaka', 'iqbal hossain', 'iqbal@ebl.com', '095274188', NULL, NULL),
-(4, 8, 'Shantinagar Branch', 'Iris Noorjehan (1st Floor), Plot no. 104, Kakrail Road, Ramna, Dhaka', 'ali', 'ali@shantinagar.ebl.com', '02-8300218', NULL, NULL);
+(4, 8, 'Shantinagar Branch', 'Iris Noorjehan (1st Floor), Plot no. 104, Kakrail Road, Ramna, Dhaka', 'ali', 'ali@shantinagar.ebl.com', '02-8300218', NULL, NULL),
+(6, 10, 'Motijheel Branch', 'sector 6, uttara, Dhaka', 'habibullah', 'habibullah@gmail.com.bd', '0199039093', NULL, NULL),
+(7, 9, 'Gazipur Branch', 'Chowrasta, Gazipur', 'shirajul', 'shirajul@brac.com', '01234567895', NULL, NULL),
+(8, 8, 'Gazipur Branch', 'Chowrasta, Gazipur', 'shirajul', 'shirajul@brac.com', '01234567895', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -217,6 +250,38 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `inspections`
+--
+
+CREATE TABLE `inspections` (
+  `id` bigint UNSIGNED NOT NULL,
+  `appiontment_id` bigint UNSIGNED NOT NULL,
+  `start_date` date DEFAULT NULL,
+  `start_time` time DEFAULT NULL,
+  `end_time` time DEFAULT NULL,
+  `longitude` double(10,6) DEFAULT NULL,
+  `latitude` double(10,6) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `inspections`
+--
+
+INSERT INTO `inspections` (`id`, `appiontment_id`, `start_date`, `start_time`, `end_time`, `longitude`, `latitude`, `created_at`, `updated_at`) VALUES
+(9, 9, '2023-11-02', '17:48:31', '17:57:03', 90.403992, 23.794011, NULL, '2023-11-02 11:57:03'),
+(10, 9, '2023-11-02', '17:49:30', '17:57:03', 90.403992, 23.794011, NULL, '2023-11-02 11:57:03'),
+(11, 9, '2023-11-02', '17:53:48', '17:57:03', 90.403980, 23.794013, NULL, '2023-11-02 11:57:03'),
+(12, 9, '2023-11-02', '17:58:06', NULL, NULL, NULL, NULL, NULL),
+(13, 9, '2023-11-02', '17:58:31', NULL, 90.403968, 23.794014, NULL, NULL),
+(14, 9, '2023-11-02', '17:59:36', NULL, 90.403980, 23.794016, NULL, NULL),
+(15, 9, '2023-11-02', '18:00:33', NULL, 90.403987, 23.793982, NULL, NULL),
+(16, 7, '2023-11-05', '09:52:21', '09:52:38', 90.403983, 23.794010, NULL, '2023-11-05 03:52:38');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -249,7 +314,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (46, '2023_10_19_155805_create_sold_products_table', 29),
 (48, '2023_10_19_155619_create_branches_table', 30),
 (51, '2023_09_26_205051_create_recruiting_engineers_table', 32),
-(53, '2023_10_01_150345_create_appiontments_table', 33);
+(53, '2023_10_01_150345_create_appiontments_table', 33),
+(54, '2023_10_25_130656_create_admins_table', 34),
+(59, '2023_10_31_112727_create_inspections_table', 35);
 
 -- --------------------------------------------------------
 
@@ -288,7 +355,7 @@ CREATE TABLE `personal_access_tokens` (
 
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `expires_at`, `created_at`, `updated_at`) VALUES
 (1, 'App\\Models\\User', 8, 'register_emon123@gmail.com', 'fd59c35892d565bda5113426361b400e334cb508a9b48df305f6e4028221b00b', '[\"*\"]', NULL, NULL, '2023-10-16 11:25:28', '2023-10-16 11:25:28'),
-(2, 'App\\Models\\User', 8, 'login_emon123@gmail.com', 'f2389ae84a2ff97ca25f6968ecdddc3f90fcf3acd586b55210e97ea806e273c2', '[\"*\"]', NULL, NULL, '2023-10-16 11:25:44', '2023-10-16 11:25:44');
+(2, 'App\\Models\\User', 8, 'login_emon123@gmail.com', 'f2389ae84a2ff97ca25f6968ecdddc3f90fcf3acd586b55210e97ea806e273c2', '[\"*\"]', '2023-10-25 04:06:57', NULL, '2023-10-16 11:25:44', '2023-10-25 04:06:57');
 
 -- --------------------------------------------------------
 
@@ -351,7 +418,11 @@ INSERT INTO `recruiting_engineers` (`id`, `appiontment_id`, `engineer_id`, `crea
 (2, 6, 6, '2023-10-23 04:51:48', '2023-10-23 04:51:48'),
 (3, 6, 6, '2023-10-23 04:52:24', '2023-10-23 04:52:24'),
 (4, 1, 5, '2023-10-23 06:06:03', '2023-10-23 06:06:03'),
-(5, 2, 6, '2023-10-23 07:22:49', '2023-10-23 07:22:49');
+(5, 2, 6, '2023-10-23 07:22:49', '2023-10-23 07:22:49'),
+(6, 5, 4, '2023-10-23 11:42:37', '2023-10-23 11:42:37'),
+(7, 7, 3, '2023-10-26 07:05:36', '2023-10-26 07:05:36'),
+(8, 8, 3, '2023-10-26 07:41:01', '2023-10-26 07:41:01'),
+(9, 9, 3, '2023-10-30 04:40:11', '2023-10-30 04:40:11');
 
 -- --------------------------------------------------------
 
@@ -399,7 +470,13 @@ INSERT INTO `sold_products` (`id`, `user_id`, `product_id`, `branch_id`, `quanti
 (13, 8, 2, 1, 2, '2023-10-09', 3, 0, '2023-10-19 15:40:25', '2023-10-19 15:40:25'),
 (14, 8, 7, 4, 10, '2023-10-02', 3, 0, '2023-10-21 07:19:37', '2023-10-21 07:19:37'),
 (17, 8, 2, 3, 4, '2023-10-11', 6, 0, '2023-10-21 10:27:58', '2023-10-21 10:27:58'),
-(18, 8, 2, 1, 12, '2023-10-23', 3, 1, '2023-10-23 03:32:42', '2023-10-23 03:32:42');
+(18, 8, 2, 1, 12, '2023-10-23', 3, 1, '2023-10-23 03:32:42', '2023-10-23 03:32:42'),
+(19, 7, 4, NULL, 10, '2023-10-09', 12, 1, '2023-10-23 11:33:32', '2023-10-23 11:33:32'),
+(20, 10, 4, 6, 4, '2023-10-18', 13, 0, '2023-10-23 11:39:44', '2023-10-23 11:39:44'),
+(21, 8, 8, 1, 1, '2023-10-18', 1, 0, '2023-10-23 11:41:56', '2023-10-23 11:41:56'),
+(22, 7, 9, NULL, 4, '2023-10-27', 12, 1, '2023-10-26 07:04:48', '2023-10-26 07:04:48'),
+(23, 9, 8, 7, 2, '2023-11-03', 14, 0, '2023-10-26 07:12:08', '2023-10-26 07:12:08'),
+(24, 8, 8, 8, 3, '2023-10-01', 12, 0, '2023-10-30 04:37:35', '2023-10-30 04:37:35');
 
 -- --------------------------------------------------------
 
@@ -455,11 +532,18 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `usertype`, `name`, `email`, `address`, `phone`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (7, 'solo', 'Abc company', 'abc@gmail.com', 'Sapla meniton, Gazipur chowrasta, Gazipur', '0120998923', NULL, '$2y$10$Tf8tLb92UjVD7uZtFlVIOO/AB7XStMe3oL.3cfHjs4oywwSSEcGjq', NULL, '2023-10-19 15:28:19', '2023-10-19 15:28:19'),
 (8, 'group', 'EBL bank', 'saddam@headoffice.admin.ebl.com', '100 Gulshan Ave, Dhaka 1212', '09666-777325', NULL, '$2y$10$p1cVckJtklYSD6IZ1luunu/B0vrhW3DBKgJcGpVXkLZHQn09wVYki', NULL, '2023-10-19 15:35:28', '2023-10-19 15:35:28'),
-(9, 'group', 'brac bank', 'enquiry@bracbank.com', 'Anik Tower, 220/B Bir Uttam Mir Shawkat Sarak, Dhaka 1208', '02-55668056', NULL, '$2y$10$seAt9QXQha0OddqaaKWec.6ak9mrAxcTzJfOhNRau9XNNSLQANQTm', NULL, '2023-10-19 16:26:17', '2023-10-19 16:26:17');
+(9, 'group', 'brac bank', 'enquiry@bracbank.com', 'Anik Tower, 220/B Bir Uttam Mir Shawkat Sarak, Dhaka 1208', '02-55668056', NULL, '$2y$10$seAt9QXQha0OddqaaKWec.6ak9mrAxcTzJfOhNRau9XNNSLQANQTm', NULL, '2023-10-19 16:26:17', '2023-10-19 16:26:17'),
+(10, 'group', 'wastern bank', 'wa@gmail.com', 'kakoli, bonani', '0120998923434', NULL, '$2y$10$yLHm2F3kEsBcL3ia8sbbkOGEVHluBkWEzxfNM1FUmQlD1DmpsWtLq', NULL, '2023-10-23 11:38:24', '2023-10-23 11:38:24');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `appiontments`
@@ -524,6 +608,13 @@ ALTER TABLE `expertises`
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `inspections`
+--
+ALTER TABLE `inspections`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `inspections_appiontment_id_foreign` (`appiontment_id`);
 
 --
 -- Indexes for table `migrations`
@@ -597,10 +688,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `appiontments`
 --
 ALTER TABLE `appiontments`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `appliances`
@@ -612,7 +709,7 @@ ALTER TABLE `appliances`
 -- AUTO_INCREMENT for table `branches`
 --
 ALTER TABLE `branches`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -651,10 +748,16 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `inspections`
+--
+ALTER TABLE `inspections`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -672,7 +775,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `recruiting_engineers`
 --
 ALTER TABLE `recruiting_engineers`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `servicing_orders`
@@ -684,7 +787,7 @@ ALTER TABLE `servicing_orders`
 -- AUTO_INCREMENT for table `sold_products`
 --
 ALTER TABLE `sold_products`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `subcategories`
@@ -696,7 +799,7 @@ ALTER TABLE `subcategories`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
@@ -739,6 +842,12 @@ ALTER TABLE `engineers`
 --
 ALTER TABLE `expertises`
   ADD CONSTRAINT `expertises_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `inspections`
+--
+ALTER TABLE `inspections`
+  ADD CONSTRAINT `inspections_appiontment_id_foreign` FOREIGN KEY (`appiontment_id`) REFERENCES `appiontments` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `products`

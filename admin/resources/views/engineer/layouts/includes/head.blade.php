@@ -4,6 +4,7 @@
 
 <head>
   <meta charset="utf-8" />
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('ui/engineer') }}/assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="{{ asset('ui/engineer') }}/assets/img/favicon.png">
@@ -22,4 +23,6 @@
   <link href="{{ asset('ui/engineer') }}/assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="{{ asset('ui/engineer') }}/assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
+  <!-- Custom CSS Files -->
+  <link href="{{ asset('ui/engineer') }}/assets/css/custom.css" rel="stylesheet" />
 </head>
