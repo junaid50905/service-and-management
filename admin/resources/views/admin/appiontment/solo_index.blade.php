@@ -22,15 +22,15 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Appiontment <br> ID</th>
-                                        <th>Customer <br> Name</th>
-                                        <th>Product <br> Name</th>
-                                        <th>Selling <br> Date</th>
-                                        <th>Status</th>
-                                        <th>Appiontment Taken <br> Date and Time</th>
-                                        <th>Inspection Last <br> Date and Time</th>
-                                        <th>Action</th>
+                                        <th class="small_font">#</th>
+                                        {{-- <th>Appiontment <br> ID</th> --}}
+                                        <th class="small_font">Customer <br> Name</th>
+                                        <th class="small_font">Product <br> Name</th>
+                                        <th class="small_font">Selling <br> Date</th>
+                                        <th class="small_font">Status</th>
+                                        <th class="small_font">Appiontment <br> Taken Date <br> and Time</th>
+                                        <th class="small_font">Inspection <br> Last Date <br> and Time</th>
+                                        <th class="small_font">Action</th>
                                     </tr>
                                     @foreach ($allAppiontments as $appiontment)
                                         @php
@@ -52,12 +52,12 @@
                                                 ->first()->selling_date;
                                         @endphp
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $appiontment->id }}</td>
-                                            <td>{{ $customerName }}</td>
-                                            <td>{{ $productName }}</td>
-                                            <td>{{ $sellingDate }}</td>
-                                            <td>
+                                            <td class="small_font">{{ $loop->iteration }}</td>
+                                            {{-- <td>{{ $appiontment->id }}</td> --}}
+                                            <td class="small_font">{{ $customerName }}</td>
+                                            <td class="small_font">{{ $productName }}</td>
+                                            <td class="small_font">{{ $sellingDate }}</td>
+                                            <td class="small_font">
                                                 @php
                                                     $status = strtolower($appiontment->status); // Convert status to lowercase for consistency
                                                     $colorClass = '';
@@ -83,13 +83,13 @@
                                                     }
                                                 @endphp
                                                 <button
-                                                    class="btn {{ $colorClass }} btn-sm">{{ $appiontment->status }}</button>
+                                                    class="btn {{ $colorClass }} btn-sm small_font">{{ $appiontment->status }}</button>
                                             </td>
-                                            <td>
+                                            <td class="small_font">
                                                 {{ Carbon::parse($appiontment->appiontment_taken_date)->format('Y-M-d') ?? '' }} <br>
                                                 {{ $appiontment->appiontment_taken_time > 12.00 ? $appiontment->appiontment_taken_time."PM" : $appiontment->appiontment_taken_time."AM" }}
                                             </td>
-                                            <td>
+                                            <td class="small_font">
                                                 {{ $appiontment->inspection_date }} <br>
                                                 @if ($appiontment->inspection_time)
                                                 {{ $appiontment->inspection_time > 12.00 ? $appiontment->inspection_time."PM" : $appiontment->inspection_time."AM" ?? '' }}
@@ -99,26 +99,27 @@
                                                 @endif
 
                                             </td>
-                                            <td>
+                                            <td class="small_font">
                                                 @if ($appiontment->status === 'pending')
                                                     <a href="{{ route('appiontment.assign_engineer', $appiontment->id) }}"
-                                                        class="btn btn-outline-behance btn-sm">Assign Engineer</a>
+                                                        class="btn btn-outline-behance btn-sm small_font">Assign Engineer</a>
                                                 @elseif($appiontment->status === 'assigned')
-                                                    <button class="btn btn-secondary btn-sm disabled" role="button"
-                                                        aria-disabled="true">Has been assigned</button><br>
-                                                    <a href="{{ route('appiontment.assigned_engineer_detailed', $appiontment->id) }}" class="btn btn-info btn-sm my-2 d-flex align-items-center"><i class="mdi mdi-eye"></i><span>view engineer details</span></a>
+                                                    {{-- <button class="btn btn-secondary btn-sm disabled" role="button"
+                                                        aria-disabled="true">Assigned</button><br> --}}
+                                                    <a href="{{ route('appiontment.assigned_engineer_detailed', $appiontment->id) }}" class="btn btn-info btn-sm my-2 d-flex align-items-center small_font max_content"><i class="mdi mdi-eye"></i><span>Engineer</span></a>
                                                 @elseif($appiontment->status === 'late')
-                                                    <button class="btn btn-secondary btn-sm disabled" role="button"
-                                                        aria-disabled="true">Has been assigned</button><br>
-                                                    <a href="{{ route('appiontment.assigned_engineer_detailed', $appiontment->id) }}" class="btn btn-info btn-sm my-2 d-flex align-items-center"><i class="mdi mdi-eye"></i><span>view engineer details</span></a>
+                                                    {{-- <button class="btn btn-secondary btn-sm disabled" role="button"
+                                                        aria-disabled="true">Assigned</button><br> --}}
+                                                    <a href="{{ route('appiontment.assigned_engineer_detailed', $appiontment->id) }}" class="btn btn-info btn-sm my-2 d-flex align-items-center small_font max_content"><i class="mdi mdi-eye"></i><span>Engineer</span></a>
                                                 @elseif($appiontment->status === 'working')
-                                                    <button class="btn btn-secondary btn-sm disabled" role="button"
-                                                        aria-disabled="true">Has been assigned</button><br>
-                                                    <a href="{{ route('appiontment.assigned_engineer_detailed', $appiontment->id) }}" class="btn btn-info btn-sm my-2 d-flex align-items-center"><i class="mdi mdi-eye"></i><span>view engineer details</span></a>
+                                                    {{-- <button class="btn btn-secondary btn-sm disabled" role="button"
+                                                        aria-disabled="true">Assigned</button><br> --}}
+                                                    <a href="{{ route('appiontment.assigned_engineer_detailed', $appiontment->id) }}" class="btn btn-info btn-sm my-2 d-flex align-items-center small_font max_content"><i class="mdi mdi-eye"></i><span>Engineer</span></a>
+                                                    <a href="{{ route('appiontment.inspection_location', $appiontment->id) }}" class="btn btn-secondary btn-sm my-2 d-flex align-items-center small_font max_content"><i class="mdi mdi-google-maps"></i><span>Map</span></a>
                                                 @elseif($appiontment->status === 'complete')
-                                                    <button class="btn btn-secondary btn-sm disabled" role="button"
-                                                        aria-disabled="true">Has been assigned</button><br>
-                                                    <a href="{{ route('appiontment.assigned_engineer_detailed', $appiontment->id) }}" class="btn btn-info btn-sm my-2 d-flex align-items-center"><i class="mdi mdi-eye"></i><span>view engineer details</span></a>
+                                                    {{-- <button class="btn btn-secondary btn-sm disabled" role="button"
+                                                        aria-disabled="true">Assigned</button><br> --}}
+                                                    <a href="{{ route('appiontment.assigned_engineer_detailed', $appiontment->id) }}" class="btn btn-info btn-sm my-2 d-flex align-items-center small_font max_content"><i class="mdi mdi-eye"></i><span>Engineer</span></a>
                                                 @endif
                                             </td>
                                         </tr>

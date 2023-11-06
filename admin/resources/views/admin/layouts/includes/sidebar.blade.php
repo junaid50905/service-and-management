@@ -75,17 +75,6 @@
 
         <!-- Dashboard -->
         <li class="nav-item menu-items mt-2">
-            <a class="nav-link" href="#">
-                <span class="menu-icon">
-                    <i class="mdi mdi-view-dashboard"></i>
-                </span>
-                <span class="menu-title">Test</span>
-            </a>
-        </li>
-
-
-        <!-- Dashboard -->
-        <li class="nav-item menu-items mt-2">
             <a class="nav-link" href="{{ route('admin.dashboard') }}">
                 <span class="menu-icon">
                     <i class="mdi mdi-view-dashboard"></i>
@@ -279,5 +268,3 @@
     </li>
     </ul>
 </nav>
-
-

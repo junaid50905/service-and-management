@@ -87,7 +87,6 @@ class EngineerController extends Controller
         return response()->json($data);
     }
 
-    // getLatest
 
     // stopInspection
     public function stopInspection(Request $request, $appiontment_id)
@@ -109,22 +108,6 @@ class EngineerController extends Controller
         return redirect()->route('engineer.total_tasks')->with('complete_task', "Thank you. You have completed a task successfully.");
     }
 
-    // taskInspection
-    // public function startInspection(Request $request)
-    // {
-    //     $start_date = Carbon::today();
-    //     $start_time = Carbon::now()->format('H:i:s');
-
-    //     $data = [
-    //         'appiontment_id' => $request->appiontment_id,
-    //         'latitude' => $request->latitude,
-    //         'longitude' => $request->longitude,
-    //         'start_date' => $start_date,
-    //         'start_time' => $start_time,
-    //     ];
-    //     Inspection::create($data);
-    //     return redirect()->back();
-    // }
 
 
 

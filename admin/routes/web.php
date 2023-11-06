@@ -170,7 +170,10 @@ Route::middleware(['customAuthCheck'])->group(function () {
             Route::post('/assign-engineer/store', [AppiontmentController::class, 'assignEngineerStore'])->name('appiontment.assign_engineer_store');
 
 
+
             Route::get('/assigned-engineer-details/{id}', [AppiontmentController::class, 'assignedEngineerDetailed'])->name('appiontment.assigned_engineer_detailed');
+            // inspection location
+            Route::get('/inspection-location/{id}', [AppiontmentController::class, 'inspectionLocation'])->name('appiontment.inspection_location');
         });
 
         // checklist

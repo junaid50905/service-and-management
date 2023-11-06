@@ -165,6 +165,15 @@
                                                             @case('assigned')
                                                                 {{ $inspectionDate }}
                                                                 @break
+                                                            @case('late')
+                                                                {{ $inspectionDate }}
+                                                                @break
+                                                            @case('working')
+                                                                {{ $inspectionDate }}
+                                                                @break
+                                                            @case('complete')
+                                                                {{ $inspectionDate }}
+                                                                @break
                                                         @endswitch
                                                     </p>
                                                     <p class="text-muted mb-0">

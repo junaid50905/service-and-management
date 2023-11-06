@@ -1,0 +1,12 @@
+.small_font {
+    font-size: 12px !important;
+}
+
+.max_content {
+    width: max-content;
+}
+
+#lastInspectionMap {
+    height: 300px;
+    border: 1px solid white;
+}

@@ -3,14 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use Carbon\Carbon;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Admin\Product;
-use App\Http\Controllers\Controller;
-use App\Models\Admin\Appiontment;
 use App\Models\Admin\Engineer;
-use App\Models\Admin\RecruitingEngineer;
+use App\Models\Admin\Appiontment;
 use App\Models\Admin\SoldProduct;
-use App\Models\User;
+use App\Models\Engineer\Inspection;
+use App\Http\Controllers\Controller;
+use App\Models\Admin\RecruitingEngineer;
 
 class AppiontmentController extends Controller
 {
@@ -173,6 +174,18 @@ class AppiontmentController extends Controller
             return redirect()->route('appiontment.check_user_product_form')->with('user_or_product_unavailable', 'This userid or productid is unavailable');
         }
     }
+
+    // inspectionLocation
+    public function inspectionLocation($id)
+    {
+        $appiontment_id = $id;
+        $lastInspection = Inspection::where('appiontment_id', $appiontment_id)->get()->last();
+        $lat = $lastInspection->latitude;
+        $lng = $lastInspection->longitude;
+
+        return view('admin.appiontment.inspection_location', compact('lat', 'lng', 'lastInspection'));
+    }
+
 
 
 

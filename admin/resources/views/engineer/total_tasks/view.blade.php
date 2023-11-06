@@ -9,15 +9,17 @@
 @endsection
 
 @section('main-panel')
+    
     <div class="row">
-        <div class="col-12">
-            <div class="card mb-4 shadow p-3 mb-5 bg-body rounded">
-
-                <div>
+        <div class="col-md-12 mt-4">
+            <div class="card">
+                <div class="card-body pt-4 p-3">
+                    <div>
                     @php
                         $appiontmentStatus = Appiontment::where('id', $appiontment_id)->first()->status;
                     @endphp
-                    <span class="badge badge-sm {{ $appiontmentStatus == 'assigned' ? 'bg-gradient-primary' : '' }} {{ $appiontmentStatus == 'late' ? 'bg-gradient-danger' : '' }} {{ $appiontmentStatus == 'working' ? 'bg-gradient-info' : '' }} {{ $appiontmentStatus == 'complete' ? 'bg-gradient-success' : '' }}">{{ $appiontmentStatus }}</span>
+                    <span
+                        class="badge badge-sm {{ $appiontmentStatus == 'assigned' ? 'bg-gradient-primary' : '' }} {{ $appiontmentStatus == 'late' ? 'bg-gradient-danger' : '' }} {{ $appiontmentStatus == 'working' ? 'bg-gradient-info' : '' }} {{ $appiontmentStatus == 'complete' ? 'bg-gradient-success' : '' }}">{{ $appiontmentStatus }}</span>
                 </div>
 
                 <div class="card-header pb-0">
@@ -34,29 +36,30 @@
                             <input type="hidden" name="appiontment_id" value="{{ $appiontment_id }}" id="appiontment_id">
                             <input type="hidden" name="latitude" id="latitudeInput">
                             <input type="hidden" name="longitude" id="longitudeInput">
-                            <button type="submit" class="btn btn-primary" id="startInspectionBtn"><i class="fa-solid fa-hourglass-start"></i> Start inspection</button>
+                            <button type="submit" class="btn btn-primary" id="startInspectionBtn"><i
+                                    class="fa-solid fa-hourglass-start"></i> Start inspection</button>
                         </div>
                         <!-- ========= start inspection ================================== -->
 
                         <!-- ========== stop inspection ========== -->
                         <form action="{{ route('engineer.stop_inspection', $appiontment_id) }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-primary" id="stopInspectionBtn"><i class="fa-solid fa-stopwatch"></i> Stop inspection</button>
+                            <button type="submit" class="btn btn-primary" id="stopInspectionBtn"><i
+                                    class="fa-solid fa-stopwatch"></i> Stop inspection</button>
                         </form>
-
                         <!-- ========== stop inspection ==================================== -->
 
                         <!-- ==========  complete the task ========== -->
 
                         @if ($appiontmentStatus == 'working')
-                        <form action="{{ route('engineer.complete_task', $appiontment_id) }}" method="POST">
-                            @csrf
-                            <button type="submit" class="btn btn-success">Complete Task</button>
-                        </form>
+                            <form action="{{ route('engineer.complete_task', $appiontment_id) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-success">Complete Task</button>
+                            </form>
                         @endif
                         <!-- ========= complete the task ========== -->
 
-                        
+
                     </div>
 
                     <div class="col-md-8 my-2">
@@ -75,8 +78,8 @@
 
                 <div class="card-body pb-2">
                     <div class="row">
-                        <div class="col-md-6 border-end my-4">
-                            <h3 class="border-bottom text-secondary py-2">Product Details</h3>
+                        <div class="col-md-6 border-end border-start my-4">
+                            <h3 class="border-bottom text-primary py-2">Product Details</h3>
                             <div class="d-flex">
                                 <img src="https://www.startech.com.bd/image/cache/catalog/printer/epson/ecotank-l1250/ecotank-l1250-01-500x500.webp"
                                     class="avatar avatar-sm me-3">
@@ -90,7 +93,7 @@
                             </div>
                         </div>
                         <div class="col-md-6 border-end my-4">
-                            <h3 class="border-bottom text-secondary py-2">Customer Details</h3>
+                            <h3 class="border-bottom text-primary py-2">Customer Details</h3>
                             <div>
                                 @if (!$branchExists)
                                     <h5 class="text-muted">Inspection area</h5>
@@ -145,8 +148,7 @@
                         </div>
                     </div>
                 </div>
-
-
+                </div>
             </div>
         </div>
     </div>
@@ -283,54 +285,13 @@
                 mint.innerHTML = min;
                 secd.innerHTML = sec;
 
-                // if (dashboard == null && localStorage.getItem('start_button') != null) {
-                //     var side_timer = document.getElementById('time_title');
-                //     if (side_timer) {
-                //         handling other counter changeing URL        [Put Where you want to show your counter after URL change]
-                //         hour.innerHTML = hr;
-                //         min.innerHTML = min;
-                //         sec.innerHTML = sec;
-                //     }
 
-                // } else {
-
-                // }
 
 
                 cycle = setTimeout(timerCycle, 1000);
             }
 
-            //AJax funtion to save the data
 
-
-            // function saveData(hr, min, sec) {
-
-            //     $.ajax({
-            //         headers: {
-            //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            //         },
-            //         type: 'POST',
-            //         url: '/timer',
-            //         data: {
-
-            //             'hr': hr,
-            //             'min': min,
-            //             'sec': sec,
-
-            //         },
-            //         success: function (data) {
-            //             document.getElementById("time_msg").innerHTML = data.msg;
-            //             $("#time_msg").slideDown(1000);
-            //             $("#time_msg").delay(3000).slideUp(1000);
-            //         },
-            //         error: function (data, textStatus, errorThrown) {
-            //             console.log("Error:");
-            //             console.log(data);
-
-            //         },
-            //     });
-
-            // }
 
         })
     </script>
@@ -375,9 +336,9 @@
                         }
 
                         // showing the start inspection button
-                        if(lat && lng){
+                        if (lat && lng) {
                             $('#startInspectionBtn').css('display', 'block')
-                        }else{
+                        } else {
                             console.log('map does not found');
                         }
                     }, (error) => {
@@ -421,46 +382,6 @@
                         console.log(error);
                     }
                 });
-
-                // total timer
-                // $(document).on('click', '.stopTimerBtn', function() {
-
-                //     var getWorkingTimeFromDiv = $('#total_time').text();
-                //     $('#workingTime').val(getWorkingTimeFromDiv)
-                //     var working_time = $('#workingTime').val()
-                //     var appiontment_id = $('#appiont_id').val()
-
-
-                //     $(document).on('click', '#inspectionComplete', function() {
-                //         console.log({
-                //             working_time,
-                //             appiontment_id
-                //         });
-                //         $.ajaxSetup({
-                //             headers: {
-                //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
-                //                     'content')
-                //             }
-                //         });
-
-                //         $.ajax({
-                //             type: "POST",
-                //             url: "{{ url('engineer/total-tasks/stop-inspection') }}"+ "/"+ appiontment_id,
-                //             dataType: "json",
-                //             data: {
-                //                 working_time: working_time,
-                //             },
-                //             success: function(data) {
-                //                 console.log('stop inspection');
-                //             },
-                //             error: function(error) {
-                //                 console.log(error);
-                //             }
-                //         });
-                //     })
-
-                // })
-
 
             })
         });
