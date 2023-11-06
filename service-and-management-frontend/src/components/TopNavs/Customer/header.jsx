@@ -1,28 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import logo from "../../../assets/images/aamra-companies.png";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { getToken } from "../../../services/localStorageService";
-import { useGetLoggedUserQuery } from "../../../services/userAuthApi";
 
 const Header = () => {
-  const [userData, setUserData] = useState({
-    email: "",
-  });
-
   const token = getToken();
-
-  const { data, isSuccess } = useGetLoggedUserQuery(token);
-
-  useEffect(() => {
-    if (data && isSuccess) {
-      setUserData({
-        email: data.user.email,
-      });
-    }
-  }, [data, isSuccess]);
-
-  console.log(data);
 
   return (
     <>
@@ -53,12 +36,6 @@ const Header = () => {
             {token ? ( // Check if token is available
               // Render the "has token" part
               <div className="flex gap-6">
-                <Link
-                  to="/customer/servprogress"
-                  className="text-lg font-bold text-gray-700"
-                >
-                  {userData.email}
-                </Link>
                 <Link
                   to="/customer/servprogress"
                   className="text-lg font-bold text-indigo-500"

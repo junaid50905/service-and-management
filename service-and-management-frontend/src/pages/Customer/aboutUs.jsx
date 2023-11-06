@@ -7,7 +7,7 @@ const AboutUs = () => {
     <div>
       <TopNav />
       <CustomerSideNav />
-      <div className="mx-auto container-box">
+      <div className="mx-auto container-box font-roboto">
         <div className="max-w-full p-8 mx-auto mt-10 bg-white rounded-lg shadow-md">
           <h1 className="mb-4 text-3xl font-semibold">About Us</h1>
           <p className="text-gray-700">

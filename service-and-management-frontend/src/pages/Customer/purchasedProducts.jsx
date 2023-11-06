@@ -121,8 +121,8 @@ const PurchasedProducts = () => {
     <div>
       <TopNav />
       <CustomerSideNav />
-      <div className="mx-auto container-box ">
-        <h1 className="mb-4 text-2xl font-semibold text-center">
+      <div className="mx-auto container-box font-roboto">
+        <h1 className="mt-2 text-3xl font-bold text-center text-gray-800">
           Purchased Products
         </h1>
         <div className="my-6 bg-white rounded shadow-md ">

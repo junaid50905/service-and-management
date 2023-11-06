@@ -22,7 +22,7 @@ const FAQ = () => {
       <TopNav />
       <CustomerSideNav />
       <div className="mx-auto container-box">
-        <div className="max-w-full p-8 mx-auto mt-10 bg-white rounded-lg shadow-md">
+        <div className="max-w-full p-8 mx-auto mt-10 bg-white rounded-lg shadow-md font-roboto">
           <h1 className="mb-4 text-3xl font-semibold">
             Frequently Asked Questions
           </h1>
@@ -34,7 +34,6 @@ const FAQ = () => {
               </div>
             ))}
           </div>
-          
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import aamraLogo from "../../assets/images/aamra-logo.png";
 import { useLoginUserMutation } from "../../services/userAuthApi";
 import { storeToken } from "../../services/localStorageService";
 
@@ -48,9 +48,14 @@ const Login = () => {
     <div className="flex items-center justify-center min-h-screen px-4 py-12 bg-gray-50 sm:px-6 lg:px-8">
       <div className="w-full max-w-md p-6 space-y-8 bg-white rounded-lg shadow-md ">
         <div>
-          <h2 className="mt-6 text-3xl font-extrabold text-center text-gray-900">
-            Login to Your Account
-          </h2>
+          <div className="bg-[#333333]">
+            <img src={aamraLogo} alt="logo" />
+          </div>
+          <div>
+            <h2 className="text-3xl font-extrabold text-center text-gray-900 ">
+              Login to Your Account
+            </h2>
+          </div>
           {message && (
             <div className="py-4 mt-4 warning">
               <p className="text-center text-red-500">{message}</p>
@@ -126,26 +131,6 @@ const Login = () => {
             </button>
           </div>
         </form>
-
-        <div className="mt-6 ">
-          <div className="text-center">
-            <p className="text-sm text-gray-600">Don't have an account yet?</p>
-            <Link
-              to="/register"
-              className="font-medium text-indigo-600 hover:text-indigo-500"
-            >
-              Sign Up
-            </Link>
-          </div>
-          <div className="mt-4">
-            <Link
-              to="/"
-              className="font-medium text-indigo-600 hover:text-indigo-500"
-            >
-              Back to Home Page
-            </Link>
-          </div>
-        </div>
       </div>
     </div>
   );

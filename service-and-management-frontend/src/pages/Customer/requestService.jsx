@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CustomerSideNav from "../../components/SideNavs/Customer/customerSideNav";
 import TopNav from "../../components/TopNavs/Customer/topnav";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const RequestService = () => {
   const { productId } = useParams();
+  const userInfo = useSelector((state) => state.user);
+
   const [formData, setFormData] = useState({
-    name: "",
-    model: "",
+    serialNumber: productId === "0" ? "" : productId,
+    email: userInfo.email || "",
+    branch: "N/A",
+    problems: [],
   });
 
   const handleChange = (e) => {
@@ -18,10 +23,44 @@ const RequestService = () => {
     });
   };
 
+  const addProblem = () => {
+    setFormData({
+      ...formData,
+      problems: [...formData.problems, ""],
+    });
+  };
+
+  const handleProblemChange = (index, value) => {
+    const updatedProblems = [...formData.problems];
+    updatedProblems[index] = value;
+    setFormData({
+      ...formData,
+      problems: updatedProblems,
+    });
+  };
+
+  const removeProblem = (index) => {
+    const updatedProblems = formData.problems.filter((_, i) => i !== index);
+    setFormData({
+      ...formData,
+      problems: updatedProblems,
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
   };
+
+  useEffect(() => {
+    if (productId === "0") {
+      setFormData({
+        ...formData,
+        serialNumber: "",
+      });
+    }
+  }, [productId]);
+
   return (
     <div>
       <TopNav />
@@ -33,87 +72,85 @@ const RequestService = () => {
           </div>
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             <div className="-space-y-px rounded-md shadow-sm">
-             
               <div>
-                <label htmlFor="sNum" className="sr-only">
-                  Product Serial Number
+                <label htmlFor="serialNumber" className="sr-only">
+                  Serial Number
                 </label>
                 <input
-                  id="sNum"
-                  name="sNum"
+                  id="serialNumber"
+                  name="serialNumber"
                   type="text"
-                  autoComplete="sNum"
+                  autoComplete="serialNumber"
                   required
-    
+                  value={formData.serialNumber}
                   onChange={handleChange}
                   className="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Serial Number"
                 />
               </div>
               <div>
-                <label htmlFor="password" className="sr-only">
-                  Password
+                <label htmlFor="email" className="sr-only">
+                  Email
                 </label>
                 <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoComplete="new-password"
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
                   required
-                  value={formData.password}
+                  value={formData.email}
                   onChange={handleChange}
                   className="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Password"
+                  placeholder="Email"
                 />
               </div>
               <div>
-                <label htmlFor="confirm_password" className="sr-only">
-                  Password
+                <label htmlFor="branch" className="sr-only">
+                  Branch
                 </label>
-                <input
-                  id="confirm_password"
-                  name="confirm_password"
-                  type="password"
-                  autoComplete="new-password"
-                  required
-                  value={formData.confirm_password}
+                <select
+                  id="branch"
+                  name="branch"
+                  value={formData.branch}
                   onChange={handleChange}
                   className="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Confirm Password"
-                />
+                >
+                  <option value="N/A">N/A</option>
+                  {/* Add more branch options here */}
+                </select>
               </div>
-              <div>
-                <label htmlFor="address" className="sr-only">
-                  Address
-                </label>
-                <input
-                  id="address"
-                  name="address"
-                  type="text"
-                  autoComplete="address"
-                  required
-                  value={formData.address}
-                  onChange={handleChange}
-                  className="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Address"
-                />
-              </div>
-              <div>
-                <label htmlFor="phone" className="sr-only">
-                  Phone
-                </label>
-                <input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  autoComplete="phone"
-                  required
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Phone"
-                />
-              </div>
+              {formData.problems.map((problem, index) => (
+                <div key={index} className="relative">
+                  <label htmlFor={`problem${index}`} className="sr-only">
+                    Problem {index + 1}
+                  </label>
+                  <input
+                    id={`problem${index}`}
+                    name={`problem${index}`}
+                    type="text"
+                    autoComplete="problem"
+                    required
+                    value={problem}
+                    onChange={(e) => handleProblemChange(index, e.target.value)}
+                    className="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                    placeholder={`Problem ${index + 1}`}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => removeProblem(index)}
+                    className="absolute px-2 text-red-500 bg-white right-2 top-2"
+                  >
+                    Remove
+                  </button>
+                </div>
+              ))}
+              <button
+                type="button"
+                onClick={addProblem}
+                className="pt-2 text-indigo-500"
+              >
+                + Add Problem Details
+              </button>
             </div>
 
             <div>

@@ -26,7 +26,7 @@ const TermsAndCondition = () => {
     <div>
       <TopNav />
       <CustomerSideNav />
-      <div className="mx-auto text-gray-800 bg-gray-100 container-box">
+      <div className="mx-auto text-gray-800 bg-gray-100 container-box font-roboto">
         <div className="max-w-full p-8 mx-auto mt-10 bg-white rounded-lg shadow-md">
           <h1 className="mb-4 text-3xl font-semibold">Terms and Conditions</h1>
           <div>

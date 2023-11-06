@@ -5,7 +5,13 @@ import ReactModal from "react-modal";
 import Late from "../../assets/images/late.png";
 import Pending from "../../assets/images/pending.png";
 import Finished from "../../assets/images/finished.png";
-import { AiFillCloseCircle } from "react-icons/ai";
+import { FaWindowClose } from "react-icons/fa";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faClock,
+  faWrench,
+  faCircleCheck,
+} from "@fortawesome/free-solid-svg-icons";
 
 const ServiceStatus = () => {
   const products = [
@@ -169,182 +175,6 @@ const ServiceStatus = () => {
       maintenancePersonnelCont: "01743217209",
       branchName: "DHAKA Branch",
     },
-    {
-      id: 10,
-      serialNumber: "SN10101",
-      name: "Tablet",
-      model: "TabPro",
-      manufacturer: "TechGadget",
-      status: "Finished",
-      partsUsed: "Battery replacement, screen repair",
-      delayReason: "",
-      maintenanceType: "Repair",
-      maintenanceNotes: "Replaced the battery and repaired the screen.",
-      maintenancePersonnel: "Michael Adams",
-      maintenancePersonnelPhoto: "michael.jpg",
-      maintenancePersonnelCont: "01743217209",
-      branchName: "DHAKA Branch",
-    },
-    {
-      id: 10,
-      serialNumber: "SN10101",
-      name: "Tablet",
-      model: "TabPro",
-      manufacturer: "TechGadget",
-      status: "Finished",
-      partsUsed: "Battery replacement, screen repair",
-      delayReason: "",
-      maintenanceType: "Repair",
-      maintenanceNotes: "Replaced the battery and repaired the screen.",
-      maintenancePersonnel: "Michael Adams",
-      maintenancePersonnelPhoto: "michael.jpg",
-      maintenancePersonnelCont: "01743217209",
-      branchName: "DHAKA Branch",
-    },
-    {
-      id: 10,
-      serialNumber: "SN10101",
-      name: "Tablet",
-      model: "TabPro",
-      manufacturer: "TechGadget",
-      status: "Finished",
-      partsUsed: "Battery replacement, screen repair",
-      delayReason: "",
-      maintenanceType: "Repair",
-      maintenanceNotes: "Replaced the battery and repaired the screen.",
-      maintenancePersonnel: "Michael Adams",
-      maintenancePersonnelPhoto: "michael.jpg",
-      maintenancePersonnelCont: "01743217209",
-      branchName: "DHAKA Branch",
-    },
-    {
-      id: 10,
-      serialNumber: "SN10101",
-      name: "Tablet",
-      model: "TabPro",
-      manufacturer: "TechGadget",
-      status: "Finished",
-      partsUsed: "Battery replacement, screen repair",
-      delayReason: "",
-      maintenanceType: "Repair",
-      maintenanceNotes: "Replaced the battery and repaired the screen.",
-      maintenancePersonnel: "Michael Adams",
-      maintenancePersonnelPhoto: "michael.jpg",
-      maintenancePersonnelCont: "01743217209",
-      branchName: "DHAKA Branch",
-    },
-    {
-      id: 10,
-      serialNumber: "SN10101",
-      name: "Tablet",
-      model: "TabPro",
-      manufacturer: "TechGadget",
-      status: "Finished",
-      partsUsed: "Battery replacement, screen repair",
-      delayReason: "",
-      maintenanceType: "Repair",
-      maintenanceNotes: "Replaced the battery and repaired the screen.",
-      maintenancePersonnel: "Michael Adams",
-      maintenancePersonnelPhoto: "michael.jpg",
-      maintenancePersonnelCont: "01743217209",
-      branchName: "DHAKA Branch",
-    },
-    {
-      id: 10,
-      serialNumber: "SN10101",
-      name: "Tablet",
-      model: "TabPro",
-      manufacturer: "TechGadget",
-      status: "Finished",
-      partsUsed: "Battery replacement, screen repair",
-      delayReason: "",
-      maintenanceType: "Repair",
-      maintenanceNotes: "Replaced the battery and repaired the screen.",
-      maintenancePersonnel: "Michael Adams",
-      maintenancePersonnelPhoto: "michael.jpg",
-      maintenancePersonnelCont: "01743217209",
-      branchName: "DHAKA Branch",
-    },
-    {
-      id: 10,
-      serialNumber: "SN10101",
-      name: "Tablet",
-      model: "TabPro",
-      manufacturer: "TechGadget",
-      status: "Finished",
-      partsUsed: "Battery replacement, screen repair",
-      delayReason: "",
-      maintenanceType: "Repair",
-      maintenanceNotes: "Replaced the battery and repaired the screen.",
-      maintenancePersonnel: "Michael Adams",
-      maintenancePersonnelPhoto: "michael.jpg",
-      maintenancePersonnelCont: "01743217209",
-      branchName: "DHAKA Branch",
-    },
-    {
-      id: 10,
-      serialNumber: "SN10101",
-      name: "Tablet",
-      model: "TabPro",
-      manufacturer: "TechGadget",
-      status: "Finished",
-      partsUsed: "Battery replacement, screen repair",
-      delayReason: "",
-      maintenanceType: "Repair",
-      maintenanceNotes: "Replaced the battery and repaired the screen.",
-      maintenancePersonnel: "Michael Adams",
-      maintenancePersonnelPhoto: "michael.jpg",
-      maintenancePersonnelCont: "01743217209",
-      branchName: "DHAKA Branch",
-    },
-    {
-      id: 10,
-      serialNumber: "SN10101",
-      name: "Tablet",
-      model: "TabPro",
-      manufacturer: "TechGadget",
-      status: "Finished",
-      partsUsed: "Battery replacement, screen repair",
-      delayReason: "",
-      maintenanceType: "Repair",
-      maintenanceNotes: "Replaced the battery and repaired the screen.",
-      maintenancePersonnel: "Michael Adams",
-      maintenancePersonnelPhoto: "michael.jpg",
-      maintenancePersonnelCont: "01743217209",
-      branchName: "DHAKA Branch",
-    },
-    {
-      id: 10,
-      serialNumber: "SN10101",
-      name: "Tablet",
-      model: "TabPro",
-      manufacturer: "TechGadget",
-      status: "Finished",
-      partsUsed: "Battery replacement, screen repair",
-      delayReason: "",
-      maintenanceType: "Repair",
-      maintenanceNotes: "Replaced the battery and repaired the screen.",
-      maintenancePersonnel: "Michael Adams",
-      maintenancePersonnelPhoto: "michael.jpg",
-      maintenancePersonnelCont: "01743217209",
-      branchName: "DHAKA Branch",
-    },
-    {
-      id: 10,
-      serialNumber: "SN10101",
-      name: "Tablet",
-      model: "TabPro",
-      manufacturer: "TechGadget",
-      status: "Finished",
-      partsUsed: "Battery replacement, screen repair",
-      delayReason: "",
-      maintenanceType: "Repair",
-      maintenanceNotes: "Replaced the battery and repaired the screen.",
-      maintenancePersonnel: "Michael Adams",
-      maintenancePersonnelPhoto: "michael.jpg",
-      maintenancePersonnelCont: "01743217209",
-      branchName: "DHAKA Branch",
-    },
   ];
 
   products.sort((a, b) => {
@@ -388,6 +218,8 @@ const ServiceStatus = () => {
   const pendingCount = pendingProducts.length;
   const finishedCount = finishedProducts.length;
 
+  const totalCount = lateCount + pendingCount + finishedCount;
+
   return (
     <div>
       <TopNav />
@@ -396,23 +228,29 @@ const ServiceStatus = () => {
         <h1 className="mt-2 text-3xl font-bold text-center text-gray-800">
           Service Maintenance Status
         </h1>
-        <div className="fixed bottom-0 z-30 flex gap-4 px-4 py-2 text-lg bg-white right-2">
+        <div className="fixed bottom-0 z-30 flex gap-4 px-4 py-2 text-xl font-bold text-gray-800 bg-[#f7f7f7] right-2">
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 bg-red-500"></div>
+            <div className="w-4 h-4 bg-red-500"></div>
             <div>
               <p>Late - {lateCount}</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 bg-blue-500"></div>
+            <div className="w-4 h-4 bg-blue-500"></div>
             <div>
               <p>Pending - {pendingCount}</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 bg-green-500"></div>
+            <div className="w-4 h-4 bg-green-500"></div>
             <div>
               <p>Finished - {finishedCount}</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 bg-gray-800"></div>
+            <div>
+              <p>Total - {totalCount}</p>
             </div>
           </div>
         </div>
@@ -420,7 +258,7 @@ const ServiceStatus = () => {
           {products.map((product) => (
             <div
               key={product.id}
-              className="transition duration-300 ease-in-out border rounded-lg shadow-md popup hover:scale-105"
+              className="transition duration-300 ease-in-out border rounded-lg shadow-md popup hover:scale-105 hover:shadow-lg"
               onClick={() => openModal(product)}
             >
               <div className="z-40">
@@ -432,27 +270,25 @@ const ServiceStatus = () => {
                     product.status
                   )}`}
                 >
-                  <div className="flex flex-col items-center justify-center h-full gap-2 p-4 ">
-                    <div>
+                  <div className="flex flex-col items-center justify-center h-full gap-1 p-1">
+                    <div className="text-xl">
                       {product.status === "Late" && (
-                        <img src={Late} alt="Late" className="w-16" />
+                        <FontAwesomeIcon icon={faClock} />
                       )}
                       {product.status === "Pending" && (
-                        <img src={Pending} alt="Pending" className="w-16" />
+                        <FontAwesomeIcon icon={faWrench} />
                       )}
                       {product.status === "Finished" && (
-                        <img src={Finished} alt="Finished" className="w-16" />
+                        <FontAwesomeIcon icon={faCircleCheck} />
                       )}
                     </div>
-                    <div className="font-bold font-poppins">
-                      {product.status}
-                    </div>
+                    <div>{product.status}</div>
                   </div>
                 </div>
-                <div className="flex flex-col items-center justify-center w-2/3 gap-0.5 p-4 text-center">
-                  <div className="font-bold ">{product.name}</div>
-                  <div className="font-semibold ">{product.model}</div>
-                  <div>{product.branchName}</div>
+                <div className="flex flex-col  w-2/3  p-3 py-1.5">
+                  <div className="font-bold">{product.name}</div>
+                  <div className="text-sm font-medium">{product.model}</div>
+                  <div className="text-xs">{product.branchName}</div>
                 </div>
               </div>
             </div>
@@ -471,7 +307,7 @@ const ServiceStatus = () => {
             className="absolute text-2xl text-white cursor-pointer top-2 right-2"
             onClick={closeModal}
           >
-            <AiFillCloseCircle />
+            <FaWindowClose />
           </button>
           {selectedProduct && (
             <div className="rounded-md font-roboto">
@@ -481,30 +317,29 @@ const ServiceStatus = () => {
                     selectedProduct.status
                   )}`}
                 >
-                  <div className="flex flex-col items-center justify-center h-full gap-2 p-4 ">
+                  <div className="flex items-center justify-around h-full gap-2 p-4 ">
                     <div className="flex items-center gap-4">
-                      <div>
+                      <div className="text-2xl">
                         {selectedProduct.status === "Late" && (
-                          <img src={Late} alt="Late" className="w-16" />
+                          <FontAwesomeIcon icon={faClock} />
                         )}
                         {selectedProduct.status === "Pending" && (
-                          <img src={Pending} alt="Pending" className="w-16" />
+                          <FontAwesomeIcon icon={faWrench} />
                         )}
                         {selectedProduct.status === "Finished" && (
-                          <img src={Finished} alt="Finished" className="w-16" />
+                          <FontAwesomeIcon icon={faCircleCheck} />
                         )}
                       </div>
                       <div className="text-2xl font-semibold">
                         {selectedProduct.status}
                       </div>
                     </div>
-                    <div>
-                      {selectedProduct.status === "Late" && (
-                        <p className="text-lg">
-                          Reason for Delay: {selectedProduct.delayReason}
-                        </p>
-                      )}
-                    </div>
+
+                    {selectedProduct.status === "Late" && (
+                      <p className="text-lg">
+                        Reason for Delay: {selectedProduct.delayReason}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div className="p-4 px-8 text-lg rounded-b-md">
@@ -537,8 +372,7 @@ const ServiceStatus = () => {
                     </p>
                   </div>
                 </div>
-
-                <div className="flex w-full px-8 mb-4">
+                <div className="flex w-full px-8 mb-8">
                   <div>
                     <img
                       src="https://i.postimg.cc/Jz4r8xz5/User-Avatar-Profile-PNG.png"
