@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import aamraLogo from "../../../assets/images/aamra-logo.png";
+import { Link } from "react-router-dom";
 import {
   faSpinner,
   faHistory,
@@ -16,9 +18,30 @@ const CustomerSideNav = () => {
   return (
     <div>
       <div
-        className="fixed h-screen text-center text-gray-800 bg-[#0675C1] sidenav font-roboto"
+        className="fixed h-screen text-center text-gray-800 bg-[#0675C1] sidenav font-roboto z-50"
         id="scrollbar"
       >
+        <div className="w-full p-3">
+          <div className="p-2 px-12 bg-white rounded-md shadow-md">
+            <Link to="/customer/servprogress">
+              <img src={aamraLogo} alt="logo" />
+            </Link>
+          </div>
+        </div>
+        <div className="w-full p-3">
+          <Link to="#">
+            <div className="p-2 px-12 ">
+              <img
+                src="https://i.postimg.cc/4NBjCXXX/BRAC-Bank-Limited-logo.png"
+                alt="logo"
+                className="rounded-full shadow-md"
+              />
+            </div>
+            <div className="mt-2 text-xl font-bold text-white ">
+              <h2>Brac Bank Ltd</h2>
+            </div>
+          </Link>
+        </div>
         <nav className="p-4 navbar-section">
           <ul className="navbar-list">
             <li>
@@ -32,7 +55,7 @@ const CustomerSideNav = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink className="nav-style" to="/customer/pursproducts">
+              <NavLink className=" nav-style" to="/customer/pursproducts">
                 <div>
                   <span className="nav-icon">
                     <FontAwesomeIcon icon={faBoxesStacked} />
@@ -45,7 +68,7 @@ const CustomerSideNav = () => {
               <div>
                 <NavLink className="nav-style" to="/customer/reqservice/0">
                   <div>
-                    <span className="nav-icon"> 
+                    <span className="nav-icon">
                       <FontAwesomeIcon icon={faHandshakeAngle} />
                     </span>
                     <span className="pl-3 nav-text">Request Service</span>

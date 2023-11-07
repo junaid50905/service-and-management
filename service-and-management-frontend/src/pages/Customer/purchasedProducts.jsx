@@ -122,7 +122,7 @@ const PurchasedProducts = () => {
       <TopNav />
       <CustomerSideNav />
       <div className="mx-auto container-box font-roboto">
-        <table className="w-full mt-2 mb-5 rounded-lg shadow-md table-fixed">
+        <table className="w-full mt-4 mb-5 rounded-lg shadow-md table-fixed">
           
           <thead>
             <tr className="text-sm leading-normal text-white uppercase bg-[#36304A]">

@@ -45,14 +45,16 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen px-4 py-12 bg-gray-50 sm:px-6 lg:px-8">
+    <div className="flex items-center justify-center min-h-screen gap-12 px-4 py-12 bg-gray-50 sm:px-6 lg:px-8 font-roboto">
+      <div className="flex items-center justify-center mb-3">
+        <div className="px-6 py-2 rounded-md w-fit">
+          <img src={aamraLogo} alt="logo" />
+        </div>
+      </div>
       <div className="w-full max-w-md p-6 space-y-8 bg-white rounded-lg shadow-md ">
         <div>
-          <div className="bg-[#333333]">
-            <img src={aamraLogo} alt="logo" />
-          </div>
           <div>
-            <h2 className="text-3xl font-extrabold text-center text-gray-900 ">
+            <h2 className="text-3xl font-extrabold text-center text-[#CD2628]">
               Login to Your Account
             </h2>
           </div>
@@ -62,10 +64,10 @@ const Login = () => {
             </div>
           )}
         </div>
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+        <form className="mt-8 space-y-6 font-roboto" onSubmit={handleSubmit}>
           <div className="-space-y-px rounded-md shadow-sm">
             <div>
-              <label htmlFor="email" className="sr-only">
+              <label htmlFor="email" className="sr-only ">
                 Email address
               </label>
               <input
@@ -125,7 +127,7 @@ const Login = () => {
           <div>
             <button
               type="submit"
-              className="relative flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md group hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="relative flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md group hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 "
             >
               Sign in
             </button>

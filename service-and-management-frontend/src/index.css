@@ -21,7 +21,6 @@ ul {
 .sidenav {
   overflow: hidden;
   width: 18vw;
-  padding-bottom: 80px;
   font-family: "Avenir", sans-serif;
   overflow-y: auto;
 }
@@ -69,8 +68,7 @@ li {
   background-color: #f2f5fc;
 }
 
-.container-box,
-.sidenav {
+.container-box {
   margin-top: 64px;
 }
 
@@ -282,6 +280,7 @@ span {
 
 .nav-text {
   transition: all 0.5s ease-in-out;
+  font-weight: 400;
 }
 
 .nav-style:hover .nav-text {
@@ -291,6 +290,10 @@ span {
 .nav-style.active {
   background-color: #fff;
   color: #0675c1;
+}
+
+.nav-style.active:hover .nav-text {
+  margin-left: 0;
 }
 
 .nav-style.active .nav-icon {
