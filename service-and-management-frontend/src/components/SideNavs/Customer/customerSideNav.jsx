@@ -1,118 +1,107 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { MdMiscellaneousServices } from "react-icons/md";
-import { GiAutoRepair } from "react-icons/gi";
-import { MdSpatialTracking } from "react-icons/md";
-import { FaBarsProgress } from "react-icons/fa6";
-import { FcFaq } from "react-icons/fc";
-import { FcFinePrint } from "react-icons/fc";
-import { FcAbout } from "react-icons/fc";
-import { FaHistory } from "react-icons/fa";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faSpinner,
+  faHistory,
+  faBoxesStacked,
+  faHandshakeAngle,
+  faSquarePhone,
+  faCircleQuestion,
+  faFileContract,
+  faCircleInfo,
+} from "@fortawesome/free-solid-svg-icons";
 
 const CustomerSideNav = () => {
-
   return (
     <div>
       <div
-        className="fixed h-screen text-center text-gray-800 bg-white sidenav font-roboto"
+        className="fixed h-screen text-center text-gray-800 bg-[#0675C1] sidenav font-roboto"
         id="scrollbar"
       >
-        <nav>
-          <ul>
+        <nav className="p-4 navbar-section">
+          <ul className="navbar-list">
             <li>
-              <div className="nav-items">
-                <NavLink to="/customer/servprogress">
-                  <div className="flex justify-center pt-4">
-                    <FaBarsProgress className="w-8 h-8" />
-                  </div>
-                  <div className="flex justify-center pb-4 mt-1">
-                    Servicing Progress
+              <NavLink className="nav-style" to="/customer/servprogress">
+                <div>
+                  <span className="nav-icon">
+                    <FontAwesomeIcon icon={faSpinner} />
+                  </span>
+                  <span className="pl-3 nav-text">Servicing Progress</span>
+                </div>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className="nav-style" to="/customer/pursproducts">
+                <div>
+                  <span className="nav-icon">
+                    <FontAwesomeIcon icon={faBoxesStacked} />
+                  </span>
+                  <span className="pl-3 nav-text">Purchased Products</span>
+                </div>
+              </NavLink>
+            </li>
+            <li>
+              <div>
+                <NavLink className="nav-style" to="/customer/reqservice/0">
+                  <div>
+                    <span className="nav-icon"> 
+                      <FontAwesomeIcon icon={faHandshakeAngle} />
+                    </span>
+                    <span className="pl-3 nav-text">Request Service</span>
                   </div>
                 </NavLink>
               </div>
             </li>
             <li>
-              <div className="nav-items">
-                <NavLink to="/customer/pursproducts">
-                  <div className="flex justify-center pt-4">
-                    <GiAutoRepair className="w-8 h-8" />
-                  </div>
-                  <div className="flex justify-center pb-4 mt-1">
-                    Purchased Products
-                  </div>
-                </NavLink>
-              </div>
+              <NavLink className="nav-style" to="/customer/servhistory">
+                <div>
+                  <span className="nav-icon">
+                    <FontAwesomeIcon icon={faHistory} />
+                  </span>
+                  <span className="pl-3 nav-text">Service History</span>
+                </div>
+              </NavLink>
             </li>
             <li>
-              <div className="nav-items">
-                <NavLink to="/customer/reqservice/0">
-                  <div className="flex justify-center pt-4">
-                    <MdMiscellaneousServices className="w-8 h-8" />
-                  </div>
-                  <div className="flex justify-center pb-4 mt-1">
-                    Request Service
-                  </div>
-                </NavLink>
-              </div>
-            </li>
-
-            <li>
-              <div className="nav-items">
-                <NavLink to="/customer/servhistory">
-                  <div className="flex justify-center pt-4">
-                    <FaHistory className="w-8 h-8" />
-                  </div>
-                  <div className="flex justify-center pb-4 mt-1">
-                    Service History
-                  </div>
-                </NavLink>
-              </div>
+              <NavLink className="nav-style" to="/customer/contsupport">
+                <div>
+                  <span className="nav-icon">
+                    <FontAwesomeIcon icon={faSquarePhone} />
+                  </span>
+                  <span className="pl-3 nav-text">Contact Support</span>
+                </div>
+              </NavLink>
             </li>
             <li>
-              <div className="nav-items">
-                <NavLink to="/customer/contsupport">
-                  <div className="flex justify-center pt-4">
-                    <MdSpatialTracking className="w-8 h-8" />
-                  </div>
-                  <div className="flex justify-center pb-4 mt-1">
-                    Contact Support
-                  </div>
-                </NavLink>
-              </div>
+              <NavLink className="nav-style" to="/customer/faq">
+                <div>
+                  <span className="nav-icon">
+                    <FontAwesomeIcon icon={faCircleQuestion} />
+                  </span>
+                  <span className="pl-3 nav-text">FAQs</span>
+                </div>
+              </NavLink>
             </li>
             <li>
-              <div className="nav-items">
-                <NavLink to="/customer/faq">
-                  <div className="flex justify-center pt-4">
-                    <FcFaq className="w-8 h-8" />
-                  </div>
-                  <div className="flex justify-center pb-4 mt-1">FAQs</div>
-                </NavLink>
-              </div>
+              <NavLink className="nav-style" to="/customer/termsandcondition">
+                <div>
+                  <span className="nav-icon">
+                    <FontAwesomeIcon icon={faFileContract} />
+                  </span>
+                  <span className="pl-3 nav-text">Terms and Conditions</span>
+                </div>
+              </NavLink>
             </li>
-
             <li>
-              <div className="nav-items">
-                <NavLink to="/customer/termsandcondition">
-                  <div className="flex justify-center pt-4">
-                    <FcFinePrint className="w-8 h-8" />
-                  </div>
-                  <div className="flex justify-center pb-4 mt-1">
-                    Terms and Conditions
-                  </div>
-                </NavLink>
-              </div>
-            </li>
-
-            <li>
-              <div className="nav-items">
-                <NavLink to="/customer/aboutus">
-                  <div className="flex justify-center pt-4">
-                    <FcAbout className="w-8 h-8" />
-                  </div>
-                  <div className="flex justify-center pb-4 mt-1">About Us</div>
-                </NavLink>
-              </div>
+              <NavLink className="nav-style" to="/customer/aboutus">
+                <div>
+                  <span className="nav-icon">
+                    <FontAwesomeIcon icon={faCircleInfo} />
+                  </span>
+                  <span className="pl-3 nav-text">About Us</span>
+                </div>
+              </NavLink>
             </li>
           </ul>
         </nav>

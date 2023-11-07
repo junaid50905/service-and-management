@@ -122,100 +122,85 @@ const PurchasedProducts = () => {
       <TopNav />
       <CustomerSideNav />
       <div className="mx-auto container-box font-roboto">
-        <h1 className="mt-2 text-3xl font-bold text-center text-gray-800">
-          Purchased Products
-        </h1>
-        <div className="my-6 bg-white rounded shadow-md ">
-          <table className="w-full border border-collapse table-fixed border-slate-500">
-            <thead>
-              <tr className="text-sm leading-normal text-white uppercase bg-tableHeading">
-                <th
-                  className="px-1 py-3 text-center border border-slate-600"
+        <table className="w-full mt-2 mb-5 rounded-lg shadow-md table-fixed">
+          
+          <thead>
+            <tr className="text-sm leading-normal text-white uppercase bg-[#36304A]">
+              <th className="px-1 py-3 font-normal text-center" style={{ width: "5%" }}>
+                SL
+              </th>
+              <th className="px-2 py-3 font-normal text-center break-words">Name</th>
+              <th className="px-2 py-3 font-normal text-center break-words ">Model</th>
+              <th className="px-2 py-3 font-normal text-center break-words">
+                Serial Number
+              </th>
+              <th className="px-2 py-3 font-normal text-center break-words">
+                Purchase Date
+              </th>
+              <th className="px-2 py-3 font-normal text-center break-words">Warranty</th>
+              <th className="px-2 py-3 font-normal text-center break-words">
+                Warranty Time Left
+              </th>
+              <th className="px-2 py-3 font-normal text-center break-words">Picture</th>
+              <th
+                className="px-2 py-3 font-normal text-center break-words"
+                style={{ width: "150px" }}
+              >
+                Request Service
+              </th>
+            </tr>
+          </thead>
+          <tbody className="text-sm font-light text-gray-900">
+            {products.map((product, index) => (
+              <tr
+                key={product.id}
+                className="transition duration-300 ease-in-out"
+              >
+                <td
+                  className="px-1 py-3 text-center break-words "
                   style={{ width: "5%" }}
                 >
-                  SL
-                </th>
-                <th className="px-2 py-3 text-center break-words border border-slate-600">
-                  Name
-                </th>
-                <th className="px-2 py-3 text-center break-words border border-slate-600">
-                  Model
-                </th>
-                <th className="px-2 py-3 text-center break-words border border-slate-600">
-                  Serial Number
-                </th>
-                <th className="px-2 py-3 text-center break-words border border-slate-600">
-                  Purchase Date
-                </th>
-                <th className="px-2 py-3 text-center break-words border border-slate-600">
-                  Warranty
-                </th>
-                <th className="px-2 py-3 text-center break-words border border-slate-600">
-                  Warranty Time Left
-                </th>
-                <th className="px-2 py-3 text-center break-words border border-slate-600">
-                  Picture
-                </th>
-                <th
-                  className="px-2 py-3 text-center break-words border border-slate-600"
-                  style={{ width: "150px" }}
-                >
-                  Request Service
-                </th>
-              </tr>
-            </thead>
-            <tbody className="text-sm font-light text-gray-900">
-              {products.map((product, index) => (
-                <tr
-                  key={product.id}
-                  className="transition duration-300 ease-in-out"
-                >
-                  <td
-                    className="px-1 py-3 text-center break-words border border-slate-700"
-                    style={{ width: "5%" }}
+                  {index + 1}
+                </td>
+                <td className="px-2 py-3 text-center break-words ">
+                  {product.productName}
+                </td>
+                <td className="px-2 py-3 text-center break-words ">
+                  {product.model}
+                </td>
+                <td className="px-2 py-3 text-center break-words ">
+                  {product.serialNumber}
+                </td>
+                <td className="px-2 py-3 text-center break-words ">
+                  {product.purchaseDate}
+                </td>
+                <td className="px-2 py-3 text-center break-words ">
+                  {product.warrantyDuration}
+                </td>
+                <td className="px-2 py-3 text-center break-words ">
+                  {product.warrantyTimeLeft}
+                </td>
+                <td className="p-1 text-center ">
+                  <div className="flex justify-center">
+                    <img
+                      src="https://www.trustedreviews.com/wp-content/uploads/sites/54/2022/07/Canon_PIXMA_G650_front_side-scaled.jpg"
+                      alt={`Product ${index + 1}`}
+                      className="w-full h-20"
+                    />
+                  </div>
+                </td>
+                <td className="text-center break-words ">
+                  <Link
+                    to={`/customer/reqservice/${product.serialNumber}`}
+                    className="p-2 text-white bg-orange-500 rounded hover:bg-orange-600"
                   >
-                    {index + 1}
-                  </td>
-                  <td className="px-2 py-3 text-center break-words border border-slate-700">
-                    {product.productName}
-                  </td>
-                  <td className="px-2 py-3 text-center break-words border border-slate-700">
-                    {product.model}
-                  </td>
-                  <td className="px-2 py-3 text-center break-words border border-slate-700">
-                    {product.serialNumber}
-                  </td>
-                  <td className="px-2 py-3 text-center break-words border border-slate-700">
-                    {product.purchaseDate}
-                  </td>
-                  <td className="px-2 py-3 text-center break-words border border-slate-700">
-                    {product.warrantyDuration}
-                  </td>
-                  <td className="px-2 py-3 text-center break-words border border-slate-700">
-                    {product.warrantyTimeLeft}
-                  </td>
-                  <td className="p-1 text-center border border-slate-700">
-                    <div className="flex justify-center">
-                      <img
-                        src="https://www.trustedreviews.com/wp-content/uploads/sites/54/2022/07/Canon_PIXMA_G650_front_side-scaled.jpg"
-                        alt={`Product ${index + 1}`}
-                        className="w-full h-20"
-                      />
-                    </div>
-                  </td>
-                  <td className="text-center break-words border border-slate-700">
-                    <Link
-                      to={`/customer/reqservice/${product.serialNumber}`}
-                      className="p-2 text-white bg-orange-500 rounded hover:bg-orange-600"
-                    >
-                      Request Service
-                    </Link>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+                    Request Service
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
