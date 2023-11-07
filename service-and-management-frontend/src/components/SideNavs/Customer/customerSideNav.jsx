@@ -53,7 +53,7 @@ const CustomerSideNav = () => {
                 </NavLink>
               </div>
             </li>
-            <li>
+            {/* <li>
               <NavLink className="nav-style" to="/customer/servhistory">
                 <div>
                   <span className="nav-icon">
@@ -62,7 +62,7 @@ const CustomerSideNav = () => {
                   <span className="pl-3 nav-text">Service History</span>
                 </div>
               </NavLink>
-            </li>
+            </li> */}
             <li>
               <NavLink className="nav-style" to="/customer/contsupport">
                 <div>

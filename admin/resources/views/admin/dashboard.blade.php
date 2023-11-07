@@ -187,6 +187,9 @@
                                                             @case('late')
                                                                 <p class="text-danger">{{ $status }}</p>
                                                                 @break
+                                                            @case('working')
+                                                                <p class="text-info">{{ $status }}</p>
+                                                                @break
                                                             @case('complete')
                                                                 <p class="text-success">{{ $status }}</p>
                                                                 @break

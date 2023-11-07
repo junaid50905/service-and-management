@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Engineer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Appiontment;
 use Illuminate\Http\Request;
 use App\Models\Admin\RecruitingEngineer;
 
