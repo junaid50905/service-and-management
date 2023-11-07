@@ -13,8 +13,10 @@ import {
   faFileContract,
   faCircleInfo,
 } from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from "react-redux";
 
 const CustomerSideNav = () => {
+  const userInfo = useSelector((state) => state.user);
   return (
     <div>
       <div
@@ -32,13 +34,13 @@ const CustomerSideNav = () => {
           <Link to="#">
             <div className="p-2 px-12 ">
               <img
-                src="https://i.postimg.cc/4NBjCXXX/BRAC-Bank-Limited-logo.png"
+                src="https://i.postimg.cc/7Yt22mFM/square-logo-672224-450.jpg"
                 alt="logo"
                 className="rounded-full shadow-md"
               />
             </div>
             <div className="mt-2 text-xl font-bold text-white ">
-              <h2>Brac Bank Ltd</h2>
+              <h2>{userInfo.email}</h2>
             </div>
           </Link>
         </div>

@@ -44,7 +44,7 @@ const TopNav = () => {
   }, [data, isSuccess, dispatch]);
 
   return (
-    <div className="fixed h-16 text-white bg-[#0675C1] topnav z-40">
+    <div className="fixed h-16 bg-[#F2F5FC] topnav z-40 shadow-md">
       <div className="flex justify-end h-full">
         <div className="h-full mr-6">
           <button
