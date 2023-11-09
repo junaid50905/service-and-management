@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import CustomerSideNav from "../../components/SideNavs/Customer/customerSideNav";
 import TopNav from "../../components/TopNavs/Customer/topnav";
 import { Link } from "react-router-dom";
+import pos from "../../assets/images/pos.png";
 
 const PurchasedProducts = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -148,7 +149,7 @@ const PurchasedProducts = () => {
           <input
             type="text"
             placeholder="Search products (Name/Model/SN)..."
-            className="w-full p-2 border border-gray-300 rounded-md"
+            className="w-full p-2 border border-gray-300 rounded-md outline-none"
             value={searchQuery}
             onChange={handleSearch}
           />
@@ -166,33 +167,22 @@ const PurchasedProducts = () => {
           <table className="w-full mt-4 mb-5 rounded-md shadow-md table-fixed">
             <thead>
               <tr className="text-sm leading-normal uppercase bg-white">
-                <th
-                  className="px-1 py-3 text-center"
-                  style={{ width: "5%" }}
-                >
+                <th className="px-1 py-3 text-center" style={{ width: "5%" }}>
                   SL
                 </th>
-                <th className="px-2 py-3 text-center break-words">
-                  Name
-                </th>
-                <th className="px-2 py-3 text-center break-words ">
-                  Model
-                </th>
+                <th className="px-2 py-3 text-center break-words">Name</th>
+                <th className="px-2 py-3 text-center break-words ">Model</th>
                 <th className="px-2 py-3 text-center break-words">
                   Serial Number
                 </th>
                 <th className="px-2 py-3 text-center break-words">
                   Purchase Date
                 </th>
-                <th className="px-2 py-3 text-center break-words">
-                  Warranty
-                </th>
+                <th className="px-2 py-3 text-center break-words">Warranty</th>
                 <th className="px-2 py-3 text-center break-words">
                   Warranty Time Left
                 </th>
-                <th className="px-2 py-3 text-center break-words">
-                  Picture
-                </th>
+                <th className="px-2 py-3 text-center break-words">Picture</th>
                 <th
                   className="px-2 py-3 text-center break-words"
                   style={{ width: "150px" }}
@@ -234,16 +224,16 @@ const PurchasedProducts = () => {
                   <td className="p-1 text-center ">
                     <div className="flex justify-center">
                       <img
-                        src="https://i.postimg.cc/qRJzZ5SF/gprs-pos-machine-500x500.webp"
+                        src={pos}
                         alt={`Product ${index + 1}`}
-                        className="w-full h-20 rounded-md"
+                        className="w-full h-20"
                       />
                     </div>
                   </td>
                   <td className="text-center break-words ">
                     <Link
                       to={`/customer/reqservice/${product.serialNumber}`}
-                      className="p-3 text-white bg-[#0A8020] rounded-md hover:bg-[#0a8020e8]"
+                      className="p-3 text-white bg-[#0a8020] rounded-md hover:bg-[#0a8020e8]"
                     >
                       Request Service
                     </Link>

@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import aamraLogo from "../../../assets/images/aamra-logo.png";
 import { Link } from "react-router-dom";
 import {
   faSpinner,
@@ -24,9 +23,12 @@ const CustomerSideNav = () => {
         id="scrollbar"
       >
         <div className="w-full p-3">
-          <div className="p-2 px-12 bg-white rounded-md shadow-md">
+          <div className="p-2 px-12 ">
             <Link to="/customer/servprogress">
-              <img src={aamraLogo} alt="logo" />
+              <img
+                src="https://www.aamra.com.bd/wp-content/uploads/2023/07/aamra-logo-for-website-112x43-1.png"
+                alt="logo"
+              />
             </Link>
           </div>
         </div>
@@ -66,7 +68,7 @@ const CustomerSideNav = () => {
                 </div>
               </NavLink>
             </li>
-          
+
             <li>
               <NavLink className="nav-style" to="/customer/servhistory">
                 <div>
@@ -119,6 +121,19 @@ const CustomerSideNav = () => {
             </li>
           </ul>
         </nav>
+        <div className="absolute bottom-0 left-0 right-0 w-full pb-2 text-white">
+          <div className="text-gray-200">Powered By</div>
+          <div className="flex items-center justify-center gap-2">
+            <div>
+              <img
+                src="https://www.aamra.com.bd/wp-content/uploads/2023/07/aamra-logo-for-website-112x43-1.png"
+                alt="logo"
+                width={80}
+              />
+            </div>
+            <div>| infotainment ltd.</div>
+          </div>
+        </div>
       </div>
     </div>
   );

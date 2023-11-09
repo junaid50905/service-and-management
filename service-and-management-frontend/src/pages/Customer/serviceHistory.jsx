@@ -217,7 +217,7 @@ const ServiceHistory = () => {
           <input
             type="text"
             placeholder="Search products (Name/Model/SN)..."
-            className="w-full p-2 border border-gray-300 rounded-md"
+            className="w-full p-2 border border-gray-300 rounded-md outline-none"
             value={searchQuery}
             onChange={handleSearch}
           />
