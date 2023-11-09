@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import CustomerSideNav from "../../components/SideNavs/Customer/customerSideNav";
 import TopNav from "../../components/TopNavs/Customer/topnav";
 import { Link } from "react-router-dom";
 
 const PurchasedProducts = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
+  const handleSearch = (event) => {
+    const query = event.target.value;
+    setSearchQuery(query);
+
+    // Filter products based on the search query
+    const filtered = products.filter(
+      (product) =>
+        product.productName.toLowerCase().includes(query.toLowerCase()) ||
+        product.serialNumber.toLowerCase().includes(query.toLowerCase()) ||
+        product.model.toLowerCase().includes(query.toLowerCase())
+    );
+
+    setFilteredProducts(filtered);
+  };
+
   const products = [
     {
       id: 1,
@@ -117,90 +135,124 @@ const PurchasedProducts = () => {
     },
   ];
 
+  useEffect(() => {
+    setFilteredProducts(products);
+  }, []);
+
   return (
     <div>
       <TopNav />
       <CustomerSideNav />
       <div className="mx-auto container-box font-roboto">
-        <table className="w-full mt-4 mb-5 rounded-lg shadow-md table-fixed">
-          
-          <thead>
-            <tr className="text-sm leading-normal text-white uppercase bg-[#36304A]">
-              <th className="px-1 py-3 font-normal text-center" style={{ width: "5%" }}>
-                SL
-              </th>
-              <th className="px-2 py-3 font-normal text-center break-words">Name</th>
-              <th className="px-2 py-3 font-normal text-center break-words ">Model</th>
-              <th className="px-2 py-3 font-normal text-center break-words">
-                Serial Number
-              </th>
-              <th className="px-2 py-3 font-normal text-center break-words">
-                Purchase Date
-              </th>
-              <th className="px-2 py-3 font-normal text-center break-words">Warranty</th>
-              <th className="px-2 py-3 font-normal text-center break-words">
-                Warranty Time Left
-              </th>
-              <th className="px-2 py-3 font-normal text-center break-words">Picture</th>
-              <th
-                className="px-2 py-3 font-normal text-center break-words"
-                style={{ width: "150px" }}
-              >
-                Request Service
-              </th>
-            </tr>
-          </thead>
-          <tbody className="text-sm font-light text-gray-900">
-            {products.map((product, index) => (
-              <tr
-                key={product.id}
-                className="transition duration-300 ease-in-out"
-              >
-                <td
-                  className="px-1 py-3 text-center break-words "
+        <div className="mt-4">
+          <input
+            type="text"
+            placeholder="Search products (Name/Model/SN)..."
+            className="w-full p-2 border border-gray-300 rounded-md"
+            value={searchQuery}
+            onChange={handleSearch}
+          />
+        </div>
+        <div className="px-3 py-0 mt-4">
+          <h1 className="font-bold text-center text-gray-800 title-style">
+            Purchased Products
+          </h1>
+        </div>
+        {filteredProducts.length === 0 ? (
+          <h1 className="mt-4 text-2xl text-center text-gray-800">
+            No product available
+          </h1>
+        ) : (
+          <table className="w-full mt-4 mb-5 rounded-md shadow-md table-fixed">
+            <thead>
+              <tr className="text-sm leading-normal uppercase bg-white">
+                <th
+                  className="px-1 py-3 text-center"
                   style={{ width: "5%" }}
                 >
-                  {index + 1}
-                </td>
-                <td className="px-2 py-3 text-center break-words ">
-                  {product.productName}
-                </td>
-                <td className="px-2 py-3 text-center break-words ">
-                  {product.model}
-                </td>
-                <td className="px-2 py-3 text-center break-words ">
-                  {product.serialNumber}
-                </td>
-                <td className="px-2 py-3 text-center break-words ">
-                  {product.purchaseDate}
-                </td>
-                <td className="px-2 py-3 text-center break-words ">
-                  {product.warrantyDuration}
-                </td>
-                <td className="px-2 py-3 text-center break-words ">
-                  {product.warrantyTimeLeft}
-                </td>
-                <td className="p-1 text-center ">
-                  <div className="flex justify-center">
-                    <img
-                      src="https://www.trustedreviews.com/wp-content/uploads/sites/54/2022/07/Canon_PIXMA_G650_front_side-scaled.jpg"
-                      alt={`Product ${index + 1}`}
-                      className="w-full h-20"
-                    />
-                  </div>
-                </td>
-                <td className="text-center break-words ">
-                  <Link
-                    to={`/customer/reqservice/${product.serialNumber}`}
-                    className="p-2 text-white bg-orange-500 rounded hover:bg-orange-600"
-                  >
-                    Request Service
-                  </Link>
-                </td>
+                  SL
+                </th>
+                <th className="px-2 py-3 text-center break-words">
+                  Name
+                </th>
+                <th className="px-2 py-3 text-center break-words ">
+                  Model
+                </th>
+                <th className="px-2 py-3 text-center break-words">
+                  Serial Number
+                </th>
+                <th className="px-2 py-3 text-center break-words">
+                  Purchase Date
+                </th>
+                <th className="px-2 py-3 text-center break-words">
+                  Warranty
+                </th>
+                <th className="px-2 py-3 text-center break-words">
+                  Warranty Time Left
+                </th>
+                <th className="px-2 py-3 text-center break-words">
+                  Picture
+                </th>
+                <th
+                  className="px-2 py-3 text-center break-words"
+                  style={{ width: "150px" }}
+                >
+                  Request Service
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="text-sm font-light text-gray-900">
+              {filteredProducts.map((product, index) => (
+                <tr
+                  key={product.id}
+                  className="transition duration-300 ease-in-out"
+                >
+                  <td
+                    className="px-1 py-3 text-center break-words "
+                    style={{ width: "5%" }}
+                  >
+                    {index + 1}
+                  </td>
+                  <td className="px-2 py-3 text-center break-words ">
+                    {product.productName}
+                  </td>
+                  <td className="px-2 py-3 text-center break-words ">
+                    {product.model}
+                  </td>
+                  <td className="px-2 py-3 text-center break-words ">
+                    {product.serialNumber}
+                  </td>
+                  <td className="px-2 py-3 text-center break-words ">
+                    {product.purchaseDate}
+                  </td>
+                  <td className="px-2 py-3 text-center break-words ">
+                    {product.warrantyDuration}
+                  </td>
+                  <td className="px-2 py-3 text-center break-words ">
+                    {product.warrantyTimeLeft}
+                  </td>
+                  <td className="p-1 text-center ">
+                    <div className="flex justify-center">
+                      <img
+                        src="https://i.postimg.cc/qRJzZ5SF/gprs-pos-machine-500x500.webp"
+                        alt={`Product ${index + 1}`}
+                        className="w-full h-20 rounded-md"
+                      />
+                    </div>
+                  </td>
+                  <td className="text-center break-words ">
+                    <Link
+                      to={`/customer/reqservice/${product.serialNumber}`}
+                      className="p-3 text-white bg-[#0A8020] rounded-md hover:bg-[#0a8020e8]"
+                    >
+                      Request Service
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </div>
   );

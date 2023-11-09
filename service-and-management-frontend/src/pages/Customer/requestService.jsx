@@ -66,8 +66,8 @@ const RequestService = () => {
       <TopNav />
       <CustomerSideNav />
       <div className="max-w-screen-xl mx-auto container-box">
-        <div className="w-full max-w-md p-6 mx-auto bg-white rounded-md shadow-lg">
-          <div className="flex justify-center w-full max-w-md mx-auto mb-4 text-3xl font-bold text-navColor">
+        <div className="w-full max-w-md p-6 pt-2 mx-auto bg-white rounded-md shadow-lg">
+          <div className="flex justify-center w-full max-w-md mx-auto mb-4 text-3xl font-bold text-[#CD2628]">
             <h2>Request Service</h2>
           </div>
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>

@@ -8,6 +8,7 @@ import {
   faClock,
   faHourglassHalf,
   faCircleCheck,
+  faSquareXmark,
 } from "@fortawesome/free-solid-svg-icons";
 
 const ServiceStatus = () => {
@@ -27,6 +28,8 @@ const ServiceStatus = () => {
       maintenancePersonnelPhoto: "alice.jpg",
       maintenancePersonnelCont: "01743217209",
       branchName: "DHAKA Branch",
+      startDate: "2023-06-30",
+      endDate: "",
     },
     {
       id: 2,
@@ -43,6 +46,8 @@ const ServiceStatus = () => {
       maintenancePersonnelPhoto: "bob.jpg",
       maintenancePersonnelCont: "01743217209",
       branchName: "SYLHET Branch",
+      startDate: "2023-06-30",
+      endDate: "2023-08-21",
     },
     {
       id: 3,
@@ -59,6 +64,7 @@ const ServiceStatus = () => {
       maintenancePersonnelPhoto: "elena.jpg",
       maintenancePersonnelCont: "01743217209",
       branchName: "DHAKA Branch",
+      startDate: "2023-06-30",
     },
     {
       id: 4,
@@ -75,6 +81,8 @@ const ServiceStatus = () => {
       maintenancePersonnelPhoto: "david.jpg",
       maintenancePersonnelCont: "01743217209",
       branchName: "DHAKA Branch",
+      startDate: "2023-06-30",
+      endDate: "2023-08-21",
     },
     {
       id: 5,
@@ -91,6 +99,7 @@ const ServiceStatus = () => {
       maintenancePersonnelPhoto: "grace.jpg",
       maintenancePersonnelCont: "01743217209",
       branchName: "SYLHET Branch",
+      startDate: "2023-06-30",
     },
     {
       id: 6,
@@ -107,6 +116,7 @@ const ServiceStatus = () => {
       maintenancePersonnelPhoto: "james.jpg",
       maintenancePersonnelCont: "01743217209",
       branchName: "DHAKA Branch",
+      startDate: "2023-06-30",
     },
     {
       id: 7,
@@ -123,6 +133,7 @@ const ServiceStatus = () => {
       maintenancePersonnelPhoto: "olivia.jpg",
       maintenancePersonnelCont: "01743217209",
       branchName: "DHAKA Branch",
+      startDate: "2023-06-30",
     },
     {
       id: 8,
@@ -139,6 +150,8 @@ const ServiceStatus = () => {
       maintenancePersonnelPhoto: "william.jpg",
       maintenancePersonnelCont: "01743217209",
       branchName: "DHAKA Branch",
+      startDate: "2023-06-30",
+      endDate: "2023-08-21",
     },
     {
       id: 9,
@@ -155,6 +168,7 @@ const ServiceStatus = () => {
       maintenancePersonnelPhoto: "sophia.jpg",
       maintenancePersonnelCont: "01743217209",
       branchName: "DHAKA Branch",
+      startDate: "2023-06-30",
     },
     {
       id: 10,
@@ -171,6 +185,8 @@ const ServiceStatus = () => {
       maintenancePersonnelPhoto: "michael.jpg",
       maintenancePersonnelCont: "01743217209",
       branchName: "DHAKA Branch",
+      startDate: "2023-06-30",
+      endDate: "2023-08-21",
     },
   ];
 
@@ -308,7 +324,7 @@ const ServiceStatus = () => {
             className="absolute text-2xl text-white cursor-pointer top-2 right-2"
             onClick={closeModal}
           >
-            <FaWindowClose />
+            <FontAwesomeIcon icon={faSquareXmark} />
           </button>
           {selectedProduct && (
             <div className="rounded-md font-roboto">
@@ -371,6 +387,16 @@ const ServiceStatus = () => {
                       <span className="font-semibold">Maintenance Notes: </span>
                       {selectedProduct.maintenanceNotes}
                     </p>
+                    <p>
+                      <span className="font-semibold">Started on: </span>
+                      {selectedProduct.startDate}
+                    </p>
+                    {selectedProduct.endDate && (
+                      <p>
+                        <span className="font-semibold">Finished on: </span>
+                        {selectedProduct.endDate}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div className="flex w-full px-8 mb-8">

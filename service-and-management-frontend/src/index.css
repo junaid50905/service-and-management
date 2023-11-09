@@ -302,3 +302,7 @@ span {
   padding: 4px;
   border-radius: 50%;
 }
+th {
+  border-bottom: 1px solid #333;
+  font-weight: bold;
+}

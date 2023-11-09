@@ -66,19 +66,8 @@ const CustomerSideNav = () => {
                 </div>
               </NavLink>
             </li>
+          
             <li>
-              <div>
-                <NavLink className="nav-style" to="/customer/reqservice/0">
-                  <div>
-                    <span className="nav-icon">
-                      <FontAwesomeIcon icon={faHandshakeAngle} />
-                    </span>
-                    <span className="pl-3 nav-text">Request Service</span>
-                  </div>
-                </NavLink>
-              </div>
-            </li>
-            {/* <li>
               <NavLink className="nav-style" to="/customer/servhistory">
                 <div>
                   <span className="nav-icon">
@@ -87,7 +76,7 @@ const CustomerSideNav = () => {
                   <span className="pl-3 nav-text">Service History</span>
                 </div>
               </NavLink>
-            </li> */}
+            </li>
             <li>
               <NavLink className="nav-style" to="/customer/contsupport">
                 <div>

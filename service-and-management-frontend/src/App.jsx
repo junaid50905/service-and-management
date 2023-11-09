@@ -10,8 +10,8 @@ import FAQ from "./pages/Customer/faq";
 import AboutUs from "./pages/Customer/aboutUs";
 import EngineerLandingPage from "./pages/Engineer/engineerLandingPage";
 // import ProductsCustomer from "./pages/Customer/products";
-import HomePage from "./pages/HomePage/homePage";
 import { getToken } from "./services/localStorageService";
+import ServiceHistory from "./pages/Customer/serviceHistory";
 
 function App() {
   const token = getToken();
@@ -31,6 +31,10 @@ function App() {
         <Route
           path="/customer/servprogress"
           element={<ServiceStatus />}
+        ></Route>
+        <Route
+          path="/customer/servhistory"
+          element={<ServiceHistory />}
         ></Route>
         <Route
           path="/customer/contsupport"
