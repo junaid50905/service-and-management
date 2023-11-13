@@ -3,6 +3,8 @@ import CustomerSideNav from "../../components/SideNavs/Customer/customerSideNav"
 import TopNav from "../../components/TopNavs/Customer/topnav";
 import { Link } from "react-router-dom";
 import pos from "../../assets/images/pos.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const PurchasedProducts = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -145,11 +147,12 @@ const PurchasedProducts = () => {
       <TopNav />
       <CustomerSideNav />
       <div className="mx-auto container-box font-roboto">
-        <div className="mt-4">
+        <div className="flex items-center mt-4">
+          <FontAwesomeIcon icon={faMagnifyingGlass} className="absolute ml-2" />
           <input
             type="text"
-            placeholder="Search products (Name/Model/SN)..."
-            className="w-full p-2 border border-gray-300 rounded-md outline-none"
+            placeholder="Search products (Name/Model/SN)"
+            className="w-full p-2 pl-8 border border-gray-300 rounded-md outline-none"
             value={searchQuery}
             onChange={handleSearch}
           />
