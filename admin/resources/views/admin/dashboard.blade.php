@@ -76,47 +76,72 @@
                 </a>
             </div>
         </div>
-
-
     </div>
 
     <div class="row">
-        <div class="col-md-4 grid-margin stretch-card">
+        <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <div class="chartjs-size-monitor">
-                        <div class="chartjs-size-monitor-expand">
-                            <div class=""></div>
+                    @if (count($allTodaysWorkingTasks) < 1)
+                        <p style="color: #ff6b6b">There is no engineer currently on duty today</p>
+                    @else
+                        <a href="{{ route('admin.allTodaysWorkingTasks') }}" class="btn btn-outline-primary {{ $totalNumberOfTodaysWorkingTask <=2 ? 'disabled' : '' }}">View all ({{ $totalNumberOfTodaysWorkingTask }})</a>
+                        <div class="row">
+                            @foreach ($allTodaysWorkingTasks as $singleTodaysWorkingTask)
+                                @php
+                                    $engineer = DB::table('engineers')
+                                        ->where('id', $singleTodaysWorkingTask->engineer_id)
+                                        ->first();
+                                    $categoryId = $engineer->category_id;
+                                    $subCategoryId = $engineer->subcategory_id;
+                                    $engineerCategory = DB::table('categories')
+                                        ->where('id', $categoryId)
+                                        ->first()->name;
+                                    $engineerSubcategory = DB::table('subcategories')
+                                        ->where('category_id', $categoryId)
+                                        ->where('id', $subCategoryId)
+                                        ->first()->name;
+                                    $appiontment = DB::table('appiontments')->where('id', $singleTodaysWorkingTask->appiontment_id)->first();
+                                    $soldProductId = $appiontment->sold_product_id;
+                                    $userType = $appiontment->usertype;
+                                    $soldProduct = DB::table('sold_products')->where('id', $soldProductId)->first();
+                                    $userId = $soldProduct->user_id;
+                                    $branchId = $soldProduct->branch_id;
+                                    $customer = DB::table('users')->where('id', $userId)->first();
+                                    $customerName = $customer->name;
+
+                                    $exists = DB::table('branches')->where('id', $branchId)
+                                            ->where('user_id', $userId)
+                                            ->exists();
+
+
+                                @endphp
+                                <div class="col-md-6 my-2">
+                                    <div>
+                                        <span>{{ $engineer->name }}</span>
+                                        <span class="text-muted">(<span>{{ $engineerCategory }}</span> |
+                                            <span>{{ $engineerSubcategory }}</span> |
+                                            <span>{{ $engineer->phone }}</span>)
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span>{{ $customerName }} {{ $exists ? ' | ' : '' }}</span>
+                                        <span>{{ $exists ? DB::table('branches')->where('id', $branchId)->where('user_id', $userId)->first()->branch_name : '' }}</span>
+                                    </div>
+                                    <iframe width="100%"
+                                        src="https://maps.google.com/maps?q=<?php echo $singleTodaysWorkingTask->latitude; ?>,<?php echo $singleTodaysWorkingTask->longitude; ?>&output=embed"></iframe>
+                                </div>
+                            @endforeach
                         </div>
-                        <div class="chartjs-size-monitor-shrink">
-                            <div class=""></div>
-                        </div>
-                    </div>
-                    <h4 class="card-title text-info">Transaction History</h4>
-                    <canvas id="transaction-history" class="transaction-chart chartjs-render-monitor"
-                        style="display: block; width: 293px; height: 146px;" width="293" height="146"></canvas>
-                    <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
-                        <div class="text-md-center text-xl-left">
-                            <h6 class="mb-1">Transfer to Paypal</h6>
-                            <p class="text-muted mb-0">07 Jan 2019, 09:12AM</p>
-                        </div>
-                        <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
-                            <h6 class="font-weight-bold mb-0">$236</h6>
-                        </div>
-                    </div>
-                    <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
-                        <div class="text-md-center text-xl-left">
-                            <h6 class="mb-1">Tranfer to Stripe</h6>
-                            <p class="text-muted mb-0">07 Jan 2019, 09:12AM</p>
-                        </div>
-                        <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
-                            <h6 class="font-weight-bold mb-0">$593</h6>
-                        </div>
-                    </div>
+                    @endif
+
                 </div>
             </div>
         </div>
-        <div class="col-md-8 grid-margin stretch-card">
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex flex-row justify-content-between">
@@ -141,59 +166,79 @@
                                                 <div class="col-md-9">
                                                     @php
                                                         $status = $recentsAppiontment->status;
-                                                        $appiontmenTakenDate = $recentsAppiontment->appiontment_taken_date	;
+                                                        $appiontmenTakenDate = $recentsAppiontment->appiontment_taken_date;
                                                         $appiontmenTakenTime = $recentsAppiontment->appiontment_taken_time;
                                                         $inspectionDate = $recentsAppiontment->inspection_date;
                                                         $inspectionTime = $recentsAppiontment->inspection_time;
                                                         $soldProductId = $recentsAppiontment->sold_product_id;
-                                                        $soldProduct = DB::table('sold_products')->where('id', $soldProductId)->first();
+                                                        $soldProduct = DB::table('sold_products')
+                                                            ->where('id', $soldProductId)
+                                                            ->first();
                                                         $productId = $soldProduct->product_id;
                                                         $userId = $soldProduct->user_id;
-                                                        $productName = DB::table('products')->where('id', $productId)->first()->name;
-                                                        $userName = DB::table('users')->where('id', $userId)->first()->name;
-                                                        $userType = DB::table('users')->where('id', $userId)->first()->usertype;
+                                                        $productName = DB::table('products')
+                                                            ->where('id', $productId)
+                                                            ->first()->name;
+                                                        $userName = DB::table('users')
+                                                            ->where('id', $userId)
+                                                            ->first()->name;
+                                                        $userType = DB::table('users')
+                                                            ->where('id', $userId)
+                                                            ->first()->usertype;
                                                     @endphp
-                                                    <a href="{{ $userType == 'solo' ? route('appiontment.solo_index') : route('appiontment.group_index') }}" class="text-light text-decoration-none"><h6 class="preview-subject">{{ $productName }}</h6></a>
-                                                    <p class="text-muted mb-0">{{ $userName }} | {{ $userType }}</p>
+                                                    <a href="{{ $userType == 'solo' ? route('appiontment.solo_index') : route('appiontment.group_index') }}"
+                                                        class="text-light text-decoration-none">
+                                                        <h6 class="preview-subject">{{ $productName }}</h6>
+                                                    </a>
+                                                    <p class="text-muted mb-0">{{ $userName }} | {{ $userType }}
+                                                    </p>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <p class="text-muted">
                                                         @switch($status)
                                                             @case('pending')
                                                                 {{ $appiontmenTakenDate }}
-                                                                @break
+                                                            @break
+
                                                             @case('assigned')
                                                                 {{ $inspectionDate }}
-                                                                @break
+                                                            @break
+
                                                             @case('late')
                                                                 {{ $inspectionDate }}
-                                                                @break
+                                                            @break
+
                                                             @case('working')
                                                                 {{ $inspectionDate }}
-                                                                @break
+                                                            @break
+
                                                             @case('complete')
                                                                 {{ $inspectionDate }}
-                                                                @break
+                                                            @break
                                                         @endswitch
                                                     </p>
                                                     <p class="text-muted mb-0">
                                                         @switch($status)
                                                             @case('pending')
-                                                                <p class="text-warning">{{ $status }}</p>
-                                                                @break
-                                                            @case('assigned')
-                                                                <p class="text-primary">{{ $status }}</p>
-                                                                @break
-                                                            @case('late')
-                                                                <p class="text-danger">{{ $status }}</p>
-                                                                @break
-                                                            @case('working')
-                                                                <p class="text-info">{{ $status }}</p>
-                                                                @break
-                                                            @case('complete')
-                                                                <p class="text-success">{{ $status }}</p>
-                                                                @break
-                                                        @endswitch
+                                                            <p class="text-warning">{{ $status }}</p>
+                                                        @break
+
+                                                        @case('assigned')
+                                                            <p class="text-primary">{{ $status }}</p>
+                                                        @break
+
+                                                        @case('late')
+                                                            <p class="text-danger">{{ $status }}</p>
+                                                        @break
+
+                                                        @case('working')
+                                                            <p class="text-info">{{ $status }}</p>
+                                                        @break
+
+                                                        @case('complete')
+                                                            <p class="text-success">{{ $status }}</p>
+                                                        @break
+                                                    @endswitch
                                                     </p>
                                                 </div>
                                             </div>
@@ -207,4 +252,19 @@
             </div>
         </div>
     </div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBZYFFfyeW467TIU2Gry9RZWo3LUsZXjA&libraries=places&callback=initMap"
+        async defer></script>
+
+
+
+
+
 @endsection

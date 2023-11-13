@@ -21,8 +21,9 @@
                         @php
                             $appiontmentStatus = Appiontment::where('id', $appiontment_id)->first()->status;
                         @endphp
-                        <a href="{{ route('engineer.total_tasks') }}" class="me-3"><i class="fa-solid fa-angle-left"></i> Back</a>
-                        <span class="badge badge-sm {{ $appiontmentStatus == 'assigned' ? 'bg-gradient-primary' : '' }} {{ $appiontmentStatus == 'late' ? 'bg-gradient-danger' : '' }} {{ $appiontmentStatus == 'working' ? 'bg-gradient-info' : '' }} {{ $appiontmentStatus == 'complete' ? 'bg-gradient-success' : '' }}">{{ $appiontmentStatus }}</span>
+                        <a href="{{ url()->previous() }}" class="me-3"><i class="fa-solid fa-angle-left"></i> Back</a>
+                        <span
+                            class="badge badge-sm {{ $appiontmentStatus == 'assigned' ? 'bg-gradient-primary' : '' }} {{ $appiontmentStatus == 'late' ? 'bg-gradient-danger' : '' }} {{ $appiontmentStatus == 'working' ? 'bg-gradient-info' : '' }} {{ $appiontmentStatus == 'complete' ? 'bg-gradient-success' : '' }}">{{ $appiontmentStatus }}</span>
                     </div>
 
 
@@ -60,6 +61,28 @@
                             @endif
                             <!-- ========= complete the task =================================== -->
 
+                            @if ($appiontmentStatus == 'working')
+                                <div>
+                                    <h5>Write the parts name for this product</h5>
+                                    <form action="{{ route('needed_parts.store') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" value="{{ $appiontment_id }}" name="appiontment_id" placeholder="wheel, power button">
+                                        <input name="appliance_name[]" data-role="tagsinput" class="form-control" />
+                                        <button type="submit" class="btn btn-sm btn-primary mt-1">Submit</button>
+                                    </form>
+                                    @php
+                                        $parts = DB::table('parts_for_product')
+                                            ->where('appiontment_id', $appiontment_id)
+                                            ->get();
+                                    @endphp
+                                    @if (count($parts) > 0)
+                                        <p>Parts List:</p>
+                                            @foreach ($parts as $part)
+                                                <button class="m-1 btn btn-sm btn-secondary text-black">{{ $part->appliance_name }}</button>
+                                            @endforeach
+                                    @endif
+                                </div>
+                            @endif
 
                         </div>
 
@@ -70,6 +93,9 @@
                                 <div id="mapShowingStatus"></div>
                             </div>
                         </div>
+
+
+
                     </div>
 
 

@@ -46,7 +46,7 @@ const TopNav = () => {
   return (
     <div className="fixed h-16 bg-[#F2F5FC] topnav z-40 shadow-md">
       <div className="flex justify-end h-full">
-        <div className="h-full mr-6">
+        {/* <div className="h-full mr-6">
           <button
             onClick={handleLogout}
             className="flex items-center w-full h-full gap-3"
@@ -54,7 +54,7 @@ const TopNav = () => {
             <span className="font-semibold ">Notification</span>
             <FontAwesomeIcon icon={faBell} />
           </button>
-        </div>
+        </div> */}
         <div className="h-full mr-6">
           <button
             onClick={handleLogout}

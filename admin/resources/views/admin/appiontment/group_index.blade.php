@@ -1,6 +1,7 @@
 @php
     use Carbon\Carbon;
     use Illuminate\Support\Facades\DB;
+    use Illuminate\Support\Str;
 @endphp
 
 @extends('admin.layouts.master')
@@ -29,8 +30,8 @@
                                         <th class="small_font">Product <br> Name</th>
                                         <th class="small_font">Selling <br> Date</th>
                                         <th class="small_font">Status</th>
-                                        <th class="small_font">Appiontment Taken <br> Date and Time</th>
-                                        <th class="small_font">Inspection Last <br> Date and Time</th>
+                                        <th class="small_font">Appiontment <br/> Taken Date <br/> and Time</th>
+                                        <th class="small_font">Inspection <br/> Last Date <br/> and Time</th>
                                         <th class="small_font">Action</th>
                                     </tr>
                                     @foreach ($allAppiontments as $appiontment)
@@ -47,7 +48,8 @@
                                                 ->first()->branch_name;
 
                                             $customerName = DB::table('users')
-                                                ->where('id', $customerId)->first()->name;
+                                                ->where('id', $customerId)
+                                                ->first()->name;
                                             $productId = DB::table('sold_products')
                                                 ->where('id', $soldProductId)
                                                 ->first()->product_id;
@@ -57,13 +59,16 @@
                                             $sellingDate = DB::table('sold_products')
                                                 ->where('id', $soldProductId)
                                                 ->first()->selling_date;
+                                            $appIdExistsOnPartsForProduct = DB::table('parts_for_product')
+                                                ->where('appiontment_id', $appiontment->id)
+                                                ->exists();
                                         @endphp
                                         <tr>
                                             <td class="small_font">{{ $loop->iteration }}</td>
                                             {{-- <td class="small_font">{{ $appiontment->id }}</td> --}}
                                             <td class="small_font">{{ $customerName }}</td>
                                             <td class="small_font">{{ $branchName }}</td>
-                                            <td class="small_font">{{ $productName }}</td>
+                                            <td class="small_font">{{ Str::words($productName, 3, '...') }}</td>
                                             <td class="small_font">{{ $sellingDate }}</td>
                                             <td class="small_font">
                                                 @php
@@ -94,39 +99,58 @@
                                                     class="btn {{ $colorClass }} btn-sm">{{ $appiontment->status }}</button>
                                             </td>
                                             <td class="small_font">
-                                                {{ Carbon::parse($appiontment->appiontment_taken_date)->format('Y-M-d') ?? '' }} <br>
-                                                {{ $appiontment->appiontment_taken_time > 12.00 ? $appiontment->appiontment_taken_time."PM" : $appiontment->appiontment_taken_time."AM" }}
+                                                {{ Carbon::parse($appiontment->appiontment_taken_date)->format('Y-M-d') ?? '' }}
+                                                <br>
+                                                {{ $appiontment->appiontment_taken_time > 12.0 ? $appiontment->appiontment_taken_time . 'PM' : $appiontment->appiontment_taken_time . 'AM' }}
                                             </td>
                                             <td class="small_font">
                                                 {{ $appiontment->inspection_date }} <br>
                                                 @if ($appiontment->inspection_time)
-                                                {{ $appiontment->inspection_time > 12.00 ? $appiontment->inspection_time."PM" : $appiontment->inspection_time."AM" ?? '' }}
+                                                    {{ $appiontment->inspection_time > 12.0 ? $appiontment->inspection_time . 'PM' : $appiontment->inspection_time . 'AM' ?? '' }}
                                                 @else
                                                     {{ 'Assign first' }}
-
                                                 @endif
 
                                             </td>
                                             <td class="small_font">
                                                 @if ($appiontment->status === 'pending')
                                                     <a href="{{ route('appiontment.assign_engineer', $appiontment->id) }}"
-                                                        class="btn btn-outline-behance btn-sm small_font">Assign Engineer</a>
+                                                        class="btn btn-outline-behance btn-sm small_font">Assign
+                                                        Engineer</a>
                                                 @elseif($appiontment->status === 'assigned')
                                                     {{-- <button class="btn btn-secondary btn-sm disabled" role="button"
                                                         aria-disabled="true">Has been assigned</button><br> --}}
-                                                    <a href="{{ route('appiontment.assigned_engineer_detailed', $appiontment->id) }}" class="btn btn-info btn-sm my-2 d-flex justify-items-center align-items-center small_font max_content"><i class="mdi mdi-eye"></i><span>Engineer</span></a>
+                                                    <a href="{{ route('appiontment.assigned_engineer_detailed', $appiontment->id) }}"
+                                                        class="btn btn-info btn-sm my-2 d-flex justify-items-center align-items-center small_font max_content"><i
+                                                            class="mdi mdi-account"></i></a>
                                                 @elseif($appiontment->status === 'late')
                                                     {{-- <button class="btn btn-secondary btn-sm disabled" role="button"
                                                         aria-disabled="true">Has been assigned</button><br> --}}
-                                                    <a href="{{ route('appiontment.assigned_engineer_detailed', $appiontment->id) }}" class="btn btn-info btn-sm my-2 d-flex justify-items-center align-items-center small_font max_content"><i class="mdi mdi-eye"></i><span>Engineer</span></a>
+                                                    <a href="{{ route('appiontment.assigned_engineer_detailed', $appiontment->id) }}"
+                                                        class="btn btn-info btn-sm my-2 d-flex justify-items-center align-items-center small_font max_content"><i
+                                                            class="mdi mdi-account"></i></a>
                                                 @elseif($appiontment->status === 'working')
                                                     {{-- <button class="btn btn-secondary btn-sm disabled" role="button"
                                                         aria-disabled="true">Has been assigned</button><br> --}}
-                                                    <a href="{{ route('appiontment.assigned_engineer_detailed', $appiontment->id) }}" class="btn btn-info btn-sm my-2 d-flex justify-items-center align-items-center small_font max_content"><i class="mdi mdi-eye"></i><span>Engineer</span></a>
+                                                    <div class="d-flex gap-1">
+                                                        <a href="{{ route('appiontment.assigned_engineer_detailed', $appiontment->id) }}"
+                                                            class="btn btn-info btn-sm my-2 d-flex justify-items-center align-items-center small_font max_content"><i
+                                                                class="mdi mdi-account"></i></a>
+                                                        <a href="{{ route('appiontment.inspection_location', $appiontment->id) }}"
+                                                            class="btn btn-secondary btn-sm my-2 d-flex align-items-center small_font max_content"><i
+                                                                class="mdi mdi-google-maps"></i></a>
+                                                        @if($appIdExistsOnPartsForProduct)
+                                                            <a href="{{ route('appiontment.parts_need', $appiontment->id) }}"
+                                                                class="btn btn-primary btn-sm my-2 d-flex align-items-center small_font max_content"><i
+                                                                    class="fa-solid fa-screwdriver-wrench"></i></a>
+                                                        @endif
+                                                    </div>
                                                 @elseif($appiontment->status === 'complete')
                                                     {{-- <button class="btn btn-secondary btn-sm disabled" role="button"
                                                         aria-disabled="true">Has been assigned</button><br> --}}
-                                                    <a href="{{ route('appiontment.assigned_engineer_detailed', $appiontment->id) }}" class="btn btn-info btn-sm my-2 d-flex justify-items-center align-items-center small_font max_content"><i class="mdi mdi-eye"></i><span>Engineer</span></a>
+                                                    <a href="{{ route('appiontment.assigned_engineer_detailed', $appiontment->id) }}"
+                                                        class="btn btn-info btn-sm my-2 d-flex justify-items-center align-items-center small_font max_content"><i
+                                                            class="mdi mdi-account"></i></a>
                                                 @endif
                                             </td>
                                         </tr>

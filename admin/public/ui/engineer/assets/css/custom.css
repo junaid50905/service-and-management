@@ -9,3 +9,10 @@
 #stopInspectionBtn {
     display: none;
 }
+
+span.label-info {
+    background-color: red !important;
+    border-radius: 2px;
+    padding: 2px;
+    margin: 10px 0;
+}

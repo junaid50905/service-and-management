@@ -40,11 +40,13 @@ Route::middleware(['customAuthCheck'])->group(function () {
     Route::get('getSubcategory/{category_id}', [ProductController::class, 'getSubcategory']);
 
     Route::get('getSubcategory/{category_id}', [ApplianceController::class, 'getSubcategory']);
+    Route::get('admin/appliance/getProduct/{category_id}/{subcategory_id}', [ApplianceController::class, 'getProduct']);
 
     Route::get('getSubcategory/{category_id}', [EngineerController::class, 'getSubcategory']);
 
     Route::get('getSubcategory/{category_id}', [CustomerController::class, 'getSubcategory']);
     Route::get('getProduct/{subcategory_id}', [CustomerController::class, 'getProduct']);
+
 
 
     Route::get('getBranches/{user_id}', [CustomerController::class, 'getBranches'])->name('getBranches');
@@ -54,6 +56,7 @@ Route::middleware(['customAuthCheck'])->group(function () {
     Route::prefix('admin')->group(function () {
         // dashboard
         Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
+        Route::get('/all-todays-working-tasks', [DashboardController::class, 'allTodaysWorkingTasks'])->name('admin.allTodaysWorkingTasks');
 
         // category
         Route::prefix('/category')->group(function () {
@@ -174,6 +177,8 @@ Route::middleware(['customAuthCheck'])->group(function () {
             Route::get('/assigned-engineer-details/{id}', [AppiontmentController::class, 'assignedEngineerDetailed'])->name('appiontment.assigned_engineer_detailed');
             // inspection location
             Route::get('/inspection-location/{id}', [AppiontmentController::class, 'inspectionLocation'])->name('appiontment.inspection_location');
+            // parts nedd
+            Route::get('/parts-need/{id}', [AppiontmentController::class, 'partsNeed'])->name('appiontment.parts_need');
         });
 
         // checklist
@@ -206,6 +211,9 @@ Route::middleware(['customAuthCheck'])->group(function () {
         Route::post('/total-tasks/start-inspection', [EngineerEngineerController::class, 'startInspection'])->name('engineer.start_inspection');
         Route::post('/total-tasks/details/{id}/stop-inspection', [EngineerEngineerController::class, 'stopInspection'])->name('engineer.stop_inspection');
         Route::post('/total-tasks/details/{id}/complete-inspection', [EngineerEngineerController::class, 'completeTask'])->name('engineer.complete_task');
+
+        // needed parts
+        Route::post('/needed-parts/store', [EngineerEngineerController::class, 'neededParts'])->name('needed_parts.store');
 
     });
 

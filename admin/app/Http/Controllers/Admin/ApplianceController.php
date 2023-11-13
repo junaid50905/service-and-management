@@ -23,6 +23,7 @@ class ApplianceController extends Controller
         DB::table('appliances')->insert([
             'category_id' => $request->category_id,
             'subcategory_id' => $request->subcategory_id,
+            'product_id' => $request->product_id,
             'name' => $request->name,
             'purchase_price' => $request->purchase_price,
             'market_price' => $request->market_price,
@@ -73,6 +74,19 @@ class ApplianceController extends Controller
         $html .= '<option selected>Select subcategory</option>';
         foreach ($subcategories as $subcategory) {
             $html .= '<option value="' . $subcategory->id . '">' . $subcategory->name . '</option>';
+        }
+        return response()->json($html);
+    }
+
+    // getProduct
+    public function getProduct($category_id, $subcategory_id)
+    {
+        $html = '';
+        $products = Product::where('category_id', $category_id)->where('subcategory_id', $subcategory_id)->get();
+
+        $html .= '<option selected>Select Product</option>';
+        foreach ($products as $product) {
+            $html .= '<option value="' . $product->id . '">' . $product->name . '</option>';
         }
         return response()->json($html);
     }

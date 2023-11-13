@@ -12,6 +12,7 @@ use App\Models\Admin\SoldProduct;
 use App\Models\Engineer\Inspection;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\RecruitingEngineer;
+use App\Models\Engineer\PartsForProduct;
 
 class AppiontmentController extends Controller
 {
@@ -184,6 +185,19 @@ class AppiontmentController extends Controller
         $lng = $lastInspection->longitude;
 
         return view('admin.appiontment.inspection_location', compact('lat', 'lng', 'lastInspection'));
+    }
+    // partsNeed
+    public function partsNeed($id)
+    {
+        $parts = PartsForProduct::where('appiontment_id', $id)->get();
+        $appiontment = Appiontment::where('id', $id)->first();
+        $soldProductId = $appiontment->sold_product_id;
+        $soldProduct = SoldProduct::where('id', $soldProductId)->first();
+        $sellingDate = $soldProduct->selling_date;
+        $timeOfWarranty = $soldProduct->time_of_warranty;
+        $sam = $soldProduct->sam;
+        $warrantyEndDate = Carbon::parse($sellingDate)->addMonths($timeOfWarranty)->format('Y-m-d');
+        return view('admin.appiontment.view_parts', compact('parts', 'sellingDate', 'timeOfWarranty', 'sam', 'warrantyEndDate'));
     }
 
 

@@ -12,8 +12,10 @@ use App\Models\Admin\RecruitingEngineer;
 use App\Models\Admin\SoldProduct;
 use App\Models\Admin\Subcategory;
 use App\Models\Engineer\Inspection;
+use App\Models\Engineer\PartsForProduct;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class EngineerController extends Controller
 {
@@ -31,6 +33,7 @@ class EngineerController extends Controller
     // taskView
     public function taskView($id)
     {
+
         $appiontment_id = $id;
         // appiontment
         $appiontment = Appiontment::where('id', $id)->first();
@@ -60,7 +63,7 @@ class EngineerController extends Controller
         $category = Category::where('id', $categoryId)->first();
 
         // subcategory
-        $subcategory = Subcategory::where('id',$subcategoryId)->where('category_id', $categoryId)->first();
+        $subcategory = Subcategory::where('id', $subcategoryId)->where('category_id', $categoryId)->first();
 
 
         return view('engineer.total_tasks.view', compact('product', 'category', 'subcategory', 'customer', 'branchExists', 'branch', 'appiontment_id'));
@@ -69,15 +72,21 @@ class EngineerController extends Controller
     // startInspection
     public function startInspection(Request $request)
     {
+        if (session()->has('loginId')) {
+            $loggedInEngineer = session()->get('loginId');
+        }
+
         $start_date = Carbon::today();
         $start_time = Carbon::now()->format('H:i:s');
 
         $data = Inspection::insert([
             'appiontment_id' => $request->appiontment_id,
+            'engineer_id' => $loggedInEngineer,
             'latitude' => $request->latitude,
             'longitude' => $request->longitude,
             'start_date' => $start_date,
             'start_time' => $start_time,
+            'status' => 'working',
         ]);
 
         Appiontment::where('id', $request->appiontment_id)->update([
@@ -92,7 +101,7 @@ class EngineerController extends Controller
     public function stopInspection(Request $request, $appiontment_id)
     {
         Inspection::where('appiontment_id', $appiontment_id)->update([
-            'end_time' => Carbon::now()->format('H:i:s')
+            'end_time' => Carbon::now()->format('H:i:s'),
         ]);
 
         return redirect()->back();
@@ -104,11 +113,30 @@ class EngineerController extends Controller
         Appiontment::where('id', $id)->update([
             'status' => 'complete'
         ]);
+        Inspection::where('appiontment_id', $id)->update([
+            'status' => 'complete'
+        ]);
 
         return redirect()->route('engineer.total_tasks')->with('complete_task', "Thank you. You have completed a task successfully.");
     }
+    // neededParts
+    public function neededParts(Request $request)
+    {
+        $appiontment_id = $request->appiontment_id;
 
+        $appliance_names = $request->appliance_name;
+        $individualItems = explode(',', $appliance_names[0]);
 
+        foreach ($individualItems as $appliance_name) {
+            PartsForProduct::create([
+                'appiontment_id' => $appiontment_id,
+                'appliance_name' => $appliance_name,
+            ]);
+        }
 
+        // Additional logic or redirect if needed
+
+        return redirect()->back()->with('parts_add_success', 'Successfully added part(s)');
+    }
 
 }
