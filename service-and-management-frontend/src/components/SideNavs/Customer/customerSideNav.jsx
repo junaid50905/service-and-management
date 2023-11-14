@@ -6,7 +6,6 @@ import {
   faSpinner,
   faHistory,
   faBoxesStacked,
-  faHandshakeAngle,
   faSquarePhone,
   faCircleQuestion,
   faFileContract,
