@@ -12,6 +12,7 @@ import EngineerLandingPage from "./pages/Engineer/engineerLandingPage";
 // import ProductsCustomer from "./pages/Customer/products";
 import { getToken } from "./services/localStorageService";
 import ServiceHistory from "./pages/Customer/serviceHistory";
+import ProtectedRoute from "./utils/ProtectedRoute";
 
 function App() {
   const token = getToken();
@@ -19,7 +20,14 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Login />}></Route>
-        <Route path="/customer/fd" element={<CustomerLandingPage />}></Route>
+        <Route
+          path="/customer/fd"
+          element={
+            <ProtectedRoute>
+              <CustomerLandingPage />
+            </ProtectedRoute>
+          }
+        ></Route>
         <Route
           path="/customer/pursproducts"
           element={<PurchasedProducts />}
@@ -30,7 +38,11 @@ function App() {
         ></Route>
         <Route
           path="/customer/servprogress"
-          element={<ServiceStatus />}
+          element={
+            <ProtectedRoute>
+              <ServiceStatus />
+            </ProtectedRoute>
+          }
         ></Route>
         <Route
           path="/customer/servhistory"
