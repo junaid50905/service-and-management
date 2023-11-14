@@ -21,7 +21,7 @@
                         @php
                             $appiontmentStatus = Appiontment::where('id', $appiontment_id)->first()->status;
                         @endphp
-                        <a href="{{ url()->previous() }}" class="me-3"><i class="fa-solid fa-angle-left"></i> Back</a>
+                        <a href="{{ route('engineer.total_tasks') }}" class="me-3"><i class="fa-solid fa-angle-left"></i> Back</a>
                         <span
                             class="badge badge-sm {{ $appiontmentStatus == 'assigned' ? 'bg-gradient-primary' : '' }} {{ $appiontmentStatus == 'late' ? 'bg-gradient-danger' : '' }} {{ $appiontmentStatus == 'working' ? 'bg-gradient-info' : '' }} {{ $appiontmentStatus == 'complete' ? 'bg-gradient-success' : '' }}">{{ $appiontmentStatus }}</span>
                     </div>

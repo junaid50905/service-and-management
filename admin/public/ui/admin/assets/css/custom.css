@@ -10,3 +10,37 @@
     height: 300px;
     border: 1px solid white;
 }
+
+#example_filter input {
+    color: white !important;
+}
+
+.dataTables_length {
+    color: white !important;
+}
+
+.dataTables_length select {
+    color: white !important;
+}
+
+.dataTables_length select option {
+    color: white !important;
+}
+
+#example thead {
+    background-color: rgb(15, 15, 15) !important;
+}
+
+#example thead tr th {
+    color: white !important;
+}
+
+#example tbody tr.odd td,
+#example tbody tr.even td {
+    color: rgb(196, 196, 196) !important;
+}
+
+#example tfoot {
+    background-color: rgb(15, 15, 15) !important;
+    color: white;
+}

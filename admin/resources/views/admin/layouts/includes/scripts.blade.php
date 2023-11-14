@@ -23,8 +23,45 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="{{ asset('ui/admin') }}/assets/js/custom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
+        <!-- jQuery -->
+<script src='https://code.jquery.com/jquery-3.7.0.js'></script>
+<!-- Data Table JS -->
+<script src='https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js'></script>
+<script src='https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js'></script>
+<script src='https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js'></script>
 
+<script>
+$(document).ready(function() {
+    $('#example').DataTable({
+      //disable sorting on last column
+      "columnDefs": [
+        { "orderable": false, "targets": 5 }
+      ],
+      language: {
+        //customize pagination prev and next buttons: use arrows instead of words
+        'paginate': {
+          'previous': '<span class="fa fa-chevron-left"></span>',
+          'next': '<span class="fa fa-chevron-right"></span>'
+        },
+        //customize number of elements to be displayed
+        "lengthMenu": 'Display <select class="form-control input-sm">'+
+        '<option value="10">10</option>'+
+        '<option value="20">20</option>'+
+        '<option value="30">30</option>'+
+        '<option value="40">40</option>'+
+        '<option value="50">50</option>'+
+        '<option value="-1">All</option>'+
+        '</select> results'
+      }
+    })  
+} );
+</script>
+
+    
+<!-- Include CryptoJS from CDN -->
     @include('admin.layouts.includes.toastr_message')
 
 

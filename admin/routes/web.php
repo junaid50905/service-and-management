@@ -14,7 +14,7 @@ use App\Http\Controllers\Admin\SellingProductController;
 use App\Http\Controllers\CustomeAuthController;
 use App\Http\Controllers\Engineer\EngineerController as EngineerEngineerController;
 use App\Http\Controllers\Engineer\EngineerDashboardController;
-
+use App\Http\Controllers\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -224,5 +224,7 @@ Route::middleware(['customAuthCheck'])->group(function () {
 
 
 
+Route::get('/test-form', [TestController::class, 'create'])->name('test.create');
+Route::post('/test-form/store', [TestController::class, 'store'])->name('test.store');
 
 

@@ -9,7 +9,6 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="text-primary">Parts need</h3>
                     <table class="table border">
                         <thead>
                             <tr>
@@ -28,9 +27,40 @@
                             </tr>
                         </tbody>
                     </table>
+                    <h3 class="text-primary my-1">Parts need</h3>
                     @foreach ($parts as $part)
                         {{ $part->appliance_name }} <br />
                     @endforeach
+                    @php
+                        $soldProductId = DB::table('appiontments')
+                            ->where('id', $appiontmentId)
+                            ->first()->sold_product_id;
+                        $productId = DB::table('sold_products')
+                            ->where('id', $soldProductId)
+                            ->first()->product_id;
+                        $appliances = DB::table('appliances')
+                            ->where('product_id', $productId)
+                            ->get();
+                    @endphp
+                    <h4 class="text-info my-2">Our appliances</h4>
+                    <table class="table border">
+                        <thead>
+                            <tr>
+                                <th scope="col fw-bold">Appliance name</th>
+                                <th scope="col fw-bold">Purchase price</th>
+                                <th scope="col fw-bold">Market price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($appliances as $appliance)
+                                <tr>
+                                    <td class="fw-lighter text-secondary">{{ $appliance->name }}</td>
+                                    <td class="fw-lighter text-secondary">{{ $appliance->purchase_price }}</td>
+                                    <td class="fw-lighter text-secondary">{{ $appliance->market_price }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
 

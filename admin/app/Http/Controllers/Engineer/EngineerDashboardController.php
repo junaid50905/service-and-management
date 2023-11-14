@@ -17,6 +17,10 @@ class EngineerDashboardController extends Controller
             $loggedInEngineer = session()->get('loginId');
         }
         $totalTasks = RecruitingEngineer::where('engineer_id', $loggedInEngineer)->get()->count();
-        return view('engineer.dashboard', compact('totalTasks'));
+        $totalLateTasks = Appiontment::where('engineer_id', $loggedInEngineer)->where('status', 'late')->get()->count();
+        $totalCompletedTasks = Appiontment::where('engineer_id', $loggedInEngineer)->where('status', 'complete')->get()->count();
+        $recentAssignedTasks = Appiontment::where('engineer_id', $loggedInEngineer)->where('status', 'assigned')->get()->count();
+        $workingTasks = Appiontment::where('engineer_id', $loggedInEngineer)->where('status', 'working')->get()->count();
+        return view('engineer.dashboard', compact('totalTasks', 'totalLateTasks', 'totalCompletedTasks', 'recentAssignedTasks','workingTasks'));
     }
 }

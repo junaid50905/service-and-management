@@ -96,6 +96,7 @@ class AppiontmentController extends Controller
                     'status' => 'assigned',
                     'inspection_date' => $request->date,
                     'inspection_time' => $request->time,
+                    'engineer_id' => $request->engineer_id,
                 ]
             );
             return redirect()->route('appiontment.group_index')->with('appiontment_assigned', "Appiontment assigned successfully");
@@ -106,6 +107,7 @@ class AppiontmentController extends Controller
                     'status' => 'assigned',
                     'inspection_date' => $request->date,
                     'inspection_time' => $request->time,
+                    'engineer_id' => $request->engineer_id,
                 ]
             );
             return redirect()->route('appiontment.solo_index')->with('appiontment_assigned', "Appiontment assigned successfully");
@@ -189,6 +191,7 @@ class AppiontmentController extends Controller
     // partsNeed
     public function partsNeed($id)
     {
+        $appiontmentId = $id;
         $parts = PartsForProduct::where('appiontment_id', $id)->get();
         $appiontment = Appiontment::where('id', $id)->first();
         $soldProductId = $appiontment->sold_product_id;
@@ -197,7 +200,7 @@ class AppiontmentController extends Controller
         $timeOfWarranty = $soldProduct->time_of_warranty;
         $sam = $soldProduct->sam;
         $warrantyEndDate = Carbon::parse($sellingDate)->addMonths($timeOfWarranty)->format('Y-m-d');
-        return view('admin.appiontment.view_parts', compact('parts', 'sellingDate', 'timeOfWarranty', 'sam', 'warrantyEndDate'));
+        return view('admin.appiontment.view_parts', compact('parts', 'sellingDate', 'timeOfWarranty', 'sam', 'warrantyEndDate', 'appiontmentId'));
     }
 
 
