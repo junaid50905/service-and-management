@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 14, 2023 at 09:41 AM
+-- Generation Time: Nov 20, 2023 at 04:30 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -71,10 +71,21 @@ CREATE TABLE `appiontments` (
 
 INSERT INTO `appiontments` (`id`, `sold_product_id`, `engineer_id`, `status`, `usertype`, `appiontment_taken_date`, `appiontment_taken_time`, `inspection_date`, `inspection_time`, `created_at`, `updated_at`) VALUES
 (56, 26, 3, 'complete', 'solo', '2023-11-13', '12:37:59', '2023-11-14', '14:00:00', '2023-11-13 06:37:59', '2023-11-13 06:42:31'),
-(57, 21, 3, 'late', 'group', '2023-11-13', '12:40:56', '2023-11-13', '12:43:00', '2023-11-13 06:40:56', '2023-11-13 06:43:48'),
+(57, 21, 3, 'late', 'group', '2023-11-13', '12:40:56', '2023-11-13', '12:43:00', '2023-10-13 06:40:56', '2023-11-13 06:43:48'),
 (58, 23, 3, 'working', 'group', '2023-11-13', '12:41:35', '2023-11-15', '15:41:00', '2023-11-13 06:41:35', '2023-11-13 06:42:45'),
-(59, 26, 3, 'working', 'solo', '2023-11-13', '12:50:56', '2023-11-13', '14:06:00', '2023-11-13 06:50:56', '2023-11-13 07:08:33'),
-(60, 23, 3, 'assigned', 'group', '2023-11-14', '10:01:26', '2023-11-15', '02:01:00', '2023-11-14 04:01:26', '2023-11-14 04:01:38');
+(59, 26, 3, 'complete', 'solo', '2023-11-13', '12:50:56', '2023-11-13', '14:06:00', '2023-11-13 06:50:56', '2023-11-19 04:50:40'),
+(60, 23, 3, 'late', 'group', '2023-11-14', '10:01:26', '2023-11-15', '02:01:00', '2023-11-14 04:01:26', '2023-11-15 08:59:31'),
+(64, 26, 3, 'assigned', 'solo', '2023-11-15', '12:29:25', '2023-11-23', '16:30:00', '2023-11-15 06:29:25', '2023-11-15 06:30:28'),
+(70, 23, 7, 'late', 'group', '2023-11-15', '13:20:49', '2023-11-16', '14:00:00', '2023-11-15 07:20:49', '2023-11-19 03:21:10'),
+(72, 26, 7, 'assigned', 'solo', '2023-11-19', '09:50:20', '2023-11-22', '01:42:00', '2023-11-19 03:50:20', '2023-11-19 04:42:52'),
+(73, 22, 7, 'assigned', 'solo', '2023-11-19', '10:43:04', '2023-11-28', '10:49:00', '2023-11-19 04:43:04', '2023-11-19 04:43:38'),
+(74, 22, NULL, 'pending', 'solo', '2023-11-19', '10:43:51', NULL, NULL, '2023-11-19 04:43:51', '2023-11-19 04:43:51'),
+(75, 26, NULL, 'pending', 'solo', '2023-11-19', '10:45:46', NULL, NULL, '2023-11-19 04:45:46', '2023-11-19 04:45:46'),
+(76, 19, 4, 'assigned', 'solo', '2023-11-19', '10:46:57', '2023-11-30', '02:47:00', '2023-11-19 04:46:57', '2023-11-19 04:47:09'),
+(77, 12, NULL, 'pending', 'group', '2023-11-19', '13:57:18', NULL, NULL, '2023-11-19 07:57:18', '2023-11-19 07:57:18'),
+(78, 9, NULL, 'pending', 'solo', '2023-11-19', '13:57:32', NULL, NULL, '2023-11-19 07:57:32', '2023-11-19 07:57:32'),
+(79, 24, NULL, 'pending', 'group', '2023-11-19', '13:58:46', NULL, NULL, '2023-11-19 07:58:46', '2023-11-19 07:58:46'),
+(80, 19, NULL, 'pending', 'solo', '2023-11-19', '13:59:38', NULL, NULL, '2023-11-19 07:59:38', '2023-11-19 07:59:38');
 
 -- --------------------------------------------------------
 
@@ -211,11 +222,12 @@ CREATE TABLE `engineers` (
 --
 
 INSERT INTO `engineers` (`id`, `category_id`, `subcategory_id`, `name`, `email`, `password`, `address`, `phone`, `created_at`, `updated_at`) VALUES
-(2, 34, 5, 'Shah moazzam rony', 'rony@engineer.aamra.com', '12345678', 'Sapla meniton, Gazipur chowrasta, Gazipur', '01698209834', '2023-10-16 09:43:05', '2023-10-16 09:43:05'),
 (3, 34, 6, 'saber', 'saber@engineer.aamra.com', '123', 'kakoli, bonani', '+1 (842) 401-392112', '2023-10-18 08:41:03', '2023-10-18 08:41:03'),
 (4, 34, 5, 'pavel', 'pavel@engineer.aamra.com', '12345678', 'Rabbi towar, Board Bazar, Gazipur', '09666-772323', '2023-10-22 10:16:36', '2023-10-22 10:16:36'),
 (5, 34, 9, 'ajay', 'ajay@engineer.aamra.com', '12345678', 'Rabbi towar, Board Bazar, Gazipur', '+1 (306) 272-9325', '2023-10-22 10:28:01', '2023-10-22 10:28:01'),
-(6, 34, 8, 'Kameko Butler', 'Kameko@engineer.aamra.com', '123', 'Velit velit itaque', '+1 (325) 587-9579', '2023-10-23 04:51:14', '2023-10-23 04:51:14');
+(6, 34, 8, 'Kameko Butler', 'Kameko@engineer.aamra.com', '123', 'Velit velit itaque', '+1 (325) 587-9579', '2023-10-23 04:51:14', '2023-10-23 04:51:14'),
+(7, 34, 6, 'emon', 'emon@engineer.aamara.com', '12345678', 'air port, dhaka', '0198765435', '2023-11-15 06:17:18', '2023-11-15 06:17:18'),
+(8, 34, 8, 'tajimul', 'tajimul@engineer.com', '12345678', 'uttara, Dhaka', '01987987973', '2023-11-15 06:20:22', '2023-11-15 06:20:22');
 
 -- --------------------------------------------------------
 
@@ -274,7 +286,7 @@ CREATE TABLE `inspections` (
 INSERT INTO `inspections` (`id`, `appiontment_id`, `engineer_id`, `start_date`, `start_time`, `end_time`, `longitude`, `latitude`, `status`, `created_at`, `updated_at`) VALUES
 (21, 56, 3, '2023-11-13', '12:39:02', '12:39:06', 90.403981, 23.794015, 'complete', NULL, '2023-11-13 06:42:31'),
 (22, 58, 3, '2023-11-13', '12:42:45', '12:42:49', 90.403980, 23.794017, 'working', NULL, '2023-11-13 06:42:49'),
-(23, 59, 3, '2023-11-13', '13:08:33', '13:08:38', 90.403981, 23.794021, 'working', NULL, '2023-11-13 07:08:38');
+(23, 59, 3, '2023-11-13', '13:08:33', '13:08:38', 90.403981, 23.794021, 'complete', NULL, '2023-11-19 04:50:40');
 
 -- --------------------------------------------------------
 
@@ -379,7 +391,11 @@ INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `n
 (2, 'App\\Models\\User', 8, 'login_emon123@gmail.com', 'f2389ae84a2ff97ca25f6968ecdddc3f90fcf3acd586b55210e97ea806e273c2', '[\"*\"]', '2023-10-25 04:06:57', NULL, '2023-10-16 11:25:44', '2023-10-25 04:06:57'),
 (13, 'App\\Models\\User', 11, 'login_sheba@gmail.com', 'bc534bff77e53662d4ad0471da0a68ecf87185f151d47b6dcb50c8fbb4857522', '[\"*\"]', '2023-11-13 11:00:39', NULL, '2023-11-13 07:17:55', '2023-11-13 11:00:39'),
 (14, 'App\\Models\\User', 11, 'login_sheba@gmail.com', '10d9f5abea501e8c0496b475b529c19a6ba7a3857ef7e170178307e5cf8cb047', '[\"*\"]', NULL, NULL, '2023-11-14 09:33:13', '2023-11-14 09:33:13'),
-(15, 'App\\Models\\User', 11, 'login_sheba@gmail.com', '8d220a5d3cca8a241831d1c41df8e58e17c3c54d591ab23a483d221ef024c5f5', '[\"*\"]', NULL, NULL, '2023-11-14 09:33:31', '2023-11-14 09:33:31');
+(15, 'App\\Models\\User', 11, 'login_sheba@gmail.com', '8d220a5d3cca8a241831d1c41df8e58e17c3c54d591ab23a483d221ef024c5f5', '[\"*\"]', NULL, NULL, '2023-11-14 09:33:31', '2023-11-14 09:33:31'),
+(16, 'App\\Models\\User', 11, 'login_sheba@gmail.com', '576ce4c3750117f6ac3c972b6e51e78894d2bc2b6443716bb1f247310ff68499', '[\"*\"]', NULL, NULL, '2023-11-19 11:04:02', '2023-11-19 11:04:02'),
+(17, 'App\\Models\\User', 11, 'login_sheba@gmail.com', 'c3cf68f9ae033a2483c5971ec666053a80f45c8f61cecd2ced1fd9fa58796cae', '[\"*\"]', NULL, NULL, '2023-11-20 03:43:46', '2023-11-20 03:43:46'),
+(18, 'App\\Models\\User', 11, 'login_sheba@gmail.com', '199f388d152df6e20fed62629833a20e42e316f5f454f188a53b0adab36414ca', '[\"*\"]', NULL, NULL, '2023-11-20 03:44:05', '2023-11-20 03:44:05'),
+(19, 'App\\Models\\User', 11, 'login_sheba@gmail.com', '69c03d581262a7dc5dbe8248613546f970ab326459e895361e331bf73a17e32e', '[\"*\"]', NULL, NULL, '2023-11-20 03:44:24', '2023-11-20 03:44:24');
 
 -- --------------------------------------------------------
 
@@ -442,7 +458,12 @@ INSERT INTO `recruiting_engineers` (`id`, `appiontment_id`, `engineer_id`, `crea
 (55, 57, 3, '2023-11-13 06:41:07', '2023-11-13 06:41:07'),
 (56, 58, 3, '2023-11-13 06:41:45', '2023-11-13 06:41:45'),
 (57, 59, 3, '2023-11-13 07:04:42', '2023-11-13 07:04:42'),
-(58, 60, 3, '2023-11-14 04:01:38', '2023-11-14 04:01:38');
+(58, 60, 3, '2023-11-14 04:01:38', '2023-11-14 04:01:38'),
+(60, 64, 3, '2023-11-15 06:30:28', '2023-11-15 06:30:28'),
+(61, 70, 7, '2023-11-15 07:44:35', '2023-11-15 07:44:35'),
+(62, 72, 7, '2023-11-19 04:42:52', '2023-11-19 04:42:52'),
+(63, 73, 7, '2023-11-19 04:43:38', '2023-11-19 04:43:38'),
+(64, 76, 4, '2023-11-19 04:47:09', '2023-11-19 04:47:09');
 
 -- --------------------------------------------------------
 
@@ -500,7 +521,8 @@ INSERT INTO `sold_products` (`id`, `user_id`, `product_id`, `branch_id`, `quanti
 (25, 9, 8, 9, 12, '2023-10-29', 12, 0, '2023-11-05 07:16:48', '2023-11-05 07:16:48'),
 (26, 7, 8, NULL, 7, '2023-10-29', 21, 0, '2023-11-05 08:07:23', '2023-11-05 08:07:23'),
 (27, 10, 8, 10, 2, '2023-10-03', 23, 1, '2023-11-05 08:30:48', '2023-11-05 08:30:48'),
-(28, 8, 8, 8, 4, '2023-10-29', 12, 1, '2023-11-05 08:38:10', '2023-11-05 08:38:10');
+(28, 8, 8, 8, 4, '2023-10-29', 12, 1, '2023-11-05 08:38:10', '2023-11-05 08:38:10'),
+(29, 7, 4, NULL, 3, '2023-10-29', 12, 1, '2023-11-15 06:10:13', '2023-11-15 06:10:13');
 
 -- --------------------------------------------------------
 
@@ -579,8 +601,9 @@ INSERT INTO `users` (`id`, `usertype`, `name`, `email`, `address`, `phone`, `ema
 (8, 'group', 'EBL bank', 'saddam@headoffice.admin.ebl.com', '100 Gulshan Ave, Dhaka 1212', '09666-777325', NULL, '$2y$10$p1cVckJtklYSD6IZ1luunu/B0vrhW3DBKgJcGpVXkLZHQn09wVYki', NULL, '2023-10-19 15:35:28', '2023-10-19 15:35:28'),
 (9, 'group', 'brac bank', 'enquiry@bracbank.com', 'Anik Tower, 220/B Bir Uttam Mir Shawkat Sarak, Dhaka 1208', '02-55668056', NULL, '$2y$10$seAt9QXQha0OddqaaKWec.6ak9mrAxcTzJfOhNRau9XNNSLQANQTm', NULL, '2023-10-19 16:26:17', '2023-10-19 16:26:17'),
 (10, 'group', 'wastern bank', 'wa@gmail.com', 'kakoli, bonani', '0120998923434', NULL, '$2y$10$yLHm2F3kEsBcL3ia8sbbkOGEVHluBkWEzxfNM1FUmQlD1DmpsWtLq', NULL, '2023-10-23 11:38:24', '2023-10-23 11:38:24'),
-(11, 'solo', 'sheba', 'sheba@gmail.com', 'Gulshan', '01456789434', NULL, '$2y$10$RsWDKeuPKSaU.FIMdnuua.8rrx7yNDPgvsGJkzN6Qq3cs2dRTrpBa', NULL, '2023-11-07 10:45:21', '2023-11-07 10:45:21'),
-(12, 'solo', 'idlc', 'idlc@gmail.com', 'Gulshan, dhaka', '014567433232', NULL, '$2y$10$YdikvuWBYN13mPAwfBAoMuHLZnVay/ZkC8Mueyss7gBjW2sG3kLsq', NULL, '2023-11-13 06:16:55', '2023-11-13 06:16:55');
+(11, 'solo', 'sheba', 'sheba@gmail.com', 'Gulshan', '01456789434', NULL, '12345678', NULL, '2023-11-07 10:45:21', '2023-11-07 10:45:21'),
+(12, 'solo', 'idlc', 'idlc@gmail.com', 'Gulshan, dhaka', '014567433232', NULL, '$2y$10$YdikvuWBYN13mPAwfBAoMuHLZnVay/ZkC8Mueyss7gBjW2sG3kLsq', NULL, '2023-11-13 06:16:55', '2023-11-13 06:16:55'),
+(13, 'solo', 'sopno', 'sopno@gmail.com', 'Gulshan', '0152232322', NULL, '$2y$10$mWT2jBxgYMgplFn.B70GB.vXCrV/VpbSXnxrSYkBueHKzy0EEF8W2', NULL, '2023-11-15 06:13:09', '2023-11-15 06:13:09');
 
 --
 -- Indexes for dumped tables
@@ -759,7 +782,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `appiontments`
 --
 ALTER TABLE `appiontments`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT for table `appliances`
@@ -795,7 +818,7 @@ ALTER TABLE `checklists`
 -- AUTO_INCREMENT for table `engineers`
 --
 ALTER TABLE `engineers`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `expertises`
@@ -831,7 +854,7 @@ ALTER TABLE `parts_for_product`
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -843,7 +866,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `recruiting_engineers`
 --
 ALTER TABLE `recruiting_engineers`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `servicing_orders`
@@ -855,7 +878,7 @@ ALTER TABLE `servicing_orders`
 -- AUTO_INCREMENT for table `sold_products`
 --
 ALTER TABLE `sold_products`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `subcategories`
@@ -873,7 +896,7 @@ ALTER TABLE `test`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
