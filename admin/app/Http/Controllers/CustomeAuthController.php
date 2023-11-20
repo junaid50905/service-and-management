@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin\Admin;
 use App\Models\Admin\Engineer;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CustomeAuthController extends Controller

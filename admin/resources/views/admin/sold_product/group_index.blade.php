@@ -16,10 +16,10 @@
             @else
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Sold products of solo customer</h4>
+                        <h4 class="card-title">Sold products of Group customer</h4>
                         <hr>
                         <div class="table-responsive">
-                            <table class="table">
+                            <table id="example" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>SN</th>
@@ -48,6 +48,15 @@
                                         @endif
                                     @endforeach
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>SN</th>
+                                        <th>Customer id</th>
+                                        <th>Customer name</th>
+                                        <th>Buying product item</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>

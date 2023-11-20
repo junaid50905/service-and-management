@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="card">
-                <h4 class="card-title mt-3 ms-3"> New Selling Product</h4>
+                <h4 class="card-title mt-3 ms-3">Add product to solo customer</h4>
                 <hr>
                 <div class="card-body">
                     <form action="{{ route('customer.saleToSoloCustomerStore') }}" method="POST">

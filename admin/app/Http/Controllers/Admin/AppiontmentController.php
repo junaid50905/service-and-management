@@ -81,9 +81,9 @@ class AppiontmentController extends Controller
         $category_id = Product::where('id', $product_id)->first()->category_id;
         $subcategory_id = Product::where('id', $product_id)->first()->subcategory_id;
         $engineers = Engineer::where('category_id', $category_id)->where('subcategory_id', $subcategory_id)->get();
-
-
-        return view('admin.appiontment.assign_engineer_form', compact('engineers', 'appiontmentId', 'engineers'));
+        $appiontments = Appiontment::whereNot('status', 'complete')->whereNot('status', 'pending')->get();
+        $app = Appiontment::whereNot('status', 'complete')->whereNot('status', 'pending')->orderBy('inspection_date', 'asc')->get();
+        return view('admin.appiontment.assign_engineer_form', compact('engineers', 'appiontmentId' ,'app'));
     }
     // assignEngineerStore
     public function assignEngineerStore(Request $request)
@@ -137,7 +137,11 @@ class AppiontmentController extends Controller
             'appiontment_taken_date' => $currentDateTime->toDateString(),
             'appiontment_taken_time' => $currentDateTime->toTimeString(),
         ]);
-        return redirect()->route('appiontment.solo_index')->with('appiontment_taken', "One appiontment has been taken");
+        if($userType == 'solo'){
+            return redirect()->route('appiontment.solo_index')->with('appiontment_taken', "One appiontment has been taken");
+        }else{
+            return redirect()->route('appiontment.group_index')->with('appiontment_taken', "One appiontment has been taken");
+        }
     }
     // checkUserProductForm
     public function checkUserProductForm($id)

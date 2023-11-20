@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\SellingProductController;
 use App\Http\Controllers\CustomeAuthController;
+use App\Http\Controllers\Customer\CustomerDashboard;
 use App\Http\Controllers\Engineer\EngineerController as EngineerEngineerController;
 use App\Http\Controllers\Engineer\EngineerDashboardController;
 use App\Http\Controllers\TestController;
@@ -43,6 +44,7 @@ Route::middleware(['customAuthCheck'])->group(function () {
     Route::get('admin/appliance/getProduct/{category_id}/{subcategory_id}', [ApplianceController::class, 'getProduct']);
 
     Route::get('getSubcategory/{category_id}', [EngineerController::class, 'getSubcategory']);
+    Route::get('getEngineerBlockSlot/{engineer_id}', [EngineerController::class, 'getEngineerBlockSlot']);
 
     Route::get('getSubcategory/{category_id}', [CustomerController::class, 'getSubcategory']);
     Route::get('getProduct/{subcategory_id}', [CustomerController::class, 'getProduct']);
@@ -104,6 +106,7 @@ Route::middleware(['customAuthCheck'])->group(function () {
             Route::post('/store', [EngineerController::class, 'store'])->name('engineer.store');
             Route::get('/all-engineers', [EngineerController::class, 'index'])->name('engineer.index');
             Route::get('/{id}/edit', [EngineerController::class, 'edit'])->name('engineer.edit');
+            Route::get('/{id}/view', [EngineerController::class, 'view'])->name('engineer.view');
             Route::get('/{id}/delete', [EngineerController::class, 'delete'])->name('engineer.delete');
             Route::post('/{id}/update', [EngineerController::class, 'update'])->name('engineer.update');
         });
@@ -169,7 +172,7 @@ Route::middleware(['customAuthCheck'])->group(function () {
 
             Route::get('/all-appiontments-of-group-customer', [AppiontmentController::class, 'groupIndex'])->name('appiontment.group_index');
             Route::get('/all-appiontments-of-solo-customer', [AppiontmentController::class, 'soloIndex'])->name('appiontment.solo_index');
-            Route::get('/assign-engineer/{id}', [AppiontmentController::class, 'assignEngineer'])->name('appiontment.assign_engineer');
+            Route::get('/assign-engineer/{id}/{productId}', [AppiontmentController::class, 'assignEngineer'])->name('appiontment.assign_engineer');
             Route::post('/assign-engineer/store', [AppiontmentController::class, 'assignEngineerStore'])->name('appiontment.assign_engineer_store');
 
 
@@ -218,6 +221,9 @@ Route::middleware(['customAuthCheck'])->group(function () {
     });
 
 });
+
+
+
 
 
 

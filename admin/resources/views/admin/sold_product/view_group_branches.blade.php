@@ -13,8 +13,8 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Branches</h4> <hr>
-                    <div class="table-responsive"> 
-                        <table class="table">
+                    <div class="table-responsive">
+                        <table id="example" class="table table-striped" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>SN</th>
@@ -33,6 +33,13 @@
                                 </tr>
                                 @endforeach
                             </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>SN</th>
+                                    <th>Branch Name</th>
+                                    <th>Action</th>
+                                </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>

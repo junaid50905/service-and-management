@@ -55,8 +55,8 @@
                                             <select name="type" class="form-select" aria-label="Default select example">
                                                 <option selected>Select your type</option>
                                                 <option value="superadmin">Super Admin</option>
-                                                <option value="admin">Admin</option>
                                                 <option value="engineer">Engineer</option>
+                                                <option value="customer">Customer</option>
                                             </select>
                                             @error('type')
                                                 <p class="text-danger">{{ $message }}</p>

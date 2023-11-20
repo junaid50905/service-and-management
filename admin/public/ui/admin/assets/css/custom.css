@@ -28,19 +28,25 @@
 }
 
 #example thead {
-    background-color: rgb(15, 15, 15) !important;
+    background-color: #0e1111 !important;
 }
 
 #example thead tr th {
     color: white !important;
+    font-size: 12px;
 }
 
 #example tbody tr.odd td,
 #example tbody tr.even td {
-    color: rgb(196, 196, 196) !important;
+    color: rgb(170, 170, 170) !important;
+    font-size: 12px;
 }
 
 #example tfoot {
-    background-color: rgb(15, 15, 15) !important;
-    color: white;
+    background-color: #0e1111 !important;
+}
+
+#example tfoot tr th {
+    color: white !important;
+    font-size: 12px;
 }

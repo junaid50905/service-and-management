@@ -14,7 +14,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Subcategories</h4>
                     <div class="table-responsive">
-                        <table class="table">
+                        <table id="example" class="table table-striped" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -30,12 +30,20 @@
                                         <td>{{ DB::table('categories')->where('id', $subcategory->category_id)->first()->name }}</td>
                                         <td>{{ $subcategory->name }}</td>
                                         <td>
-                                            <a href="{{ route('subcategory.edit', $subcategory->id) }}" class="btn btn-warning me-2">Edit</a>
-                                            <a href="{{ route('subcategory.delete', $subcategory->id) }}" onclick="return confirm('are you sure?')" class="btn btn-danger">Delete</a>
+                                            <a href="{{ route('subcategory.edit', $subcategory->id) }}" class="btn btn-warning me-2 p-2"><i class="fa-regular fa-pen-to-square"></i></a>
+                                            <a href="{{ route('subcategory.delete', $subcategory->id) }}" onclick="return confirm('are you sure?')" class="btn btn-danger p-2"><i class="fa-solid fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
                             </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Category</th>
+                                    <th>Category Name</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -44,10 +52,6 @@
 
         </div>
     </div>
-
-
-
-
 
 
 @endsection

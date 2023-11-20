@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Appiontment;
 use App\Models\Admin\Category;
 use App\Models\Admin\Engineer;
 use App\Models\Admin\Subcategory;
+use App\Models\Engineer\Inspection;
 use Illuminate\Http\Request;
 
 class EngineerController extends Controller
@@ -38,8 +40,15 @@ class EngineerController extends Controller
     // index
     public function index()
     {
-        $engineers = Engineer::all();
+        $engineers = Engineer::latest()->get();;
         return view('admin.engineer.index', compact('engineers'));
+    }
+
+    // view
+    public function view($id)
+    {
+        $engineer = Engineer::where('id', $id)->first();
+        return view('admin.engineer.view', compact('engineer'));
     }
 
     // edit
@@ -79,6 +88,7 @@ class EngineerController extends Controller
 
 
     ////////// dependancy dropdown /////////////
+    // getSubcategory
     public function getSubcategory($category_id)
     {
         $html = '';
@@ -87,6 +97,18 @@ class EngineerController extends Controller
         $html .= '<option selected>Select subcategory</option>';
         foreach ($subcategories as $subcategory) {
             $html .= '<option value="' . $subcategory->id . '">' . $subcategory->name . '</option>';
+        }
+        return response()->json($html);
+    }
+    // getEngineerBlockSlot
+    public function getEngineerBlockSlot($engineer_id)
+    {
+        $html = '';
+        $data = Appiontment::where('engineer_id', $engineer_id)->whereNot('status', 'pending')->whereNot('status', 'complete')->get();
+        foreach ($data as $item) {
+
+            $html .=
+            '<div class="col-md-3 m-1 bg-danger p-2">'.'<div class="item">'. "Inspection Date: ". $item->inspection_date .'<br>'. "Inspection Time: " . $item->inspection_time. '<br>' .$item->status.'<div>'.$item->id.'</div>'.'</div>'.'</div>';
         }
         return response()->json($html);
     }

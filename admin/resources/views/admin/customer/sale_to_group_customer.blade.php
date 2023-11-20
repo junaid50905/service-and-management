@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <h4 class="card-title mt-3 ms-3">Sale product to group customer</h4>
+                <h4 class="card-title mt-3 ms-3">Add product to group customer</h4>
                 <hr>
                 <div class="card-body">
                     <form action="{{ route('customer.saleToGroupCustomerStore') }}" method="POST" class="text-secondary">

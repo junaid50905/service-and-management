@@ -18,9 +18,9 @@
             @else
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">List of All Group Appiontments</h4>
+                        <h4 class="card-title">List of All Group Appiontments</h4> <hr>
                         <div class="table-responsive">
-                            <table class="table">
+                            <table id="example" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th class="small_font">#</th>
@@ -34,6 +34,8 @@
                                         <th class="small_font">Inspection <br/> Last Date <br/> and Time</th>
                                         <th class="small_font">Action</th>
                                     </tr>
+                                </thead>
+                                <tbody>
                                     @foreach ($allAppiontments as $appiontment)
                                         @php
                                             $soldProductId = $appiontment->sold_product_id;
@@ -115,33 +117,29 @@
                                             <td class="small_font">
                                                 @if ($appiontment->status === 'pending')
                                                     <a href="{{ route('appiontment.assign_engineer', $appiontment->id) }}"
-                                                        class="btn btn-outline-behance btn-sm small_font">Assign
-                                                        Engineer</a>
+                                                        class="btn btn-outline-behance btn-sm small_font">Assign</a>
                                                 @elseif($appiontment->status === 'assigned')
                                                     {{-- <button class="btn btn-secondary btn-sm disabled" role="button"
                                                         aria-disabled="true">Has been assigned</button><br> --}}
                                                     <a href="{{ route('appiontment.assigned_engineer_detailed', $appiontment->id) }}"
-                                                        class="btn btn-info btn-sm my-2 d-flex justify-items-center align-items-center small_font max_content"><i
-                                                            class="mdi mdi-account"></i></a>
+                                                        class="btn btn-info btn-sm my-2 p-2 d-flex justify-items-center align-items-center small_font max_content"><i class="fa-solid fa-user"></i></a>
                                                 @elseif($appiontment->status === 'late')
                                                     {{-- <button class="btn btn-secondary btn-sm disabled" role="button"
                                                         aria-disabled="true">Has been assigned</button><br> --}}
                                                     <a href="{{ route('appiontment.assigned_engineer_detailed', $appiontment->id) }}"
-                                                        class="btn btn-info btn-sm my-2 d-flex justify-items-center align-items-center small_font max_content"><i
-                                                            class="mdi mdi-account"></i></a>
+                                                        class="btn btn-info btn-sm my-2 p-2 d-flex justify-items-center align-items-center small_font max_content"><i class="fa-solid fa-user"></i></a>
                                                 @elseif($appiontment->status === 'working')
                                                     {{-- <button class="btn btn-secondary btn-sm disabled" role="button"
                                                         aria-disabled="true">Has been assigned</button><br> --}}
                                                     <div class="d-flex gap-1">
                                                         <a href="{{ route('appiontment.assigned_engineer_detailed', $appiontment->id) }}"
-                                                            class="btn btn-info btn-sm my-2 d-flex justify-items-center align-items-center small_font max_content"><i
-                                                                class="mdi mdi-account"></i></a>
+                                                            class="btn btn-info btn-sm my-2 p-2 d-flex justify-items-center align-items-center small_font max_content"><i class="fa-solid fa-user"></i></a>
                                                         <a href="{{ route('appiontment.inspection_location', $appiontment->id) }}"
-                                                            class="btn btn-secondary btn-sm my-2 d-flex align-items-center small_font max_content"><i
+                                                            class="btn btn-secondary btn-sm my-2 p-2 d-flex align-items-center small_font max_content"><i
                                                                 class="mdi mdi-google-maps"></i></a>
                                                         @if($appIdExistsOnPartsForProduct)
                                                             <a href="{{ route('appiontment.parts_need', $appiontment->id) }}"
-                                                                class="btn btn-primary btn-sm my-2 d-flex align-items-center small_font max_content"><i
+                                                                class="btn btn-primary btn-sm my-2 p-2 d-flex align-items-center small_font max_content"><i
                                                                     class="fa-solid fa-screwdriver-wrench"></i></a>
                                                         @endif
                                                     </div>
@@ -149,12 +147,25 @@
                                                     {{-- <button class="btn btn-secondary btn-sm disabled" role="button"
                                                         aria-disabled="true">Has been assigned</button><br> --}}
                                                     <a href="{{ route('appiontment.assigned_engineer_detailed', $appiontment->id) }}"
-                                                        class="btn btn-info btn-sm my-2 d-flex justify-items-center align-items-center small_font max_content"><i
-                                                            class="mdi mdi-account"></i></a>
+                                                        class="btn btn-info btn-sm my-2 p-2 d-flex justify-items-center align-items-center small_font max_content"><i class="fa-solid fa-user"></i></a>
                                                 @endif
                                             </td>
                                         </tr>
                                     @endforeach
+                                </tbody>
+                                <thead>
+                                    <tr>
+                                        <th class="small_font">#</th>
+                                        {{-- <th>Appiontment <br> ID</th> --}}
+                                        <th class="small_font">Customer <br> Name</th>
+                                        <th class="small_font">Branch</th>
+                                        <th class="small_font">Product <br> Name</th>
+                                        <th class="small_font">Selling <br> Date</th>
+                                        <th class="small_font">Status</th>
+                                        <th class="small_font">Appiontment <br/> Taken Date <br/> and Time</th>
+                                        <th class="small_font">Inspection <br/> Last Date <br/> and Time</th>
+                                        <th class="small_font">Action</th>
+                                    </tr>
                                 </thead>
                             </table>
                         </div>

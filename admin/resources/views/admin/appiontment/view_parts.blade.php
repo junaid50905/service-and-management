@@ -43,7 +43,7 @@
                             ->get();
                     @endphp
                     <h4 class="text-info my-2">Our appliances</h4>
-                    <table class="table border">
+                    <table id="example" class="table table-striped" style="width:100%">
                         <thead>
                             <tr>
                                 <th scope="col fw-bold">Appliance name</th>
@@ -60,6 +60,13 @@
                                 </tr>
                             @endforeach
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <th scope="col fw-bold">Appliance name</th>
+                                <th scope="col fw-bold">Purchase price</th>
+                                <th scope="col fw-bold">Market price</th>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
