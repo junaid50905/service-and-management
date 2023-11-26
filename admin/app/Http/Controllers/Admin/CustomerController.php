@@ -11,6 +11,7 @@ use App\Models\Admin\Branch;
 use App\Models\Admin\CompanyBranch;
 use App\Models\Admin\Product;
 use App\Models\Admin\SoldProduct;
+use Illuminate\Support\Facades\Hash;
 
 class CustomerController extends Controller
 {
@@ -39,7 +40,7 @@ class CustomerController extends Controller
     // index
     public function index()
     {
-        $customers = User::all();
+        $customers = User::orderby('id', 'desc')->get();
         return view('admin.customer.index', compact('customers'));
     }
 
@@ -61,8 +62,14 @@ class CustomerController extends Controller
              'address' => 'required',
              'password' => 'required',
          ]);
-         $updated_customer = $request->except('_token');
-         User::where('id', $id)->update($updated_customer);
+         User::where('id', $id)->update([
+            'usertype' => $request->usertype,
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'password' => Hash::make($request->password),
+         ]);
          return redirect()->route('customer.index')->with('customer_update', 'Customer information has been updated');
      }
 

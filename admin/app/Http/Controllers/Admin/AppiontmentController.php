@@ -83,13 +83,13 @@ class AppiontmentController extends Controller
         $engineers = Engineer::where('category_id', $category_id)->where('subcategory_id', $subcategory_id)->get();
         $appiontments = Appiontment::whereNot('status', 'complete')->whereNot('status', 'pending')->get();
         $app = Appiontment::whereNot('status', 'complete')->whereNot('status', 'pending')->orderBy('inspection_date', 'asc')->get();
-        return view('admin.appiontment.assign_engineer_form', compact('engineers', 'appiontmentId' ,'app'));
+        return view('admin.appiontment.assign_engineer_form', compact('engineers', 'appiontmentId', 'app'));
     }
     // assignEngineerStore
     public function assignEngineerStore(Request $request)
     {
         $userType = Appiontment::where('id', $request->appiontment_id)->first()->usertype;
-        if($userType == 'group'){
+        if ($userType == 'group') {
             RecruitingEngineer::create($request->all());
             Appiontment::where('id', $request->appiontment_id)->update(
                 [
@@ -100,7 +100,7 @@ class AppiontmentController extends Controller
                 ]
             );
             return redirect()->route('appiontment.group_index')->with('appiontment_assigned', "Appiontment assigned successfully");
-        }else{
+        } else {
             RecruitingEngineer::create($request->all());
             Appiontment::where('id', $request->appiontment_id)->update(
                 [
@@ -112,8 +112,6 @@ class AppiontmentController extends Controller
             );
             return redirect()->route('appiontment.solo_index')->with('appiontment_assigned', "Appiontment assigned successfully");
         }
-
-
     }
     // assignedEngineerDetailed
     public function assignedEngineerDetailed($id)
@@ -137,9 +135,9 @@ class AppiontmentController extends Controller
             'appiontment_taken_date' => $currentDateTime->toDateString(),
             'appiontment_taken_time' => $currentDateTime->toTimeString(),
         ]);
-        if($userType == 'solo'){
+        if ($userType == 'solo') {
             return redirect()->route('appiontment.solo_index')->with('appiontment_taken', "One appiontment has been taken");
-        }else{
+        } else {
             return redirect()->route('appiontment.group_index')->with('appiontment_taken', "One appiontment has been taken");
         }
     }
@@ -150,12 +148,11 @@ class AppiontmentController extends Controller
         $user_id = SoldProduct::where('id', $sold_product_id)->first()->user_id;
         $usertype = User::where('id', $user_id)->first()->usertype;
 
-        if($usertype === 'group'){
+        if ($usertype === 'group') {
             $product_id = SoldProduct::where('id', $sold_product_id)->first()->product_id;
             $branch_id = SoldProduct::where('id', $sold_product_id)->first()->branch_id;
             return view('admin.appiontment.check_user_product', compact('sold_product_id', 'user_id', 'product_id', 'branch_id'));
         }
-
     }
 
     // checkUserProductStore
@@ -206,11 +203,4 @@ class AppiontmentController extends Controller
         $warrantyEndDate = Carbon::parse($sellingDate)->addMonths($timeOfWarranty)->format('Y-m-d');
         return view('admin.appiontment.view_parts', compact('parts', 'sellingDate', 'timeOfWarranty', 'sam', 'warrantyEndDate', 'appiontmentId'));
     }
-
-
-
-
-
-
-
 }

@@ -39,9 +39,9 @@ function App() {
         <Route
           path="/customer/servprogress"
           element={
-            <ProtectedRoute>
               <ServiceStatus />
-            </ProtectedRoute>
+            // <ProtectedRoute>
+            // </ProtectedRoute>
           }
         ></Route>
         <Route

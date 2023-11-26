@@ -116,7 +116,7 @@
                                             </td>
                                             <td class="small_font">
                                                 @if ($appiontment->status === 'pending')
-                                                    <a href="{{ route('appiontment.assign_engineer', $appiontment->id) }}"
+                                                    <a href="{{ route('appiontment.assign_engineer', [$appiontment->id, $productId]) }}"
                                                         class="btn btn-outline-behance btn-sm small_font">Assign</a>
                                                 @elseif($appiontment->status === 'assigned')
                                                     {{-- <button class="btn btn-secondary btn-sm disabled" role="button"

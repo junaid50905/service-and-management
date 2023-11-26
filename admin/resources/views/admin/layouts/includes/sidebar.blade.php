@@ -97,10 +97,9 @@
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{{ route('category.create') }}">Create</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('category.index') }}">Index</a></li>
+                </ul>
+            </div>
         </li>
-    </ul>
-    </div>
-    </li>
 
     <!-- subcategory -->
     <li class="nav-item menu-items mt-2">
@@ -116,15 +115,13 @@
             <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="{{ route('subcategory.create') }}">Create</a></li>
                 <li class="nav-item"> <a class="nav-link" href="{{ route('subcategory.index') }}">Index</a></li>
-    </li>
-    </ul>
-    </div>
+            </ul>
+        </div>
     </li>
 
     <!-- product -->
     <li class="nav-item menu-items mt-2">
-        <a class="nav-link" data-bs-toggle="collapse" href="#product" aria-expanded="false"
-            aria-controls="product">
+        <a class="nav-link" data-bs-toggle="collapse" href="#product" aria-expanded="false" aria-controls="product">
             <span class="menu-icon">
                 <i class="mdi mdi-alarm-plus"></i>
             </span>
@@ -257,6 +254,25 @@
             </ul>
         </div>
     </li>
+
+    <!-- Service request -->
+    <li class="nav-item menu-items mt-2">
+        <a class="nav-link" data-bs-toggle="collapse" href="#serviceRequest" aria-expanded="false"
+            aria-controls="serviceRequest">
+            <span class="menu-icon">
+                <i class="mdi mdi-battery-charging-40"></i>
+            </span>
+            <span class="menu-title">Service Request</span>
+            <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="serviceRequest">
+            <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{{ route('service_request.all_solo_request') }}">Solo</a></li>
+                <li class="nav-item"> <a class="nav-link" href="">Group</a></li>
+            </ul>
+        </div>
+    </li>
+
 
     <li class="nav-item menu-items mt-2">
         <a class="nav-link" href="pages/forms/basic_elements.html">

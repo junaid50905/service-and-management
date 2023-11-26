@@ -29,7 +29,6 @@ class SellingProductController extends Controller
     // store
     public function store(Request $request)
     {
-        // dd($request->all());
         $request->validate([
             'user_id' => 'required',
             'product_id' => 'required',
@@ -104,13 +103,13 @@ class SellingProductController extends Controller
      // solo index
      public function soloIndex()
      {
-        $solo_users = User::where('usertype', 'solo')->get();
+        $solo_users = User::where('usertype', 'solo')->orderby('id', 'desc')->get();
         return view('admin.sold_product.solo_index', compact('solo_users'));
      }
      // viewSoloProduct
      public function viewSoloProduct($id)
      {
-        $products = SoldProduct::where('user_id', $id)->get();
+        $products = SoldProduct::where('user_id', $id)->latest()->get();
         return view('admin.sold_product.view_solo_products', compact('products'));
      }
 

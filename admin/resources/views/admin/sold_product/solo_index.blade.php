@@ -23,7 +23,6 @@
                                 <thead>
                                     <tr>
                                         <th>SN</th>
-                                        <th>Customer id</th>
                                         <th>Customer name</th>
                                         <th>Buying product item</th>
                                         <th>Action</th>
@@ -34,7 +33,6 @@
                                         @if (SoldProduct::where('user_id', $solo_user->id)->exists())
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $solo_user->id }}</td>
                                                 <td>{{ $solo_user->name }}</td>
                                                 <td>{{ DB::table('sold_products')->where('user_id', $solo_user->id)->count() }}
                                                 </td>
@@ -49,7 +47,6 @@
                                 <tfoot>
                                     <tr>
                                         <th>SN</th>
-                                        <th>Customer id</th>
                                         <th>Customer name</th>
                                         <th>Buying product item</th>
                                         <th>Action</th>

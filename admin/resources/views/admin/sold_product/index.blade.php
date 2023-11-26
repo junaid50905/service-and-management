@@ -26,7 +26,7 @@
                                     <th>SN</th>
                                     <th>Product <br> id</th>
                                     <th>Product <br> name</th>
-                                    <th>Userr <br> id</th>
+                                    <th>User <br> id</th>
                                     <th>User <br>name</th>
                                     <th>Selling <br> date</th>
                                     <th>Quantity</th>

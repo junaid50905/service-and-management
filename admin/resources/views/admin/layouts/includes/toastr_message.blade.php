@@ -339,3 +339,15 @@
     </script>
 @endif
 
+{{-- engineer_unavailable --}}
+@if (Session::has('engineer_unavailable'))
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true
+        }
+        toastr.error("{{ session('engineer_unavailable') }}")
+    </script>
+@endif
+
+

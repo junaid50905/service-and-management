@@ -16,3 +16,7 @@ span.label-info {
     padding: 2px;
     margin: 10px 0;
 }
+
+.page-link {
+    color: white !important;
+}

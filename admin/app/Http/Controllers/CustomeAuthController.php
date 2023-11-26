@@ -6,6 +6,7 @@ use App\Models\Admin\Admin;
 use App\Models\Admin\Engineer;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class CustomeAuthController extends Controller
 {
@@ -28,6 +29,9 @@ class CustomeAuthController extends Controller
             'password' => 'required',
         ]);
 
+        if($request->type == 0){
+            return redirect()->back()->with('type', "Select your type");
+        }
         if ($request->type == 'superadmin' || $request->type == 'admin') {
             $admin_panel_user = Admin::where('email', $request->email)->where('password', $request->password)->first();
             if ($admin_panel_user) {
@@ -43,6 +47,20 @@ class CustomeAuthController extends Controller
                 return redirect()->route('engineer.dashboard')->with('login_success', 'Successfully login');
             } else {
                 return redirect()->back()->with('invalidCredential', "Invalid Credential");
+            }
+        } elseif ($request->type == 'customer') {
+            $customer = User::where('email', $request->email)->exists();
+            if ($customer) {
+                $customerEmail = User::where('email', $request->email)->first()->email;
+                $customerHashPassword = User::where('email', $request->email)->first()->password;
+
+                if (Hash::check($request->password, $customerHashPassword) && ($customerEmail == $request->email)) {
+                    $customerId = User::where('email', $request->email)->first()->id;
+                    $request->session()->put('loginId', $customerId);
+                    return redirect()->route('customer.dashboard')->with('login_success', 'Successfully login');
+                } else {
+                    return redirect()->back()->with('invalidCredential', "Invalid Credential");
+                }
             }
         }
     }

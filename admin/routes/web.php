@@ -11,8 +11,11 @@ use App\Http\Controllers\Admin\ApplianceController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\SellingProductController;
+use App\Http\Controllers\Admin\ServiceRequestController;
 use App\Http\Controllers\CustomeAuthController;
+use App\Http\Controllers\Customer\CustomerController as CustomerCustomerController;
 use App\Http\Controllers\Customer\CustomerDashboard;
+use App\Http\Controllers\Customer\CustomerDashboardController;
 use App\Http\Controllers\Engineer\EngineerController as EngineerEngineerController;
 use App\Http\Controllers\Engineer\EngineerDashboardController;
 use App\Http\Controllers\TestController;
@@ -62,7 +65,7 @@ Route::middleware(['customAuthCheck'])->group(function () {
 
         // category
         Route::prefix('/category')->group(function () {
-            Route::get('/create', [CategoryController::class, 'create'])->name('category.create');
+            Route::get('/create-category', [CategoryController::class, 'create'])->name('category.create');
             Route::post('/store', [CategoryController::class, 'store'])->name('category.store');
             Route::get('/all-categories', [CategoryController::class, 'index'])->name('category.index');
             Route::get('/{id}/delete', [CategoryController::class, 'delete'])->name('category.delete');
@@ -72,7 +75,7 @@ Route::middleware(['customAuthCheck'])->group(function () {
 
         // subcategory
         Route::prefix('/subcategory')->group(function () {
-            Route::get('/create', [SubcategoryController::class, 'create'])->name('subcategory.create');
+            Route::get('/create-subcategory', [SubcategoryController::class, 'create'])->name('subcategory.create');
             Route::post('/store', [SubcategoryController::class, 'store'])->name('subcategory.store');
             Route::get('/all-subcategories', [SubcategoryController::class, 'index'])->name('subcategory.index');
             Route::get('/{id}/delete', [SubcategoryController::class, 'delete'])->name('subcategory.delete');
@@ -82,7 +85,7 @@ Route::middleware(['customAuthCheck'])->group(function () {
 
         // products
         Route::prefix('/product')->group(function () {
-            Route::get('/create', [ProductController::class, 'create'])->name('product.create');
+            Route::get('/create-product', [ProductController::class, 'create'])->name('product.create');
             Route::post('/store', [ProductController::class, 'store'])->name('product.store');
             Route::get('/all-products', [ProductController::class, 'index'])->name('product.index');
             Route::get('/{id}/delete', [ProductController::class, 'delete'])->name('product.delete');
@@ -92,7 +95,7 @@ Route::middleware(['customAuthCheck'])->group(function () {
 
         // appliances
         Route::prefix('/appliance')->group(function () {
-            Route::get('/create', [ApplianceController::class, 'create'])->name('appliance.create');
+            Route::get('/create-appliance', [ApplianceController::class, 'create'])->name('appliance.create');
             Route::post('/store', [ApplianceController::class, 'store'])->name('appliance.store');
             Route::get('/all-appliances', [ApplianceController::class, 'index'])->name('appliance.index');
             Route::get('/{id}/delete', [ApplianceController::class, 'delete'])->name('appliance.delete');
@@ -102,7 +105,7 @@ Route::middleware(['customAuthCheck'])->group(function () {
 
         // engineer
         Route::prefix('/engineer')->group(function () {
-            Route::get('/create', [EngineerController::class, 'create'])->name('engineer.create');
+            Route::get('/create-engineer', [EngineerController::class, 'create'])->name('engineer.create');
             Route::post('/store', [EngineerController::class, 'store'])->name('engineer.store');
             Route::get('/all-engineers', [EngineerController::class, 'index'])->name('engineer.index');
             Route::get('/{id}/edit', [EngineerController::class, 'edit'])->name('engineer.edit');
@@ -114,7 +117,7 @@ Route::middleware(['customAuthCheck'])->group(function () {
 
         // customer
         Route::prefix('/customer')->group(function () {
-            Route::get('/create', [CustomerController::class, 'create'])->name('customer.create');
+            Route::get('/create-customer', [CustomerController::class, 'create'])->name('customer.create');
             Route::post('/store', [CustomerController::class, 'store'])->name('customer.store');
             Route::get('/all-customers', [CustomerController::class, 'index'])->name('customer.index');
             Route::get('/{id}/edit', [CustomerController::class, 'edit'])->name('customer.edit');
@@ -130,7 +133,7 @@ Route::middleware(['customAuthCheck'])->group(function () {
 
         // checklist
         Route::prefix('/checklist')->group(function () {
-            Route::get('/create', [ChecklistController::class, 'create'])->name('checklist.create');
+            Route::get('/create-checklist', [ChecklistController::class, 'create'])->name('checklist.create');
             Route::post('/store', [ChecklistController::class, 'store'])->name('checklist.store');
             Route::get('/all-checklists', [ChecklistController::class, 'index'])->name('checklist.index');
             Route::get('/{id}/edit', [ChecklistController::class, 'edit'])->name('checklist.edit');
@@ -141,17 +144,17 @@ Route::middleware(['customAuthCheck'])->group(function () {
         // sold product
         Route::prefix('/sold-product')->group(function () {
             Route::get('/all-products', [SellingProductController::class, 'index'])->name('sold_product.index');
-            Route::get('/create', [SellingProductController::class, 'create'])->name('sold_product.create');
+            Route::get('/create-sold-product', [SellingProductController::class, 'create'])->name('sold_product.create');
             Route::post('/store', [SellingProductController::class, 'store'])->name('sold_product.store');
             Route::get('/{id}/edit', [SellingProductController::class, 'edit'])->name('sold_product.edit');
             Route::get('/{id}/delete', [SellingProductController::class, 'delete'])->name('sold_product.delete');
             Route::post('/{id}/update', [SellingProductController::class, 'update'])->name('sold_product.update');
 
 
-            Route::get('/solo', [SellingProductController::class, 'soloIndex'])->name('solo_sold_product.index');
+            Route::get('/solo-customer-list', [SellingProductController::class, 'soloIndex'])->name('solo_sold_product.index');
             Route::get('/solo/{id}/view-products', [SellingProductController::class, 'viewSoloProduct'])->name('sold_product.viewSoloProduct');
 
-            Route::get('/group', [SellingProductController::class, 'groupIndex'])->name('group_sold_product.index');
+            Route::get('/group-customer-list', [SellingProductController::class, 'groupIndex'])->name('group_sold_product.index');
             Route::get('/group/{id}/view-products', [SellingProductController::class, 'viewGroupProduct'])->name('sold_product.viewGroupProduct');
             Route::get('/group/{id}/branches', [SellingProductController::class, 'viewBranchGroup'])->name('sold_product.viewBranchGroup');
             Route::get('/group/{customer_id}/branch/{branch_d}/products', [SellingProductController::class, 'viewGroupBranchProducts'])->name('sold_product.viewGroupBranchProducts');
@@ -163,7 +166,7 @@ Route::middleware(['customAuthCheck'])->group(function () {
 
         // appiontment
         Route::prefix('/appiontment')->group(function () {
-            Route::get('/make-an-appiontment-solo-customer/{soloProductId}', [AppiontmentController::class, 'appiontmentFormSoloCustomer'])->name('appiontment.appiontment_for_solo_customer');
+            Route::get('/make-an-appiontment-solo-customer/{soldProductId}', [AppiontmentController::class, 'appiontmentFormSoloCustomer'])->name('appiontment.appiontment_for_solo_customer');
             Route::get('/make-an-appiontment/{soldProductId}', [AppiontmentController::class, 'checkUserProductForm'])->name('appiontment.check_user_product_form');
             //Route::post('/make-an-appiontment', [AppiontmentController::class, 'checkUserProductStore'])->name('appiontment.check_user_product_store');
 
@@ -184,9 +187,15 @@ Route::middleware(['customAuthCheck'])->group(function () {
             Route::get('/parts-need/{id}', [AppiontmentController::class, 'partsNeed'])->name('appiontment.parts_need');
         });
 
+        // service request
+        Route::prefix('/service-request')->group(function () {
+            Route::get('/solo/all-solo-request', [ServiceRequestController::class, 'allSoloRequest'])->name('service_request.all_solo_request');
+            Route::get('/solo/take-appiontment/{soldProductId}/{serviceRequestId}', [ServiceRequestController::class, 'takeAppiontment'])->name('service_request.take_appiontment');
+        });
+
         // checklist
         Route::prefix('/checklist')->group(function () {
-            Route::get('/create', [ChecklistController::class, 'create'])->name('checklist.create');
+            Route::get('/create-checklist', [ChecklistController::class, 'create'])->name('checklist.create');
             Route::post('/store', [ChecklistController::class, 'store'])->name('checklist.store');
             Route::get('/all-checklists', [ChecklistController::class, 'index'])->name('checklist.index');
             Route::get('/{id}/edit', [ChecklistController::class, 'edit'])->name('checklist.edit');
@@ -201,13 +210,9 @@ Route::middleware(['customAuthCheck'])->group(function () {
 
 Route::middleware(['customAuthCheck'])->group(function () {
     Route::get('/logout', [CustomeAuthController::class, 'logout'])->name('logout');
-
-
     // engineer
     Route::prefix('engineer')->group(function () {
-        // dashboard
         Route::get('/dashboard', [EngineerDashboardController::class, 'dashboard'])->name('engineer.dashboard');
-
         Route::get('/total-tasks', [EngineerEngineerController::class, 'totalTasks'])->name('engineer.total_tasks');
         Route::get('/total-tasks/details/{id}', [EngineerEngineerController::class, 'taskView'])->name('engineer.task_view');
         // start inspection (ajax)
@@ -224,6 +229,20 @@ Route::middleware(['customAuthCheck'])->group(function () {
 
 
 
+Route::middleware(['customAuthCheck'])->group(function () {
+    Route::get('/logout', [CustomeAuthController::class, 'logout'])->name('logout');
+    // customer
+    Route::prefix('customer')->group(function () {
+        Route::get('/dashboard', [CustomerDashboardController::class, 'dashboard'])->name('customer.dashboard');
+        Route::get('/admin-contact', [CustomerCustomerController::class, 'adminContact'])->name('customer.admin_contact');
+        Route::get('/purchased-products', [CustomerCustomerController::class, 'purchasedProducts'])->name('customer.purchased_products');
+        Route::get('/service-requests', [CustomerCustomerController::class, 'allServiceRequests'])->name('customer.all_service_requests');
+        Route::get('/purchased-products/request-service/{soldProductId}', [CustomerCustomerController::class, 'requestService'])->name('customer.request_service');
+    });
+});
+
+
+
 
 
 
@@ -232,5 +251,6 @@ Route::middleware(['customAuthCheck'])->group(function () {
 
 Route::get('/test-form', [TestController::class, 'create'])->name('test.create');
 Route::post('/test-form/store', [TestController::class, 'store'])->name('test.store');
+Route::get('/decrypt', [TestController::class, 'decrypt'])->name('test.decrypt');
 
 

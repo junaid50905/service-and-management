@@ -1,5 +1,5 @@
 @php
-    use App\Models\Admin\Engineer;
+    use App\Models\User;
 @endphp
 
 <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur"
@@ -22,9 +22,9 @@
             <div class="text-light p-2 me-2">
                 @if (Session::has('loginId'))
                     @php
-                        $engineer = Engineer::where('id', Session::get('loginId'))->first();
+                        $customer = User::where('id', Session::get('loginId'))->first();
                     @endphp
-                    <b>{{ $engineer->email ?? '' }}</b>
+                    <b>{{ $customer->email }}</b>
                 @endif
             </div>
             <ul class="navbar-nav  justify-content-end">
