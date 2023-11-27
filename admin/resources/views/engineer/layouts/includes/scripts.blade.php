@@ -1,21 +1,23 @@
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.6.0/bootstrap-tagsinput.min.js"
     integrity="sha512-SXJkO2QQrKk2amHckjns/RYjUIBCI34edl9yh0dzgw3scKu0q4Bo/dUr+sGHMUha0j9Q1Y7fJXJMaBi4xtyfDw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <!--   Core JS Files   -->
-<script src="{{ asset('engineer/') }}assets/js/core/popper.min.js"></script>
+<script src="{{ asset('ui/engineer') }}/assets/js/core/popper.min.js"></script>
 <script src="{{ asset('ui/engineer') }}/assets/js/core/bootstrap.min.js"></script>
 <script src="{{ asset('ui/engineer') }}/assets/js/plugins/perfect-scrollbar.min.js"></script>
 <script src="{{ asset('ui/engineer') }}/assets/js/plugins/smooth-scrollbar.min.js"></script>
 <script src="{{ asset('ui/engineer') }}/assets/js/plugins/chartjs.min.js"></script>
-<script src="{{ asset('ui/engineer') }}/assets/js/plugins/stopwatch.js"></script>
+<script src="{{ asset('ui/engineer') }}/assets/js/plugins/stop-watch.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
     integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"
-    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
 
         @include('engineer.layouts.includes.toastr_message')
 

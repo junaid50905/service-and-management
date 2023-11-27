@@ -88,6 +88,8 @@ class AppiontmentController extends Controller
     // assignEngineerStore
     public function assignEngineerStore(Request $request)
     {
+        
+
         $userType = Appiontment::where('id', $request->appiontment_id)->first()->usertype;
         if ($userType == 'group') {
             RecruitingEngineer::create($request->all());

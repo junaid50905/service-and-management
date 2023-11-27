@@ -4,16 +4,16 @@
 @endsection
 
 @section('main-panel')
-    <div class="row">
+    <div class="row justify-content-center">
         {{-- Total assigned tasks --}}
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="col-xl-4 col-sm-6 mb-xl-0 my-1">
             <a href="{{ route('engineer.total_tasks') }}" class="text-decoration-none">
                 <div class="card shadow-lg mb-1 bg-body rounded">
                 <div class="card-body p-3">
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-secondary text-sm mb-0 text-uppercase font-weight-bold">Total <br> Assigned Tasks</p>
+                                <p class="text-secondary text-sm mb-0 text-uppercase font-weight-bold">Total Assigned Tasks</p>
                                 <h4 class="font-weight-bolder text-info">
                                     {{ $totalTasks }}
                                 </h4>
@@ -31,13 +31,13 @@
         </div>
 
         {{-- Working tasks --}}
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="col-xl-4 col-sm-6 mb-xl-0 my-1">
             <div class="card shadow-lg mb-1 bg-body rounded">
                 <div class="card-body p-3">
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-secondary text-sm mb-0 text-uppercase font-weight-bold">Working <br> Tasks</p>
+                                <p class="text-secondary text-sm mb-0 text-uppercase font-weight-bold">Working Tasks</p>
                                 <h4 class="font-weight-bolder text-success">
                                     {{ $workingTasks }}
                                 </h4>
@@ -54,13 +54,13 @@
         </div>
 
         {{-- Completed tasks --}}
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="col-xl-4 col-sm-6 mb-xl-0 my-1">
             <div class="card shadow-lg mb-1 bg-body rounded">
                 <div class="card-body p-3">
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-secondary text-sm mb-0 text-uppercase font-weight-bold">Completed <br> Tasks</p>
+                                <p class="text-secondary text-sm mb-0 text-uppercase font-weight-bold">Completed Tasks</p>
                                 <h4 class="font-weight-bolder text-success">
                                     {{ $totalCompletedTasks }}
                                 </h4>
@@ -77,14 +77,14 @@
         </div>
 
         {{-- recently assigned tasks --}}
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="col-xl-4 col-sm-6 mb-xl-0 my-1">
             <a href="" class="text-decoration-none">
                 <div class="card shadow-lg mb-1 bg-body rounded">
                 <div class="card-body p-3">
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-secondary text-sm mb-0 text-uppercase font-weight-bold text-muted">Recently <br> assigned tasks</p>
+                                <p class="text-secondary text-sm mb-0 text-uppercase font-weight-bold text-muted">Recently assigned tasks</p>
                                 <h4 class="font-weight-bolder" style="color: rgb(255, 187, 0)">
                                     {{ $recentAssignedTasks }}
                                 </h4>
@@ -102,13 +102,13 @@
         </div>
 
         {{-- due tasks --}}
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 mt-3">
+        <div class="col-xl-4 col-sm-6 mb-xl-0 my-1">
             <div class="card shadow-lg mb-1 bg-body rounded">
                 <div class="card-body p-3">
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-secondary text-sm mb-0 text-uppercase font-weight-bold">Late <br> tasks</p>
+                                <p class="text-secondary text-sm mb-0 text-uppercase font-weight-bold">Late tasks</p>
                                 <h4 class="font-weight-bolder text-danger">
                                     {{ $totalLateTasks }}
                                 </h4>

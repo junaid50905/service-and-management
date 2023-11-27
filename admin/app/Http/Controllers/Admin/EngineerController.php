@@ -108,7 +108,7 @@ class EngineerController extends Controller
         foreach ($data as $item) {
 
             $html .=
-            '<div class="col-md-3 m-1 bg-danger p-2">'.'<div class="item">'. "Inspection Date: ". $item->inspection_date .'<br>'. "Inspection Time: " . $item->inspection_time. '<br>' .$item->status.'<div>'.$item->id.'</div>'.'</div>'.'</div>';
+            '<div class="col-md-3 m-1 p-2 border">'.'<div class="item">'. $item->inspection_date .'<br>' . $item->inspection_time. '<br>' .'<span class="badge">'. $item->status.'</span>'.'</div>'.'</div>';
         }
         return response()->json($html);
     }
