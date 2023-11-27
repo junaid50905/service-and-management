@@ -81,14 +81,35 @@ class AppiontmentController extends Controller
         $category_id = Product::where('id', $product_id)->first()->category_id;
         $subcategory_id = Product::where('id', $product_id)->first()->subcategory_id;
         $engineers = Engineer::where('category_id', $category_id)->where('subcategory_id', $subcategory_id)->get();
+
         $appiontments = Appiontment::whereNot('status', 'complete')->whereNot('status', 'pending')->get();
-        $app = Appiontment::whereNot('status', 'complete')->whereNot('status', 'pending')->orderBy('inspection_date', 'asc')->get();
-        return view('admin.appiontment.assign_engineer_form', compact('engineers', 'appiontmentId', 'app'));
+
+        $events = array();
+        $app = Appiontment::whereNot('status', 'complete')->whereNot('status', 'pending')->orderBy('inspection_date', 'desc')->get();
+
+        foreach ($app as $value) {
+            foreach ($engineers as $engineer) {
+                if ($engineer->id == $value->engineer_id) {
+                    $events[] = [
+                        'title' => Engineer::where('id', $value->engineer_id)->first()->name,
+                        'start' => $value->inspection_date . ' ' . $value->inspection_time,
+                    ];
+                }
+            };
+
+        }
+        return view('admin.appiontment.assign_engineer_form', compact('engineers', 'appiontmentId', 'app', 'events'));
+        // return view('admin.appiontment.assign_engineer_form', [
+        //     'engineers' => $engineers,
+        //     'appiontmentId' => $appiontmentId,
+        //     'app' => $app,
+        //     'events' => $events,
+        // ]);
     }
     // assignEngineerStore
     public function assignEngineerStore(Request $request)
     {
-        
+
 
         $userType = Appiontment::where('id', $request->appiontment_id)->first()->usertype;
         if ($userType == 'group') {

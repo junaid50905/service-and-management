@@ -50,3 +50,15 @@
     color: white !important;
     font-size: 12px;
 }
+
+td.fc-day-top.fc-mon.fc-today.fc-state-highlight {
+    background: red !important;
+}
+
+.fc-day-grid-event .fc-content:hover {
+    white-space: nowrap;
+    overflow: hidden;
+    width: fit-content;
+    background: black;
+    padding: 3px 6px;
+}

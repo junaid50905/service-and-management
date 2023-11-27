@@ -38,6 +38,6 @@
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"> --}}
     <!-- Data Table CSS -->
     <link rel='stylesheet' href='https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css'>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css" integrity="sha512-J8blSxQ2Sax1xyaFc7nsQqgeu0BSy8AsDVRtx6RsRQW+g1BAzno3wdWlW0e/RNVaMYGOnRi6nPXv+c8/Tgwr9Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>

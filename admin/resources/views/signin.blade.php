@@ -99,11 +99,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div
-                            class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">
-                            <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden"
-                                style="background-image: url('https://img.freepik.com/free-photo/team-working-together-achieve-better-results_1098-3005.jpg?w=740&t=st=1699425611~exp=1699426211~hmac=44da17c01aefe48b58940ec58cb9d02c4e5e9328a2abab95c99116a4f297fccf');
-          background-size: cover;">
+                        <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">
+                            <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden">
                                 <span class="mask bg-gradient-primary opacity-6"></span>
                                 <h4 class="mt-5 text-white font-weight-bolder position-relative">Management Access
                                     Portal</h4>
@@ -111,6 +108,8 @@
                                     Portal, where efficiency and control meet seamlessly. Sign in to take charge!"</p>
                             </div>
                         </div>
+                        {{-- style="background-image: url('https://img.freepik.com/free-photo/team-working-together-achieve-better-results_1098-3005.jpg?w=740&t=st=1699425611~exp=1699426211~hmac=44da17c01aefe48b58940ec58cb9d02c4e5e9328a2abab95c99116a4f297fccf');
+          background-size: cover;" --}}
                     </div>
                 </div>
             </div>
