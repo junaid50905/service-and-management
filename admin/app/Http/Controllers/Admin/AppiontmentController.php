@@ -13,6 +13,8 @@ use App\Models\Engineer\Inspection;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\RecruitingEngineer;
 use App\Models\Engineer\PartsForProduct;
+use Illuminate\Support\Facades\Validator;
+
 
 class AppiontmentController extends Controller
 {
@@ -109,8 +111,9 @@ class AppiontmentController extends Controller
     // assignEngineerStore
     public function assignEngineerStore(Request $request)
     {
-
-
+        if($request->engineer_id == 'Select engineer'){
+            return redirect()->back()->with('assign_engineer', "Please, assign enginner.");
+        }
         $userType = Appiontment::where('id', $request->appiontment_id)->first()->usertype;
         if ($userType == 'group') {
             RecruitingEngineer::create($request->all());

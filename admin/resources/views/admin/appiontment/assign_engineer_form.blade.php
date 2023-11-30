@@ -18,6 +18,9 @@
                     <form action="{{ route('appiontment.assign_engineer_store') }}" method="POST">
                         @csrf
                         <input type="hidden" value="{{ $appiontmentId }}" name="appiontment_id">
+                        @error('appiontment_id')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
 
                         <div class="row">
 
@@ -25,7 +28,7 @@
                                 <div lass="form-group">
                                     <label>Select engineer</label>
                                     <select name="engineer_id" id="engineer_id"
-                                        class="form-select form-select-sm bg-secondary text-light mb-3">
+                                        class="form-select form-select-sm bg-secondary text-light mb-3" required>
                                         @if ($engineers->count() > 0)
                                             <option selected>Select engineer</option>
                                             @foreach ($engineers as $engineer)
@@ -41,21 +44,30 @@
                                             Engineer</a>
                                     @endif
                                 </div>
+                                @error('engineer_id')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
                             </div>
 
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Date</label>
                                     <input type="date" name="date" required class="form-control text-light"
-                                        min="{{ date('Y-m-d') }}" max="{{ Carbon::now()->addDays(15)->format('Y-m-d') }}">
+                                        min="{{ date('Y-m-d') }}" max="{{ Carbon::now()->addDays(15)->format('Y-m-d') }}" required>
                                 </div>
+                                @error('date')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
                             </div>
 
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Time</label>
-                                    <input type="time" name="time" required class="form-control text-light">
+                                    <input type="time" name="time" required class="form-control text-light" required>
                                 </div>
+                                @error('time')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
                             </div>
 
                         </div>

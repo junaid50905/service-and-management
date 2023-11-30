@@ -51,8 +51,8 @@
     font-size: 12px;
 }
 
-td.fc-day-top.fc-mon.fc-today.fc-state-highlight {
-    background: red !important;
+td.fc-today {
+    background: rgb(0, 40, 170) !important;
 }
 
 .fc-day-grid-event .fc-content:hover {

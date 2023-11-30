@@ -113,8 +113,8 @@
                                     @foreach ($inspections as $inspection)
                                         @php
 
-                                            $time1 = Carbon::createFromFormat('H:i:s', $inspection->end_time);
-                                            $time2 = Carbon::createFromFormat('H:i:s', $inspection->start_time);
+                                            $time1 = Carbon::createFromFormat('H:i:s', $inspection->end_time) ?? '';
+                                            $time2 = Carbon::createFromFormat('H:i:s', $inspection->start_time) ?? '';
 
                                             // Calculate the difference in seconds
                                             $timeDifferenceInSeconds = $time1->diffInSeconds($time2);
@@ -130,7 +130,8 @@
                                             <p class="m-0"><i class="fa-solid fa-play"></i>
                                                 {{ $inspection->start_time }}</p>
                                             <p class="m-0"><i class="fa-solid fa-pause"></i> {{ $inspection->end_time }}
-                                            <p class="m-0">Hours - {{ $hours }} <br> Minutes - {{ $minutes }} <br> Seconds - {{ $seconds }}</p>
+                                            <p class="m-0">Hours - {{ $hours }} <br> Minutes -
+                                                {{ $minutes }} <br> Seconds - {{ $seconds }}</p>
                                         </div>
                                     @endforeach
                                 </div>

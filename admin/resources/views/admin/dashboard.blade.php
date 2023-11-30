@@ -1,3 +1,5 @@
+
+
 @extends('admin.layouts.master')
 
 @section('title')
@@ -79,13 +81,16 @@
     </div>
 
     <div class="row">
+
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
                     @if (count($allTodaysWorkingTasks) < 1)
                         <p style="color: #ff6b6b">There is no engineer currently on duty today</p>
                     @else
-                        <a href="{{ route('admin.allTodaysWorkingTasks') }}" class="btn btn-outline-primary {{ $totalNumberOfTodaysWorkingTask <=2 ? 'disabled' : '' }}">View all ({{ $totalNumberOfTodaysWorkingTask }})</a>
+                        <a href="{{ route('admin.allTodaysWorkingTasks') }}"
+                            class="btn btn-outline-primary {{ $totalNumberOfTodaysWorkingTask <= 2 ? 'disabled' : '' }}">View
+                            all ({{ $totalNumberOfTodaysWorkingTask }})</a>
                         <div class="row">
                             @foreach ($allTodaysWorkingTasks as $singleTodaysWorkingTask)
                                 @php
@@ -101,21 +106,27 @@
                                         ->where('category_id', $categoryId)
                                         ->where('id', $subCategoryId)
                                         ->first()->name;
-                                    $appiontment = DB::table('appiontments')->where('id', $singleTodaysWorkingTask->appiontment_id)->first();
+                                    $appiontment = DB::table('appiontments')
+                                        ->where('id', $singleTodaysWorkingTask->appiontment_id)
+                                        ->first();
                                     $soldProductId = $appiontment->sold_product_id;
                                     $userType = $appiontment->usertype;
-                                    $soldProduct = DB::table('sold_products')->where('id', $soldProductId)->first();
+                                    $soldProduct = DB::table('sold_products')
+                                        ->where('id', $soldProductId)
+                                        ->first();
                                     $userId = $soldProduct->user_id;
                                     $branchId = $soldProduct->branch_id;
-                                    $customer = DB::table('users')->where('id', $userId)->first();
+                                    $customer = DB::table('users')
+                                        ->where('id', $userId)
+                                        ->first();
                                     $customerName = $customer->name;
 
-                                    $exists = DB::table('branches')->where('id', $branchId)
-                                            ->where('user_id', $userId)
-                                            ->exists();
-
-
+                                    $exists = DB::table('branches')
+                                        ->where('id', $branchId)
+                                        ->where('user_id', $userId)
+                                        ->exists();
                                 @endphp
+
                                 <div class="col-md-6 my-2">
                                     <div>
                                         <span>{{ $engineer->name }}</span>
@@ -124,10 +135,11 @@
                                             <span>{{ $engineer->phone }}</span>)
                                         </span>
                                     </div>
-                                    <div>
+                                    <div class="text-muted">
                                         <span>{{ $customerName }} {{ $exists ? ' | ' : '' }}</span>
-                                        <span>{{ $exists ? DB::table('branches')->where('id', $branchId)->where('user_id', $userId)->first()->branch_name : '' }}</span>
+                                        <span>{{ $exists? DB::table('branches')->where('id', $branchId)->where('user_id', $userId)->first()->branch_name: '' }}</span>
                                     </div>
+
                                     <iframe width="100%"
                                         src="https://maps.google.com/maps?q=<?php echo $singleTodaysWorkingTask->latitude; ?>,<?php echo $singleTodaysWorkingTask->longitude; ?>&output=embed"></iframe>
                                 </div>
@@ -138,8 +150,21 @@
                 </div>
             </div>
         </div>
+
+        {{-- Multiple longitude and latitude --}}
+
+
+        <h3>Multiple</h3>
+        <div id="map" style="height: 500px; width: 900px;"></div>
+
+
+
+
+
+
     </div>
 
+    {{-- Recent 5 tasks --}}
     <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
@@ -263,6 +288,76 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBZYFFfyeW467TIU2Gry9RZWo3LUsZXjA&libraries=places&callback=initMap"
         async defer></script>
 
+    <script>
+        // Get the data from Blade and use it in a script tag
+        var allTodaysWorkingTasks = @json($allTodaysWorkingTasks);
+
+        // Now 'allTodaysWorkingTasks' holds your data as a JavaScript object
+        console.log(allTodaysWorkingTasks); // You can perform operations with this data in JavaScript
+
+
+    </script>
+
+    <script>
+    $(document).ready(function () {
+        // Initialize the map
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: 23.8, lng: 90.4 }, // Center the map at a specific location
+            zoom: 8 // Set the initial zoom level
+        });
+
+        // Array of appointment details
+        var appointments = [
+            {
+                latitude: 23.794004,
+                longitude: 90.403981,
+                status: "working",
+                name: 'junaid',
+                phone: '0133233'
+            },
+            {
+                latitude: 23.994008,
+                longitude: 90.413959,
+                status: "working",
+                name: 'arman',
+                phone: '0343323'
+            }
+        ];
+
+        // Add markers for each appointment
+        appointments.forEach(function (appointment) {
+            var latLng = new google.maps.LatLng(appointment.latitude, appointment.longitude);
+
+            var marker = new google.maps.Marker({
+                position: latLng,
+                map: map,
+                title: 'Status: ' + appointment.status
+            });
+
+            // Create info window content
+            var contentString =
+                '<div>' +
+                '<p class="text-dark"><strong>Name:</strong> ' + appointment.name + '</p>' +
+                '<p class="text-dark"><strong>Phone:</strong> ' + appointment.phone + '</p>' +
+                '</div>';
+
+            // Create info window for each marker
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+
+            // Show info window on marker hover
+            marker.addListener('mouseover', function () {
+                infowindow.open(map, marker);
+            });
+
+            // Close info window on marker mouseout
+            marker.addListener('mouseout', function () {
+                infowindow.close(map, marker);
+            });
+        });
+    });
+</script>
 
 
 

@@ -1,3 +1,7 @@
+@php
+    use Carbon\Carbon;
+@endphp
+
 @extends('admin.layouts.master')
 
 @section('title')
@@ -43,8 +47,6 @@
                                     $exists = DB::table('branches')->where('id', $branchId)
                                             ->where('user_id', $userId)
                                             ->exists();
-
-
                                 @endphp
                                 <div class="col-md-6 my-2">
                                     <div>
@@ -54,7 +56,7 @@
                                             <span>{{ $engineer->phone }}</span>)
                                         </span>
                                     </div>
-                                    <div>
+                                    <div class="text-muted">
                                         <span>{{ $customerName }} {{ $exists ? ' | ' : '' }}</span>
                                         <span>{{ $exists ? DB::table('branches')->where('id', $branchId)->where('user_id', $userId)->first()->branch_name : '' }}</span>
                                     </div>

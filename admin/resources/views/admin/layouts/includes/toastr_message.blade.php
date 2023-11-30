@@ -351,3 +351,14 @@
 @endif
 
 
+{{-- assign_engineer --}}
+@if (Session::has('assign_engineer'))
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true
+        }
+        toastr.error("{{ session('assign_engineer') }}")
+    </script>
+@endif
+
