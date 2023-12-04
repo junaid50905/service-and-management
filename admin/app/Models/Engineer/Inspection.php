@@ -9,5 +9,5 @@ class Inspection extends Model
 {
     use HasFactory;
     protected $table = 'inspections';
-    protected $fillable = ['appiontment_id', 'engineer_id', 'start_date', 'start_time', 'end_time', 'longitude', 'latitude', 'status'];
+    protected $fillable = ['appiontment_id', 'engineer_id', 'inspection', 'start_date', 'start_time', 'end_time', 'longitude', 'latitude', 'status'];
 }

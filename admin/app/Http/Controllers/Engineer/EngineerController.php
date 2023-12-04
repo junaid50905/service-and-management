@@ -87,6 +87,7 @@ class EngineerController extends Controller
             'start_date' => $start_date,
             'start_time' => $start_time,
             'status' => 'working',
+            'inspection' => 'start',
         ]);
 
         Appiontment::where('id', $request->appiontment_id)->update([
@@ -102,6 +103,7 @@ class EngineerController extends Controller
     {
         Inspection::where('appiontment_id', $appiontment_id)->update([
             'end_time' => Carbon::now()->format('H:i:s'),
+            'inspection' => 'stop',
         ]);
 
         return redirect()->back();
