@@ -126,15 +126,17 @@
                                                     <div class="d-flex gap-1">
                                                         <a href="{{ route('appiontment.assigned_engineer_detailed', $appiontment->id) }}"
                                                             class="btn btn-info btn-sm my-2 p-2 d-flex align-items-center small_font max_content"><i class="fa-solid fa-user"></i></a>
+                                                            
+                                                        @if (DB::table('inspections')->where('appiontment_id', $appiontment->id)->where('inspection', 'start')->first())
                                                         <a href="{{ route('appiontment.inspection_location', $appiontment->id) }}"
                                                             class="btn btn-secondary btn-sm p-2 my-2 d-flex align-items-center small_font max_content"><i
                                                                 class="mdi mdi-google-maps"></i></a>
+                                                        @endif
                                                         @if($appIdExistsOnPartsForProduct)
                                                             <a href="{{ route('appiontment.parts_need', $appiontment->id) }}"
                                                                 class="btn btn-primary btn-sm my-2 p-2 d-flex align-items-center small_font max_content"><i
                                                                     class="fa-solid fa-screwdriver-wrench"></i></a>
                                                         @endif
-
                                                     </div>
                                                 @elseif($appiontment->status === 'complete')
                                                     {{-- <button class="btn btn-secondary btn-sm disabled" role="button"

@@ -134,9 +134,12 @@
                                                     <div class="d-flex gap-1">
                                                         <a href="{{ route('appiontment.assigned_engineer_detailed', $appiontment->id) }}"
                                                             class="btn btn-info btn-sm my-2 p-2 d-flex justify-items-center align-items-center small_font max_content"><i class="fa-solid fa-user"></i></a>
-                                                        <a href="{{ route('appiontment.inspection_location', $appiontment->id) }}"
+
+                                                        @if (DB::table('inspections')->where('appiontment_id', $appiontment->id)->where('inspection', 'start')->first())
+                                                            <a href="{{ route('appiontment.inspection_location', $appiontment->id) }}"
                                                             class="btn btn-secondary btn-sm my-2 p-2 d-flex align-items-center small_font max_content"><i
                                                                 class="mdi mdi-google-maps"></i></a>
+                                                        @endif
                                                         @if($appIdExistsOnPartsForProduct)
                                                             <a href="{{ route('appiontment.parts_need', $appiontment->id) }}"
                                                                 class="btn btn-primary btn-sm my-2 p-2 d-flex align-items-center small_font max_content"><i

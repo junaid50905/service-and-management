@@ -128,7 +128,7 @@
                         </div>
 
                         <button type="submit" class="btn btn-outline-primary me-2">Submit</button>
-                        <a href="{{ route('sold_product.index') }}" class="btn btn-outline-danger me-2">Cancel</a>
+                        <a href="{{ route('admin.dashboard') }}" class="btn btn-outline-danger me-2">Cancel</a>
                     </form>
                 </div>
             </div>
