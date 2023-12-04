@@ -157,6 +157,7 @@ class AppiontmentController extends Controller
 
         Appiontment::create([
             'sold_product_id' => $soldProductId,
+            'user_id' => $userId,
             'usertype' => $userType,
             'appiontment_taken_date' => $currentDateTime->toDateString(),
             'appiontment_taken_time' => $currentDateTime->toTimeString(),

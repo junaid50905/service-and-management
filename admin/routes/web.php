@@ -63,6 +63,9 @@ Route::middleware(['customAuthCheck'])->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
         Route::get('/all-todays-working-tasks', [DashboardController::class, 'allTodaysWorkingTasks'])->name('admin.allTodaysWorkingTasks');
 
+
+        Route::get('/getEngineersLocationInOneMap/{engineerId}/{appiontmentId}', [DashboardController::class, 'getEngineersLocationInOneMap']);
+
         // category
         Route::prefix('/category')->group(function () {
             Route::get('/create-category', [CategoryController::class, 'create'])->name('category.create');

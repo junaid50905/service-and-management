@@ -102,7 +102,7 @@
                         @php
                             $inspections = DB::table('inspections')
                                 ->where('appiontment_id', $appiontment_id)
-                                ->orderBy('start_date', 'desc')
+                                ->orderBy('id', 'desc')
                                 ->get();
 
                         @endphp
@@ -112,17 +112,24 @@
                                 <div style="height: 300px;  overflow: auto;">
                                     @foreach ($inspections as $inspection)
                                         @php
+                                        
+                                            $time1 = $inspection->end_time ? Carbon::createFromFormat('H:i:s', $inspection->end_time) : null;
+                                            $time2 = $inspection->start_time ? Carbon::createFromFormat('H:i:s', $inspection->start_time) : null;
 
-                                            $time1 = Carbon::createFromFormat('H:i:s', $inspection->end_time) ?? '';
-                                            $time2 = Carbon::createFromFormat('H:i:s', $inspection->start_time) ?? '';
+                                            if ($time1 && $time2) {
+                                                // Calculate the difference in seconds
+                                                $timeDifferenceInSeconds = $time1->diffInSeconds($time2);
 
-                                            // Calculate the difference in seconds
-                                            $timeDifferenceInSeconds = $time1->diffInSeconds($time2);
+                                                // Convert the difference to a meaningful format (e.g., hours, minutes, seconds)
+                                                $hours = floor($timeDifferenceInSeconds / 3600);
+                                                $minutes = floor(($timeDifferenceInSeconds % 3600) / 60);
+                                                $seconds = $timeDifferenceInSeconds % 60;
+                                            } else {
+                                                // Handle null values
+                                                $hours = $minutes = $seconds = 0;
+                                            }
 
-                                            // Convert the difference to a meaningful format (e.g., hours, minutes, seconds)
-                                            $hours = floor($timeDifferenceInSeconds / 3600);
-                                            $minutes = floor(($timeDifferenceInSeconds % 3600) / 60);
-                                            $seconds = $timeDifferenceInSeconds % 60;
+
                                         @endphp
                                         <div class="bg-primary my-1 p-1 rounded text-light">
                                             <p class="m-0"><i class="fa-solid fa-calendar"></i>
@@ -135,8 +142,8 @@
                                         </div>
                                     @endforeach
                                 </div>
+                            </div>
                         @endif
-                    </div>
 
 
 

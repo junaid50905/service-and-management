@@ -4,10 +4,15 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
         <a class="sidebar-brand brand-logo text-decoration-none text-white" href="{{ route('admin.dashboard') }}">
-            <h3>Aamra S&M</h3>
+            <div style="height: 50px; width: calc(150px + 5vw);">
+                <img src="{{ asset('ui/admin') }}/assets/images/logo.png" alt="" style="width: 100% !important;">
+            </div>
         </a>
-        <a class="sidebar-brand brand-logo-mini" href="index.html"><img
-                src="{{ asset('ui/admin') }}/assets/images/logo-mini.svg" alt="logo" /></a>
+        <a class="sidebar-brand brand-logo-mini" href="{{ route('admin.dashboard') }}">
+            <div style="height: 50px; width: calc(50px + 5vw);">
+                <img src="{{ asset('ui/admin') }}/assets/images/logo.png" alt="" style="width: 100% !important;">
+            </div>
+        </a>
     </div>
     <ul class="nav">
         <li class="nav-item profile">
