@@ -171,7 +171,8 @@ Route::middleware(['customAuthCheck'])->group(function () {
         Route::prefix('/appiontment')->group(function () {
             Route::get('/make-an-appiontment-solo-customer/{soldProductId}', [AppiontmentController::class, 'appiontmentFormSoloCustomer'])->name('appiontment.appiontment_for_solo_customer');
             Route::get('/make-an-appiontment/{soldProductId}', [AppiontmentController::class, 'checkUserProductForm'])->name('appiontment.check_user_product_form');
-            //Route::post('/make-an-appiontment', [AppiontmentController::class, 'checkUserProductStore'])->name('appiontment.check_user_product_store');
+            Route::get('/estimated_time/{appiontment_id}', [AppiontmentController::class, 'estimatedTimeCreate'])->name('appiontment.estimated_time');
+            Route::post('/estimated_time/{appiontment_id}', [AppiontmentController::class, 'estimatedTimeStore'])->name('appiontment.estimated_time_store');
 
             Route::post('/appiontment/store', [AppiontmentController::class, 'appiontmentStore'])->name('appiontment.appiontment_store');
 

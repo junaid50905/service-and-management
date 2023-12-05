@@ -230,4 +230,22 @@ class AppiontmentController extends Controller
         $warrantyEndDate = Carbon::parse($sellingDate)->addMonths($timeOfWarranty)->format('Y-m-d');
         return view('admin.appiontment.view_parts', compact('parts', 'sellingDate', 'timeOfWarranty', 'sam', 'warrantyEndDate', 'appiontmentId'));
     }
+    // estimatedTimeCreate
+    public function estimatedTimeCreate($appiontment_id)
+    {
+        return view('admin.appiontment.estimated_form', compact('appiontment_id'));
+    }
+    // estimatedTime
+    public function estimatedTimeStore(Request $request, $appiontment_id)
+    {
+        Appiontment::where('id', $appiontment_id)->update([
+            'estimated_time' => $request->estimated_time,
+        ]);
+        $usertype = Appiontment::where('id', $appiontment_id)->first()->usertype;
+        if($usertype == 'solo'){
+            return redirect()->route('appiontment.solo_index');
+        }else{
+            return redirect()->route('appiontment.group_index');
+        }
+    }
 }
