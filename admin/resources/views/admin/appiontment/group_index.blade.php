@@ -134,7 +134,11 @@
                                                     <div class="d-flex gap-1">
                                                         <a href="{{ route('appiontment.assigned_engineer_detailed', $appiontment->id) }}"
                                                             class="btn btn-info btn-sm my-2 p-2 d-flex justify-items-center align-items-center small_font max_content"><i class="fa-solid fa-user"></i></a>
-
+                                                            
+                                                        <a href="{{ route('appiontment.estimated_time', $appiontment->id) }}"
+                                                            class="btn btn-{{ $appiontment->estimated_time ? 'secondary' : 'info' }} btn-sm my-2 p-2 d-flex align-items-center small_font max_content" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ DB::table('appiontments')->where('id', $appiontment->id)->first()->estimated_time . " days" }}"><i
+                                                                class="fa-solid fa-clock"></i></a>
+                                                            
                                                         @if (DB::table('inspections')->where('appiontment_id', $appiontment->id)->where('inspection', 'start')->first())
                                                             <a href="{{ route('appiontment.inspection_location', $appiontment->id) }}"
                                                             class="btn btn-secondary btn-sm my-2 p-2 d-flex align-items-center small_font max_content"><i
