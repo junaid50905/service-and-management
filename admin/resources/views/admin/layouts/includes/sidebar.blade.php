@@ -3,7 +3,7 @@
 @endphp
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-        <a class="sidebar-brand brand-logo text-decoration-none text-white" href="{{ route('admin.dashboard') }}">
+        <a class="text-white sidebar-brand brand-logo text-decoration-none" href="{{ route('admin.dashboard') }}">
             <div style="height: 50px; width: calc(150px + 5vw);">
                 <img src="{{ asset('ui/admin') }}/assets/images/logo.png" alt="" style="width: 100% !important;">
             </div>
@@ -14,7 +14,7 @@
             </div>
         </a>
     </div>
-    <ul class="nav">
+    <ul class=" nav">
         <li class="nav-item profile">
             <div class="profile-desc">
                 <div class="profile-pic">
@@ -46,18 +46,18 @@
                             </div>
                         </div>
                         <div class="preview-item-content">
-                            <p class="preview-subject ellipsis mb-1 text-small">Account settings</p>
+                            <p class="mb-1 preview-subject ellipsis text-small">Account settings</p>
                         </div>
                     </a>
                     <div class="dropdown-divider"></div>
                     <a href="#" class="dropdown-item preview-item">
                         <div class="preview-thumbnail">
                             <div class="preview-icon bg-dark rounded-circle">
-                                <i class="mdi mdi-onepassword  text-info"></i>
+                                <i class="mdi mdi-onepassword text-info"></i>
                             </div>
                         </div>
                         <div class="preview-item-content">
-                            <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
+                            <p class="mb-1 preview-subject ellipsis text-small">Change Password</p>
                         </div>
                     </a>
                     <div class="dropdown-divider"></div>
@@ -68,18 +68,18 @@
                             </div>
                         </div>
                         <div class="preview-item-content">
-                            <p class="preview-subject ellipsis mb-1 text-small">To-do list</p>
+                            <p class="mb-1 preview-subject ellipsis text-small">To-do list</p>
                         </div>
                     </a>
                 </div>
             </div>
         </li>
-        <li class="nav-item nav-category mt-2">
+        <li class="mt-2 nav-item nav-category">
             <span class="nav-link">Admin navigation items</span>
         </li>
 
         <!-- Dashboard -->
-        <li class="nav-item menu-items mt-2">
+        <li class="mt-2 nav-item menu-items">
             <a class="nav-link" href="{{ route('admin.dashboard') }}">
                 <span class="menu-icon">
                     <i class="mdi mdi-view-dashboard"></i>
@@ -89,7 +89,7 @@
         </li>
 
         <!-- category -->
-        <li class="nav-item menu-items mt-2">
+        <li class="mt-2 nav-item menu-items">
             <a class="nav-link" data-bs-toggle="collapse" href="#category" aria-expanded="false"
                 aria-controls="category">
                 <span class="menu-icon">
@@ -107,7 +107,7 @@
         </li>
 
     <!-- subcategory -->
-    <li class="nav-item menu-items mt-2">
+    <li class="mt-2 nav-item menu-items">
         <a class="nav-link" data-bs-toggle="collapse" href="#subcategory" aria-expanded="false"
             aria-controls="subcategory">
             <span class="menu-icon">
@@ -125,7 +125,7 @@
     </li>
 
     <!-- product -->
-    <li class="nav-item menu-items mt-2">
+    <li class="mt-2 nav-item menu-items">
         <a class="nav-link" data-bs-toggle="collapse" href="#product" aria-expanded="false" aria-controls="product">
             <span class="menu-icon">
                 <i class="mdi mdi-alarm-plus"></i>
@@ -142,7 +142,7 @@
     </li>
 
     <!-- appliance -->
-    <li class="nav-item menu-items mt-2">
+    <li class="mt-2 nav-item menu-items">
         <a class="nav-link" data-bs-toggle="collapse" href="#appliance" aria-expanded="false"
             aria-controls="appliance">
             <span class="menu-icon">
@@ -160,7 +160,7 @@
     </li>
 
     <!-- engineer -->
-    <li class="nav-item menu-items mt-2">
+    <li class="mt-2 nav-item menu-items">
         <a class="nav-link" data-bs-toggle="collapse" href="#engineer" aria-expanded="false"
             aria-controls="engineer">
             <span class="menu-icon">
@@ -178,7 +178,7 @@
     </li>
 
     <!-- customer -->
-    <li class="nav-item menu-items mt-2">
+    <li class="mt-2 nav-item menu-items">
         <a class="nav-link" data-bs-toggle="collapse" href="#customer" aria-expanded="false"
             aria-controls="customer">
             <span class="menu-icon">
@@ -198,7 +198,7 @@
 
 
     {{-- selling product --}}
-    <li class="nav-item menu-items mt-2">
+    <li class="mt-2 nav-item menu-items">
         <a class="nav-link" data-bs-toggle="collapse" href="#sellingProduct" aria-expanded="false"
             aria-controls="sellingProduct">
             <span class="menu-icon">
@@ -218,12 +218,12 @@
     </li>
 
     {{-- -----------------------------serviceandmanagement--------------------------- --}}
-    <li class="nav-item nav-category mt-2">
+    <li class="mt-2 nav-item nav-category">
         <span class="nav-link">Service & management</span>
     </li>
 
     <!-- appiontment -->
-    <li class="nav-item menu-items mt-2">
+    <li class="mt-2 nav-item menu-items">
         <a class="nav-link" data-bs-toggle="collapse" href="#appiontment" aria-expanded="false"
             aria-controls="appiontment">
             <span class="menu-icon">
@@ -243,7 +243,7 @@
     </li>
 
     <!-- checklist -->
-    <li class="nav-item menu-items mt-2">
+    <li class="mt-2 nav-item menu-items">
         <a class="nav-link" data-bs-toggle="collapse" href="#checklist" aria-expanded="false"
             aria-controls="checklist">
             <span class="menu-icon">
@@ -261,7 +261,7 @@
     </li>
 
     <!-- Service request -->
-    <li class="nav-item menu-items mt-2">
+    <li class="mt-2 nav-item menu-items">
         <a class="nav-link" data-bs-toggle="collapse" href="#serviceRequest" aria-expanded="false"
             aria-controls="serviceRequest">
             <span class="menu-icon">
@@ -279,7 +279,7 @@
     </li>
 
 
-    <li class="nav-item menu-items mt-2">
+    <li class="mt-2 nav-item menu-items">
         <a class="nav-link" href="pages/forms/basic_elements.html">
             <span class="menu-icon">
                 <i class="mdi mdi-beer"></i>

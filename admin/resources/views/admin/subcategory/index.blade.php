@@ -30,8 +30,8 @@
                                         <td>{{ DB::table('categories')->where('id', $subcategory->category_id)->first()->name }}</td>
                                         <td>{{ $subcategory->name }}</td>
                                         <td>
-                                            <a href="{{ route('subcategory.edit', $subcategory->id) }}" class="btn btn-warning me-2 p-2"><i class="fa-regular fa-pen-to-square"></i></a>
-                                            <a href="{{ route('subcategory.delete', $subcategory->id) }}" onclick="return confirm('are you sure?')" class="btn btn-danger p-2"><i class="fa-solid fa-trash"></i></a>
+                                            <a href="{{ route('subcategory.edit', $subcategory->id) }}" class="p-2 btn btn-edit me-2"><i class="fa-regular fa-pen-to-square"></i></a>
+                                            <a href="{{ route('subcategory.delete', $subcategory->id) }}" onclick="return confirm('are you sure?')" class="p-2 btn btn-delete"><i class="fa-solid fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

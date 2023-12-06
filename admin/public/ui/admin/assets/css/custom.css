@@ -2,6 +2,10 @@
     font-size: 12px !important;
 }
 
+.row {
+    text-transform: capitalize !important;
+}
+
 .max_content {
     width: max-content;
 }
@@ -12,7 +16,7 @@
 }
 
 #example_filter input {
-    color: white !important;
+    color: #333 !important;
 }
 
 .dataTables_length {
@@ -28,7 +32,7 @@
 }
 
 #example thead {
-    background-color: #0e1111 !important;
+    background-color: #d35400 !important;
 }
 
 #example thead tr th {
@@ -38,12 +42,12 @@
 
 #example tbody tr.odd td,
 #example tbody tr.even td {
-    color: rgb(170, 170, 170) !important;
+    color: #333 !important;
     font-size: 12px;
 }
 
 #example tfoot {
-    background-color: #0e1111 !important;
+    background-color: #d35400 !important;
 }
 
 #example tfoot tr th {
@@ -53,6 +57,7 @@
 
 td.fc-today {
     background: rgb(0, 40, 170) !important;
+    color: #fff;
 }
 
 .fc-day-grid-event .fc-content:hover {
@@ -61,4 +66,216 @@ td.fc-today {
     width: fit-content;
     background: black;
     padding: 3px 6px;
+}
+.navbar,
+.sidebar .sidebar-brand-wrapper {
+    background: #5e72e4;
+}
+.sidebar,
+.card {
+    background: #fff;
+}
+.content-wrapper {
+    background: #f8f9fa;
+}
+.navbar .navbar-menu-wrapper {
+    transition: width 0.25s ease;
+    -webkit-transition: width 0.25s ease;
+    -moz-transition: width 0.25s ease;
+    -ms-transition: width 0.25s ease;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+}
+.navbar .navbar-menu-wrapper .navbar-toggler {
+    color: #fff;
+}
+.card .card-body,
+.sidebar .nav .nav-item.profile .profile-desc .profile-name span,
+.sidebar .nav .nav-item.profile .profile-desc .profile-name,
+.sidebar .nav,
+.sidebar .nav .nav-item.nav-category .nav-link,
+.sidebar .nav .nav-item .nav-link {
+    color: #333;
+}
+.sidebar .nav .nav-item.active > .nav-link {
+    background: #f6f9fc;
+}
+.sidebar .nav .nav-item.active > .nav-link .menu-title {
+    font-weight: bold;
+    color: #333;
+}
+.sidebar
+    .nav:not(.sub-menu)
+    > .nav-item:hover:not(.nav-category):not(.account-dropdown)
+    > .nav-link {
+    background: #eee;
+    transform: translateX(6px);
+}
+.sidebar .nav.sub-menu .nav-item .nav-link,
+.sidebar .nav .nav-item .nav-link {
+    transition: all 0.3s ease;
+}
+
+.sidebar .nav.sub-menu .nav-item .nav-link:hover {
+    transform: translateX(6px);
+    color: #0e1111;
+}
+.text-muted,
+.preview-list .preview-item .preview-item-content p .content-category {
+    color: #333 !important;
+}
+.preview-list .preview-item {
+    border-color: #ddd !important;
+}
+.preview-list .preview-item a {
+    color: #333 !important;
+}
+.card .card-title {
+    color: #361659 !important;
+}
+
+.footer {
+    background: #fff;
+    color: #333;
+}
+.footer a {
+    color: #361659;
+}
+.form-control,
+.asColorPicker-input,
+.dataTables_wrapper select,
+.jsgrid .jsgrid-table .jsgrid-filter-row input[type="text"],
+.jsgrid .jsgrid-table .jsgrid-filter-row select,
+.jsgrid .jsgrid-table .jsgrid-filter-row input[type="number"],
+.select2-container--default .select2-selection--single,
+.select2-container--default .select2-selection--single .select2-search__field,
+.typeahead,
+.tt-query,
+.tt-hint {
+    background-color: #fff;
+    color: #333 !important;
+}
+.form-control:focus {
+    background-color: #fff;
+}
+.sidebar .nav.sub-menu .nav-item .nav-link.active {
+    color: #333;
+    font-weight: 500;
+    transform: translateX(18px);
+    background: transparent;
+}
+.sidebar .nav.sub-menu .nav-item .nav-link.active:before {
+    position: absolute;
+    content: "\f101";
+    left: -12px;
+    top: 8px;
+    line-height: 1em;
+    font-weight: 800;
+    font-family: "Font Awesome 5 Free";
+}
+
+.dataTables_length,
+.dataTables_length select option {
+    color: #333 !important;
+}
+.form-control {
+    background-color: #fff !important;
+    border-radius: 8px !important;
+    border-color: #3333334d;
+}
+.form-control:focus {
+    background-color: #fff !important;
+}
+div.dataTables_wrapper div.dataTables_length select {
+    border: 1px solid #3333334d;
+}
+hr {
+    display: none;
+}
+.table thead th,
+.jsgrid .jsgrid-table thead th {
+    color: #333;
+}
+.table,
+.jsgrid .jsgrid-table {
+    color: #333 !important;
+}
+thead,
+tbody,
+tfoot,
+tr,
+td,
+th {
+    border-color: #0000004d;
+}
+.sidebar .nav .nav-item.profile {
+    background: #f3f3f3;
+}
+.dataTables_wrapper .dataTable .btn,
+.dataTables_wrapper .dataTable .fc button,
+.fc .dataTables_wrapper .dataTable button,
+.dataTables_wrapper .dataTable .ajax-upload-dragdrop .ajax-file-upload,
+.ajax-upload-dragdrop .dataTables_wrapper .dataTable .ajax-file-upload,
+.dataTables_wrapper .dataTable .swal2-modal .swal2-buttonswrapper .swal2-styled,
+.swal2-modal
+    .swal2-buttonswrapper
+    .dataTables_wrapper
+    .dataTable
+    .swal2-styled {
+    padding: 10px 1rem !important;
+}
+
+.fc-icon,
+body .fc {
+    color: #333;
+}
+.btn-edit {
+    background-color: #3498db;
+}
+
+.btn-edit:hover {
+    background-color: #2980b9;
+}
+
+.btn-delete {
+    background-color: #e74c3c;
+}
+
+.btn-delete:hover {
+    background-color: #c0392b;
+}
+
+.btn-edit,
+.btn-delete {
+    border-radius: 6px !important;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-danger:hover {
+    color: #fff;
+}
+/* Custom styles for .form-control */
+.form-control {
+    font-family: "Arial", sans-serif !important;
+    color: #333 !important;
+    border: 1px solid #ccc !important;
+    padding: 10px !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 5px !important;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out !important;
+}
+
+/* Style on hover and focus */
+.form-control:hover,
+.form-control:focus {
+    border-color: #66afe9 !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
+}
+div.dataTables_wrapper div.dt-row {
+    margin-top: 12px !important;
+}
+
+table.dataTable {
+   border: 1px solid #ccc;
 }

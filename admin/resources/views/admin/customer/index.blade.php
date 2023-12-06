@@ -41,12 +41,12 @@
                                         <td>{{ Str::words($customer->address, 7, '...') }}</td>
                                         <td>
                                             <a href="{{ $customer->usertype == 'solo' ? route('customer.saleToSoloCustomerForm', $customer->id) : route('customer.saleToGroupCustomerForm', $customer->id) }}"
-                                                class="btn btn-sm btn-info me-2 p-2"><i class="fa-solid fa-cart-plus"></i></a>
+                                                class="p-2 btn btn-sm btn-info me-2"><i class="fa-solid fa-cart-plus"></i></a>
                                             <a href="{{ route('customer.edit', $customer->id) }}"
-                                                class="btn btn-sm btn-warning me-2 p-2"><i class="fa-regular fa-pen-to-square"></i></a>
+                                                class="p-2 btn btn-sm btn-warning me-2"><i class="fa-regular fa-pen-to-square"></i></a>
                                             <a href="{{ route('customer.delete', $customer->id) }}"
                                                 onclick="return confirm('are you sure?')"
-                                                class="btn btn-sm btn-danger p-2"><i class="fa-solid fa-trash"></i></a>
+                                                class="p-2 btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

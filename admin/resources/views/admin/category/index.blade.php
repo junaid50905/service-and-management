@@ -28,8 +28,8 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $category->name }}</td>
                                         <td>
-                                            <a href="{{ route('category.edit', $category->id) }}" class="btn btn-warning me-2"><i class="fa-regular fa-pen-to-square"></i></a>
-                                            <a href="{{ route('category.delete', $category->id) }}" onclick="return confirm('are you sure?')" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                                            <a href="{{ route('category.edit', $category->id) }}" class="btn btn-edit me-2"><i class="fa-regular fa-pen-to-square"></i></a>
+                                            <a href="{{ route('category.delete', $category->id) }}" onclick="return confirm('are you sure?')" class="btn btn-delete"><i class="fa-solid fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
