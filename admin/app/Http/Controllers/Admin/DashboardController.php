@@ -22,6 +22,7 @@ class DashboardController extends Controller
         $allTodaysWorkingTasks = Inspection::where('start_date', Carbon::today())->where('inspection', 'start')->get();
         $totalNumberOfTodaysWorkingTask = Inspection::where('start_date', Carbon::today())->where('inspection', 'start')->get()->count();
 
+
         return view('admin.dashboard', compact('totalProducts', 'totalSalesProducts', 'recentsAppiontments', 'allTodaysWorkingTasks', 'totalNumberOfTodaysWorkingTask'));
     }
     // allTodaysTasks

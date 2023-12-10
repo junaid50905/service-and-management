@@ -189,6 +189,9 @@ Route::middleware(['customAuthCheck'])->group(function () {
             Route::get('/inspection-location/{id}', [AppiontmentController::class, 'inspectionLocation'])->name('appiontment.inspection_location');
             // parts nedd
             Route::get('/parts-need/{id}', [AppiontmentController::class, 'partsNeed'])->name('appiontment.parts_need');
+
+            // routes/web.php
+            Route::post('/update/reserve/status', [AppiontmentController::class, 'updateReserveStatus'])->name('update.reserve.status');
         });
 
         // service request

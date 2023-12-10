@@ -10,7 +10,8 @@
         </a>
         <a class="sidebar-brand brand-logo-mini" href="{{ route('admin.dashboard') }}">
             <div style="height: 50px; width: calc(50px + 5vw);">
-                <img src="{{ asset('ui/admin') }}/assets/images/logo.png" alt="" style="width: 100% !important;">
+                <img src="{{ asset('ui/admin') }}/assets/images/logo.png" alt=""
+                    style="width: 100% !important;">
             </div>
         </a>
     </div>
@@ -74,9 +75,7 @@
                 </div>
             </div>
         </li>
-        <li class="nav-item nav-category mt-2">
-            <span class="nav-link">Admin navigation items</span>
-        </li>
+
 
         <!-- Dashboard -->
         <li class="nav-item menu-items mt-2">
@@ -88,204 +87,156 @@
             </a>
         </li>
 
-        <!-- category -->
+        {{-- -----------------------------serviceandmanagement--------------------------- --}}
+        <li class="nav-item nav-category mt-2">
+            <span class="nav-link">Service & management</span>
+        </li>
+
+        <!-- appiontment -->
         <li class="nav-item menu-items mt-2">
-            <a class="nav-link" data-bs-toggle="collapse" href="#category" aria-expanded="false"
-                aria-controls="category">
+            <a class="nav-link" data-bs-toggle="collapse" href="#appiontment" aria-expanded="false"
+                aria-controls="appiontment">
                 <span class="menu-icon">
-                    <i class="mdi mdi-access-point"></i>
+                    <i class="mdi mdi-basket-unfill"></i>
                 </span>
-                <span class="menu-title">Category</span>
+                <span class="menu-title">Appiontment</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="category">
+            <div class="collapse" id="appiontment">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('category.create') }}">Create</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('category.index') }}">Index</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('appiontment.solo_index') }}">All solo
+                            appiontments</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('appiontment.group_index') }}">All
+                            group
+                            appiontments</a></li>
                 </ul>
             </div>
         </li>
 
-    <!-- subcategory -->
-    <li class="nav-item menu-items mt-2">
-        <a class="nav-link" data-bs-toggle="collapse" href="#subcategory" aria-expanded="false"
-            aria-controls="subcategory">
-            <span class="menu-icon">
-                <i class="mdi mdi-airplane"></i>
-            </span>
-            <span class="menu-title">Subcategory</span>
-            <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="subcategory">
-            <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ route('subcategory.create') }}">Create</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('subcategory.index') }}">Index</a></li>
-            </ul>
-        </div>
-    </li>
+            {{-- <!-- checklist -->
+        <li class="nav-item menu-items mt-2">
+            <a class="nav-link" data-bs-toggle="collapse" href="#checklist" aria-expanded="false"
+                aria-controls="checklist">
+                <span class="menu-icon">
+                    <i class="mdi mdi-battery-charging-40"></i>
+                </span>
+                <span class="menu-title">Checklist</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="checklist">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('checklist.create') }}">Create</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('checklist.index') }}">Index</a></li>
+                </ul>
+            </div>
+        </li> --}}
 
-    <!-- product -->
-    <li class="nav-item menu-items mt-2">
-        <a class="nav-link" data-bs-toggle="collapse" href="#product" aria-expanded="false" aria-controls="product">
-            <span class="menu-icon">
-                <i class="mdi mdi-alarm-plus"></i>
-            </span>
-            <span class="menu-title">Product</span>
-            <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="product">
-            <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ route('product.create') }}">Create</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('product.index') }}">Index</a></li>
-            </ul>
-        </div>
-    </li>
+        {{-- sold product --}}
+        <li class="nav-item menu-items mt-2">
+            <a class="nav-link" data-bs-toggle="collapse" href="#sellingProduct" aria-expanded="false"
+                aria-controls="sellingProduct">
+                <span class="menu-icon">
+                    <i class="mdi mdi-assistant"></i>
+                </span>
+                <span class="menu-title">Sold Products</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="sellingProduct">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('solo_sold_product.index') }}">Solo
+                            sold
+                            products</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('group_sold_product.index') }}">Group
+                            sold
+                            products</a></li>
+                </ul>
+            </div>
+        </li>
 
-    <!-- appliance -->
-    <li class="nav-item menu-items mt-2">
-        <a class="nav-link" data-bs-toggle="collapse" href="#appliance" aria-expanded="false"
-            aria-controls="appliance">
-            <span class="menu-icon">
-                <i class="mdi mdi-anchor"></i>
-            </span>
-            <span class="menu-title">Appliance</span>
-            <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="appliance">
-            <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ route('appliance.create') }}">Create</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('appliance.index') }}">Index</a></li>
-            </ul>
-        </div>
-    </li>
+        <!-- Service request -->
+        <li class="nav-item menu-items mt-2">
+            <a class="nav-link" data-bs-toggle="collapse" href="#serviceRequest" aria-expanded="false"
+                aria-controls="serviceRequest">
+                <span class="menu-icon">
+                    <i class="mdi mdi-battery-charging-40"></i>
+                </span>
+                <span class="menu-title">Service Request</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="serviceRequest">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link"
+                            href="{{ route('service_request.all_solo_request') }}">Solo</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="">Group</a></li>
+                </ul>
+            </div>
+        </li>
 
-    <!-- engineer -->
-    <li class="nav-item menu-items mt-2">
-        <a class="nav-link" data-bs-toggle="collapse" href="#engineer" aria-expanded="false"
-            aria-controls="engineer">
-            <span class="menu-icon">
-                <i class="mdi mdi-arrange-send-backward"></i>
-            </span>
-            <span class="menu-title">Engineer</span>
-            <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="engineer">
-            <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ route('engineer.create') }}">Create</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('engineer.index') }}">Index</a></li>
-            </ul>
-        </div>
-    </li>
+        <li class="nav-item nav-category mt-2">
+            <span class="nav-link">Admin navigation items</span>
+        </li>
 
-    <!-- customer -->
-    <li class="nav-item menu-items mt-2">
-        <a class="nav-link" data-bs-toggle="collapse" href="#customer" aria-expanded="false"
-            aria-controls="customer">
-            <span class="menu-icon">
-                <i class="mdi mdi-arrow-down-bold-hexagon-outline"></i>
-            </span>
-            <span class="menu-title">Customer</span>
-            <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="customer">
-            <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ route('customer.create') }}">Create</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('customer.index') }}">Index</a></li>
-            </ul>
-        </div>
-    </li>
+        <!-- category -->
+        <li class="nav-item menu-items mt-2">
+            <a class="nav-link" href="{{ route('category.index') }}">
+                <span class="menu-icon">
+                    <i class="mdi mdi-access-point"></i>
+                </span>
+                <span class="menu-title">Category</span>
+            </a>
+        </li>
 
+        <!-- subcategory -->
+        <li class="nav-item menu-items mt-2">
+            <a class="nav-link" href="{{ route('subcategory.index') }}">
+                <span class="menu-icon">
+                    <i class="mdi mdi-access-point"></i>
+                </span>
+                <span class="menu-title">Subcategory</span>
+            </a>
+        </li>
 
+        <!-- product -->
+        <li class="nav-item menu-items mt-2">
+            <a class="nav-link" href="{{ route('product.index') }}">
+                <span class="menu-icon">
+                    <i class="mdi mdi-access-point"></i>
+                </span>
+                <span class="menu-title">Product</span>
+            </a>
+        </li>
 
-    {{-- selling product --}}
-    <li class="nav-item menu-items mt-2">
-        <a class="nav-link" data-bs-toggle="collapse" href="#sellingProduct" aria-expanded="false"
-            aria-controls="sellingProduct">
-            <span class="menu-icon">
-                <i class="mdi mdi-assistant"></i>
-            </span>
-            <span class="menu-title">Sold Products</span>
-            <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="sellingProduct">
-            <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ route('solo_sold_product.index') }}">Solo sold
-                        products</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('group_sold_product.index') }}">Group sold
-                        products</a></li>
-            </ul>
-        </div>
-    </li>
+        <!-- appliance -->
+        <li class="nav-item menu-items mt-2">
+            <a class="nav-link" href="{{ route('appliance.index') }}">
+                <span class="menu-icon">
+                    <i class="mdi mdi-access-point"></i>
+                </span>
+                <span class="menu-title">Appliance</span>
+            </a>
+        </li>
 
-    {{-- -----------------------------serviceandmanagement--------------------------- --}}
-    <li class="nav-item nav-category mt-2">
-        <span class="nav-link">Service & management</span>
-    </li>
+        <!-- engineer -->
+        <li class="nav-item menu-items mt-2">
+            <a class="nav-link" href="{{ route('engineer.index') }}">
+                <span class="menu-icon">
+                    <i class="mdi mdi-access-point"></i>
+                </span>
+                <span class="menu-title">Engineer</span>
+            </a>
+        </li>
 
-    <!-- appiontment -->
-    <li class="nav-item menu-items mt-2">
-        <a class="nav-link" data-bs-toggle="collapse" href="#appiontment" aria-expanded="false"
-            aria-controls="appiontment">
-            <span class="menu-icon">
-                <i class="mdi mdi-basket-unfill"></i>
-            </span>
-            <span class="menu-title">Appiontment</span>
-            <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="appiontment">
-            <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ route('appiontment.solo_index') }}">All solo
-                        appiontments</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('appiontment.group_index') }}">All group
-                        appiontments</a></li>
-            </ul>
-        </div>
-    </li>
-
-    <!-- checklist -->
-    <li class="nav-item menu-items mt-2">
-        <a class="nav-link" data-bs-toggle="collapse" href="#checklist" aria-expanded="false"
-            aria-controls="checklist">
-            <span class="menu-icon">
-                <i class="mdi mdi-battery-charging-40"></i>
-            </span>
-            <span class="menu-title">Checklist</span>
-            <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="checklist">
-            <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ route('checklist.create') }}">Create</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('checklist.index') }}">Index</a></li>
-            </ul>
-        </div>
-    </li>
-
-    <!-- Service request -->
-    <li class="nav-item menu-items mt-2">
-        <a class="nav-link" data-bs-toggle="collapse" href="#serviceRequest" aria-expanded="false"
-            aria-controls="serviceRequest">
-            <span class="menu-icon">
-                <i class="mdi mdi-battery-charging-40"></i>
-            </span>
-            <span class="menu-title">Service Request</span>
-            <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="serviceRequest">
-            <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ route('service_request.all_solo_request') }}">Solo</a></li>
-                <li class="nav-item"> <a class="nav-link" href="">Group</a></li>
-            </ul>
-        </div>
-    </li>
+        <!-- customer -->
+        <li class="nav-item menu-items mt-2">
+            <a class="nav-link" href="{{ route('customer.index') }}">
+                <span class="menu-icon">
+                    <i class="mdi mdi-access-point"></i>
+                </span>
+                <span class="menu-title">Customer</span>
+            </a>
+        </li>
 
 
-    <li class="nav-item menu-items mt-2">
-        <a class="nav-link" href="pages/forms/basic_elements.html">
-            <span class="menu-icon">
-                <i class="mdi mdi-beer"></i>
-            </span>
-            <span class="menu-title">Form Elements</span>
-        </a>
-    </li>
+
     </ul>
 </nav>

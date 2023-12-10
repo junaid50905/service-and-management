@@ -174,6 +174,18 @@
             </div>
         </div>
 
+
+    {{-- calendar --}}
+    <div class="row mb-3">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    dfdf
+                </div>
+            </div>
+        </div>
+    </div>
+
     {{-- Recent 5 tasks --}}
     <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
@@ -291,12 +303,15 @@
 
 
 
+
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBZYFFfyeW467TIU2Gry9RZWo3LUsZXjA&libraries=places&callback=initMap"
         async defer></script>
+
 
 
 

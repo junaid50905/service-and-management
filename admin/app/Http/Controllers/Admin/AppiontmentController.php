@@ -77,6 +77,7 @@ class AppiontmentController extends Controller
     // assignEngineer
     public function assignEngineer($id)
     {
+
         $appiontmentId = $id;
         $sold_product_id = Appiontment::where('id', $appiontmentId)->first()->sold_product_id;
         $product_id = SoldProduct::where('id', $sold_product_id)->first()->product_id;
@@ -123,6 +124,8 @@ class AppiontmentController extends Controller
                     'inspection_date' => $request->date,
                     'inspection_time' => $request->time,
                     'engineer_id' => $request->engineer_id,
+                    'reserve' => 'false',
+                    'blockedEngineerId' => -1
                 ]
             );
             return redirect()->route('appiontment.group_index')->with('appiontment_assigned', "Appiontment assigned successfully");
@@ -134,6 +137,8 @@ class AppiontmentController extends Controller
                     'inspection_date' => $request->date,
                     'inspection_time' => $request->time,
                     'engineer_id' => $request->engineer_id,
+                    'reserve' => 'false',
+                    'blockedEngineerId' => -1
                 ]
             );
             return redirect()->route('appiontment.solo_index')->with('appiontment_assigned', "Appiontment assigned successfully");
@@ -147,7 +152,6 @@ class AppiontmentController extends Controller
         $engineerDetails = Engineer::where('id', $engineerID)->first();
         return view('admin.appiontment.assigned_engineer_detailed', compact('engineerDetails'));
     }
-
     // appiontmentFormSoloCustomer
     public function appiontmentFormSoloCustomer($soldProductId)
     {
@@ -181,7 +185,6 @@ class AppiontmentController extends Controller
             return view('admin.appiontment.check_user_product', compact('sold_product_id', 'user_id', 'product_id', 'branch_id'));
         }
     }
-
     // checkUserProductStore
     public function checkUserProductStore(Request $request)
     {
@@ -205,7 +208,6 @@ class AppiontmentController extends Controller
             return redirect()->route('appiontment.check_user_product_form')->with('user_or_product_unavailable', 'This userid or productid is unavailable');
         }
     }
-
     // inspectionLocation
     public function inspectionLocation($id)
     {
@@ -248,4 +250,32 @@ class AppiontmentController extends Controller
             return redirect()->route('appiontment.group_index');
         }
     }
+    // updateReserveStatus
+    public function updateReserveStatus(Request $request)
+    {
+        $engineerId = $request->input('engineer_id');
+        $appointmentId = $request->input('appointment_id');
+
+        // Find the appointment by ID
+        $appointment = Appiontment::find($appointmentId);
+
+        if ($appointment) {
+            // Update the reserve status based on the selected engineer
+            Appiontment::where('id', $appointmentId)->update([
+                'reserve' => true,
+                'blockedEngineerId' => $engineerId,
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Reserve status updated successfully',
+                'data' => [
+                    'engineer' => $engineerId
+                ]
+            ]);
+        }
+
+        return response()->json(['success' => false, 'message' => 'Appointment not found']);
+    }
+
 }

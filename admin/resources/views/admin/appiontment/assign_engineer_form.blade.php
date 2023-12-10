@@ -1,5 +1,6 @@
 @php
     use Carbon\Carbon;
+    use Illuminate\Support\Facades\Cache;
 @endphp
 
 @extends('admin.layouts.master')
@@ -17,7 +18,7 @@
                 <div class="card-body">
                     <form action="{{ route('appiontment.assign_engineer_store') }}" method="POST">
                         @csrf
-                        <input type="hidden" value="{{ $appiontmentId }}" name="appiontment_id">
+                        <input type="hidden" value="{{ $appiontmentId }}" name="appiontment_id" id="appiontment_id">
                         @error('appiontment_id')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
@@ -32,7 +33,7 @@
                                         @if ($engineers->count() > 0)
                                             <option selected>Select engineer</option>
                                             @foreach ($engineers as $engineer)
-                                                <option value="{{ $engineer->id }}">{{ $engineer->name }}</option>
+                                                <option value="{{ $engineer->id }}" {{ DB::table('appiontments')->where('id', $appiontmentId)->first()->blockedEngineerId == $engineer->id ? 'disabled' : ''}}>{{ $engineer->name }}</option>
                                             @endforeach
                                         @else{
                                             <option>No engineer found for this product</option>
@@ -43,6 +44,7 @@
                                         <a href="{{ route('engineer.create') }}" class="btn btn-sm btn-info mb-2">+ Add
                                             Engineer</a>
                                     @endif
+
                                 </div>
                                 @error('engineer_id')
                                     <p class="text-danger">{{ $message }}</p>
@@ -53,7 +55,8 @@
                                 <div class="form-group">
                                     <label>Date</label>
                                     <input type="date" name="date" required class="form-control text-light"
-                                        min="{{ date('Y-m-d') }}" max="{{ Carbon::now()->addDays(15)->format('Y-m-d') }}" required>
+                                        min="{{ date('Y-m-d') }}" max="{{ Carbon::now()->addDays(15)->format('Y-m-d') }}"
+                                        required>
                                 </div>
                                 @error('date')
                                     <p class="text-danger">{{ $message }}</p>
@@ -77,35 +80,9 @@
             </div>
         </div>
         <div class="col-md-9">
-            {{-- <div class="card p-2">
-                <h4 class="mt-2">Engineer blocked time slots</h4>
-                <div id="engineerBlockSlot" class="row ms-3 justify-content-center"></div>
-            </div> <br> --}}
             <div class="card p-3">
                 <div id="calendar"></div>
             </div>
-
-            {{-- <div class="card p-2">
-                <h4 class="mt-2">Engineer blocked time slots</h4>
-                <div class="row ms-3 justify-content-center" id="engineerBlockSlot">
-                    @foreach ($app as $item)
-                        @foreach ($engineers as $engineer)
-                            @if ($engineer->id == $item->engineer_id)
-                                <div class="col-md-3">
-                                    <div class="item border p-2 my-2">
-                                        <p>{{ DB::table('engineers')->where('id', $item->engineer_id)->first()->name }}</p>
-                                        <p
-                                            class="text{{ $item->status == 'late' ? '-danger' : ($item->status == 'working' ? '-info' : '-primary') }}">
-                                            {{ $item->status }}</p>
-                                        <p>{{ $item->inspection_date }}</p>
-                                        <p>{{ $item->inspection_time }}</p>
-                                    </div>
-                                </div>
-                            @endif
-                        @endforeach
-                    @endforeach
-                </div>
-            </div> <br> --}}
         </div>
     </div>
 
@@ -116,7 +93,6 @@
     <script>
         $(document).ready(function() {
             var allAppiontments = @json($events);
-            console.log(allAppiontments);
             $('#calendar').fullCalendar({
                 header: {
                     left: 'prev, next, today',
@@ -128,33 +104,40 @@
         });
     </script>
 
-    {{-- <script type="text/javascript">
+
+
+    <script>
+
         $(document).ready(function() {
             $(document).on('change', '#engineer_id', function() {
-                // ajax setup
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                var engineerId = $(this).val()
+                var engineerId = $(this).val();
+                var appointmentId = $('#appiontment_id').val();
 
                 $.ajax({
-                    type: "GET",
-                    url: "{{ url('getEngineerBlockSlot') }}" + "/" + engineerId,
-                    dataType: "json",
-                    success: function(data) {
-                        console.log(data);
-                        $('#engineerBlockSlot').html(data)
+                    type: 'POST',
+                    url: '{{ route('update.reserve.status') }}',
+                    data: {
+                        '_token': '{{ csrf_token() }}',
+                        'engineer_id': engineerId,
+                        'appointment_id': appointmentId
                     },
-                    error: function(error) {
-                        console.log(error);
+                    success: function(response) {
+                        // Handle success, if needed
+                        //var blockedEngineer = response.data.engineer
+
+                        // console.log(response.data.engineer);
+
+
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle error, if any
+                        console.error(xhr.responseText);
                     }
                 });
             });
         });
-    </script> --}}
 
+    </script>
 
 
 @endsection
