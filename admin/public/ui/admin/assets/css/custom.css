@@ -38,7 +38,7 @@
 }
 
 #example tr th {
-    color: #333 !important;
+    color: white !important;
     font-size: 12px;
 }
 
@@ -57,7 +57,7 @@
 }
 
 #example tfoot tr th {
-    color: #333 !important;
+    color: white !important;
     font-size: 12px;
 }
 
@@ -325,8 +325,7 @@ body {
 div.dataTables_wrapper div.dataTables_filter input {
     width: 100% !important;
     position: relative;
-    left: -52px;
-    padding-left: 32px !important;
+    margin-left: -45px !important;
 }
 div.dataTables_wrapper div.dataTables_filter label {
     position: relative;
@@ -355,9 +354,4 @@ div.dataTables_wrapper div.dataTables_filter label::before {
 }
 .preview-list .preview-item .preview-item-content p {
     font-size: 16px;
-}
-
-#example tbody tr.odd td, #example tbody tr.even td {
-    color: #333 !important;
-    background: #fff !important;
 }
