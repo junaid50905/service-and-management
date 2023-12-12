@@ -20,7 +20,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="mb-3">Customer List</h4> <hr>
-                        <table id="example" class="table table-striped" style="width:100%">
+                        <table id="example" class="table" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>#</th>

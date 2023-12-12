@@ -19,7 +19,7 @@
                         <h4 class="card-title">Sold products of solo customer</h4>
                         <hr>
                         <div class="table-responsive">
-                            <table id="example" class="table table-striped" style="width:100%">
+                            <table id="example" class="table" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>SN</th>

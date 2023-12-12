@@ -16,7 +16,7 @@
                     <div class="card-body">
                         <h4 class="card-title">Subcategories</h4>
                         <div class="table-responsive">
-                            <table id="example" class="table table-striped" style="width:100%">
+                            <table id="example" class="table" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>#</th>
