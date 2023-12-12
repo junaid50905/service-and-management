@@ -12,6 +12,8 @@
 @section('main-panel')
     <div class="row">
         <div class="col-md-12 grid-margin">
+            <a href="{{ route('customer.create') }}" class="btn btn-success mb-3"><i class="fa-solid fa-plus"></i>
+                            Add new customer</a>
             @if (count($customers) < 1)
                 <h4 class="text-danger">No customer found</h4>
             @else

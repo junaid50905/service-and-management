@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -61,6 +62,7 @@ Route::middleware(['customAuthCheck'])->group(function () {
     Route::prefix('admin')->group(function () {
         // dashboard
         Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
+        Route::get('/{todays_summary}', [DashboardController::class, 'todaysSummary'])->name('admin.todays_summary');
         Route::get('/all-todays-working-tasks', [DashboardController::class, 'allTodaysWorkingTasks'])->name('admin.allTodaysWorkingTasks');
 
 
@@ -115,6 +117,17 @@ Route::middleware(['customAuthCheck'])->group(function () {
             Route::get('/{id}/view', [EngineerController::class, 'view'])->name('engineer.view');
             Route::get('/{id}/delete', [EngineerController::class, 'delete'])->name('engineer.delete');
             Route::post('/{id}/update', [EngineerController::class, 'update'])->name('engineer.update');
+        });
+
+
+        // admin
+        Route::prefix('/admin')->group(function () {
+            Route::get('/create-admin', [AdminController::class, 'create'])->name('admin.create');
+            Route::post('/store', [AdminController::class, 'store'])->name('admin.store');
+            Route::get('/all-admins', [AdminController::class, 'index'])->name('admin.index');
+            Route::get('/{id}/edit', [AdminController::class, 'edit'])->name('admin.edit');
+            Route::get('/{id}/delete', [AdminController::class, 'delete'])->name('admin.delete');
+            Route::post('/{id}/update', [AdminController::class, 'update'])->name('admin.update');
         });
 
 
@@ -189,6 +202,9 @@ Route::middleware(['customAuthCheck'])->group(function () {
             Route::get('/inspection-location/{id}', [AppiontmentController::class, 'inspectionLocation'])->name('appiontment.inspection_location');
             // parts nedd
             Route::get('/parts-need/{id}', [AppiontmentController::class, 'partsNeed'])->name('appiontment.parts_need');
+
+            // routes/web.php
+            Route::post('/update/reserve/status', [AppiontmentController::class, 'updateReserveStatus'])->name('update.reserve.status');
         });
 
         // service request

@@ -362,3 +362,37 @@
     </script>
 @endif
 
+{{-- create_admin --}}
+@if (Session::has('create_admin'))
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true
+        }
+        toastr.success("{{ session('create_admin') }}")
+    </script>
+@endif
+
+
+{{-- create_admin --}}
+@if (Session::has('admin_delete'))
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true
+        }
+        toastr.error("{{ session('admin_delete') }}")
+    </script>
+@endif
+
+
+{{-- udpate_admin --}}
+@if (Session::has('udpate_admin'))
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true
+        }
+        toastr.success("{{ session('udpate_admin') }}")
+    </script>
+@endif

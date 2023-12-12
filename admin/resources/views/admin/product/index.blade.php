@@ -5,9 +5,12 @@ Products
 @endsection
 
 @section('main-panel')
-<div class="row">
-    <div class="col-md-12 grid-margin">
-        @if (count($products) < 1) <h4 class="text-danger">No product found</h4>
+    <div class="row">
+        <div class="col-md-12 grid-margin">
+            <a href="{{ route('product.create') }}" class="mb-3 btn btn-success"><i class="fa-solid fa-plus"></i>
+                            Add new product</a>
+            @if (count($products) < 1)
+            <h4 class="text-danger">No product found</h4>
             @else
             <div class="card">
                 <div class="card-body">
@@ -65,7 +68,5 @@ Products
 
     </div>
 </div>
-
-
 
 @endsection

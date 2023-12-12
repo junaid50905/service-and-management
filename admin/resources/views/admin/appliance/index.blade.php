@@ -7,12 +7,15 @@
 @section('main-panel')
     <div class="row">
         <div class="col-md-12 grid-margin">
+            <a href="{{ route('appliance.create') }}" class="btn btn-success mb-3"><i class="fa-solid fa-plus"></i>
+                            Add new appliance</a>
             @if (count($appliances) < 1)
             <h4 class="text-danger">No product found</h4>
             @else
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Appliances</h4>
+
                     <div class="table-responsive">
                         <table id="example" class="table table-striped" style="width:100%">
                             <thead>

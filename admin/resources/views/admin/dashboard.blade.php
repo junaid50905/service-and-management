@@ -1,3 +1,6 @@
+@php
+use Carbon\Carbon;
+@endphp
 @extends('admin.layouts.master')
 
 @section('title')
@@ -172,9 +175,60 @@ all ({{ $totalNumberOfTodaysWorkingTask }})</a>
     </div>
 </div>
 
+
+
+
 {{-- Recent 5 tasks --}}
 <div class="row">
-    <div class="col-md-12 grid-margin stretch-card">
+    <div class="col-md-4 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="chartjs-size-monitor">
+                    <div class="chartjs-size-monitor-expand">
+                        <div class=""></div>
+                    </div>
+                    <div class="chartjs-size-monitor-shrink">
+                        <div class=""></div>
+                    </div>
+                </div>
+                <h4 class="card-title">Todays Summary</h4>
+                <canvas id="transaction-history" width="282" height="141" style="display: block; width: 282px; height: 141px;" class="mb-4 chartjs-render-monitor"></canvas>
+                <div class="p-1 my-2 d-flex justify-content-between align-items-center border-top border-bottom">
+                    <div class="text-md-center text-xl-left">
+                        <h6 class="mb-1">Appiontments </h6>
+                    </div>
+                    <div>
+                        <h6 class="mb-0 font-weight-bold">{{ count($allTodaysAppiontments) }}</h6>
+                    </div>
+                </div>
+                <div class="p-1 my-2 d-flex justify-content-between align-items-center border-top border-bottom">
+                    <div class="text-md-center text-xl-left">
+                        <h6 class="mb-1">Assigned </h6>
+                    </div>
+                    <div>
+                        <h6 class="mb-0 font-weight-bold">{{ $allTodaysAppiontments->where('status', 'assigned')->count() }}</h6>
+                    </div>
+                </div>
+                <div class="p-1 my-2 d-flex justify-content-between align-items-center border-top border-bottom">
+                    <div class="text-md-center text-xl-left">
+                        <h6 class="mb-1">Late </h6>
+                    </div>
+                    <div>
+                        <h6 class="mb-0 font-weight-bold">{{ $allTodaysAppiontments->where('status', 'late')->count() }}</h6>
+                    </div>
+                </div>
+                <div class="p-1 my-2 d-flex justify-content-between align-items-center border-top border-bottom">
+                    <div class="text-md-center text-xl-left">
+                        <h6 class="mb-1">Working </h6>
+                    </div>
+                    <div>
+                        <h6 class="mb-0 font-weight-bold">{{ count($allTodaysWorkingTasks) }}</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
                 <div class="flex-row d-flex justify-content-between">
@@ -285,9 +339,12 @@ all ({{ $totalNumberOfTodaysWorkingTask }})</a>
 
 
 
+
+
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBZYFFfyeW467TIU2Gry9RZWo3LUsZXjA&libraries=places&callback=initMap" async defer></script>
+
 
 
 
