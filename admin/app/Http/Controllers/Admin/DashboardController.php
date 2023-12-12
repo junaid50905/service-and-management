@@ -21,9 +21,9 @@ class DashboardController extends Controller
         $recentsAppiontments = Appiontment::latest()->limit(5)->get();
         $allTodaysWorkingTasks = Inspection::where('start_date', Carbon::today())->where('inspection', 'start')->get();
         $totalNumberOfTodaysWorkingTask = Inspection::where('start_date', Carbon::today())->where('inspection', 'start')->get()->count();
+        $allTodaysAppiontments = Appiontment::where('appiontment_taken_date', Carbon::today())->get();
 
-
-        return view('admin.dashboard', compact('totalProducts', 'totalSalesProducts', 'recentsAppiontments', 'allTodaysWorkingTasks', 'totalNumberOfTodaysWorkingTask'));
+        return view('admin.dashboard', compact('totalProducts', 'totalSalesProducts', 'recentsAppiontments', 'allTodaysWorkingTasks', 'totalNumberOfTodaysWorkingTask', 'allTodaysAppiontments'));
     }
     // allTodaysTasks
     public function allTodaysWorkingTasks()

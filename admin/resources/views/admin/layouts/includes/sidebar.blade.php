@@ -216,6 +216,17 @@
             </a>
         </li>
 
+
+        <!-- admin -->
+        <li class="nav-item menu-items mt-2">
+            <a class="nav-link" href="{{ route('admin.index') }}">
+                <span class="menu-icon">
+                    <i class="mdi mdi-access-point"></i>
+                </span>
+                <span class="menu-title">Admin</span>
+            </a>
+        </li>
+
         <!-- engineer -->
         <li class="nav-item menu-items mt-2">
             <a class="nav-link" href="{{ route('engineer.index') }}">

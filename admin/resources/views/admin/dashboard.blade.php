@@ -1,3 +1,6 @@
+@php
+    use Carbon\Carbon;
+@endphp
 @extends('admin.layouts.master')
 
 @section('title')
@@ -160,35 +163,75 @@
 
     {{-- Multiple longitude and latitude --}}
 
-        <div class="row mt-2 mb-3">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                        @if (count($allTodaysWorkingTasks) < 1)
-                            <p style="color: #ff6b6b">There is no engineer currently on duty today</p>
-                        @else
-                            <div id="map" style="height: 40vh; width: 100%;"></div>
-                        @endif
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-    {{-- calendar --}}
-    <div class="row mb-3">
+    <div class="row mt-2 mb-3">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    dfdf
+                    @if (count($allTodaysWorkingTasks) < 1)
+                        <p style="color: #ff6b6b">There is no engineer currently on duty today</p>
+                    @else
+                        <div id="map" style="height: 40vh; width: 100%;"></div>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
 
+
+
+
     {{-- Recent 5 tasks --}}
     <div class="row">
-        <div class="col-md-12 grid-margin stretch-card">
+        <div class="col-md-4 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="chartjs-size-monitor">
+                        <div class="chartjs-size-monitor-expand">
+                            <div class=""></div>
+                        </div>
+                        <div class="chartjs-size-monitor-shrink">
+                            <div class=""></div>
+                        </div>
+                    </div>
+                    <h4 class="card-title">Todays Summary</h4>
+                    <canvas id="transaction-history" width="282" height="141"
+                        style="display: block; width: 282px; height: 141px;" class="chartjs-render-monitor mb-4"></canvas>
+                    <div class="d-flex justify-content-between align-items-center border-top border-bottom my-2 p-1">
+                        <div class="text-md-center text-xl-left">
+                            <h6 class="mb-1">Appiontments </h6>
+                        </div>
+                        <div>
+                            <h6 class="font-weight-bold mb-0">{{ count($allTodaysAppiontments) }}</h6>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center border-top border-bottom my-2 p-1">
+                        <div class="text-md-center text-xl-left">
+                            <h6 class="mb-1">Assigned </h6>
+                        </div>
+                        <div>
+                            <h6 class="font-weight-bold mb-0">{{ $allTodaysAppiontments->where('status', 'assigned')->count() }}</h6>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center border-top border-bottom my-2 p-1">
+                        <div class="text-md-center text-xl-left">
+                            <h6 class="mb-1">Late </h6>
+                        </div>
+                        <div>
+                            <h6 class="font-weight-bold mb-0">{{ $allTodaysAppiontments->where('status', 'late')->count() }}</h6>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center border-top border-bottom my-2 p-1">
+                        <div class="text-md-center text-xl-left">
+                            <h6 class="mb-1">Working </h6>
+                        </div>
+                        <div>
+                            <h6 class="font-weight-bold mb-0">{{ count($allTodaysWorkingTasks) }}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex flex-row justify-content-between">
