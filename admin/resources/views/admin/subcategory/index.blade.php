@@ -7,7 +7,7 @@
 @section('main-panel')
     <div class="row">
         <div class="col-md-12 grid-margin">
-            <a href="{{ route('subcategory.create') }}" class="btn btn-success mb-3"><i class="fa-solid fa-plus"></i>
+            <a href="{{ route('subcategory.create') }}" class="mb-3 btn btn-success"><i class="fa-solid fa-plus"></i>
                             Add new subcategory</a>
             @if (count($subcategories) < 1)
                 <h4 class="text-danger">No subcategories found</h4>
@@ -34,10 +34,10 @@
                                             <td>{{ $subcategory->name }}</td>
                                             <td>
                                                 <a href="{{ route('subcategory.edit', $subcategory->id) }}"
-                                                    class="btn btn-warning me-2 p-2"><i
+                                                    class="p-2 btn btn-warning me-2"><i
                                                         class="fa-regular fa-pen-to-square"></i></a>
                                                 <a href="{{ route('subcategory.delete', $subcategory->id) }}"
-                                                    onclick="return confirm('are you sure?')" class="btn btn-danger p-2"><i
+                                                    onclick="return confirm('are you sure?')" class="p-2 btn btn-danger"><i
                                                         class="fa-solid fa-trash"></i></a>
                                             </td>
                                         </tr>

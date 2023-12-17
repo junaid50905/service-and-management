@@ -7,7 +7,7 @@
 @section('main-panel')
     <div class="row">
         <div class="col-md-6 grid-margin">
-            <a href="{{ route('category.create') }}" class="btn btn-success mb-3"><i class="fa-solid fa-plus"></i> Add new
+            <a href="{{ route('category.create') }}" class="mb-3 btn btn-success"><i class="fa-solid fa-plus"></i> Add new
                 category</a>
             @if (count($categories) < 1)
                 <h4 class="text-danger">No category found</h4>

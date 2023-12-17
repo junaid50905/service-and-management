@@ -38,7 +38,7 @@
                                                 </td>
                                                 <td>
                                                     <a href="{{ route('sold_product.viewSoloProduct', $solo_user->id) }}"
-                                                        class="btn btn-sm btn-success">View products</a>
+                                                        class="px-3 py-2 btn btn-sm btn-success">View products</a>
                                                 </td>
                                             </tr>
                                         @endif
