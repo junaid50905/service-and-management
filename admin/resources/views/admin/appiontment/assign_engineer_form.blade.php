@@ -33,7 +33,9 @@
                                         @if ($engineers->count() > 0)
                                             <option selected>Select engineer</option>
                                             @foreach ($engineers as $engineer)
-                                                <option value="{{ $engineer->id }}" {{ DB::table('appiontments')->where('id', $appiontmentId)->first()->blockedEngineerId == $engineer->id ? 'disabled' : ''}}>{{ $engineer->name }}</option>
+                                                <option value="{{ $engineer->id }}"
+                                                    {{ DB::table('appiontments')->where('id', $appiontmentId)->first()->blockedEngineerId == $engineer->id? 'disabled': '' }}>
+                                                    {{ $engineer->name }}</option>
                                             @endforeach
                                         @else{
                                             <option>No engineer found for this product</option>
@@ -65,8 +67,8 @@
 
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>Time</label>
-                                    <input type="time" name="time" required class="form-control text-light" required>
+                                    <input type="time" name="time" class="form-control text-light" required
+                                        id="timePicker">
                                 </div>
                                 @error('time')
                                     <p class="text-danger">{{ $message }}</p>
@@ -107,7 +109,6 @@
 
 
     <script>
-
         $(document).ready(function() {
             $(document).on('change', '#engineer_id', function() {
                 var engineerId = $(this).val();
@@ -136,8 +137,21 @@
                 });
             });
         });
-
     </script>
+
+    <script>
+        document.getElementById("timePicker").addEventListener("input", function() {
+            var selectedTime = this.value;
+            var minTime = "06:00";
+            var maxTime = "21:00";
+
+            if (selectedTime < minTime || selectedTime > maxTime) {
+                alert('Invalid time. Please set the time between 6am to 9pm')
+                selectedTime = this.value('')
+            }
+        });
+    </script>
+
 
 
 @endsection

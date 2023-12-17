@@ -117,6 +117,9 @@ class AppiontmentController extends Controller
         }
         $userType = Appiontment::where('id', $request->appiontment_id)->first()->usertype;
         if ($userType == 'group') {
+            if (Appiontment::where('engineer_id', $request->engineer_id)->where('inspection_date', $request->date)->where('inspection_time', $request->time)->exists()) {
+                return redirect()->back()->with('engineer_exists', $request->engineer_id . " already exists this date and time.");
+            }
             RecruitingEngineer::create($request->all());
             Appiontment::where('id', $request->appiontment_id)->update(
                 [
@@ -130,6 +133,10 @@ class AppiontmentController extends Controller
             );
             return redirect()->route('appiontment.group_index')->with('appiontment_assigned', "Appiontment assigned successfully");
         } else {
+            if(Appiontment::where('engineer_id', $request->engineer_id)->where('inspection_date', $request->date)->where('inspection_time', $request->time)->exists())
+            {
+                return redirect()->back()->with('engineer_exists', $request->engineer_id." already exists this date and time.");
+            }
             RecruitingEngineer::create($request->all());
             Appiontment::where('id', $request->appiontment_id)->update(
                 [

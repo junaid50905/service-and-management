@@ -1,4 +1,3 @@
-
 @extends('customer.layouts.master')
 @section('title')
     customer Dashboard
@@ -25,7 +24,8 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="numbers">
-                                        <p class="text-xxs mb-0 text-uppercase font-weight-bold badge badge-sm {{ $servicingProduct->status == 'pending' ? 'bg-gradient-secondary' : '' }} {{ $servicingProduct->status == 'assigned' ? 'bg-gradient-primary' : '' }} {{ $servicingProduct->status == 'late' ? 'bg-gradient-danger' : '' }} {{ $servicingProduct->status == 'working' ? 'bg-gradient-info' : '' }} {{ $servicingProduct->status == 'complete' ? 'bg-gradient-success' : '' }}">{{ $servicingProduct->status }}</p>
+                                        <p class="text-xxs mb-0 text-uppercase font-weight-bold badge badge-sm {{ $servicingProduct->status == 'pending' ? 'bg-gradient-secondary' : '' }} {{ $servicingProduct->status == 'assigned' ? 'bg-gradient-primary' : '' }} {{ $servicingProduct->status == 'late' ? 'bg-gradient-danger' : '' }} {{ $servicingProduct->status == 'working' ? 'bg-gradient-info' : '' }} {{ $servicingProduct->status == 'complete' ? 'bg-gradient-success' : '' }}">
+                                            {{ $servicingProduct->status }}</p>
                                         <h6 class="font-weight-bolder text-muted">
                                             {{ $productName }}
                                         </h6>
@@ -35,10 +35,13 @@
                         </div>
                     </div>
                 </div>
+
+
             @endforeach
         @endif
-
-
-
     </div>
+
+
+
+
 @endsection

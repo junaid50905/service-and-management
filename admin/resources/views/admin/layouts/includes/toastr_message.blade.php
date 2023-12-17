@@ -396,3 +396,15 @@
         toastr.success("{{ session('udpate_admin') }}")
     </script>
 @endif
+
+
+{{-- udpate_admin --}}
+@if (Session::has('engineer_exists'))
+    <script>
+        toastr.options = {
+            "progressBar": true,
+            "closeButton": true
+        }
+        toastr.error("{{ session('engineer_exists') }}")
+    </script>
+@endif
