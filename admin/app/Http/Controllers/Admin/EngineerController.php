@@ -34,7 +34,6 @@ class EngineerController extends Controller
         ]);
         Engineer::create($request->all());
         return redirect()->route('engineer.index')->with('engineer_create', 'Engineer added successfully');
-
     }
 
     // index
@@ -84,6 +83,13 @@ class EngineerController extends Controller
         Engineer::destroy($id);
         return redirect()->route('engineer.index')->with('engineer_delete', 'Engineer has been deleted');
     }
+    // lifeCycle
+    public function lifeCycle($id)
+    {
+        $engineerId = $id;
+        $allAppiontmentsOfEngineer = Appiontment::where('engineer_id', $id)->latest()->get();
+        return view('admin.engineer.life_cycle', compact('allAppiontmentsOfEngineer', 'engineerId'));
+    }
 
 
 
@@ -108,7 +114,7 @@ class EngineerController extends Controller
         foreach ($data as $item) {
 
             $html .=
-            '<div class="col-md-3 m-1 p-2 border">'.'<div class="item">'. $item->inspection_date .'<br>' . $item->inspection_time. '<br>' .'<span class="badge">'. $item->status.'</span>'.'</div>'.'</div>';
+                '<div class="col-md-3 m-1 p-2 border">' . '<div class="item">' . $item->inspection_date . '<br>' . $item->inspection_time . '<br>' . '<span class="badge">' . $item->status . '</span>' . '</div>' . '</div>';
         }
         return response()->json($html);
     }

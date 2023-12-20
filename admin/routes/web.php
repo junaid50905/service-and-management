@@ -117,6 +117,7 @@ Route::middleware(['customAuthCheck'])->group(function () {
             Route::get('/{id}/view', [EngineerController::class, 'view'])->name('engineer.view');
             Route::get('/{id}/delete', [EngineerController::class, 'delete'])->name('engineer.delete');
             Route::post('/{id}/update', [EngineerController::class, 'update'])->name('engineer.update');
+            Route::get('/{id}/life-cycle', [EngineerController::class, 'lifeCycle'])->name('engineer.life_cycle');
         });
 
 

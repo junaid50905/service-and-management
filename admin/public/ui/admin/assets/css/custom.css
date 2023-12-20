@@ -38,7 +38,7 @@
 }
 
 #example tr th {
-    color: white !important;
+    color: #333 !important;
     font-size: 12px;
 }
 
@@ -46,10 +46,7 @@
     background-color: #f1f1f1 !important;
     color: #666666 !important;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> bbd44066e9db68973852ae4e6952674a8f5cf7b6
 #example tbody tr.odd td,
 #example tbody tr.even td {
     color: #333 !important;
@@ -61,7 +58,7 @@
 }
 
 #example tfoot tr th {
-    color: white !important;
+    color: #333 !important;
     font-size: 12px;
 }
 
@@ -82,15 +79,11 @@ td.fc-today {
 .sidebar .sidebar-brand-wrapper {
     background: #5e72e4;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> bbd44066e9db68973852ae4e6952674a8f5cf7b6
 .sidebar,
 .card {
     background: #fff;
 }
-<<<<<<< HEAD
 
 .sidebar {
     border-right: 1px solid #ccc;
@@ -100,14 +93,6 @@ td.fc-today {
     background: #fff;
 }
 
-=======
-.sidebar {
-    border-right: 1px solid #ccc;
-}
-.content-wrapper {
-    background: #fff;
-}
->>>>>>> bbd44066e9db68973852ae4e6952674a8f5cf7b6
 .navbar .navbar-menu-wrapper {
     transition: width 0.25s ease;
     -webkit-transition: width 0.25s ease;
@@ -117,17 +102,11 @@ td.fc-today {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
 }
-<<<<<<< HEAD
 
 .navbar .navbar-menu-wrapper .navbar-toggler {
     color: #fff;
 }
 
-=======
-.navbar .navbar-menu-wrapper .navbar-toggler {
-    color: #fff;
-}
->>>>>>> bbd44066e9db68973852ae4e6952674a8f5cf7b6
 .card .card-body,
 .sidebar .nav .nav-item.profile .profile-desc .profile-name span,
 .sidebar .nav .nav-item.profile .profile-desc .profile-name,
@@ -136,7 +115,6 @@ td.fc-today {
 .sidebar .nav .nav-item .nav-link {
     color: #333;
 }
-<<<<<<< HEAD
 
 .sidebar .nav .nav-item.active>.nav-link {
     background: #f6f9fc;
@@ -152,22 +130,6 @@ td.fc-today {
     transform: translateX(6px);
 }
 
-=======
-.sidebar .nav .nav-item.active > .nav-link {
-    background: #f6f9fc;
-}
-.sidebar .nav .nav-item.active > .nav-link .menu-title {
-    font-weight: bold;
-    color: #333;
-}
-.sidebar
-    .nav:not(.sub-menu)
-    > .nav-item:hover:not(.nav-category):not(.account-dropdown)
-    > .nav-link {
-    background: #eee;
-    transform: translateX(6px);
-}
->>>>>>> bbd44066e9db68973852ae4e6952674a8f5cf7b6
 .sidebar .nav.sub-menu .nav-item .nav-link,
 .sidebar .nav .nav-item .nav-link {
     transition: all 0.3s ease;
@@ -177,15 +139,11 @@ td.fc-today {
     transform: translateX(6px);
     color: #0e1111;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> bbd44066e9db68973852ae4e6952674a8f5cf7b6
 .text-muted,
 .preview-list .preview-item .preview-item-content p .content-category {
     color: #333 !important;
 }
-<<<<<<< HEAD
 
 .preview-list .preview-item {
     border-color: #ddd !important;
@@ -195,14 +153,6 @@ td.fc-today {
     color: #333 !important;
 }
 
-=======
-.preview-list .preview-item {
-    border-color: #ddd !important;
-}
-.preview-list .preview-item a {
-    color: #333 !important;
-}
->>>>>>> bbd44066e9db68973852ae4e6952674a8f5cf7b6
 .card .card-title {
     color: #361659 !important;
 }
@@ -211,17 +161,11 @@ td.fc-today {
     background: #fff;
     color: #333;
 }
-<<<<<<< HEAD
 
 .footer a {
     color: #361659;
 }
 
-=======
-.footer a {
-    color: #361659;
-}
->>>>>>> bbd44066e9db68973852ae4e6952674a8f5cf7b6
 .form-control,
 .asColorPicker-input,
 .dataTables_wrapper select,
@@ -236,27 +180,18 @@ td.fc-today {
     background-color: #fff;
     color: #333 !important;
 }
-<<<<<<< HEAD
 
 .form-control:focus {
     background-color: #fff;
 }
 
-=======
-.form-control:focus {
-    background-color: #fff;
-}
->>>>>>> bbd44066e9db68973852ae4e6952674a8f5cf7b6
 .sidebar .nav.sub-menu .nav-item .nav-link.active {
     color: #333;
     font-weight: 500;
     transform: translateX(18px);
     background: transparent;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> bbd44066e9db68973852ae4e6952674a8f5cf7b6
 .sidebar .nav.sub-menu .nav-item .nav-link.active:before {
     position: absolute;
     content: "\f101";
@@ -271,16 +206,12 @@ td.fc-today {
 .dataTables_length select option {
     color: #333 !important;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> bbd44066e9db68973852ae4e6952674a8f5cf7b6
 .form-control {
     background-color: #fff !important;
     border-radius: 8px !important;
     border-color: #3333334d;
 }
-<<<<<<< HEAD
 
 .form-control:focus {
     background-color: #fff !important;
@@ -294,33 +225,16 @@ hr {
     display: none;
 }
 
-=======
-.form-control:focus {
-    background-color: #fff !important;
-}
-div.dataTables_wrapper div.dataTables_length select {
-    border: 1px solid #3333334d;
-}
-hr {
-    display: none;
-}
->>>>>>> bbd44066e9db68973852ae4e6952674a8f5cf7b6
 .table thead th,
 .jsgrid .jsgrid-table thead th {
     color: #333;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> bbd44066e9db68973852ae4e6952674a8f5cf7b6
 .table,
 .jsgrid .jsgrid-table {
     color: #333 !important;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> bbd44066e9db68973852ae4e6952674a8f5cf7b6
 thead,
 tbody,
 tfoot,
@@ -329,32 +243,17 @@ td,
 th {
     border-color: #0000004d;
 }
-<<<<<<< HEAD
 
 .sidebar .nav .nav-item.profile {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-=======
-.sidebar .nav .nav-item.profile {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
->>>>>>> bbd44066e9db68973852ae4e6952674a8f5cf7b6
-.dataTables_wrapper .dataTable .btn,
 .dataTables_wrapper .dataTable .fc button,
 .fc .dataTables_wrapper .dataTable button,
 .dataTables_wrapper .dataTable .ajax-upload-dragdrop .ajax-file-upload,
 .ajax-upload-dragdrop .dataTables_wrapper .dataTable .ajax-file-upload,
 .dataTables_wrapper .dataTable .swal2-modal .swal2-buttonswrapper .swal2-styled,
-<<<<<<< HEAD
 .swal2-modal .swal2-buttonswrapper .dataTables_wrapper .dataTable .swal2-styled {
-=======
-.swal2-modal
-    .swal2-buttonswrapper
-    .dataTables_wrapper
-    .dataTable
-    .swal2-styled {
->>>>>>> bbd44066e9db68973852ae4e6952674a8f5cf7b6
     padding: 10px 1rem !important;
 }
 
@@ -362,10 +261,7 @@ th {
 body .fc {
     color: #333;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> bbd44066e9db68973852ae4e6952674a8f5cf7b6
 .btn-edit {
     background-color: #3498db;
 }
@@ -391,14 +287,10 @@ body .fc {
 .btn-outline-danger:hover {
     color: #fff;
 }
-<<<<<<< HEAD
 
 
 /* Custom styles for .form-control */
 
-=======
-/* Custom styles for .form-control */
->>>>>>> bbd44066e9db68973852ae4e6952674a8f5cf7b6
 .form-control {
     font-family: "Arial", sans-serif !important;
     color: #333 !important;
@@ -409,22 +301,15 @@ body .fc {
     transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out !important;
 }
 
-<<<<<<< HEAD
 
 /* Style on hover and focus */
 
-=======
-/* Style on hover and focus */
->>>>>>> bbd44066e9db68973852ae4e6952674a8f5cf7b6
 .form-control:hover,
 .form-control:focus {
     border-color: #66afe9 !important;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> bbd44066e9db68973852ae4e6952674a8f5cf7b6
 div.dataTables_wrapper div.dt-row {
     margin-top: 12px !important;
 }
@@ -433,33 +318,21 @@ table.dataTable {
     border: 1px solid #ccc;
 }
 
-<<<<<<< HEAD
 .table> :not(:last-child)> :last-child>*,
 .jsgrid .jsgrid-table> :not(:last-child)> :last-child>*,
 .jsgrid .jsgrid-table> :not(:last-child)> :last-child>* {
     border-bottom-color: #456ccd !important;
 }
 
-=======
-.table > :not(:last-child) > :last-child > *,
-.jsgrid .jsgrid-table > :not(:last-child) > :last-child > *,
-.jsgrid .jsgrid-table > :not(:last-child) > :last-child > * {
-    border-bottom-color: #456ccd !important;
-}
->>>>>>> bbd44066e9db68973852ae4e6952674a8f5cf7b6
 .bg-secondary {
     color: #333 !important;
     background: #f3f3f3 !important;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> bbd44066e9db68973852ae4e6952674a8f5cf7b6
 .form-select-sm:focus {
     outline: none !important;
     box-shadow: none !important;
 }
-<<<<<<< HEAD
 
 .sidebar .nav {
     font-family: "Oswald", sans-serif !important;
@@ -469,22 +342,11 @@ body {
     font-family: "Roboto", sans-serif !important;
 }
 
-=======
-.sidebar .nav {
-    font-family: "Oswald", sans-serif !important;
-}
-body {
-    font-family: "Roboto", sans-serif !important;
-}
->>>>>>> bbd44066e9db68973852ae4e6952674a8f5cf7b6
 .statusStyle {
     font-size: 20px !important;
     font-weight: bold !important;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> bbd44066e9db68973852ae4e6952674a8f5cf7b6
 .sidebar .sidebar-brand-wrapper .sidebar-brand {
     background-color: rgba(0, 0, 0, 0.5);
     height: 100%;
@@ -499,7 +361,6 @@ div.dataTables_wrapper div.dataTables_filter input {
     position: relative;
     margin-left: -45px !important;
 }
-<<<<<<< HEAD
 
 div.dataTables_wrapper div.dataTables_filter label {
     position: relative;
@@ -508,13 +369,6 @@ div.dataTables_wrapper div.dataTables_filter label {
 div.dataTables_wrapper div.dataTables_filter label::before {
     content: "\f002";
     /* Unicode for the search icon in Font Awesome and the text */
-=======
-div.dataTables_wrapper div.dataTables_filter label {
-    position: relative;
-}
-div.dataTables_wrapper div.dataTables_filter label::before {
-    content: "\f002"; /* Unicode for the search icon in Font Awesome and the text */
->>>>>>> bbd44066e9db68973852ae4e6952674a8f5cf7b6
     position: absolute;
     font-family: FontAwesome;
     top: 50%;
@@ -524,18 +378,12 @@ div.dataTables_wrapper div.dataTables_filter label::before {
     color: #999;
     z-index: 9999;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> bbd44066e9db68973852ae4e6952674a8f5cf7b6
 .sidebar-icon-only .sidebar .nav .nav-item.hover-open .nav-link .menu-title {
     background: #fff;
     border: 1px solid #ccc;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> bbd44066e9db68973852ae4e6952674a8f5cf7b6
 .sidebar-icon-only .sidebar .nav .nav-item .collapse {
     background: #fff !important;
     border: 1px solid #ccc;
@@ -543,13 +391,13 @@ div.dataTables_wrapper div.dataTables_filter label::before {
     border-top: none;
     list-style: none;
 }
-<<<<<<< HEAD
 
 .preview-list .preview-item .preview-item-content p {
     font-size: 16px;
 }
-=======
-.preview-list .preview-item .preview-item-content p {
-    font-size: 16px;
+
+#example tbody tr.odd td,
+#example tbody tr.even td {
+    color: #333 !important;
+    background: #fff !important;
 }
->>>>>>> bbd44066e9db68973852ae4e6952674a8f5cf7b6

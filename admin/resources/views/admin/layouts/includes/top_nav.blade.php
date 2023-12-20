@@ -12,12 +12,9 @@
         <button class="navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-menu"></span>
         </button>
-<<<<<<< HEAD
         <ul class="navbar-nav navbar-nav-right">
-=======
-       
         <ul class="navbar-nav navbar-nav-right">
-        
+
             <li class="nav-item nav-settings d-none d-lg-block">
                 <a class="nav-link" href="#">
                     <i class="mdi mdi-view-grid"></i>
@@ -119,7 +116,6 @@
                     <p class="p-3 mb-0 text-center">See all notifications</p>
                 </div>
             </li>
->>>>>>> bbd44066e9db68973852ae4e6952674a8f5cf7b6
             <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
                     <div class="navbar-profile">

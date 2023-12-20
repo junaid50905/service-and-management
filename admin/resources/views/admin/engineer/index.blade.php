@@ -38,6 +38,7 @@
                                         <td>{{ DB::table('categories')->where('id', $engineer->category_id)->first()->name }}</td>
                                         <td>{{ DB::table('subcategories')->where('id', $engineer->subcategory_id)->first()->name }}</td>
                                         <td>
+                                            <a href="{{ route('engineer.life_cycle', $engineer->id) }}" class="btn btn-info btn-sm me-2 p-2"><i class="fa-solid fa-life-ring"></i></a>
                                             <a href="{{ route('engineer.view', $engineer->id) }}" class="btn btn-success btn-sm me-2 p-2"><i class="fa-solid fa-eye"></i></a>
                                             <a href="{{ route('engineer.edit', $engineer->id) }}" class="btn btn-warning btn-sm me-2 p-2"><i class="fa-regular fa-pen-to-square"></i></a>
                                             <a href="{{ route('engineer.delete', $engineer->id) }}" onclick="return confirm('are you sure?')" class="btn btn-danger btn-sm p-2"><i class="fa-solid fa-trash"></i></a>
@@ -64,10 +65,4 @@
 
         </div>
     </div>
-
-
-
-
-
-
 @endsection
