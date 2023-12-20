@@ -112,13 +112,14 @@ class AppiontmentController extends Controller
     // assignEngineerStore
     public function assignEngineerStore(Request $request)
     {
+        $engineerName = Engineer::where('id', $request->engineer_id)->first()->name;
         if($request->engineer_id == 'Select engineer'){
             return redirect()->back()->with('assign_engineer', "Please, assign enginner.");
         }
         $userType = Appiontment::where('id', $request->appiontment_id)->first()->usertype;
         if ($userType == 'group') {
             if (Appiontment::where('engineer_id', $request->engineer_id)->where('inspection_date', $request->date)->where('inspection_time', $request->time)->exists()) {
-                return redirect()->back()->with('engineer_exists', $request->engineer_id . " already exists this date and time.");
+                return redirect()->back()->with('engineer_exists', $engineerName. " already exists this date and time.");
             }
             RecruitingEngineer::create($request->all());
             Appiontment::where('id', $request->appiontment_id)->update(
@@ -135,7 +136,7 @@ class AppiontmentController extends Controller
         } else {
             if(Appiontment::where('engineer_id', $request->engineer_id)->where('inspection_date', $request->date)->where('inspection_time', $request->time)->exists())
             {
-                return redirect()->back()->with('engineer_exists', $request->engineer_id." already exists this date and time.");
+                return redirect()->back()->with('engineer_exists', $engineerName." already exists this date and time.");
             }
             RecruitingEngineer::create($request->all());
             Appiontment::where('id', $request->appiontment_id)->update(
