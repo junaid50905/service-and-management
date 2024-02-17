@@ -9,18 +9,12 @@ Products
         <div class="col-md-12 grid-margin">
             <a href="{{ route('product.create') }}" class="mb-3 btn btn-success"><i class="fa-solid fa-plus"></i>
                             Add new product</a>
-            @if (count($products) < 1)
-            <h4 class="text-danger">No product found</h4>
-            @else
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Products</h4>
                     <div class="table-responsive">
-<<<<<<< HEAD
-                        <table id="example" class="table" style="width:100%">
-=======
                         <table id="example" class="table table-hover">
->>>>>>> bbd44066e9db68973852ae4e6952674a8f5cf7b6
+
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -68,8 +62,6 @@ Products
                     </div>
                 </div>
             </div>
-            @endif
-
     </div>
 </div>
 
