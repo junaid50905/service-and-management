@@ -227,26 +227,26 @@ Dashboard
                                                 @break
                                                 @endswitch
                                             </p>
-                                            <p class="mb-0 text-muted ">
+                                            <p class="mb-0 text-muted">
                                                 @switch($status)
                                                 @case('pending')
-                                            <p class="text-warning statusStyle">{{ $status }}</p>
+                                            <p class="text-warning">{{ $status }}</p>
                                             @break
 
                                             @case('assigned')
-                                            <p class="text-primary statusStyle">{{ $status }}</p>
+                                            <p class="text-primary">{{ $status }}</p>
                                             @break
 
                                             @case('late')
-                                            <p class="text-danger statusStyle">{{ $status }}</p>
+                                            <p class="text-danger">{{ $status }}</p>
                                             @break
 
                                             @case('working')
-                                            <p class="text-info statusStyle">{{ $status }}</p>
+                                            <p class="text-info">{{ $status }}</p>
                                             @break
 
                                             @case('complete')
-                                            <p class="text-success statusStyle">{{ $status }}</p>
+                                            <p class="text-success">{{ $status }}</p>
                                             @break
                                             @endswitch
                                             </p>

@@ -11,6 +11,7 @@ use App\Models\Admin\Branch;
 use App\Models\Admin\CompanyBranch;
 use App\Models\Admin\Product;
 use App\Models\Admin\SoldProduct;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class CustomerController extends Controller
@@ -78,6 +79,12 @@ class CustomerController extends Controller
     {
         User::destroy($id);
         return redirect()->route('customer.index')->with('customer_delete', 'Customer has been deleted');
+    }
+    // view
+    public function show($id)
+    {
+        $customer = User::where('id', $id)->first();
+        return view('admin.customer.view', compact('customer'));
     }
     // saleToSoloCustomerForm
     public function saleToSoloCustomerForm($id)

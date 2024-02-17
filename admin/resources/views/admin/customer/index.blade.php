@@ -42,6 +42,7 @@
                                         <td>{{ $customer->phone }}</td>
                                         <td>{{ Str::words($customer->address, 7, '...') }}</td>
                                         <td>
+                                            <a href="{{ route('customer.show', $customer->id) }}" class="me-2 p-2 btn btn-sm btn-secondary"><i class="fa-solid fa-eye"></i></a>
                                             <a href="{{ $customer->usertype == 'solo' ? route('customer.saleToSoloCustomerForm', $customer->id) : route('customer.saleToGroupCustomerForm', $customer->id) }}"
                                                 class="p-2 btn btn-sm btn-info me-2"><i class="fa-solid fa-cart-plus"></i></a>
                                             <a href="{{ route('customer.edit', $customer->id) }}"

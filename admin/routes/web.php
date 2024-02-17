@@ -140,6 +140,7 @@ Route::middleware(['customAuthCheck'])->group(function () {
             Route::get('/{id}/edit', [CustomerController::class, 'edit'])->name('customer.edit');
             Route::get('/{id}/delete', [CustomerController::class, 'delete'])->name('customer.delete');
             Route::post('/{id}/update', [CustomerController::class, 'update'])->name('customer.update');
+            Route::get('/{id}/view', [CustomerController::class, 'show'])->name('customer.show');
 
 
             Route::get('/{id}/sale-to-solo-customer', [CustomerController::class, 'saleToSoloCustomerForm'])->name('customer.saleToSoloCustomerForm');
@@ -261,8 +262,6 @@ Route::middleware(['customAuthCheck'])->group(function () {
         Route::get('/purchased-products/request-service/{soldProductId}', [CustomerCustomerController::class, 'requestService'])->name('customer.request_service');
     });
 });
-
-
 
 
 

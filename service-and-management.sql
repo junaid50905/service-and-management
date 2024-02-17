@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 17, 2023 at 10:09 AM
--- Server version: 5.7.41
--- PHP Version: 8.1.25
+-- Generation Time: Feb 17, 2024 at 05:24 AM
+-- Server version: 8.0.30
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `devail_servicemanagement`
+-- Database: `service-and-management`
 --
 
 -- --------------------------------------------------------
@@ -28,11 +28,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admins` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `type` enum('admin','superadmin') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint UNSIGNED NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` enum('admin','superadmin') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -51,15 +51,15 @@ INSERT INTO `admins` (`id`, `name`, `email`, `password`, `type`, `created_at`, `
 --
 
 CREATE TABLE `appiontments` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `sold_product_id` bigint(20) UNSIGNED NOT NULL,
-  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `engineer_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `reserve` enum('true','false') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `blockedEngineerId` int(11) DEFAULT NULL,
-  `status` enum('pending','assigned','late','working','complete') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
-  `estimated_time` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `usertype` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint UNSIGNED NOT NULL,
+  `sold_product_id` bigint UNSIGNED NOT NULL,
+  `user_id` bigint UNSIGNED DEFAULT NULL,
+  `engineer_id` bigint UNSIGNED DEFAULT NULL,
+  `reserve` enum('true','false') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `blockedEngineerId` int DEFAULT NULL,
+  `status` enum('pending','assigned','late','working','complete') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
+  `estimated_time` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `usertype` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `appiontment_taken_date` date DEFAULT NULL,
   `appiontment_taken_time` time DEFAULT NULL,
   `inspection_date` date DEFAULT NULL,
@@ -82,16 +82,25 @@ INSERT INTO `appiontments` (`id`, `sold_product_id`, `user_id`, `engineer_id`, `
 (141, 31, 15, 5, 'false', -1, 'late', NULL, 'solo', '2023-12-04', '14:09:36', '2023-12-07', '19:58:00', '2023-12-04 08:09:36', '2023-12-10 03:56:34'),
 (142, 32, 10, 3, NULL, NULL, 'late', NULL, 'solo', '2023-12-06', '10:06:05', '2023-12-06', '11:30:00', '2023-12-06 04:06:05', '2023-12-06 05:30:18'),
 (143, 33, 10, 7, NULL, NULL, 'late', NULL, 'solo', '2023-12-06', '10:35:01', '2023-12-07', '01:37:00', '2023-12-06 04:35:01', '2023-12-07 03:26:46'),
-(145, 30, 15, 11, 'false', -1, 'complete', NULL, 'solo', '2023-12-06', '15:01:46', '2023-12-07', '16:02:00', '2023-12-06 09:01:46', '2023-12-10 06:59:22'),
 (146, 32, 10, 7, 'false', 7, 'late', NULL, 'solo', '2023-12-06', '16:57:43', '2023-12-07', '19:06:00', '2023-12-06 10:57:43', '2023-12-10 03:56:34'),
 (147, 33, 10, 3, 'false', 3, 'late', NULL, 'solo', '2023-12-06', '17:07:39', '2023-12-07', '21:08:00', '2023-12-06 11:07:39', '2023-12-10 03:56:34'),
 (148, 33, 10, 7, 'false', 7, 'late', NULL, 'solo', '2023-12-06', '17:08:54', '2023-12-07', '21:11:00', '2023-12-06 11:08:54', '2023-12-10 03:56:34'),
-(149, 30, 15, 3, 'false', -1, 'late', NULL, 'solo', '2023-12-06', '17:13:24', '2023-12-07', '20:21:00', '2023-12-06 11:13:24', '2023-12-10 03:56:34'),
+(149, 30, 15, 3, 'false', -1, 'working', NULL, 'solo', '2023-12-06', '17:13:24', '2023-12-07', '20:21:00', '2023-12-06 11:13:24', '2023-12-17 05:08:30'),
 (150, 30, 15, 3, 'false', -1, 'working', '2', 'solo', '2023-12-07', '09:43:55', '2023-12-08', '13:00:00', '2023-12-07 03:43:55', '2023-12-10 05:11:29'),
 (151, 33, 10, 7, 'false', -1, 'late', NULL, 'solo', '2023-12-07', '09:47:27', '2023-12-08', '01:04:00', '2023-12-07 03:47:27', '2023-12-10 03:56:34'),
 (152, 30, 15, 3, 'false', -1, 'working', NULL, 'solo', '2023-12-10', '11:30:33', '2023-12-10', '12:30:00', '2023-12-10 05:30:33', '2023-12-10 05:33:20'),
 (153, 23, 9, 10, 'false', -1, 'working', NULL, 'group', '2023-12-10', '11:37:13', '2023-12-10', '13:00:00', '2023-12-10 05:37:13', '2023-12-10 06:42:21'),
-(154, 20, 10, 9, 'false', -1, 'late', NULL, 'solo', '2023-12-10', '12:17:57', '2023-12-10', '12:19:00', '2023-12-10 06:17:57', '2023-12-10 06:19:07');
+(154, 20, 10, 9, 'false', -1, 'late', NULL, 'solo', '2023-12-10', '12:17:57', '2023-12-10', '12:19:00', '2023-12-10 06:17:57', '2023-12-10 06:19:07'),
+(155, 31, 15, 5, 'false', -1, 'late', NULL, 'solo', '2023-12-17', '10:39:46', '2023-12-17', '10:00:00', '2023-12-17 04:39:46', '2023-12-17 05:06:10'),
+(156, 33, 10, 3, 'false', -1, 'late', NULL, 'solo', '2023-12-17', '11:10:42', '2023-12-17', '17:00:00', '2023-12-17 05:10:42', '2023-12-17 11:00:14'),
+(157, 32, 10, 3, 'false', -1, 'late', NULL, 'solo', '2023-12-17', '11:15:26', '2023-12-19', '12:30:00', '2023-12-17 05:15:26', '2023-12-19 06:30:04'),
+(158, 21, 8, 3, 'false', -1, 'late', NULL, 'group', '2023-12-17', '11:32:25', '2023-12-17', '12:00:00', '2023-12-17 05:32:25', '2023-12-17 06:00:56'),
+(159, 26, 7, 3, 'false', -1, 'late', NULL, 'solo', '2023-12-19', '14:47:42', '2023-12-19', '16:00:00', '2023-12-19 08:47:42', '2023-12-19 10:00:07'),
+(160, 22, 7, 3, 'false', -1, 'complete', NULL, 'solo', '2023-12-19', '15:46:30', '2023-12-19', '19:00:00', '2023-12-19 09:46:30', '2023-12-19 10:00:11'),
+(161, 25, 9, 3, 'false', -1, 'late', NULL, 'group', '2023-12-19', '16:09:00', '2023-12-19', '16:11:00', '2023-12-19 10:09:00', '2023-12-19 10:11:29'),
+(162, 26, 7, 3, 'false', -1, 'late', NULL, 'solo', '2023-12-19', '16:10:25', '2023-12-19', '16:12:00', '2023-12-19 10:10:25', '2023-12-19 10:12:35'),
+(163, 30, 15, 3, 'false', -1, 'late', NULL, 'solo', '2023-12-20', '10:02:49', '2023-12-20', '13:00:00', '2023-12-20 04:02:49', '2023-12-20 07:00:10'),
+(164, 26, 7, 10, 'false', -1, 'assigned', NULL, 'solo', '2023-12-20', '10:03:41', '2023-12-21', '14:00:00', '2023-12-20 04:03:41', '2023-12-20 04:25:35');
 
 -- --------------------------------------------------------
 
@@ -100,13 +109,13 @@ INSERT INTO `appiontments` (`id`, `sold_product_id`, `user_id`, `engineer_id`, `
 --
 
 CREATE TABLE `appliances` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `category_id` bigint(20) UNSIGNED NOT NULL,
-  `subcategory_id` bigint(20) UNSIGNED NOT NULL,
-  `product_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `purchase_price` int(11) DEFAULT NULL,
-  `market_price` int(11) DEFAULT NULL,
+  `id` bigint UNSIGNED NOT NULL,
+  `category_id` bigint UNSIGNED NOT NULL,
+  `subcategory_id` bigint UNSIGNED NOT NULL,
+  `product_id` bigint UNSIGNED NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `purchase_price` int DEFAULT NULL,
+  `market_price` int DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -125,13 +134,13 @@ INSERT INTO `appliances` (`id`, `category_id`, `subcategory_id`, `product_id`, `
 --
 
 CREATE TABLE `branches` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `user_id` bigint(20) UNSIGNED NOT NULL,
-  `branch_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `branch_address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `admin_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `admin_email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `admin_phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint UNSIGNED NOT NULL,
+  `user_id` bigint UNSIGNED NOT NULL,
+  `branch_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `branch_address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `admin_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `admin_email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `admin_phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -158,8 +167,8 @@ INSERT INTO `branches` (`id`, `user_id`, `branch_name`, `branch_address`, `admin
 --
 
 CREATE TABLE `categories` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint UNSIGNED NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -179,9 +188,9 @@ INSERT INTO `categories` (`id`, `name`, `created_at`, `updated_at`) VALUES
 --
 
 CREATE TABLE `category_subcategory` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `category_id` bigint(20) UNSIGNED NOT NULL,
-  `subcategory_id` bigint(20) UNSIGNED NOT NULL,
+  `id` bigint UNSIGNED NOT NULL,
+  `category_id` bigint UNSIGNED NOT NULL,
+  `subcategory_id` bigint UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -193,10 +202,10 @@ CREATE TABLE `category_subcategory` (
 --
 
 CREATE TABLE `checklists` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `appiontment_id` bigint(20) UNSIGNED NOT NULL,
-  `appliance_name` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `appliance_price` int(11) NOT NULL,
+  `id` bigint UNSIGNED NOT NULL,
+  `appiontment_id` bigint UNSIGNED NOT NULL,
+  `appliance_name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `appliance_price` int NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -208,14 +217,14 @@ CREATE TABLE `checklists` (
 --
 
 CREATE TABLE `engineers` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `category_id` bigint(20) UNSIGNED NOT NULL,
-  `subcategory_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` bigint UNSIGNED NOT NULL,
+  `category_id` bigint UNSIGNED NOT NULL,
+  `subcategory_id` bigint UNSIGNED NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -242,9 +251,9 @@ INSERT INTO `engineers` (`id`, `category_id`, `subcategory_id`, `name`, `email`,
 --
 
 CREATE TABLE `expertises` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `category_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint UNSIGNED NOT NULL,
+  `category_id` bigint UNSIGNED NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -256,12 +265,12 @@ CREATE TABLE `expertises` (
 --
 
 CREATE TABLE `failed_jobs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint UNSIGNED NOT NULL,
+  `uuid` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -272,16 +281,16 @@ CREATE TABLE `failed_jobs` (
 --
 
 CREATE TABLE `inspections` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `appiontment_id` bigint(20) UNSIGNED NOT NULL,
-  `engineer_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `inspection` enum('start','stop') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` bigint UNSIGNED NOT NULL,
+  `appiontment_id` bigint UNSIGNED NOT NULL,
+  `engineer_id` bigint UNSIGNED DEFAULT NULL,
+  `inspection` enum('start','stop') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `start_date` date DEFAULT NULL,
   `start_time` time DEFAULT NULL,
   `end_time` time DEFAULT NULL,
   `longitude` double(10,6) DEFAULT NULL,
   `latitude` double(10,6) DEFAULT NULL,
-  `status` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -315,7 +324,8 @@ INSERT INTO `inspections` (`id`, `appiontment_id`, `engineer_id`, `inspection`, 
 (91, 152, 3, 'stop', '2023-12-10', '11:33:20', '12:19:18', 90.374200, 23.701800, 'working', NULL, '2023-12-10 06:19:18'),
 (92, 153, 10, 'stop', '2023-12-10', '12:37:24', '12:44:21', 90.374200, 23.701800, 'working', NULL, '2023-12-10 06:44:21'),
 (93, 153, 10, 'stop', '2023-12-10', '12:42:21', '12:44:21', 90.374200, 23.701800, 'working', NULL, '2023-12-10 06:44:21'),
-(94, 145, 10, 'stop', '2023-12-10', '12:53:24', '12:59:16', 90.374200, 23.701800, 'complete', NULL, '2023-12-10 06:59:22');
+(95, 149, 3, 'stop', '2023-12-17', '11:08:30', '11:09:44', 90.374200, 23.701800, 'working', NULL, '2023-12-17 05:09:44'),
+(96, 160, 3, 'stop', '2023-12-19', '15:58:30', '15:59:45', 90.374200, 23.701800, 'complete', NULL, '2023-12-19 10:00:11');
 
 -- --------------------------------------------------------
 
@@ -324,9 +334,9 @@ INSERT INTO `inspections` (`id`, `appiontment_id`, `engineer_id`, `inspection`, 
 --
 
 CREATE TABLE `migrations` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL
+  `id` int UNSIGNED NOT NULL,
+  `migration` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -363,9 +373,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `parts_for_product` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `appiontment_id` bigint(20) UNSIGNED NOT NULL,
-  `appliance_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` bigint UNSIGNED NOT NULL,
+  `appiontment_id` bigint UNSIGNED NOT NULL,
+  `appliance_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -392,8 +402,8 @@ INSERT INTO `parts_for_product` (`id`, `appiontment_id`, `appliance_name`, `upda
 --
 
 CREATE TABLE `password_reset_tokens` (
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -404,12 +414,12 @@ CREATE TABLE `password_reset_tokens` (
 --
 
 CREATE TABLE `personal_access_tokens` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci,
+  `id` bigint UNSIGNED NOT NULL,
+  `tokenable_type` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_id` bigint UNSIGNED NOT NULL,
+  `name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `expires_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -438,12 +448,12 @@ INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `n
 --
 
 CREATE TABLE `products` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `category_id` bigint(20) UNSIGNED NOT NULL,
-  `subcategory_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `model` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `price` int(11) NOT NULL,
+  `id` bigint UNSIGNED NOT NULL,
+  `category_id` bigint UNSIGNED NOT NULL,
+  `subcategory_id` bigint UNSIGNED NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` int NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -476,9 +486,9 @@ INSERT INTO `products` (`id`, `category_id`, `subcategory_id`, `name`, `model`, 
 --
 
 CREATE TABLE `recruiting_engineers` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `appiontment_id` bigint(20) UNSIGNED NOT NULL,
-  `engineer_id` bigint(20) UNSIGNED NOT NULL,
+  `id` bigint UNSIGNED NOT NULL,
+  `appiontment_id` bigint UNSIGNED NOT NULL,
+  `engineer_id` bigint UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -496,13 +506,6 @@ INSERT INTO `recruiting_engineers` (`id`, `appiontment_id`, `engineer_id`, `crea
 (111, 140, 4, '2023-12-04 07:34:45', '2023-12-04 07:34:45'),
 (112, 142, 3, '2023-12-06 04:29:14', '2023-12-06 04:29:14'),
 (113, 143, 7, '2023-12-06 04:39:53', '2023-12-06 04:39:53'),
-(115, 145, 7, '2023-12-06 10:45:02', '2023-12-06 10:45:02'),
-(116, 145, 3, '2023-12-06 10:47:15', '2023-12-06 10:47:15'),
-(117, 145, 11, '2023-12-06 10:48:05', '2023-12-06 10:48:05'),
-(118, 145, 10, '2023-12-06 10:48:54', '2023-12-06 10:48:54'),
-(119, 145, 11, '2023-12-06 10:53:37', '2023-12-06 10:53:37'),
-(120, 145, 10, '2023-12-06 10:55:21', '2023-12-06 10:55:21'),
-(121, 145, 11, '2023-12-06 10:56:45', '2023-12-06 10:56:45'),
 (122, 146, 3, '2023-12-06 10:59:54', '2023-12-06 10:59:54'),
 (123, 146, 7, '2023-12-06 11:06:08', '2023-12-06 11:06:08'),
 (124, 147, 3, '2023-12-06 11:08:20', '2023-12-06 11:08:20'),
@@ -515,7 +518,17 @@ INSERT INTO `recruiting_engineers` (`id`, `appiontment_id`, `engineer_id`, `crea
 (131, 151, 7, '2023-12-07 04:04:03', '2023-12-07 04:04:03'),
 (132, 152, 3, '2023-12-10 05:31:33', '2023-12-10 05:31:33'),
 (133, 153, 10, '2023-12-10 05:37:35', '2023-12-10 05:37:35'),
-(134, 154, 9, '2023-12-10 06:18:16', '2023-12-10 06:18:16');
+(134, 154, 9, '2023-12-10 06:18:16', '2023-12-10 06:18:16'),
+(135, 155, 5, '2023-12-17 05:05:36', '2023-12-17 05:05:36'),
+(136, 156, 3, '2023-12-17 05:15:14', '2023-12-17 05:15:14'),
+(137, 158, 3, '2023-12-17 05:34:10', '2023-12-17 05:34:10'),
+(138, 157, 3, '2023-12-17 05:35:04', '2023-12-17 05:35:04'),
+(139, 159, 3, '2023-12-19 08:59:26', '2023-12-19 08:59:26'),
+(140, 160, 3, '2023-12-19 09:56:47', '2023-12-19 09:56:47'),
+(141, 161, 3, '2023-12-19 10:09:21', '2023-12-19 10:09:21'),
+(142, 162, 3, '2023-12-19 10:10:39', '2023-12-19 10:10:39'),
+(143, 163, 3, '2023-12-20 04:03:31', '2023-12-20 04:03:31'),
+(144, 164, 10, '2023-12-20 04:25:35', '2023-12-20 04:25:35');
 
 -- --------------------------------------------------------
 
@@ -524,11 +537,11 @@ INSERT INTO `recruiting_engineers` (`id`, `appiontment_id`, `engineer_id`, `crea
 --
 
 CREATE TABLE `service_requests` (
-  `id` int(11) NOT NULL,
-  `user_id` bigint(20) UNSIGNED NOT NULL,
-  `usertype` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `sold_product_id` bigint(20) UNSIGNED NOT NULL,
-  `status` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` int NOT NULL,
+  `user_id` bigint UNSIGNED NOT NULL,
+  `usertype` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sold_product_id` bigint UNSIGNED NOT NULL,
+  `status` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -539,7 +552,9 @@ CREATE TABLE `service_requests` (
 
 INSERT INTO `service_requests` (`id`, `user_id`, `usertype`, `sold_product_id`, `status`, `created_at`, `updated_at`) VALUES
 (22, 7, 'solo', 22, 'taken', '2023-11-30 06:16:45', '2023-11-30 06:17:10'),
-(23, 7, 'solo', 19, 'taken', '2023-12-04 03:23:50', '2023-12-04 03:24:21');
+(23, 7, 'solo', 19, 'taken', '2023-12-04 03:23:50', '2023-12-04 03:24:21'),
+(24, 7, 'solo', 26, 'taken', '2023-12-19 08:46:44', '2023-12-19 08:47:42'),
+(25, 7, 'solo', 22, 'taken', '2023-12-19 09:46:04', '2023-12-19 09:46:30');
 
 -- --------------------------------------------------------
 
@@ -548,9 +563,9 @@ INSERT INTO `service_requests` (`id`, `user_id`, `usertype`, `sold_product_id`, 
 --
 
 CREATE TABLE `servicing_orders` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `appiontment_id` bigint(20) UNSIGNED NOT NULL,
-  `status` enum('pending','working','done') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
+  `id` bigint UNSIGNED NOT NULL,
+  `appiontment_id` bigint UNSIGNED NOT NULL,
+  `status` enum('pending','working','done') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -562,13 +577,13 @@ CREATE TABLE `servicing_orders` (
 --
 
 CREATE TABLE `sold_products` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `user_id` bigint(20) UNSIGNED NOT NULL,
-  `product_id` bigint(20) UNSIGNED NOT NULL,
-  `branch_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `quantity` int(11) NOT NULL,
+  `id` bigint UNSIGNED NOT NULL,
+  `user_id` bigint UNSIGNED NOT NULL,
+  `product_id` bigint UNSIGNED NOT NULL,
+  `branch_id` bigint UNSIGNED DEFAULT NULL,
+  `quantity` int NOT NULL,
   `selling_date` date NOT NULL,
-  `time_of_warranty` int(11) NOT NULL,
+  `time_of_warranty` int NOT NULL,
   `sam` tinyint(1) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -596,12 +611,12 @@ INSERT INTO `sold_products` (`id`, `user_id`, `product_id`, `branch_id`, `quanti
 (24, 8, 8, 8, 3, '2023-10-01', 12, 0, '2023-10-30 04:37:35', '2023-10-30 04:37:35'),
 (25, 9, 8, 9, 12, '2023-10-29', 12, 0, '2023-11-05 07:16:48', '2023-11-05 07:16:48'),
 (26, 7, 8, NULL, 7, '2023-10-29', 21, 0, '2023-11-05 08:07:23', '2023-11-05 08:07:23'),
-(27, 10, 8, 10, 2, '2023-10-03', 23, 1, '2023-11-05 08:30:48', '2023-11-05 08:30:48'),
+(27, 10, 8, NULL, 2, '2023-10-03', 23, 1, '2023-11-05 08:30:48', '2023-11-05 08:30:48'),
 (28, 8, 8, 8, 4, '2023-10-29', 12, 1, '2023-11-05 08:38:10', '2023-11-05 08:38:10'),
 (29, 7, 4, NULL, 3, '2023-10-29', 12, 1, '2023-11-15 06:10:13', '2023-11-15 06:10:13'),
 (30, 15, 8, NULL, 3, '2023-10-30', 12, 0, '2023-11-20 06:23:30', '2023-11-20 06:23:30'),
 (31, 15, 7, NULL, 5, '2023-11-22', 10, 1, '2023-11-20 06:59:44', '2023-11-20 06:59:44'),
-(32, 10, 8, 10, 2, '2023-10-29', 12, 1, '2023-11-21 05:36:48', '2023-11-21 05:36:48'),
+(32, 10, 8, NULL, 2, '2023-10-29', 12, 1, '2023-11-21 05:36:48', '2023-11-21 05:36:48'),
 (33, 10, 8, NULL, 1, '2023-08-16', 12, 1, '2023-11-26 05:11:35', '2023-11-26 05:11:35');
 
 -- --------------------------------------------------------
@@ -611,9 +626,9 @@ INSERT INTO `sold_products` (`id`, `user_id`, `product_id`, `branch_id`, `quanti
 --
 
 CREATE TABLE `subcategories` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `category_id` bigint(20) UNSIGNED NOT NULL,
-  `name` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint UNSIGNED NOT NULL,
+  `category_id` bigint UNSIGNED NOT NULL,
+  `name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -638,8 +653,8 @@ INSERT INTO `subcategories` (`id`, `category_id`, `name`, `created_at`, `updated
 --
 
 CREATE TABLE `test` (
-  `id` int(11) NOT NULL,
-  `first_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` int NOT NULL,
+  `first_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -665,15 +680,15 @@ INSERT INTO `test` (`id`, `first_name`, `created_at`, `updated_at`) VALUES
 --
 
 CREATE TABLE `users` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `usertype` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint UNSIGNED NOT NULL,
+  `usertype` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -691,7 +706,7 @@ INSERT INTO `users` (`id`, `usertype`, `name`, `email`, `address`, `phone`, `ema
 (12, 'solo', 'idlc', 'idlc@gmail.com', 'Gulshan, dhaka', '014567433232', NULL, '$2y$10$YdikvuWBYN13mPAwfBAoMuHLZnVay/ZkC8Mueyss7gBjW2sG3kLsq', NULL, '2023-11-13 06:16:55', '2023-11-13 06:16:55'),
 (13, 'solo', 'sopno', 'sopno@gmail.com', 'Gulshan', '0152232322', NULL, '$2y$10$mWT2jBxgYMgplFn.B70GB.vXCrV/VpbSXnxrSYkBueHKzy0EEF8W2', NULL, '2023-11-15 06:13:09', '2023-11-15 06:13:09'),
 (14, 'solo', 'xyz', 'xyz@gmail.com', 'uttara, Dhaka', '1234567890', NULL, '11223344', NULL, '2023-11-20 05:18:10', '2023-11-20 05:20:41'),
-(15, 'solo', 'one bank', 'onebank@gmail.com', 'Gulshan', '0198765435433', NULL, '$2y$10$GWoPZwjMLmEr6vqscCwtH.Z3Nb2VVwiAKcN2uo2Y3wJrHmx1F8Gje', NULL, '2023-11-20 05:44:15', '2023-11-20 06:20:02'),
+(15, 'solo', 'one bank', 'onebank@gmail.com', 'Anik Tower, 220/B Bir Uttam Mir Shawkat Sarak, Dhaka 1208', '0198765435433', NULL, '$2y$10$GWoPZwjMLmEr6vqscCwtH.Z3Nb2VVwiAKcN2uo2Y3wJrHmx1F8Gje', NULL, '2023-11-20 05:44:15', '2023-11-20 06:20:02'),
 (16, 'group', 'Test Limited', 'testltd@gmail.com', 'Kuril', '01743217111', NULL, '$2y$10$KcN5aevfDg8C.1dhehOrauOLYwtck33j5MAB4hFqGIeeEgSeIyU/2', NULL, '2023-12-16 19:18:00', '2023-12-16 19:18:00');
 
 --
@@ -874,133 +889,133 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `appiontments`
 --
 ALTER TABLE `appiontments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
 
 --
 -- AUTO_INCREMENT for table `appliances`
 --
 ALTER TABLE `appliances`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `branches`
 --
 ALTER TABLE `branches`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `category_subcategory`
 --
 ALTER TABLE `category_subcategory`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `checklists`
 --
 ALTER TABLE `checklists`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `engineers`
 --
 ALTER TABLE `engineers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `expertises`
 --
 ALTER TABLE `expertises`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `inspections`
 --
 ALTER TABLE `inspections`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT for table `parts_for_product`
 --
 ALTER TABLE `parts_for_product`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `recruiting_engineers`
 --
 ALTER TABLE `recruiting_engineers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
 
 --
 -- AUTO_INCREMENT for table `service_requests`
 --
 ALTER TABLE `service_requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `servicing_orders`
 --
 ALTER TABLE `servicing_orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `sold_products`
 --
 ALTER TABLE `sold_products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `subcategories`
 --
 ALTER TABLE `subcategories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `test`
 --
 ALTER TABLE `test`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables
