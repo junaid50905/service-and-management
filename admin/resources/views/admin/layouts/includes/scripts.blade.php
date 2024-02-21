@@ -1,3 +1,6 @@
+
+
+
 <script src="{{ asset('ui/admin') }}/assets/vendors/js/vendor.bundle.base.js"></script>
 <!-- endinject -->
 <!-- Plugin js for this page -->
@@ -36,8 +39,12 @@
 <script src='https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js'></script>
 <script src='https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js'></script>
 <script src='https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js'></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js" integrity="sha512-G9dfCJFG3y/Xq8mbbqb5i3FQNVaGl0Fkkw+VPVT3L00gA4k7hyjSGNpAxykwgDw1cfJFlj5tO3XePa+ezjDQyQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js" integrity="sha512-yUpN8Ms0SReogyyMOe6drcsPi9Km1bZr2MmBQSPK5FAeEd6sjFXzxyUieQ+tTPOo0DBhI+3NHGQwlfpog5Jdfg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"
+    integrity="sha512-G9dfCJFG3y/Xq8mbbqb5i3FQNVaGl0Fkkw+VPVT3L00gA4k7hyjSGNpAxykwgDw1cfJFlj5tO3XePa+ezjDQyQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"
+    integrity="sha512-yUpN8Ms0SReogyyMOe6drcsPi9Km1bZr2MmBQSPK5FAeEd6sjFXzxyUieQ+tTPOo0DBhI+3NHGQwlfpog5Jdfg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 <script>
@@ -69,17 +76,14 @@
 </script>
 
 <script>
-
-      document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'dayGridMonth'
+            initialView: 'dayGridMonth'
         });
         calendar.render();
-      });
-
-    </script>
-
+    });
+</script>
 
 
 
